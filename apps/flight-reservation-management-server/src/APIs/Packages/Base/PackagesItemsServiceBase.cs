@@ -159,10 +159,10 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     public async Task<List<Packages>> PackagesItems(PackagesFindManyArgs findManyArgs)
     {
         var packagesItems = await _context
-            .PackagesItems.Include(x => x.SightSeeingsItems)
-            .Include(x => x.PackageHotelsItems)
-            .Include(x => x.GoodToKnowsItems)
+            .PackagesItems.Include(x => x.GoodToKnowsItems)
             .Include(x => x.GalleriesItems)
+            .Include(x => x.SightSeeingsItems)
+            .Include(x => x.PackageHotelsItems)
             .Include(x => x.AttractionsItems)
             .Include(x => x.FlightDealsItems)
             .Include(x => x.HotelDealsItems)
