@@ -528,7 +528,10 @@ public abstract class PackagesControllerBase : ControllerBase
     {
         try
         {
-            await _service.ConnectPackageAttractionsSearchAsync(uniqueId, packageAttractionsItemsId);
+            await _service.ConnectPackageAttractionsSearchAsync(
+                uniqueId,
+                packageAttractionsItemsId
+            );
         }
         catch (NotFoundException)
         {
@@ -549,7 +552,10 @@ public abstract class PackagesControllerBase : ControllerBase
     {
         try
         {
-            await _service.DisconnectPackageAttractionsSearchAsync(uniqueId, packageAttractionsItemsId);
+            await _service.DisconnectPackageAttractionsSearchAsync(
+                uniqueId,
+                packageAttractionsItemsId
+            );
         }
         catch (NotFoundException)
         {

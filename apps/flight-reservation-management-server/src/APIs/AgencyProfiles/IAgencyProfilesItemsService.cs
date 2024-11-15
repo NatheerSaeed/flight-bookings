@@ -18,7 +18,9 @@ public interface IAgencyProfilesService
     /// <summary>
     /// Find many AgencyProfilesItems
     /// </summary>
-    public Task<List<AgencyProfiles>> AgencyProfilesSearchAsync(AgencyProfileFindManyArgs findManyArgs);
+    public Task<List<AgencyProfiles>> AgencyProfilesSearchAsync(
+        AgencyProfileFindManyArgs findManyArgs
+    );
 
     /// <summary>
     /// Meta data about AgencyProfiles records

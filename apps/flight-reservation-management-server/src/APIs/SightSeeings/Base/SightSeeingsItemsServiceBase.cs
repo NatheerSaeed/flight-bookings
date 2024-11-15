@@ -80,7 +80,9 @@ public abstract class SightSeeingsServiceBase : ISightSeeingsService
     /// <summary>
     /// Find many SightSeeingsItems
     /// </summary>
-    public async Task<List<SightSeeings>> SightSeeingsSearchAsync(SightSeeingFindManyArgs findManyArgs)
+    public async Task<List<SightSeeings>> SightSeeingsSearchAsync(
+        SightSeeingFindManyArgs findManyArgs
+    )
     {
         var sightSeeingsItems = await _context
             .SightSeeingsItems.Include(x => x.Attraction)

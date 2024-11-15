@@ -5,9 +5,9 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class UsersExtensions
 {
-    public static User ToDto(this UserDbModel model)
+    public static Dtos.User ToDto(this Infrastructure.Models.UserDbModel model)
     {
-        return new User
+        return new Dtos.User
         {
             AgencyProfilesItems = model.AgencyProfilesItems?.Select(x => x.Id).ToList(),
             AirlinesItems = model.AirlinesItems?.Select(x => x.Id).ToList(),
@@ -39,9 +39,12 @@ public static class UsersExtensions
         };
     }
 
-    public static UserDbModel ToModel(this UserUpdateInput updateDto, UserWhereUniqueInput uniqueId)
+    public static Infrastructure.Models.UserDbModel ToModel(
+        this UserUpdateInput updateDto,
+        UserWhereUniqueInput uniqueId
+    )
     {
-        var user = new UserDbModel
+        var user = new Infrastructure.Models.UserDbModel
         {
             Id = uniqueId.Id,
             ApiToken = updateDto.ApiToken,

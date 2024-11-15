@@ -104,7 +104,10 @@ public interface IRolesService
     /// <summary>
     /// Connect multiple RolesItems records to Roles
     /// </summary>
-    public Task ConnectRolesSearchAsync(RolesWhereUniqueInput uniqueId, RolesWhereUniqueInput[] rolesId);
+    public Task ConnectRolesSearchAsync(
+        RolesWhereUniqueInput uniqueId,
+        RolesWhereUniqueInput[] rolesId
+    );
 
     /// <summary>
     /// Disconnect multiple RolesItems records from Roles

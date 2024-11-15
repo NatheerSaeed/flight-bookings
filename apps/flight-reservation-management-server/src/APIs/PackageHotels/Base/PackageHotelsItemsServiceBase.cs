@@ -77,7 +77,9 @@ public abstract class PackageHotelsServiceBase : IPackageHotelsService
     /// <summary>
     /// Find many PackageHotelsItems
     /// </summary>
-    public async Task<List<PackageHotels>> PackageHotelsSearchAsync(PackageHotelFindManyArgs findManyArgs)
+    public async Task<List<PackageHotels>> PackageHotelsSearchAsync(
+        PackageHotelFindManyArgs findManyArgs
+    )
     {
         var packageHotelsItems = await _context
             .PackageHotelsItems.Include(x => x.PackageField)

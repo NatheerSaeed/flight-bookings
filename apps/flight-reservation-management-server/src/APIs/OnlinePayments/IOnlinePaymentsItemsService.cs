@@ -18,7 +18,9 @@ public interface IOnlinePaymentsService
     /// <summary>
     /// Find many OnlinePaymentsItems
     /// </summary>
-    public Task<List<OnlinePayments>> OnlinePaymentsSearchAsync(OnlinePaymentFindManyArgs findManyArgs);
+    public Task<List<OnlinePayments>> OnlinePaymentsSearchAsync(
+        OnlinePaymentFindManyArgs findManyArgs
+    );
 
     /// <summary>
     /// Meta data about OnlinePayments records

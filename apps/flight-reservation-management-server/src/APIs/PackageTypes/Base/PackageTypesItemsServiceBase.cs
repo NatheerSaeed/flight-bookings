@@ -67,7 +67,9 @@ public abstract class PackageTypesServiceBase : IPackageTypesService
     /// <summary>
     /// Find many PackageTypesItems
     /// </summary>
-    public async Task<List<PackageTypes>> PackageTypesSearchAsync(PackageTypeFindManyArgs findManyArgs)
+    public async Task<List<PackageTypes>> PackageTypesSearchAsync(
+        PackageTypeFindManyArgs findManyArgs
+    )
     {
         var packageTypesItems = await _context
             .PackageTypesItems.ApplyWhere(findManyArgs.Where)

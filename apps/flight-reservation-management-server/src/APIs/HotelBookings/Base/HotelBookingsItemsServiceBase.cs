@@ -103,7 +103,9 @@ public abstract class HotelBookingsServiceBase : IHotelBookingsService
     /// <summary>
     /// Find many HotelBookingsItems
     /// </summary>
-    public async Task<List<HotelBookings>> HotelBookingsSearchAsync(HotelBookingFindManyArgs findManyArgs)
+    public async Task<List<HotelBookings>> HotelBookingsSearchAsync(
+        HotelBookingFindManyArgs findManyArgs
+    )
     {
         var hotelBookingsItems = await _context
             .HotelBookingsItems.Include(x => x.Voucher)

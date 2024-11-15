@@ -18,7 +18,9 @@ public interface IFlightBookingsService
     /// <summary>
     /// Find many FlightBookingsItems
     /// </summary>
-    public Task<List<FlightBookings>> FlightBookingsSearchAsync(FlightBookingFindManyArgs findManyArgs);
+    public Task<List<FlightBookings>> FlightBookingsSearchAsync(
+        FlightBookingFindManyArgs findManyArgs
+    );
 
     /// <summary>
     /// Meta data about FlightBookings records

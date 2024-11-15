@@ -21,9 +21,9 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Create one User
     /// </summary>
-    public async Task<User> CreateUser(UserCreateInput inputDto)
+    public async Task<Dtos.User> CreateUser(UserCreateInput inputDto)
     {
-        var user = new UserDbModel
+        var user = new Infrastructure.Models.UserDbModel
         {
             ApiToken = inputDto.ApiToken,
             CreatedAt = inputDto.CreatedAt,
@@ -164,7 +164,7 @@ public abstract class UsersServiceBase : IUsersService
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<UserDbModel>(user.Id);
+        var result = await _context.FindAsync<Infrastructure.Models.UserDbModel>(user.Id);
 
         if (result == null)
         {
@@ -192,7 +192,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find many Users
     /// </summary>
-    public async Task<List<User>> Users(UserFindManyArgs findManyArgs)
+    public async Task<List<Dtos.User>> Users(UserFindManyArgs findManyArgs)
     {
         var users = await _context
             .Users.Include(x => x.HotelBookingsItems)
@@ -229,7 +229,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Get one User
     /// </summary>
-    public async Task<User> User(UserWhereUniqueInput uniqueId)
+    public async Task<Dtos.User> User(UserWhereUniqueInput uniqueId)
     {
         var users = await this.Users(
             new UserFindManyArgs { Where = new UserWhereInput { Id = uniqueId.Id } }

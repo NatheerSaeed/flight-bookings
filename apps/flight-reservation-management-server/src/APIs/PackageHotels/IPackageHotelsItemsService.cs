@@ -18,7 +18,9 @@ public interface IPackageHotelsService
     /// <summary>
     /// Find many PackageHotelsItems
     /// </summary>
-    public Task<List<PackageHotels>> PackageHotelsSearchAsync(PackageHotelFindManyArgs findManyArgs);
+    public Task<List<PackageHotels>> PackageHotelsSearchAsync(
+        PackageHotelFindManyArgs findManyArgs
+    );
 
     /// <summary>
     /// Meta data about PackageHotels records

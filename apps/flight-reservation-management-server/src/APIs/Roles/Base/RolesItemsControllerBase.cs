@@ -50,7 +50,9 @@ public abstract class RolesControllerBase : ControllerBase
     /// Find many RolesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Roles>>> RolesSearchAsync([FromQuery()] RoleFindManyArgs filter)
+    public async Task<ActionResult<List<Roles>>> RolesSearchAsync(
+        [FromQuery()] RoleFindManyArgs filter
+    )
     {
         return Ok(await _service.RolesSearchAsync(filter));
     }

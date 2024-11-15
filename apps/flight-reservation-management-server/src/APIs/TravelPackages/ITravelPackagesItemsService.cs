@@ -18,7 +18,9 @@ public interface ITravelPackagesService
     /// <summary>
     /// Find many TravelPackagesItems
     /// </summary>
-    public Task<List<TravelPackages>> TravelPackagesSearchAsync(TravelPackageFindManyArgs findManyArgs);
+    public Task<List<TravelPackages>> TravelPackagesSearchAsync(
+        TravelPackageFindManyArgs findManyArgs
+    );
 
     /// <summary>
     /// Meta data about TravelPackages records

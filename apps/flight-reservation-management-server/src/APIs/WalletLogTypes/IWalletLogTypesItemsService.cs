@@ -18,7 +18,9 @@ public interface IWalletLogTypesService
     /// <summary>
     /// Find many WalletLogTypesItems
     /// </summary>
-    public Task<List<WalletLogTypes>> WalletLogTypesSearchAsync(WalletLogTypeFindManyArgs findManyArgs);
+    public Task<List<WalletLogTypes>> WalletLogTypesSearchAsync(
+        WalletLogTypeFindManyArgs findManyArgs
+    );
 
     /// <summary>
     /// Meta data about WalletLogTypes records

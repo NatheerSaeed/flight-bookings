@@ -50,7 +50,9 @@ public abstract class VatsControllerBase : ControllerBase
     /// Find many VatsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Vats>>> VatsSearchAsync([FromQuery()] VatFindManyArgs filter)
+    public async Task<ActionResult<List<Vats>>> VatsSearchAsync(
+        [FromQuery()] VatFindManyArgs filter
+    )
     {
         return Ok(await _service.VatsSearchAsync(filter));
     }

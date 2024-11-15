@@ -18,7 +18,9 @@ public interface IPackageFlightsService
     /// <summary>
     /// Find many PackageFlightsItems
     /// </summary>
-    public Task<List<PackageFlights>> PackageFlightsSearchAsync(PackageFlightFindManyArgs findManyArgs);
+    public Task<List<PackageFlights>> PackageFlightsSearchAsync(
+        PackageFlightFindManyArgs findManyArgs
+    );
 
     /// <summary>
     /// Meta data about PackageFlights records

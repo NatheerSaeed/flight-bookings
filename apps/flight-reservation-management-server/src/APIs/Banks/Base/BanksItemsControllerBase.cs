@@ -50,7 +50,9 @@ public abstract class BanksControllerBase : ControllerBase
     /// Find many BanksItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Banks>>> BanksSearchAsync([FromQuery()] BankFindManyArgs filter)
+    public async Task<ActionResult<List<Banks>>> BanksSearchAsync(
+        [FromQuery()] BankFindManyArgs filter
+    )
     {
         return Ok(await _service.BanksSearchAsync(filter));
     }
