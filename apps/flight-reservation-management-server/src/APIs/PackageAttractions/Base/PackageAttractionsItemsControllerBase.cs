@@ -1,0 +1,117 @@
+using FlightReservationManagement.APIs;
+using FlightReservationManagement.APIs.Common;
+using FlightReservationManagement.APIs.Dtos;
+using FlightReservationManagement.APIs.Errors;
+using Microsoft.AspNetCore.Mvc;
+
+namespace FlightReservationManagement.APIs;
+
+[Route("api/[controller]")]
+[ApiController()]
+public abstract class PackageAttractionsItemsControllerBase : ControllerBase
+{
+    protected readonly IPackageAttractionsItemsService _service;
+
+    public PackageAttractionsItemsControllerBase(IPackageAttractionsItemsService service)
+    {
+        _service = service;
+    }
+
+    /// <summary>
+    /// Create one PackageAttractions
+    /// </summary>
+    [HttpPost()]
+    public async Task<ActionResult<PackageAttractions>> CreatePackageAttractions(
+        PackageAttractionsCreateInput input
+    )
+    {
+        var packageAttractions = await _service.CreatePackageAttractions(input);
+
+        return CreatedAtAction(
+            nameof(PackageAttractions),
+            new { id = packageAttractions.Id },
+            packageAttractions
+        );
+    }
+
+    /// <summary>
+    /// Delete one PackageAttractions
+    /// </summary>
+    [HttpDelete("{Id}")]
+    public async Task<ActionResult> DeletePackageAttractions(
+        [FromRoute()] PackageAttractionsWhereUniqueInput uniqueId
+    )
+    {
+        try
+        {
+            await _service.DeletePackageAttractions(uniqueId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find many PackageAttractionsItems
+    /// </summary>
+    [HttpGet()]
+    public async Task<ActionResult<List<PackageAttractions>>> PackageAttractionsItems(
+        [FromQuery()] PackageAttractionsFindManyArgs filter
+    )
+    {
+        return Ok(await _service.PackageAttractionsItems(filter));
+    }
+
+    /// <summary>
+    /// Meta data about PackageAttractions records
+    /// </summary>
+    [HttpPost("meta")]
+    public async Task<ActionResult<MetadataDto>> PackageAttractionsItemsMeta(
+        [FromQuery()] PackageAttractionsFindManyArgs filter
+    )
+    {
+        return Ok(await _service.PackageAttractionsItemsMeta(filter));
+    }
+
+    /// <summary>
+    /// Get one PackageAttractions
+    /// </summary>
+    [HttpGet("{Id}")]
+    public async Task<ActionResult<PackageAttractions>> PackageAttractions(
+        [FromRoute()] PackageAttractionsWhereUniqueInput uniqueId
+    )
+    {
+        try
+        {
+            return await _service.PackageAttractions(uniqueId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update one PackageAttractions
+    /// </summary>
+    [HttpPatch("{Id}")]
+    public async Task<ActionResult> UpdatePackageAttractions(
+        [FromRoute()] PackageAttractionsWhereUniqueInput uniqueId,
+        [FromQuery()] PackageAttractionsUpdateInput packageAttractionsUpdateDto
+    )
+    {
+        try
+        {
+            await _service.UpdatePackageAttractions(uniqueId, packageAttractionsUpdateDto);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+}
