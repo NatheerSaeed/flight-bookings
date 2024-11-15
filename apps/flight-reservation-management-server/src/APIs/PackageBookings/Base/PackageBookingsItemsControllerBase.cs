@@ -114,4 +114,28 @@ public abstract class PackageBookingsItemsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a package_ record for PackageBookings
+    /// </summary>
+    [HttpGet("{Id}/packageField")]
+    public async Task<ActionResult<List<Packages>>> GetPackageField(
+        [FromRoute()] PackageBookingsWhereUniqueInput uniqueId
+    )
+    {
+        var packages = await _service.GetPackageField(uniqueId);
+        return Ok(packages);
+    }
+
+    /// <summary>
+    /// Get a user_ record for PackageBookings
+    /// </summary>
+    [HttpGet("{Id}/user")]
+    public async Task<ActionResult<List<User>>> GetUser(
+        [FromRoute()] PackageBookingsWhereUniqueInput uniqueId
+    )
+    {
+        var user = await _service.GetUser(uniqueId);
+        return Ok(user);
+    }
 }

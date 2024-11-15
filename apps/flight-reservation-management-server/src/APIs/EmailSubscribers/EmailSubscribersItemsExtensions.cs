@@ -10,7 +10,9 @@ public static class EmailSubscribersItemsExtensions
         return new EmailSubscribers
         {
             CreatedAt = model.CreatedAt,
+            Email = model.Email,
             Id = model.Id,
+            IpAddress = model.IpAddress,
             UpdatedAt = model.UpdatedAt,
         };
     }
@@ -20,7 +22,12 @@ public static class EmailSubscribersItemsExtensions
         EmailSubscribersWhereUniqueInput uniqueId
     )
     {
-        var emailSubscribers = new EmailSubscribersDbModel { Id = uniqueId.Id };
+        var emailSubscribers = new EmailSubscribersDbModel
+        {
+            Id = uniqueId.Id,
+            Email = updateDto.Email,
+            IpAddress = updateDto.IpAddress
+        };
 
         if (updateDto.CreatedAt != null)
         {

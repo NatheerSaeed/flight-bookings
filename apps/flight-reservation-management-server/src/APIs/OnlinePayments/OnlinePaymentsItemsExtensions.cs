@@ -9,9 +9,17 @@ public static class OnlinePaymentsItemsExtensions
     {
         return new OnlinePayments
         {
+            Amount = model.Amount,
+            BookingReference = model.BookingReference,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
+            PaymentStatus = model.PaymentStatus,
+            Reference = model.Reference,
+            ResponseCode = model.ResponseCode,
+            ResponseDescription = model.ResponseDescription,
+            ResponseFull = model.ResponseFull,
             UpdatedAt = model.UpdatedAt,
+            User = model.UserId,
         };
     }
 
@@ -20,7 +28,17 @@ public static class OnlinePaymentsItemsExtensions
         OnlinePaymentsWhereUniqueInput uniqueId
     )
     {
-        var onlinePayments = new OnlinePaymentsDbModel { Id = uniqueId.Id };
+        var onlinePayments = new OnlinePaymentsDbModel
+        {
+            Id = uniqueId.Id,
+            Amount = updateDto.Amount,
+            BookingReference = updateDto.BookingReference,
+            PaymentStatus = updateDto.PaymentStatus,
+            Reference = updateDto.Reference,
+            ResponseCode = updateDto.ResponseCode,
+            ResponseDescription = updateDto.ResponseDescription,
+            ResponseFull = updateDto.ResponseFull
+        };
 
         if (updateDto.CreatedAt != null)
         {
@@ -29,6 +47,10 @@ public static class OnlinePaymentsItemsExtensions
         if (updateDto.UpdatedAt != null)
         {
             onlinePayments.UpdatedAt = updateDto.UpdatedAt.Value;
+        }
+        if (updateDto.User != null)
+        {
+            onlinePayments.UserId = updateDto.User;
         }
 
         return onlinePayments;

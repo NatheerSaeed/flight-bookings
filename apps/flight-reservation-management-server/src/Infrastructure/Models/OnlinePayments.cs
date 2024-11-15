@@ -6,6 +6,12 @@ namespace FlightReservationManagement.Infrastructure.Models;
 [Table("OnlinePayments")]
 public class OnlinePaymentsDbModel
 {
+    [Range(-999999999, 999999999)]
+    public double? Amount { get; set; }
+
+    [StringLength(1000)]
+    public string? BookingReference { get; set; }
+
     [Required()]
     public DateTime CreatedAt { get; set; }
 
@@ -13,6 +19,26 @@ public class OnlinePaymentsDbModel
     [Required()]
     public string Id { get; set; }
 
+    [Range(-999999999, 999999999)]
+    public int? PaymentStatus { get; set; }
+
+    [StringLength(1000)]
+    public string? Reference { get; set; }
+
+    [StringLength(1000)]
+    public string? ResponseCode { get; set; }
+
+    [StringLength(1000)]
+    public string? ResponseDescription { get; set; }
+
+    [StringLength(1000)]
+    public string? ResponseFull { get; set; }
+
     [Required()]
     public DateTime UpdatedAt { get; set; }
+
+    public string? UserId { get; set; }
+
+    [ForeignKey(nameof(UserId))]
+    public UserDbModel? User { get; set; } = null;
 }

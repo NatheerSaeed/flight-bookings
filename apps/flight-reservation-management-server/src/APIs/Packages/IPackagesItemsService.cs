@@ -100,6 +100,70 @@ public interface IPackagesItemsService
     );
 
     /// <summary>
+    /// Connect multiple GalleriesItems records to Packages
+    /// </summary>
+    public Task ConnectGalleriesItems(
+        PackagesWhereUniqueInput uniqueId,
+        GalleriesWhereUniqueInput[] galleriesId
+    );
+
+    /// <summary>
+    /// Disconnect multiple GalleriesItems records from Packages
+    /// </summary>
+    public Task DisconnectGalleriesItems(
+        PackagesWhereUniqueInput uniqueId,
+        GalleriesWhereUniqueInput[] galleriesId
+    );
+
+    /// <summary>
+    /// Find multiple GalleriesItems records for Packages
+    /// </summary>
+    public Task<List<Galleries>> FindGalleriesItems(
+        PackagesWhereUniqueInput uniqueId,
+        GalleriesFindManyArgs GalleriesFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple GalleriesItems records for Packages
+    /// </summary>
+    public Task UpdateGalleriesItems(
+        PackagesWhereUniqueInput uniqueId,
+        GalleriesWhereUniqueInput[] galleriesId
+    );
+
+    /// <summary>
+    /// Connect multiple GoodToKnowsItems records to Packages
+    /// </summary>
+    public Task ConnectGoodToKnowsItems(
+        PackagesWhereUniqueInput uniqueId,
+        GoodToKnowsWhereUniqueInput[] goodToKnowsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple GoodToKnowsItems records from Packages
+    /// </summary>
+    public Task DisconnectGoodToKnowsItems(
+        PackagesWhereUniqueInput uniqueId,
+        GoodToKnowsWhereUniqueInput[] goodToKnowsId
+    );
+
+    /// <summary>
+    /// Find multiple GoodToKnowsItems records for Packages
+    /// </summary>
+    public Task<List<GoodToKnows>> FindGoodToKnowsItems(
+        PackagesWhereUniqueInput uniqueId,
+        GoodToKnowsFindManyArgs GoodToKnowsFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple GoodToKnowsItems records for Packages
+    /// </summary>
+    public Task UpdateGoodToKnowsItems(
+        PackagesWhereUniqueInput uniqueId,
+        GoodToKnowsWhereUniqueInput[] goodToKnowsId
+    );
+
+    /// <summary>
     /// Connect multiple HotelDealsItems records to Packages
     /// </summary>
     public Task ConnectHotelDealsItems(
@@ -129,6 +193,70 @@ public interface IPackagesItemsService
     public Task UpdateHotelDealsItems(
         PackagesWhereUniqueInput uniqueId,
         HotelDealsWhereUniqueInput[] hotelDealsId
+    );
+
+    /// <summary>
+    /// Connect multiple PackageAttractionsItems records to Packages
+    /// </summary>
+    public Task ConnectPackageAttractionsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageAttractionsWhereUniqueInput[] packageAttractionsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple PackageAttractionsItems records from Packages
+    /// </summary>
+    public Task DisconnectPackageAttractionsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageAttractionsWhereUniqueInput[] packageAttractionsId
+    );
+
+    /// <summary>
+    /// Find multiple PackageAttractionsItems records for Packages
+    /// </summary>
+    public Task<List<PackageAttractions>> FindPackageAttractionsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageAttractionsFindManyArgs PackageAttractionsFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple PackageAttractionsItems records for Packages
+    /// </summary>
+    public Task UpdatePackageAttractionsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageAttractionsWhereUniqueInput[] packageAttractionsId
+    );
+
+    /// <summary>
+    /// Connect multiple PackageBookingsItems records to Packages
+    /// </summary>
+    public Task ConnectPackageBookingsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] packageBookingsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple PackageBookingsItems records from Packages
+    /// </summary>
+    public Task DisconnectPackageBookingsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] packageBookingsId
+    );
+
+    /// <summary>
+    /// Find multiple PackageBookingsItems records for Packages
+    /// </summary>
+    public Task<List<PackageBookings>> FindPackageBookingsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageBookingsFindManyArgs PackageBookingsFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple PackageBookingsItems records for Packages
+    /// </summary>
+    public Task UpdatePackageBookingsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] packageBookingsId
     );
 
     /// <summary>

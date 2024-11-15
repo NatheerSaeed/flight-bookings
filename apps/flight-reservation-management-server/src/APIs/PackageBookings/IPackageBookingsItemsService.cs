@@ -39,4 +39,14 @@ public interface IPackageBookingsItemsService
         PackageBookingsWhereUniqueInput uniqueId,
         PackageBookingsUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a package_ record for PackageBookings
+    /// </summary>
+    public Task<Packages> GetPackageField(PackageBookingsWhereUniqueInput uniqueId);
+
+    /// <summary>
+    /// Get a user_ record for PackageBookings
+    /// </summary>
+    public Task<User> GetUser(PackageBookingsWhereUniqueInput uniqueId);
 }

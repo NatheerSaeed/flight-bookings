@@ -9,8 +9,17 @@ public static class MarkupsItemsExtensions
     {
         return new Markups
         {
+            CarMarkupType = model.CarMarkupType,
+            CarMarkupValue = model.CarMarkupValue,
             CreatedAt = model.CreatedAt,
+            FlightMarkupType = model.FlightMarkupType,
+            FlightMarkupValue = model.FlightMarkupValue,
+            HotelMarkupType = model.HotelMarkupType,
+            HotelMarkupValue = model.HotelMarkupValue,
             Id = model.Id,
+            PackageMarkupType = model.PackageMarkupType,
+            PackageMarkupValue = model.PackageMarkupValue,
+            Role = model.RoleId,
             UpdatedAt = model.UpdatedAt,
         };
     }
@@ -20,11 +29,26 @@ public static class MarkupsItemsExtensions
         MarkupsWhereUniqueInput uniqueId
     )
     {
-        var markups = new MarkupsDbModel { Id = uniqueId.Id };
+        var markups = new MarkupsDbModel
+        {
+            Id = uniqueId.Id,
+            CarMarkupType = updateDto.CarMarkupType,
+            CarMarkupValue = updateDto.CarMarkupValue,
+            FlightMarkupType = updateDto.FlightMarkupType,
+            FlightMarkupValue = updateDto.FlightMarkupValue,
+            HotelMarkupType = updateDto.HotelMarkupType,
+            HotelMarkupValue = updateDto.HotelMarkupValue,
+            PackageMarkupType = updateDto.PackageMarkupType,
+            PackageMarkupValue = updateDto.PackageMarkupValue
+        };
 
         if (updateDto.CreatedAt != null)
         {
             markups.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.Role != null)
+        {
+            markups.RoleId = updateDto.Role;
         }
         if (updateDto.UpdatedAt != null)
         {

@@ -9,8 +9,16 @@ public static class GoodToKnowsItemsExtensions
     {
         return new GoodToKnows
         {
+            CancellationPrepayment = model.CancellationPrepayment,
+            CheckIn = model.CheckIn,
+            CheckOut = model.CheckOut,
+            ChildrenBeds = model.ChildrenBeds,
             CreatedAt = model.CreatedAt,
+            Groups = model.Groups,
             Id = model.Id,
+            Internet = model.Internet,
+            PackageField = model.PackageFieldId,
+            Pets = model.Pets,
             UpdatedAt = model.UpdatedAt,
         };
     }
@@ -20,11 +28,25 @@ public static class GoodToKnowsItemsExtensions
         GoodToKnowsWhereUniqueInput uniqueId
     )
     {
-        var goodToKnows = new GoodToKnowsDbModel { Id = uniqueId.Id };
+        var goodToKnows = new GoodToKnowsDbModel
+        {
+            Id = uniqueId.Id,
+            CancellationPrepayment = updateDto.CancellationPrepayment,
+            CheckIn = updateDto.CheckIn,
+            CheckOut = updateDto.CheckOut,
+            ChildrenBeds = updateDto.ChildrenBeds,
+            Groups = updateDto.Groups,
+            Internet = updateDto.Internet,
+            Pets = updateDto.Pets
+        };
 
         if (updateDto.CreatedAt != null)
         {
             goodToKnows.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.PackageField != null)
+        {
+            goodToKnows.PackageFieldId = updateDto.PackageField;
         }
         if (updateDto.UpdatedAt != null)
         {

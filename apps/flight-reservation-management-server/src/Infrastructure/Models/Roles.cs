@@ -21,6 +21,8 @@ public class RolesDbModel
     [Required()]
     public string Id { get; set; }
 
+    public List<MarkupsDbModel>? MarkupsItems { get; set; } = new List<MarkupsDbModel>();
+
     [StringLength(1000)]
     public string? Name { get; set; }
 

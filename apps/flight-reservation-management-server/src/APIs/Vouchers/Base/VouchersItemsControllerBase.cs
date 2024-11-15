@@ -108,6 +108,88 @@ public abstract class VouchersItemsControllerBase : ControllerBase
     }
 
     /// <summary>
+    /// Connect multiple FlightBookingsItems records to Vouchers
+    /// </summary>
+    [HttpPost("{Id}/flightBookingsItems")]
+    public async Task<ActionResult> ConnectFlightBookingsItems(
+        [FromRoute()] VouchersWhereUniqueInput uniqueId,
+        [FromQuery()] FlightBookingsWhereUniqueInput[] flightBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectFlightBookingsItems(uniqueId, flightBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple FlightBookingsItems records from Vouchers
+    /// </summary>
+    [HttpDelete("{Id}/flightBookingsItems")]
+    public async Task<ActionResult> DisconnectFlightBookingsItems(
+        [FromRoute()] VouchersWhereUniqueInput uniqueId,
+        [FromBody()] FlightBookingsWhereUniqueInput[] flightBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectFlightBookingsItems(uniqueId, flightBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple FlightBookingsItems records for Vouchers
+    /// </summary>
+    [HttpGet("{Id}/flightBookingsItems")]
+    public async Task<ActionResult<List<FlightBookings>>> FindFlightBookingsItems(
+        [FromRoute()] VouchersWhereUniqueInput uniqueId,
+        [FromQuery()] FlightBookingsFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindFlightBookingsItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple FlightBookingsItems records for Vouchers
+    /// </summary>
+    [HttpPatch("{Id}/flightBookingsItems")]
+    public async Task<ActionResult> UpdateFlightBookingsItems(
+        [FromRoute()] VouchersWhereUniqueInput uniqueId,
+        [FromBody()] FlightBookingsWhereUniqueInput[] flightBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdateFlightBookingsItems(uniqueId, flightBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
     /// Connect multiple HotelBookingsItems records to Vouchers
     /// </summary>
     [HttpPost("{Id}/hotelBookingsItems")]

@@ -6,6 +6,12 @@ namespace FlightReservationManagement.Infrastructure.Models;
 [Table("CabinTypes")]
 public class CabinTypesDbModel
 {
+    [StringLength(1000)]
+    public string? CabinCode { get; set; }
+
+    [StringLength(1000)]
+    public string? CabinName { get; set; }
+
     [Required()]
     public DateTime CreatedAt { get; set; }
 

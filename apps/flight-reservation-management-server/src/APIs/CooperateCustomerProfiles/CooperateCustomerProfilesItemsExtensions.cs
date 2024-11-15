@@ -9,9 +9,18 @@ public static class CooperateCustomerProfilesItemsExtensions
     {
         return new CooperateCustomerProfiles
         {
+            CompanyAddress = model.CompanyAddress,
+            CompanyCacRcNumber = model.CompanyCacRcNumber,
+            CompanyContactPersonAddress = model.CompanyContactPersonAddress,
+            CompanyContactPersonEmail = model.CompanyContactPersonEmail,
+            CompanyContactPersonPhoneNumber = model.CompanyContactPersonPhoneNumber,
+            CompanyEmail = model.CompanyEmail,
+            CompanyName = model.CompanyName,
+            CompanyPhoneNumber = model.CompanyPhoneNumber,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
             UpdatedAt = model.UpdatedAt,
+            User = model.UserId,
         };
     }
 
@@ -20,7 +29,18 @@ public static class CooperateCustomerProfilesItemsExtensions
         CooperateCustomerProfilesWhereUniqueInput uniqueId
     )
     {
-        var cooperateCustomerProfiles = new CooperateCustomerProfilesDbModel { Id = uniqueId.Id };
+        var cooperateCustomerProfiles = new CooperateCustomerProfilesDbModel
+        {
+            Id = uniqueId.Id,
+            CompanyAddress = updateDto.CompanyAddress,
+            CompanyCacRcNumber = updateDto.CompanyCacRcNumber,
+            CompanyContactPersonAddress = updateDto.CompanyContactPersonAddress,
+            CompanyContactPersonEmail = updateDto.CompanyContactPersonEmail,
+            CompanyContactPersonPhoneNumber = updateDto.CompanyContactPersonPhoneNumber,
+            CompanyEmail = updateDto.CompanyEmail,
+            CompanyName = updateDto.CompanyName,
+            CompanyPhoneNumber = updateDto.CompanyPhoneNumber
+        };
 
         if (updateDto.CreatedAt != null)
         {
@@ -29,6 +49,10 @@ public static class CooperateCustomerProfilesItemsExtensions
         if (updateDto.UpdatedAt != null)
         {
             cooperateCustomerProfiles.UpdatedAt = updateDto.UpdatedAt.Value;
+        }
+        if (updateDto.User != null)
+        {
+            cooperateCustomerProfiles.UserId = updateDto.User;
         }
 
         return cooperateCustomerProfiles;

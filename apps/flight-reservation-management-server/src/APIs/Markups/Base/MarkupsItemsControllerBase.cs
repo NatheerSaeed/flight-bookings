@@ -104,4 +104,16 @@ public abstract class MarkupsItemsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a role_ record for Markups
+    /// </summary>
+    [HttpGet("{Id}/role")]
+    public async Task<ActionResult<List<Roles>>> GetRole(
+        [FromRoute()] MarkupsWhereUniqueInput uniqueId
+    )
+    {
+        var roles = await _service.GetRole(uniqueId);
+        return Ok(roles);
+    }
 }

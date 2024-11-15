@@ -108,4 +108,16 @@ public abstract class CarBookingsItemsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a user_ record for CarBookings
+    /// </summary>
+    [HttpGet("{Id}/user")]
+    public async Task<ActionResult<List<User>>> GetUser(
+        [FromRoute()] CarBookingsWhereUniqueInput uniqueId
+    )
+    {
+        var user = await _service.GetUser(uniqueId);
+        return Ok(user);
+    }
 }

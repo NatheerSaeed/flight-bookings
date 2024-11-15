@@ -25,13 +25,26 @@ public abstract class CarBookingsItemsServiceBase : ICarBookingsItemsService
     {
         var carBookings = new CarBookingsDbModel
         {
+            Amount = createDto.Amount,
+            BookingReference = createDto.BookingReference,
             CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
+            DropoffDate = createDto.DropoffDate,
+            DropoffLocation = createDto.DropoffLocation,
+            PickupDate = createDto.PickupDate,
+            PickupLocation = createDto.PickupLocation,
+            UpdatedAt = createDto.UpdatedAt,
+            VehicleId = createDto.VehicleId
         };
 
         if (createDto.Id != null)
         {
             carBookings.Id = createDto.Id;
+        }
+        if (createDto.User != null)
+        {
+            carBookings.User = await _context
+                .Users.Where(user => createDto.User.Id == user.Id)
+                .FirstOrDefaultAsync();
         }
 
         _context.CarBookingsItems.Add(carBookings);
@@ -68,7 +81,8 @@ public abstract class CarBookingsItemsServiceBase : ICarBookingsItemsService
     public async Task<List<CarBookings>> CarBookingsItems(CarBookingsFindManyArgs findManyArgs)
     {
         var carBookingsItems = await _context
-            .CarBookingsItems.ApplyWhere(findManyArgs.Where)
+            .CarBookingsItems.Include(x => x.User)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -113,6 +127,13 @@ public abstract class CarBookingsItemsServiceBase : ICarBookingsItemsService
     {
         var carBookings = updateDto.ToModel(uniqueId);
 
+        if (updateDto.User != null)
+        {
+            carBookings.User = await _context
+                .Users.Where(user => updateDto.User == user.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.Entry(carBookings).State = EntityState.Modified;
 
         try
@@ -130,5 +151,21 @@ public abstract class CarBookingsItemsServiceBase : ICarBookingsItemsService
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a user_ record for CarBookings
+    /// </summary>
+    public async Task<User> GetUser(CarBookingsWhereUniqueInput uniqueId)
+    {
+        var carBookings = await _context
+            .CarBookingsItems.Where(carBookings => carBookings.Id == uniqueId.Id)
+            .Include(carBookings => carBookings.User)
+            .FirstOrDefaultAsync();
+        if (carBookings == null)
+        {
+            throw new NotFoundException();
+        }
+        return carBookings.User.ToDto();
     }
 }

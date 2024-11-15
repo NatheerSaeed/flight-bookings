@@ -8,6 +8,8 @@ public class VouchersWhereInput
 
     public DateTime? CreatedAt { get; set; }
 
+    public List<string>? FlightBookingsItems { get; set; }
+
     public List<string>? HotelBookingsItems { get; set; }
 
     public string? Id { get; set; }

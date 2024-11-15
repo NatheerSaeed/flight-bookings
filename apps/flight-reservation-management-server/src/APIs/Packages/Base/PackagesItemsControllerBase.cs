@@ -272,6 +272,170 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     }
 
     /// <summary>
+    /// Connect multiple GalleriesItems records to Packages
+    /// </summary>
+    [HttpPost("{Id}/galleriesItems")]
+    public async Task<ActionResult> ConnectGalleriesItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromQuery()] GalleriesWhereUniqueInput[] galleriesItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectGalleriesItems(uniqueId, galleriesItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple GalleriesItems records from Packages
+    /// </summary>
+    [HttpDelete("{Id}/galleriesItems")]
+    public async Task<ActionResult> DisconnectGalleriesItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromBody()] GalleriesWhereUniqueInput[] galleriesItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectGalleriesItems(uniqueId, galleriesItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple GalleriesItems records for Packages
+    /// </summary>
+    [HttpGet("{Id}/galleriesItems")]
+    public async Task<ActionResult<List<Galleries>>> FindGalleriesItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromQuery()] GalleriesFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindGalleriesItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple GalleriesItems records for Packages
+    /// </summary>
+    [HttpPatch("{Id}/galleriesItems")]
+    public async Task<ActionResult> UpdateGalleriesItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromBody()] GalleriesWhereUniqueInput[] galleriesItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdateGalleriesItems(uniqueId, galleriesItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Connect multiple GoodToKnowsItems records to Packages
+    /// </summary>
+    [HttpPost("{Id}/goodToKnowsItems")]
+    public async Task<ActionResult> ConnectGoodToKnowsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromQuery()] GoodToKnowsWhereUniqueInput[] goodToKnowsItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectGoodToKnowsItems(uniqueId, goodToKnowsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple GoodToKnowsItems records from Packages
+    /// </summary>
+    [HttpDelete("{Id}/goodToKnowsItems")]
+    public async Task<ActionResult> DisconnectGoodToKnowsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromBody()] GoodToKnowsWhereUniqueInput[] goodToKnowsItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectGoodToKnowsItems(uniqueId, goodToKnowsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple GoodToKnowsItems records for Packages
+    /// </summary>
+    [HttpGet("{Id}/goodToKnowsItems")]
+    public async Task<ActionResult<List<GoodToKnows>>> FindGoodToKnowsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromQuery()] GoodToKnowsFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindGoodToKnowsItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple GoodToKnowsItems records for Packages
+    /// </summary>
+    [HttpPatch("{Id}/goodToKnowsItems")]
+    public async Task<ActionResult> UpdateGoodToKnowsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromBody()] GoodToKnowsWhereUniqueInput[] goodToKnowsItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdateGoodToKnowsItems(uniqueId, goodToKnowsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
     /// Connect multiple HotelDealsItems records to Packages
     /// </summary>
     [HttpPost("{Id}/hotelDealsItems")]
@@ -344,6 +508,170 @@ public abstract class PackagesItemsControllerBase : ControllerBase
         try
         {
             await _service.UpdateHotelDealsItems(uniqueId, hotelDealsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Connect multiple PackageAttractionsItems records to Packages
+    /// </summary>
+    [HttpPost("{Id}/packageAttractionsItems")]
+    public async Task<ActionResult> ConnectPackageAttractionsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromQuery()] PackageAttractionsWhereUniqueInput[] packageAttractionsItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectPackageAttractionsItems(uniqueId, packageAttractionsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple PackageAttractionsItems records from Packages
+    /// </summary>
+    [HttpDelete("{Id}/packageAttractionsItems")]
+    public async Task<ActionResult> DisconnectPackageAttractionsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromBody()] PackageAttractionsWhereUniqueInput[] packageAttractionsItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectPackageAttractionsItems(uniqueId, packageAttractionsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple PackageAttractionsItems records for Packages
+    /// </summary>
+    [HttpGet("{Id}/packageAttractionsItems")]
+    public async Task<ActionResult<List<PackageAttractions>>> FindPackageAttractionsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromQuery()] PackageAttractionsFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindPackageAttractionsItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple PackageAttractionsItems records for Packages
+    /// </summary>
+    [HttpPatch("{Id}/packageAttractionsItems")]
+    public async Task<ActionResult> UpdatePackageAttractionsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromBody()] PackageAttractionsWhereUniqueInput[] packageAttractionsItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdatePackageAttractionsItems(uniqueId, packageAttractionsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Connect multiple PackageBookingsItems records to Packages
+    /// </summary>
+    [HttpPost("{Id}/packageBookingsItems")]
+    public async Task<ActionResult> ConnectPackageBookingsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromQuery()] PackageBookingsWhereUniqueInput[] packageBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectPackageBookingsItems(uniqueId, packageBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple PackageBookingsItems records from Packages
+    /// </summary>
+    [HttpDelete("{Id}/packageBookingsItems")]
+    public async Task<ActionResult> DisconnectPackageBookingsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromBody()] PackageBookingsWhereUniqueInput[] packageBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectPackageBookingsItems(uniqueId, packageBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple PackageBookingsItems records for Packages
+    /// </summary>
+    [HttpGet("{Id}/packageBookingsItems")]
+    public async Task<ActionResult<List<PackageBookings>>> FindPackageBookingsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromQuery()] PackageBookingsFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindPackageBookingsItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple PackageBookingsItems records for Packages
+    /// </summary>
+    [HttpPatch("{Id}/packageBookingsItems")]
+    public async Task<ActionResult> UpdatePackageBookingsItems(
+        [FromRoute()] PackagesWhereUniqueInput uniqueId,
+        [FromBody()] PackageBookingsWhereUniqueInput[] packageBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdatePackageBookingsItems(uniqueId, packageBookingsItemsId);
         }
         catch (NotFoundException)
         {

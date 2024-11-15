@@ -6,6 +6,9 @@ namespace FlightReservationManagement.Infrastructure.Models;
 [Table("Markdowns")]
 public class MarkdownsDbModel
 {
+    [StringLength(1000)]
+    public string? AirlineCode { get; set; }
+
     [Required()]
     public DateTime CreatedAt { get; set; }
 
@@ -13,6 +16,12 @@ public class MarkdownsDbModel
     [Required()]
     public string Id { get; set; }
 
+    [Range(-999999999, 999999999)]
+    public int? TypeField { get; set; }
+
     [Required()]
     public DateTime UpdatedAt { get; set; }
+
+    [Range(-999999999, 999999999)]
+    public int? Value { get; set; }
 }

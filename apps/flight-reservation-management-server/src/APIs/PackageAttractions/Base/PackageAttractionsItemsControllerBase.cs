@@ -114,4 +114,16 @@ public abstract class PackageAttractionsItemsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a package_ record for PackageAttractions
+    /// </summary>
+    [HttpGet("{Id}/packageField")]
+    public async Task<ActionResult<List<Packages>>> GetPackageField(
+        [FromRoute()] PackageAttractionsWhereUniqueInput uniqueId
+    )
+    {
+        var packages = await _service.GetPackageField(uniqueId);
+        return Ok(packages);
+    }
 }

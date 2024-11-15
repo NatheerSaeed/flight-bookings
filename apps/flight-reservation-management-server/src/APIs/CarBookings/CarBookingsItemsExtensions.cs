@@ -9,9 +9,17 @@ public static class CarBookingsItemsExtensions
     {
         return new CarBookings
         {
+            Amount = model.Amount,
+            BookingReference = model.BookingReference,
             CreatedAt = model.CreatedAt,
+            DropoffDate = model.DropoffDate,
+            DropoffLocation = model.DropoffLocation,
             Id = model.Id,
+            PickupDate = model.PickupDate,
+            PickupLocation = model.PickupLocation,
             UpdatedAt = model.UpdatedAt,
+            User = model.UserId,
+            VehicleId = model.VehicleId,
         };
     }
 
@@ -20,7 +28,17 @@ public static class CarBookingsItemsExtensions
         CarBookingsWhereUniqueInput uniqueId
     )
     {
-        var carBookings = new CarBookingsDbModel { Id = uniqueId.Id };
+        var carBookings = new CarBookingsDbModel
+        {
+            Id = uniqueId.Id,
+            Amount = updateDto.Amount,
+            BookingReference = updateDto.BookingReference,
+            DropoffDate = updateDto.DropoffDate,
+            DropoffLocation = updateDto.DropoffLocation,
+            PickupDate = updateDto.PickupDate,
+            PickupLocation = updateDto.PickupLocation,
+            VehicleId = updateDto.VehicleId
+        };
 
         if (updateDto.CreatedAt != null)
         {
@@ -29,6 +47,10 @@ public static class CarBookingsItemsExtensions
         if (updateDto.UpdatedAt != null)
         {
             carBookings.UpdatedAt = updateDto.UpdatedAt.Value;
+        }
+        if (updateDto.User != null)
+        {
+            carBookings.UserId = updateDto.User;
         }
 
         return carBookings;

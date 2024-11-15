@@ -68,6 +68,38 @@ public interface IRolesItemsService
     );
 
     /// <summary>
+    /// Connect multiple MarkupsItems records to Roles
+    /// </summary>
+    public Task ConnectMarkupsItems(
+        RolesWhereUniqueInput uniqueId,
+        MarkupsWhereUniqueInput[] markupsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple MarkupsItems records from Roles
+    /// </summary>
+    public Task DisconnectMarkupsItems(
+        RolesWhereUniqueInput uniqueId,
+        MarkupsWhereUniqueInput[] markupsId
+    );
+
+    /// <summary>
+    /// Find multiple MarkupsItems records for Roles
+    /// </summary>
+    public Task<List<Markups>> FindMarkupsItems(
+        RolesWhereUniqueInput uniqueId,
+        MarkupsFindManyArgs MarkupsFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple MarkupsItems records for Roles
+    /// </summary>
+    public Task UpdateMarkupsItems(
+        RolesWhereUniqueInput uniqueId,
+        MarkupsWhereUniqueInput[] markupsId
+    );
+
+    /// <summary>
     /// Get a role_ record for Roles
     /// </summary>
     public Task<Roles> GetRole(RolesWhereUniqueInput uniqueId);

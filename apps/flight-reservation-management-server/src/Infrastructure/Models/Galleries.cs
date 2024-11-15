@@ -13,6 +13,20 @@ public class GalleriesDbModel
     [Required()]
     public string Id { get; set; }
 
+    [StringLength(1000)]
+    public string? ImagePath { get; set; }
+
+    [StringLength(1000)]
+    public string? ImageTypeId { get; set; }
+
+    public string? PackageFieldId { get; set; }
+
+    [ForeignKey(nameof(PackageFieldId))]
+    public PackagesDbModel? PackageField { get; set; } = null;
+
+    [StringLength(1000)]
+    public string? ParentId { get; set; }
+
     [Required()]
     public DateTime UpdatedAt { get; set; }
 }

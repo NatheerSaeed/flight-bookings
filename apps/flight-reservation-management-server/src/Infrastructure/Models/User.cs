@@ -17,6 +17,12 @@ public class UserDbModel
     public List<BankPaymentsDbModel>? BankPaymentsItems { get; set; } =
         new List<BankPaymentsDbModel>();
 
+    public List<CarBookingsDbModel>? CarBookingsItems { get; set; } =
+        new List<CarBookingsDbModel>();
+
+    public List<CooperateCustomerProfilesDbModel>? CooperateCustomerProfilesItems { get; set; } =
+        new List<CooperateCustomerProfilesDbModel>();
+
     [Required()]
     public DateTime CreatedAt { get; set; }
 
@@ -28,6 +34,9 @@ public class UserDbModel
     [StringLength(256)]
     public string? FirstName { get; set; }
 
+    public List<FlightBookingsDbModel>? FlightBookingsItems { get; set; } =
+        new List<FlightBookingsDbModel>();
+
     public List<HotelBookingsDbModel>? HotelBookingsItems { get; set; } =
         new List<HotelBookingsDbModel>();
 
@@ -37,6 +46,12 @@ public class UserDbModel
 
     [StringLength(256)]
     public string? LastName { get; set; }
+
+    public List<OnlinePaymentsDbModel>? OnlinePaymentsItems { get; set; } =
+        new List<OnlinePaymentsDbModel>();
+
+    public List<PackageBookingsDbModel>? PackageBookingsItems { get; set; } =
+        new List<PackageBookingsDbModel>();
 
     [Required()]
     public string Password { get; set; }

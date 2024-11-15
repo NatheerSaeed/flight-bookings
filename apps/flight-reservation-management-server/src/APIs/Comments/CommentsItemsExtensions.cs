@@ -9,8 +9,12 @@ public static class CommentsItemsExtensions
     {
         return new Comments
         {
+            Content = model.Content,
             CreatedAt = model.CreatedAt,
+            Email = model.Email,
             Id = model.Id,
+            Ip = model.Ip,
+            Name = model.Name,
             UpdatedAt = model.UpdatedAt,
         };
     }
@@ -20,7 +24,14 @@ public static class CommentsItemsExtensions
         CommentsWhereUniqueInput uniqueId
     )
     {
-        var comments = new CommentsDbModel { Id = uniqueId.Id };
+        var comments = new CommentsDbModel
+        {
+            Id = uniqueId.Id,
+            Content = updateDto.Content,
+            Email = updateDto.Email,
+            Ip = updateDto.Ip,
+            Name = updateDto.Name
+        };
 
         if (updateDto.CreatedAt != null)
         {

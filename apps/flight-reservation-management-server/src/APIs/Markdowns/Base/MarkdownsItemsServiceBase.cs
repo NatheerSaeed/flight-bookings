@@ -25,8 +25,11 @@ public abstract class MarkdownsItemsServiceBase : IMarkdownsItemsService
     {
         var markdowns = new MarkdownsDbModel
         {
+            AirlineCode = createDto.AirlineCode,
             CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
+            TypeField = createDto.TypeField,
+            UpdatedAt = createDto.UpdatedAt,
+            Value = createDto.Value
         };
 
         if (createDto.Id != null)

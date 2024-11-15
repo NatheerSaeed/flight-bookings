@@ -37,4 +37,9 @@ public interface IOnlinePaymentsItemsService
         OnlinePaymentsWhereUniqueInput uniqueId,
         OnlinePaymentsUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a user_ record for OnlinePayments
+    /// </summary>
+    public Task<User> GetUser(OnlinePaymentsWhereUniqueInput uniqueId);
 }

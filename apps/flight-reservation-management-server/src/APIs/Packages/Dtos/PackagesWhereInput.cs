@@ -8,9 +8,17 @@ public class PackagesWhereInput
 
     public List<string>? FlightDealsItems { get; set; }
 
+    public List<string>? GalleriesItems { get; set; }
+
+    public List<string>? GoodToKnowsItems { get; set; }
+
     public List<string>? HotelDealsItems { get; set; }
 
     public string? Id { get; set; }
+
+    public List<string>? PackageAttractionsItems { get; set; }
+
+    public List<string>? PackageBookingsItems { get; set; }
 
     public List<string>? PackageFlightsItems { get; set; }
 

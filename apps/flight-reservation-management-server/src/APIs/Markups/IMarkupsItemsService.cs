@@ -34,4 +34,9 @@ public interface IMarkupsItemsService
     /// Update one Markups
     /// </summary>
     public Task UpdateMarkups(MarkupsWhereUniqueInput uniqueId, MarkupsUpdateInput updateDto);
+
+    /// <summary>
+    /// Get a role_ record for Markups
+    /// </summary>
+    public Task<Roles> GetRole(MarkupsWhereUniqueInput uniqueId);
 }

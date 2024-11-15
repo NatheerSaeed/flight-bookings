@@ -9,8 +9,11 @@ public static class PackageAttractionsItemsExtensions
     {
         return new PackageAttractions
         {
+            Address = model.Address,
+            AttractionName = model.AttractionName,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
+            PackageField = model.PackageFieldId,
             UpdatedAt = model.UpdatedAt,
         };
     }
@@ -20,11 +23,20 @@ public static class PackageAttractionsItemsExtensions
         PackageAttractionsWhereUniqueInput uniqueId
     )
     {
-        var packageAttractions = new PackageAttractionsDbModel { Id = uniqueId.Id };
+        var packageAttractions = new PackageAttractionsDbModel
+        {
+            Id = uniqueId.Id,
+            Address = updateDto.Address,
+            AttractionName = updateDto.AttractionName
+        };
 
         if (updateDto.CreatedAt != null)
         {
             packageAttractions.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.PackageField != null)
+        {
+            packageAttractions.PackageFieldId = updateDto.PackageField;
         }
         if (updateDto.UpdatedAt != null)
         {
