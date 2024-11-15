@@ -58,11 +58,11 @@ public abstract class FlightBookingsControllerBase : ControllerBase
     /// Find many FlightBookingsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<FlightBookings>>> FlightBookingsItems(
+    public async Task<ActionResult<List<FlightBookings>>> FlightBookingsSearchAsync(
         [FromQuery()] FlightBookingFindManyArgs filter
     )
     {
-        return Ok(await _service.FlightBookingsItems(filter));
+        return Ok(await _service.FlightBookingsSearchAsync(filter));
     }
 
     /// <summary>

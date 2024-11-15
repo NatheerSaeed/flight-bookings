@@ -76,7 +76,7 @@ public abstract class PackageFlightsServiceBase : IPackageFlightsService
     /// <summary>
     /// Find many PackageFlightsItems
     /// </summary>
-    public async Task<List<PackageFlights>> PackageFlightsItems(
+    public async Task<List<PackageFlights>> PackageFlightsSearchAsync(
         PackageFlightFindManyArgs findManyArgs
     )
     {
@@ -105,7 +105,7 @@ public abstract class PackageFlightsServiceBase : IPackageFlightsService
     /// </summary>
     public async Task<PackageFlights> PackageFlights(PackageFlightsWhereUniqueInput uniqueId)
     {
-        var packageFlightsItems = await this.PackageFlightsItems(
+        var packageFlightsItems = await this.PackageFlightsSearchAsync(
             new PackageFlightFindManyArgs
             {
                 Where = new PackageFlightWhereInput { Id = uniqueId.Id }

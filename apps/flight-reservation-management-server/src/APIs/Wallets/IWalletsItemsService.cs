@@ -18,7 +18,7 @@ public interface IWalletsService
     /// <summary>
     /// Find many WalletsItems
     /// </summary>
-    public Task<List<Wallets>> WalletsItems(WalletFindManyArgs findManyArgs);
+    public Task<List<Wallets>> WalletsSearchAsync(WalletFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Wallets records

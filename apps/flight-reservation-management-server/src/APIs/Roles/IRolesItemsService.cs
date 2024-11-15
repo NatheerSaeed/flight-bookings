@@ -18,7 +18,7 @@ public interface IRolesService
     /// <summary>
     /// Find many RolesItems
     /// </summary>
-    public Task<List<Roles>> RolesItems(RoleFindManyArgs findManyArgs);
+    public Task<List<Roles>> RolesSearchAsync(RoleFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Roles records
@@ -38,7 +38,7 @@ public interface IRolesService
     /// <summary>
     /// Connect multiple HotelsItems records to Roles
     /// </summary>
-    public Task ConnectHotelsItems(
+    public Task ConnectHotelsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         HotelsWhereUniqueInput[] hotelsId
     );
@@ -46,7 +46,7 @@ public interface IRolesService
     /// <summary>
     /// Disconnect multiple HotelsItems records from Roles
     /// </summary>
-    public Task DisconnectHotelsItems(
+    public Task DisconnectHotelsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         HotelsWhereUniqueInput[] hotelsId
     );
@@ -54,7 +54,7 @@ public interface IRolesService
     /// <summary>
     /// Find multiple HotelsItems records for Roles
     /// </summary>
-    public Task<List<Hotels>> FindHotelsItems(
+    public Task<List<Hotels>> FindHotelsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         HotelFindManyArgs HotelFindManyArgs
     );
@@ -67,7 +67,7 @@ public interface IRolesService
     /// <summary>
     /// Connect multiple MarkupsItems records to Roles
     /// </summary>
-    public Task ConnectMarkupsItems(
+    public Task ConnectMarkupsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         MarkupsWhereUniqueInput[] markupsId
     );
@@ -75,7 +75,7 @@ public interface IRolesService
     /// <summary>
     /// Disconnect multiple MarkupsItems records from Roles
     /// </summary>
-    public Task DisconnectMarkupsItems(
+    public Task DisconnectMarkupsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         MarkupsWhereUniqueInput[] markupsId
     );
@@ -83,7 +83,7 @@ public interface IRolesService
     /// <summary>
     /// Find multiple MarkupsItems records for Roles
     /// </summary>
-    public Task<List<Markups>> FindMarkupsItems(
+    public Task<List<Markups>> FindMarkupsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         MarkupFindManyArgs MarkupFindManyArgs
     );
@@ -104,12 +104,12 @@ public interface IRolesService
     /// <summary>
     /// Connect multiple RolesItems records to Roles
     /// </summary>
-    public Task ConnectRolesItems(RolesWhereUniqueInput uniqueId, RolesWhereUniqueInput[] rolesId);
+    public Task ConnectRolesSearchAsync(RolesWhereUniqueInput uniqueId, RolesWhereUniqueInput[] rolesId);
 
     /// <summary>
     /// Disconnect multiple RolesItems records from Roles
     /// </summary>
-    public Task DisconnectRolesItems(
+    public Task DisconnectRolesSearchAsync(
         RolesWhereUniqueInput uniqueId,
         RolesWhereUniqueInput[] rolesId
     );
@@ -117,7 +117,7 @@ public interface IRolesService
     /// <summary>
     /// Find multiple RolesItems records for Roles
     /// </summary>
-    public Task<List<Roles>> FindRolesItems(
+    public Task<List<Roles>> FindRolesSearchAsync(
         RolesWhereUniqueInput uniqueId,
         RoleFindManyArgs RoleFindManyArgs
     );

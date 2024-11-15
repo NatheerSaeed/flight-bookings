@@ -18,7 +18,7 @@ public interface ICommentsService
     /// <summary>
     /// Find many CommentsItems
     /// </summary>
-    public Task<List<Comments>> CommentsItems(CommentFindManyArgs findManyArgs);
+    public Task<List<Comments>> CommentsSearchAsync(CommentFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Comments records

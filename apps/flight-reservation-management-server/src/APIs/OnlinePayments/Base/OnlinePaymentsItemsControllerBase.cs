@@ -58,11 +58,11 @@ public abstract class OnlinePaymentsControllerBase : ControllerBase
     /// Find many OnlinePaymentsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<OnlinePayments>>> OnlinePaymentsItems(
+    public async Task<ActionResult<List<OnlinePayments>>> OnlinePaymentsSearchAsync(
         [FromQuery()] OnlinePaymentFindManyArgs filter
     )
     {
-        return Ok(await _service.OnlinePaymentsItems(filter));
+        return Ok(await _service.OnlinePaymentsSearchAsync(filter));
     }
 
     /// <summary>

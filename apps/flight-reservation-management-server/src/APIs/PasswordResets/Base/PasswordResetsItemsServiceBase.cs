@@ -67,7 +67,7 @@ public abstract class PasswordResetsServiceBase : IPasswordResetsService
     /// <summary>
     /// Find many PasswordResetsItems
     /// </summary>
-    public async Task<List<PasswordResets>> PasswordResetsItems(
+    public async Task<List<PasswordResets>> PasswordResetsSearchAsync(
         PasswordResetFindManyArgs findManyArgs
     )
     {
@@ -95,7 +95,7 @@ public abstract class PasswordResetsServiceBase : IPasswordResetsService
     /// </summary>
     public async Task<PasswordResets> PasswordResets(PasswordResetsWhereUniqueInput uniqueId)
     {
-        var passwordResetsItems = await this.PasswordResetsItems(
+        var passwordResetsItems = await this.PasswordResetsSearchAsync(
             new PasswordResetFindManyArgs
             {
                 Where = new PasswordResetWhereInput { Id = uniqueId.Id }

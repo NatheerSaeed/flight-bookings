@@ -18,7 +18,7 @@ public interface IGalleriesService
     /// <summary>
     /// Find many GalleriesItems
     /// </summary>
-    public Task<List<Galleries>> GalleriesItems(GallerieFindManyArgs findManyArgs);
+    public Task<List<Galleries>> GalleriesSearchAsync(GallerieFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Galleries records

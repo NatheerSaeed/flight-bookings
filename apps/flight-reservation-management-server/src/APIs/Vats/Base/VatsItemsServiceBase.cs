@@ -73,7 +73,7 @@ public abstract class VatsServiceBase : IVatsService
     /// <summary>
     /// Find many VatsItems
     /// </summary>
-    public async Task<List<Vats>> VatsItems(VatFindManyArgs findManyArgs)
+    public async Task<List<Vats>> VatsSearchAsync(VatFindManyArgs findManyArgs)
     {
         var vatsItems = await _context
             .VatsItems.ApplyWhere(findManyArgs.Where)
@@ -99,7 +99,7 @@ public abstract class VatsServiceBase : IVatsService
     /// </summary>
     public async Task<Vats> Vats(VatsWhereUniqueInput uniqueId)
     {
-        var vatsItems = await this.VatsItems(
+        var vatsItems = await this.VatsSearchAsync(
             new VatFindManyArgs { Where = new VatWhereInput { Id = uniqueId.Id } }
         );
         var vats = vatsItems.FirstOrDefault();

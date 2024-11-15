@@ -74,7 +74,7 @@ public abstract class WalletLogsServiceBase : IWalletLogsService
     /// <summary>
     /// Find many WalletLogsItems
     /// </summary>
-    public async Task<List<WalletLogs>> WalletLogsItems(WalletLogFindManyArgs findManyArgs)
+    public async Task<List<WalletLogs>> WalletLogsSearchAsync(WalletLogFindManyArgs findManyArgs)
     {
         var walletLogsItems = await _context
             .WalletLogsItems.Include(x => x.User)
@@ -101,7 +101,7 @@ public abstract class WalletLogsServiceBase : IWalletLogsService
     /// </summary>
     public async Task<WalletLogs> WalletLogs(WalletLogsWhereUniqueInput uniqueId)
     {
-        var walletLogsItems = await this.WalletLogsItems(
+        var walletLogsItems = await this.WalletLogsSearchAsync(
             new WalletLogFindManyArgs { Where = new WalletLogWhereInput { Id = uniqueId.Id } }
         );
         var walletLogs = walletLogsItems.FirstOrDefault();

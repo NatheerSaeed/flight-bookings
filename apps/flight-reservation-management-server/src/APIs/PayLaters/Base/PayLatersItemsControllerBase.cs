@@ -50,11 +50,11 @@ public abstract class PayLatersControllerBase : ControllerBase
     /// Find many PayLatersItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<PayLaters>>> PayLatersItems(
+    public async Task<ActionResult<List<PayLaters>>> PayLatersSearchAsync(
         [FromQuery()] PayLaterFindManyArgs filter
     )
     {
-        return Ok(await _service.PayLatersItems(filter));
+        return Ok(await _service.PayLatersSearchAsync(filter));
     }
 
     /// <summary>

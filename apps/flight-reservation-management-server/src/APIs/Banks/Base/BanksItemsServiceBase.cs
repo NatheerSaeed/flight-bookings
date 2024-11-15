@@ -74,7 +74,7 @@ public abstract class BanksServiceBase : IBanksService
     /// <summary>
     /// Find many BanksItems
     /// </summary>
-    public async Task<List<Banks>> BanksItems(BankFindManyArgs findManyArgs)
+    public async Task<List<Banks>> BanksSearchAsync(BankFindManyArgs findManyArgs)
     {
         var banksItems = await _context
             .BanksItems.Include(x => x.BankDetailsItems)
@@ -101,7 +101,7 @@ public abstract class BanksServiceBase : IBanksService
     /// </summary>
     public async Task<Banks> Banks(BanksWhereUniqueInput uniqueId)
     {
-        var banksItems = await this.BanksItems(
+        var banksItems = await this.BanksSearchAsync(
             new BankFindManyArgs { Where = new BankWhereInput { Id = uniqueId.Id } }
         );
         var banks = banksItems.FirstOrDefault();
@@ -151,7 +151,7 @@ public abstract class BanksServiceBase : IBanksService
     /// <summary>
     /// Connect multiple BankDetailsItems records to Banks
     /// </summary>
-    public async Task ConnectBankDetailsItems(
+    public async Task ConnectBankDetailsSearchAsync(
         BanksWhereUniqueInput uniqueId,
         BankDetailsWhereUniqueInput[] childrenIds
     )
@@ -185,7 +185,7 @@ public abstract class BanksServiceBase : IBanksService
     /// <summary>
     /// Disconnect multiple BankDetailsItems records from Banks
     /// </summary>
-    public async Task DisconnectBankDetailsItems(
+    public async Task DisconnectBankDetailsSearchAsync(
         BanksWhereUniqueInput uniqueId,
         BankDetailsWhereUniqueInput[] childrenIds
     )
@@ -212,7 +212,7 @@ public abstract class BanksServiceBase : IBanksService
     /// <summary>
     /// Find multiple BankDetailsItems records for Banks
     /// </summary>
-    public async Task<List<BankDetails>> FindBankDetailsItems(
+    public async Task<List<BankDetails>> FindBankDetailsSearchAsync(
         BanksWhereUniqueInput uniqueId,
         BankDetailFindManyArgs bankFindManyArgs
     )

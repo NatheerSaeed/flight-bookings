@@ -18,7 +18,7 @@ public interface IProfilesService
     /// <summary>
     /// Find many ProfilesItems
     /// </summary>
-    public Task<List<Profiles>> ProfilesItems(ProfileFindManyArgs findManyArgs);
+    public Task<List<Profiles>> ProfilesSearchAsync(ProfileFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Profiles records

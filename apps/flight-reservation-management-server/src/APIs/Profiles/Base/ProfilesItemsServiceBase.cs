@@ -91,7 +91,7 @@ public abstract class ProfilesServiceBase : IProfilesService
     /// <summary>
     /// Find many ProfilesItems
     /// </summary>
-    public async Task<List<Profiles>> ProfilesItems(ProfileFindManyArgs findManyArgs)
+    public async Task<List<Profiles>> ProfilesSearchAsync(ProfileFindManyArgs findManyArgs)
     {
         var profilesItems = await _context
             .ProfilesItems.Include(x => x.Gender)
@@ -120,7 +120,7 @@ public abstract class ProfilesServiceBase : IProfilesService
     /// </summary>
     public async Task<Profiles> Profiles(ProfilesWhereUniqueInput uniqueId)
     {
-        var profilesItems = await this.ProfilesItems(
+        var profilesItems = await this.ProfilesSearchAsync(
             new ProfileFindManyArgs { Where = new ProfileWhereInput { Id = uniqueId.Id } }
         );
         var profiles = profilesItems.FirstOrDefault();

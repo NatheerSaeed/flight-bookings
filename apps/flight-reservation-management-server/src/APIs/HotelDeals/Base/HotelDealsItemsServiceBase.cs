@@ -79,7 +79,7 @@ public abstract class HotelDealsServiceBase : IHotelDealsService
     /// <summary>
     /// Find many HotelDealsItems
     /// </summary>
-    public async Task<List<HotelDeals>> HotelDealsItems(HotelDealFindManyArgs findManyArgs)
+    public async Task<List<HotelDeals>> HotelDealsSearchAsync(HotelDealFindManyArgs findManyArgs)
     {
         var hotelDealsItems = await _context
             .HotelDealsItems.Include(x => x.PackageField)
@@ -106,7 +106,7 @@ public abstract class HotelDealsServiceBase : IHotelDealsService
     /// </summary>
     public async Task<HotelDeals> HotelDeals(HotelDealsWhereUniqueInput uniqueId)
     {
-        var hotelDealsItems = await this.HotelDealsItems(
+        var hotelDealsItems = await this.HotelDealsSearchAsync(
             new HotelDealFindManyArgs { Where = new HotelDealWhereInput { Id = uniqueId.Id } }
         );
         var hotelDeals = hotelDealsItems.FirstOrDefault();

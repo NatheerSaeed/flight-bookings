@@ -18,7 +18,7 @@ public interface IHotelsService
     /// <summary>
     /// Find many HotelsItems
     /// </summary>
-    public Task<List<Hotels>> HotelsItems(HotelFindManyArgs findManyArgs);
+    public Task<List<Hotels>> HotelsSearchAsync(HotelFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Hotels records

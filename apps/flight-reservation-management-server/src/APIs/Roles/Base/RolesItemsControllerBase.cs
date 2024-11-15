@@ -50,9 +50,9 @@ public abstract class RolesControllerBase : ControllerBase
     /// Find many RolesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Roles>>> RolesItems([FromQuery()] RoleFindManyArgs filter)
+    public async Task<ActionResult<List<Roles>>> RolesSearchAsync([FromQuery()] RoleFindManyArgs filter)
     {
-        return Ok(await _service.RolesItems(filter));
+        return Ok(await _service.RolesSearchAsync(filter));
     }
 
     /// <summary>
@@ -107,14 +107,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Connect multiple HotelsItems records to Roles
     /// </summary>
     [HttpPost("{Id}/hotelsItems")]
-    public async Task<ActionResult> ConnectHotelsItems(
+    public async Task<ActionResult> ConnectHotelsSearchAsync(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromQuery()] HotelsWhereUniqueInput[] hotelsItemsId
     )
     {
         try
         {
-            await _service.ConnectHotelsItems(uniqueId, hotelsItemsId);
+            await _service.ConnectHotelsSearchAsync(uniqueId, hotelsItemsId);
         }
         catch (NotFoundException)
         {
@@ -128,14 +128,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Disconnect multiple HotelsItems records from Roles
     /// </summary>
     [HttpDelete("{Id}/hotelsItems")]
-    public async Task<ActionResult> DisconnectHotelsItems(
+    public async Task<ActionResult> DisconnectHotelsSearchAsync(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromBody()] HotelsWhereUniqueInput[] hotelsItemsId
     )
     {
         try
         {
-            await _service.DisconnectHotelsItems(uniqueId, hotelsItemsId);
+            await _service.DisconnectHotelsSearchAsync(uniqueId, hotelsItemsId);
         }
         catch (NotFoundException)
         {
@@ -149,14 +149,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Find multiple HotelsItems records for Roles
     /// </summary>
     [HttpGet("{Id}/hotelsItems")]
-    public async Task<ActionResult<List<Hotels>>> FindHotelsItems(
+    public async Task<ActionResult<List<Hotels>>> FindHotelsSearchAsync(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromQuery()] HotelFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindHotelsItems(uniqueId, filter));
+            return Ok(await _service.FindHotelsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -189,14 +189,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Connect multiple MarkupsItems records to Roles
     /// </summary>
     [HttpPost("{Id}/markupsItems")]
-    public async Task<ActionResult> ConnectMarkupsItems(
+    public async Task<ActionResult> ConnectMarkupsSearchAsync(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromQuery()] MarkupsWhereUniqueInput[] markupsItemsId
     )
     {
         try
         {
-            await _service.ConnectMarkupsItems(uniqueId, markupsItemsId);
+            await _service.ConnectMarkupsSearchAsync(uniqueId, markupsItemsId);
         }
         catch (NotFoundException)
         {
@@ -210,14 +210,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Disconnect multiple MarkupsItems records from Roles
     /// </summary>
     [HttpDelete("{Id}/markupsItems")]
-    public async Task<ActionResult> DisconnectMarkupsItems(
+    public async Task<ActionResult> DisconnectMarkupsSearchAsync(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromBody()] MarkupsWhereUniqueInput[] markupsItemsId
     )
     {
         try
         {
-            await _service.DisconnectMarkupsItems(uniqueId, markupsItemsId);
+            await _service.DisconnectMarkupsSearchAsync(uniqueId, markupsItemsId);
         }
         catch (NotFoundException)
         {
@@ -231,14 +231,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Find multiple MarkupsItems records for Roles
     /// </summary>
     [HttpGet("{Id}/markupsItems")]
-    public async Task<ActionResult<List<Markups>>> FindMarkupsItems(
+    public async Task<ActionResult<List<Markups>>> FindMarkupsSearchAsync(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromQuery()] MarkupFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindMarkupsItems(uniqueId, filter));
+            return Ok(await _service.FindMarkupsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -283,14 +283,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Connect multiple RolesItems records to Roles
     /// </summary>
     [HttpPost("{Id}/rolesItems")]
-    public async Task<ActionResult> ConnectRolesItems(
+    public async Task<ActionResult> ConnectRolesSearchAsync(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromQuery()] RolesWhereUniqueInput[] rolesItemsId
     )
     {
         try
         {
-            await _service.ConnectRolesItems(uniqueId, rolesItemsId);
+            await _service.ConnectRolesSearchAsync(uniqueId, rolesItemsId);
         }
         catch (NotFoundException)
         {
@@ -304,14 +304,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Disconnect multiple RolesItems records from Roles
     /// </summary>
     [HttpDelete("{Id}/rolesItems")]
-    public async Task<ActionResult> DisconnectRolesItems(
+    public async Task<ActionResult> DisconnectRolesSearchAsync(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromBody()] RolesWhereUniqueInput[] rolesItemsId
     )
     {
         try
         {
-            await _service.DisconnectRolesItems(uniqueId, rolesItemsId);
+            await _service.DisconnectRolesSearchAsync(uniqueId, rolesItemsId);
         }
         catch (NotFoundException)
         {
@@ -325,14 +325,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Find multiple RolesItems records for Roles
     /// </summary>
     [HttpGet("{Id}/rolesItems")]
-    public async Task<ActionResult<List<Roles>>> FindRolesItems(
+    public async Task<ActionResult<List<Roles>>> FindRolesSearchAsync(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromQuery()] RoleFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindRolesItems(uniqueId, filter));
+            return Ok(await _service.FindRolesSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {

@@ -38,7 +38,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple AgencyProfilesItems records to User
     /// </summary>
-    public Task ConnectAgencyProfilesItems(
+    public Task ConnectAgencyProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AgencyProfilesWhereUniqueInput[] agencyProfilesId
     );
@@ -46,7 +46,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple AgencyProfilesItems records from User
     /// </summary>
-    public Task DisconnectAgencyProfilesItems(
+    public Task DisconnectAgencyProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AgencyProfilesWhereUniqueInput[] agencyProfilesId
     );
@@ -54,7 +54,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple AgencyProfilesItems records for User
     /// </summary>
-    public Task<List<AgencyProfiles>> FindAgencyProfilesItems(
+    public Task<List<AgencyProfiles>> FindAgencyProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AgencyProfileFindManyArgs AgencyProfileFindManyArgs
     );
@@ -70,7 +70,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple AirlinesItems records to User
     /// </summary>
-    public Task ConnectAirlinesItems(
+    public Task ConnectAirlinesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AirlinesWhereUniqueInput[] airlinesId
     );
@@ -78,7 +78,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple AirlinesItems records from User
     /// </summary>
-    public Task DisconnectAirlinesItems(
+    public Task DisconnectAirlinesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AirlinesWhereUniqueInput[] airlinesId
     );
@@ -86,7 +86,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple AirlinesItems records for User
     /// </summary>
-    public Task<List<Airlines>> FindAirlinesItems(
+    public Task<List<Airlines>> FindAirlinesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AirlineFindManyArgs AirlineFindManyArgs
     );
@@ -102,7 +102,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple BankPaymentsItems records to User
     /// </summary>
-    public Task ConnectBankPaymentsItems(
+    public Task ConnectBankPaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         BankPaymentsWhereUniqueInput[] bankPaymentsId
     );
@@ -110,7 +110,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple BankPaymentsItems records from User
     /// </summary>
-    public Task DisconnectBankPaymentsItems(
+    public Task DisconnectBankPaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         BankPaymentsWhereUniqueInput[] bankPaymentsId
     );
@@ -118,7 +118,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple BankPaymentsItems records for User
     /// </summary>
-    public Task<List<BankPayments>> FindBankPaymentsItems(
+    public Task<List<BankPayments>> FindBankPaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         BankPaymentFindManyArgs BankPaymentFindManyArgs
     );
@@ -134,7 +134,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple CarBookingsItems records to User
     /// </summary>
-    public Task ConnectCarBookingsItems(
+    public Task ConnectCarBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         CarBookingsWhereUniqueInput[] carBookingsId
     );
@@ -142,7 +142,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple CarBookingsItems records from User
     /// </summary>
-    public Task DisconnectCarBookingsItems(
+    public Task DisconnectCarBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         CarBookingsWhereUniqueInput[] carBookingsId
     );
@@ -150,7 +150,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple CarBookingsItems records for User
     /// </summary>
-    public Task<List<CarBookings>> FindCarBookingsItems(
+    public Task<List<CarBookings>> FindCarBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         CarBookingFindManyArgs CarBookingFindManyArgs
     );
@@ -166,7 +166,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple CooperateCustomerProfilesItems records to User
     /// </summary>
-    public Task ConnectCooperateCustomerProfilesItems(
+    public Task ConnectCooperateCustomerProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         CooperateCustomerProfilesWhereUniqueInput[] cooperateCustomerProfilesId
     );
@@ -174,7 +174,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple CooperateCustomerProfilesItems records from User
     /// </summary>
-    public Task DisconnectCooperateCustomerProfilesItems(
+    public Task DisconnectCooperateCustomerProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         CooperateCustomerProfilesWhereUniqueInput[] cooperateCustomerProfilesId
     );
@@ -182,7 +182,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple CooperateCustomerProfilesItems records for User
     /// </summary>
-    public Task<List<CooperateCustomerProfiles>> FindCooperateCustomerProfilesItems(
+    public Task<List<CooperateCustomerProfiles>> FindCooperateCustomerProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         CooperateCustomerProfileFindManyArgs CooperateCustomerProfileFindManyArgs
     );
@@ -198,7 +198,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple FlightBookingsItems records to User
     /// </summary>
-    public Task ConnectFlightBookingsItems(
+    public Task ConnectFlightBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] flightBookingsId
     );
@@ -206,7 +206,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple FlightBookingsItems records from User
     /// </summary>
-    public Task DisconnectFlightBookingsItems(
+    public Task DisconnectFlightBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] flightBookingsId
     );
@@ -214,7 +214,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple FlightBookingsItems records for User
     /// </summary>
-    public Task<List<FlightBookings>> FindFlightBookingsItems(
+    public Task<List<FlightBookings>> FindFlightBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         FlightBookingFindManyArgs FlightBookingFindManyArgs
     );
@@ -230,7 +230,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple HotelBookingsItems records to User
     /// </summary>
-    public Task ConnectHotelBookingsItems(
+    public Task ConnectHotelBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] hotelBookingsId
     );
@@ -238,7 +238,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple HotelBookingsItems records from User
     /// </summary>
-    public Task DisconnectHotelBookingsItems(
+    public Task DisconnectHotelBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] hotelBookingsId
     );
@@ -246,7 +246,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple HotelBookingsItems records for User
     /// </summary>
-    public Task<List<HotelBookings>> FindHotelBookingsItems(
+    public Task<List<HotelBookings>> FindHotelBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         HotelBookingFindManyArgs HotelBookingFindManyArgs
     );
@@ -262,7 +262,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple OnlinePaymentsItems records to User
     /// </summary>
-    public Task ConnectOnlinePaymentsItems(
+    public Task ConnectOnlinePaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         OnlinePaymentsWhereUniqueInput[] onlinePaymentsId
     );
@@ -270,7 +270,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple OnlinePaymentsItems records from User
     /// </summary>
-    public Task DisconnectOnlinePaymentsItems(
+    public Task DisconnectOnlinePaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         OnlinePaymentsWhereUniqueInput[] onlinePaymentsId
     );
@@ -278,7 +278,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple OnlinePaymentsItems records for User
     /// </summary>
-    public Task<List<OnlinePayments>> FindOnlinePaymentsItems(
+    public Task<List<OnlinePayments>> FindOnlinePaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         OnlinePaymentFindManyArgs OnlinePaymentFindManyArgs
     );
@@ -294,7 +294,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple PackageBookingsItems records to User
     /// </summary>
-    public Task ConnectPackageBookingsItems(
+    public Task ConnectPackageBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] packageBookingsId
     );
@@ -302,7 +302,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple PackageBookingsItems records from User
     /// </summary>
-    public Task DisconnectPackageBookingsItems(
+    public Task DisconnectPackageBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] packageBookingsId
     );
@@ -310,7 +310,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple PackageBookingsItems records for User
     /// </summary>
-    public Task<List<PackageBookings>> FindPackageBookingsItems(
+    public Task<List<PackageBookings>> FindPackageBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         PackageBookingFindManyArgs PackageBookingFindManyArgs
     );
@@ -326,7 +326,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple PayLatersItems records to User
     /// </summary>
-    public Task ConnectPayLatersItems(
+    public Task ConnectPayLatersSearchAsync(
         UserWhereUniqueInput uniqueId,
         PayLatersWhereUniqueInput[] payLatersId
     );
@@ -334,7 +334,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple PayLatersItems records from User
     /// </summary>
-    public Task DisconnectPayLatersItems(
+    public Task DisconnectPayLatersSearchAsync(
         UserWhereUniqueInput uniqueId,
         PayLatersWhereUniqueInput[] payLatersId
     );
@@ -342,7 +342,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple PayLatersItems records for User
     /// </summary>
-    public Task<List<PayLaters>> FindPayLatersItems(
+    public Task<List<PayLaters>> FindPayLatersSearchAsync(
         UserWhereUniqueInput uniqueId,
         PayLaterFindManyArgs PayLaterFindManyArgs
     );
@@ -358,7 +358,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple ProfilesItems records to User
     /// </summary>
-    public Task ConnectProfilesItems(
+    public Task ConnectProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] profilesId
     );
@@ -366,7 +366,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple ProfilesItems records from User
     /// </summary>
-    public Task DisconnectProfilesItems(
+    public Task DisconnectProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] profilesId
     );
@@ -374,7 +374,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple ProfilesItems records for User
     /// </summary>
-    public Task<List<Profiles>> FindProfilesItems(
+    public Task<List<Profiles>> FindProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         ProfileFindManyArgs ProfileFindManyArgs
     );
@@ -390,7 +390,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple WalletLogsItems records to User
     /// </summary>
-    public Task ConnectWalletLogsItems(
+    public Task ConnectWalletLogsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletLogsWhereUniqueInput[] walletLogsId
     );
@@ -398,7 +398,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple WalletLogsItems records from User
     /// </summary>
-    public Task DisconnectWalletLogsItems(
+    public Task DisconnectWalletLogsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletLogsWhereUniqueInput[] walletLogsId
     );
@@ -406,7 +406,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple WalletLogsItems records for User
     /// </summary>
-    public Task<List<WalletLogs>> FindWalletLogsItems(
+    public Task<List<WalletLogs>> FindWalletLogsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletLogFindManyArgs WalletLogFindManyArgs
     );
@@ -422,7 +422,7 @@ public interface IUsersService
     /// <summary>
     /// Connect multiple WalletsItems records to User
     /// </summary>
-    public Task ConnectWalletsItems(
+    public Task ConnectWalletsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletsWhereUniqueInput[] walletsId
     );
@@ -430,7 +430,7 @@ public interface IUsersService
     /// <summary>
     /// Disconnect multiple WalletsItems records from User
     /// </summary>
-    public Task DisconnectWalletsItems(
+    public Task DisconnectWalletsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletsWhereUniqueInput[] walletsId
     );
@@ -438,7 +438,7 @@ public interface IUsersService
     /// <summary>
     /// Find multiple WalletsItems records for User
     /// </summary>
-    public Task<List<Wallets>> FindWalletsItems(
+    public Task<List<Wallets>> FindWalletsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletFindManyArgs WalletFindManyArgs
     );

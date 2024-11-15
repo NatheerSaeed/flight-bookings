@@ -50,11 +50,11 @@ public abstract class GendersControllerBase : ControllerBase
     /// Find many GendersItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Genders>>> GendersItems(
+    public async Task<ActionResult<List<Genders>>> GendersSearchAsync(
         [FromQuery()] GenderFindManyArgs filter
     )
     {
-        return Ok(await _service.GendersItems(filter));
+        return Ok(await _service.GendersSearchAsync(filter));
     }
 
     /// <summary>
@@ -109,14 +109,14 @@ public abstract class GendersControllerBase : ControllerBase
     /// Connect multiple ProfilesItems records to Genders
     /// </summary>
     [HttpPost("{Id}/profilesItems")]
-    public async Task<ActionResult> ConnectProfilesItems(
+    public async Task<ActionResult> ConnectProfilesSearchAsync(
         [FromRoute()] GendersWhereUniqueInput uniqueId,
         [FromQuery()] ProfilesWhereUniqueInput[] profilesItemsId
     )
     {
         try
         {
-            await _service.ConnectProfilesItems(uniqueId, profilesItemsId);
+            await _service.ConnectProfilesSearchAsync(uniqueId, profilesItemsId);
         }
         catch (NotFoundException)
         {
@@ -130,14 +130,14 @@ public abstract class GendersControllerBase : ControllerBase
     /// Disconnect multiple ProfilesItems records from Genders
     /// </summary>
     [HttpDelete("{Id}/profilesItems")]
-    public async Task<ActionResult> DisconnectProfilesItems(
+    public async Task<ActionResult> DisconnectProfilesSearchAsync(
         [FromRoute()] GendersWhereUniqueInput uniqueId,
         [FromBody()] ProfilesWhereUniqueInput[] profilesItemsId
     )
     {
         try
         {
-            await _service.DisconnectProfilesItems(uniqueId, profilesItemsId);
+            await _service.DisconnectProfilesSearchAsync(uniqueId, profilesItemsId);
         }
         catch (NotFoundException)
         {
@@ -151,14 +151,14 @@ public abstract class GendersControllerBase : ControllerBase
     /// Find multiple ProfilesItems records for Genders
     /// </summary>
     [HttpGet("{Id}/profilesItems")]
-    public async Task<ActionResult<List<Profiles>>> FindProfilesItems(
+    public async Task<ActionResult<List<Profiles>>> FindProfilesSearchAsync(
         [FromRoute()] GendersWhereUniqueInput uniqueId,
         [FromQuery()] ProfileFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindProfilesItems(uniqueId, filter));
+            return Ok(await _service.FindProfilesSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {

@@ -79,7 +79,7 @@ public abstract class AgencyProfilesServiceBase : IAgencyProfilesService
     /// <summary>
     /// Find many AgencyProfilesItems
     /// </summary>
-    public async Task<List<AgencyProfiles>> AgencyProfilesItems(
+    public async Task<List<AgencyProfiles>> AgencyProfilesSearchAsync(
         AgencyProfileFindManyArgs findManyArgs
     )
     {
@@ -108,7 +108,7 @@ public abstract class AgencyProfilesServiceBase : IAgencyProfilesService
     /// </summary>
     public async Task<AgencyProfiles> AgencyProfiles(AgencyProfilesWhereUniqueInput uniqueId)
     {
-        var agencyProfilesItems = await this.AgencyProfilesItems(
+        var agencyProfilesItems = await this.AgencyProfilesSearchAsync(
             new AgencyProfileFindManyArgs
             {
                 Where = new AgencyProfileWhereInput { Id = uniqueId.Id }

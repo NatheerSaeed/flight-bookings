@@ -58,11 +58,11 @@ public abstract class PackageFlightsControllerBase : ControllerBase
     /// Find many PackageFlightsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<PackageFlights>>> PackageFlightsItems(
+    public async Task<ActionResult<List<PackageFlights>>> PackageFlightsSearchAsync(
         [FromQuery()] PackageFlightFindManyArgs filter
     )
     {
-        return Ok(await _service.PackageFlightsItems(filter));
+        return Ok(await _service.PackageFlightsSearchAsync(filter));
     }
 
     /// <summary>

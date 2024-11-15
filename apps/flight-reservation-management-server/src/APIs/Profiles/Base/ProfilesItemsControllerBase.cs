@@ -50,11 +50,11 @@ public abstract class ProfilesControllerBase : ControllerBase
     /// Find many ProfilesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Profiles>>> ProfilesItems(
+    public async Task<ActionResult<List<Profiles>>> ProfilesSearchAsync(
         [FromQuery()] ProfileFindManyArgs filter
     )
     {
-        return Ok(await _service.ProfilesItems(filter));
+        return Ok(await _service.ProfilesSearchAsync(filter));
     }
 
     /// <summary>

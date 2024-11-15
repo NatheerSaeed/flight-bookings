@@ -76,7 +76,7 @@ public abstract class TravelPackagesServiceBase : ITravelPackagesService
     /// <summary>
     /// Find many TravelPackagesItems
     /// </summary>
-    public async Task<List<TravelPackages>> TravelPackagesItems(
+    public async Task<List<TravelPackages>> TravelPackagesSearchAsync(
         TravelPackageFindManyArgs findManyArgs
     )
     {
@@ -104,7 +104,7 @@ public abstract class TravelPackagesServiceBase : ITravelPackagesService
     /// </summary>
     public async Task<TravelPackages> TravelPackages(TravelPackagesWhereUniqueInput uniqueId)
     {
-        var travelPackagesItems = await this.TravelPackagesItems(
+        var travelPackagesItems = await this.TravelPackagesSearchAsync(
             new TravelPackageFindManyArgs
             {
                 Where = new TravelPackageWhereInput { Id = uniqueId.Id }

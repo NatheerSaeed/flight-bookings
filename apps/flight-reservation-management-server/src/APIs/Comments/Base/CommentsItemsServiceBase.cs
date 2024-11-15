@@ -69,7 +69,7 @@ public abstract class CommentsServiceBase : ICommentsService
     /// <summary>
     /// Find many CommentsItems
     /// </summary>
-    public async Task<List<Comments>> CommentsItems(CommentFindManyArgs findManyArgs)
+    public async Task<List<Comments>> CommentsSearchAsync(CommentFindManyArgs findManyArgs)
     {
         var commentsItems = await _context
             .CommentsItems.ApplyWhere(findManyArgs.Where)
@@ -95,7 +95,7 @@ public abstract class CommentsServiceBase : ICommentsService
     /// </summary>
     public async Task<Comments> Comments(CommentsWhereUniqueInput uniqueId)
     {
-        var commentsItems = await this.CommentsItems(
+        var commentsItems = await this.CommentsSearchAsync(
             new CommentFindManyArgs { Where = new CommentWhereInput { Id = uniqueId.Id } }
         );
         var comments = commentsItems.FirstOrDefault();

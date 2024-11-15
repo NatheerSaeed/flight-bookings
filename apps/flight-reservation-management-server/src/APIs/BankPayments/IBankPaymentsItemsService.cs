@@ -18,7 +18,7 @@ public interface IBankPaymentsService
     /// <summary>
     /// Find many BankPaymentsItems
     /// </summary>
-    public Task<List<BankPayments>> BankPaymentsItems(BankPaymentFindManyArgs findManyArgs);
+    public Task<List<BankPayments>> BankPaymentsSearchAsync(BankPaymentFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about BankPayments records

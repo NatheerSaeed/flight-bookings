@@ -18,7 +18,7 @@ public interface ITitlesService
     /// <summary>
     /// Find many TitlesItems
     /// </summary>
-    public Task<List<Titles>> TitlesItems(TitleFindManyArgs findManyArgs);
+    public Task<List<Titles>> TitlesSearchAsync(TitleFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Titles records
@@ -38,7 +38,7 @@ public interface ITitlesService
     /// <summary>
     /// Connect multiple ProfilesItems records to Titles
     /// </summary>
-    public Task ConnectProfilesItems(
+    public Task ConnectProfilesSearchAsync(
         TitlesWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] profilesId
     );
@@ -46,7 +46,7 @@ public interface ITitlesService
     /// <summary>
     /// Disconnect multiple ProfilesItems records from Titles
     /// </summary>
-    public Task DisconnectProfilesItems(
+    public Task DisconnectProfilesSearchAsync(
         TitlesWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] profilesId
     );
@@ -54,7 +54,7 @@ public interface ITitlesService
     /// <summary>
     /// Find multiple ProfilesItems records for Titles
     /// </summary>
-    public Task<List<Profiles>> FindProfilesItems(
+    public Task<List<Profiles>> FindProfilesSearchAsync(
         TitlesWhereUniqueInput uniqueId,
         ProfileFindManyArgs ProfileFindManyArgs
     );

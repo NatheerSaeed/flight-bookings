@@ -78,7 +78,7 @@ public abstract class OnlinePaymentsServiceBase : IOnlinePaymentsService
     /// <summary>
     /// Find many OnlinePaymentsItems
     /// </summary>
-    public async Task<List<OnlinePayments>> OnlinePaymentsItems(
+    public async Task<List<OnlinePayments>> OnlinePaymentsSearchAsync(
         OnlinePaymentFindManyArgs findManyArgs
     )
     {
@@ -107,7 +107,7 @@ public abstract class OnlinePaymentsServiceBase : IOnlinePaymentsService
     /// </summary>
     public async Task<OnlinePayments> OnlinePayments(OnlinePaymentsWhereUniqueInput uniqueId)
     {
-        var onlinePaymentsItems = await this.OnlinePaymentsItems(
+        var onlinePaymentsItems = await this.OnlinePaymentsSearchAsync(
             new OnlinePaymentFindManyArgs
             {
                 Where = new OnlinePaymentWhereInput { Id = uniqueId.Id }

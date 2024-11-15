@@ -52,11 +52,11 @@ public abstract class PackageTypesControllerBase : ControllerBase
     /// Find many PackageTypesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<PackageTypes>>> PackageTypesItems(
+    public async Task<ActionResult<List<PackageTypes>>> PackageTypesSearchAsync(
         [FromQuery()] PackageTypeFindManyArgs filter
     )
     {
-        return Ok(await _service.PackageTypesItems(filter));
+        return Ok(await _service.PackageTypesSearchAsync(filter));
     }
 
     /// <summary>

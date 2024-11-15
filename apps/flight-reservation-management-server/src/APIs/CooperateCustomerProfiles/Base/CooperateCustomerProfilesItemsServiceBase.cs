@@ -87,7 +87,7 @@ public abstract class CooperateCustomerProfilesServiceBase : ICooperateCustomerP
     /// <summary>
     /// Find many CooperateCustomerProfilesItems
     /// </summary>
-    public async Task<List<CooperateCustomerProfiles>> CooperateCustomerProfilesItems(
+    public async Task<List<CooperateCustomerProfiles>> CooperateCustomerProfilesSearchAsync(
         CooperateCustomerProfileFindManyArgs findManyArgs
     )
     {
@@ -124,7 +124,7 @@ public abstract class CooperateCustomerProfilesServiceBase : ICooperateCustomerP
         CooperateCustomerProfilesWhereUniqueInput uniqueId
     )
     {
-        var cooperateCustomerProfilesItems = await this.CooperateCustomerProfilesItems(
+        var cooperateCustomerProfilesItems = await this.CooperateCustomerProfilesSearchAsync(
             new CooperateCustomerProfileFindManyArgs
             {
                 Where = new CooperateCustomerProfileWhereInput { Id = uniqueId.Id }

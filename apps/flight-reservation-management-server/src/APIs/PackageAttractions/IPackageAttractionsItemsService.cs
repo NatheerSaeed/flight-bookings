@@ -20,7 +20,7 @@ public interface IPackageAttractionsService
     /// <summary>
     /// Find many PackageAttractionsItems
     /// </summary>
-    public Task<List<PackageAttractions>> PackageAttractionsItems(
+    public Task<List<PackageAttractions>> PackageAttractionsSearchAsync(
         PackageAttractionFindManyArgs findManyArgs
     );
 

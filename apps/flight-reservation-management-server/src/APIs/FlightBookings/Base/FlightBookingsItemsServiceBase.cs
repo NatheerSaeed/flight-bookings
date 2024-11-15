@@ -92,7 +92,7 @@ public abstract class FlightBookingsServiceBase : IFlightBookingsService
     /// <summary>
     /// Find many FlightBookingsItems
     /// </summary>
-    public async Task<List<FlightBookings>> FlightBookingsItems(
+    public async Task<List<FlightBookings>> FlightBookingsSearchAsync(
         FlightBookingFindManyArgs findManyArgs
     )
     {
@@ -122,7 +122,7 @@ public abstract class FlightBookingsServiceBase : IFlightBookingsService
     /// </summary>
     public async Task<FlightBookings> FlightBookings(FlightBookingsWhereUniqueInput uniqueId)
     {
-        var flightBookingsItems = await this.FlightBookingsItems(
+        var flightBookingsItems = await this.FlightBookingsSearchAsync(
             new FlightBookingFindManyArgs
             {
                 Where = new FlightBookingWhereInput { Id = uniqueId.Id }

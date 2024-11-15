@@ -66,7 +66,7 @@ public abstract class WalletLogTypesServiceBase : IWalletLogTypesService
     /// <summary>
     /// Find many WalletLogTypesItems
     /// </summary>
-    public async Task<List<WalletLogTypes>> WalletLogTypesItems(
+    public async Task<List<WalletLogTypes>> WalletLogTypesSearchAsync(
         WalletLogTypeFindManyArgs findManyArgs
     )
     {
@@ -94,7 +94,7 @@ public abstract class WalletLogTypesServiceBase : IWalletLogTypesService
     /// </summary>
     public async Task<WalletLogTypes> WalletLogTypes(WalletLogTypesWhereUniqueInput uniqueId)
     {
-        var walletLogTypesItems = await this.WalletLogTypesItems(
+        var walletLogTypesItems = await this.WalletLogTypesSearchAsync(
             new WalletLogTypeFindManyArgs
             {
                 Where = new WalletLogTypeWhereInput { Id = uniqueId.Id }

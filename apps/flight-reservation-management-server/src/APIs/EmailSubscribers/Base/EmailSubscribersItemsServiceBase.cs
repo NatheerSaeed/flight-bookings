@@ -67,7 +67,7 @@ public abstract class EmailSubscribersServiceBase : IEmailSubscribersService
     /// <summary>
     /// Find many EmailSubscribersItems
     /// </summary>
-    public async Task<List<EmailSubscribers>> EmailSubscribersItems(
+    public async Task<List<EmailSubscribers>> EmailSubscribersSearchAsync(
         EmailSubscriberFindManyArgs findManyArgs
     )
     {
@@ -99,7 +99,7 @@ public abstract class EmailSubscribersServiceBase : IEmailSubscribersService
     /// </summary>
     public async Task<EmailSubscribers> EmailSubscribers(EmailSubscribersWhereUniqueInput uniqueId)
     {
-        var emailSubscribersItems = await this.EmailSubscribersItems(
+        var emailSubscribersItems = await this.EmailSubscribersSearchAsync(
             new EmailSubscriberFindManyArgs
             {
                 Where = new EmailSubscriberWhereInput { Id = uniqueId.Id }

@@ -20,7 +20,7 @@ public interface IEmailSubscribersService
     /// <summary>
     /// Find many EmailSubscribersItems
     /// </summary>
-    public Task<List<EmailSubscribers>> EmailSubscribersItems(
+    public Task<List<EmailSubscribers>> EmailSubscribersSearchAsync(
         EmailSubscriberFindManyArgs findManyArgs
     );
 

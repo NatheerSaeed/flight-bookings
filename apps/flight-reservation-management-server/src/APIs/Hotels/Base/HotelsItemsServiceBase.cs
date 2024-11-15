@@ -82,7 +82,7 @@ public abstract class HotelsServiceBase : IHotelsService
     /// <summary>
     /// Find many HotelsItems
     /// </summary>
-    public async Task<List<Hotels>> HotelsItems(HotelFindManyArgs findManyArgs)
+    public async Task<List<Hotels>> HotelsSearchAsync(HotelFindManyArgs findManyArgs)
     {
         var hotelsItems = await _context
             .HotelsItems.Include(x => x.Role)
@@ -109,7 +109,7 @@ public abstract class HotelsServiceBase : IHotelsService
     /// </summary>
     public async Task<Hotels> Hotels(HotelsWhereUniqueInput uniqueId)
     {
-        var hotelsItems = await this.HotelsItems(
+        var hotelsItems = await this.HotelsSearchAsync(
             new HotelFindManyArgs { Where = new HotelWhereInput { Id = uniqueId.Id } }
         );
         var hotels = hotelsItems.FirstOrDefault();

@@ -18,7 +18,7 @@ public interface IFlightDealsService
     /// <summary>
     /// Find many FlightDealsItems
     /// </summary>
-    public Task<List<FlightDeals>> FlightDealsItems(FlightDealFindManyArgs findManyArgs);
+    public Task<List<FlightDeals>> FlightDealsSearchAsync(FlightDealFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about FlightDeals records

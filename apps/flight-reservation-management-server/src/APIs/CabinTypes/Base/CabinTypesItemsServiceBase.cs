@@ -67,7 +67,7 @@ public abstract class CabinTypesServiceBase : ICabinTypesService
     /// <summary>
     /// Find many CabinTypesItems
     /// </summary>
-    public async Task<List<CabinTypes>> CabinTypesItems(CabinTypeFindManyArgs findManyArgs)
+    public async Task<List<CabinTypes>> CabinTypesSearchAsync(CabinTypeFindManyArgs findManyArgs)
     {
         var cabinTypesItems = await _context
             .CabinTypesItems.ApplyWhere(findManyArgs.Where)
@@ -93,7 +93,7 @@ public abstract class CabinTypesServiceBase : ICabinTypesService
     /// </summary>
     public async Task<CabinTypes> CabinTypes(CabinTypesWhereUniqueInput uniqueId)
     {
-        var cabinTypesItems = await this.CabinTypesItems(
+        var cabinTypesItems = await this.CabinTypesSearchAsync(
             new CabinTypeFindManyArgs { Where = new CabinTypeWhereInput { Id = uniqueId.Id } }
         );
         var cabinTypes = cabinTypesItems.FirstOrDefault();

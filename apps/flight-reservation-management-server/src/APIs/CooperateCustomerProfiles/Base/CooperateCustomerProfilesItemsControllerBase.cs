@@ -58,11 +58,11 @@ public abstract class CooperateCustomerProfilesControllerBase : ControllerBase
     /// Find many CooperateCustomerProfilesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<CooperateCustomerProfiles>>> CooperateCustomerProfilesItems(
+    public async Task<ActionResult<List<CooperateCustomerProfiles>>> CooperateCustomerProfilesSearchAsync(
         [FromQuery()] CooperateCustomerProfileFindManyArgs filter
     )
     {
-        return Ok(await _service.CooperateCustomerProfilesItems(filter));
+        return Ok(await _service.CooperateCustomerProfilesSearchAsync(filter));
     }
 
     /// <summary>

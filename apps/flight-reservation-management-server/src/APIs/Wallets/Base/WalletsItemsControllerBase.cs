@@ -50,11 +50,11 @@ public abstract class WalletsControllerBase : ControllerBase
     /// Find many WalletsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Wallets>>> WalletsItems(
+    public async Task<ActionResult<List<Wallets>>> WalletsSearchAsync(
         [FromQuery()] WalletFindManyArgs filter
     )
     {
-        return Ok(await _service.WalletsItems(filter));
+        return Ok(await _service.WalletsSearchAsync(filter));
     }
 
     /// <summary>

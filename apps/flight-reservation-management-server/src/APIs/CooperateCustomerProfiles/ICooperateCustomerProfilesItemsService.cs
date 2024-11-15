@@ -20,7 +20,7 @@ public interface ICooperateCustomerProfilesService
     /// <summary>
     /// Find many CooperateCustomerProfilesItems
     /// </summary>
-    public Task<List<CooperateCustomerProfiles>> CooperateCustomerProfilesItems(
+    public Task<List<CooperateCustomerProfiles>> CooperateCustomerProfilesSearchAsync(
         CooperateCustomerProfileFindManyArgs findManyArgs
     );
 

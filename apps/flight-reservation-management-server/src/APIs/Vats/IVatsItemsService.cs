@@ -18,7 +18,7 @@ public interface IVatsService
     /// <summary>
     /// Find many VatsItems
     /// </summary>
-    public Task<List<Vats>> VatsItems(VatFindManyArgs findManyArgs);
+    public Task<List<Vats>> VatsSearchAsync(VatFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Vats records

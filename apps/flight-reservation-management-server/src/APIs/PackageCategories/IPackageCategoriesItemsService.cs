@@ -20,7 +20,7 @@ public interface IPackageCategoriesService
     /// <summary>
     /// Find many PackageCategoriesItems
     /// </summary>
-    public Task<List<PackageCategories>> PackageCategoriesItems(
+    public Task<List<PackageCategories>> PackageCategoriesSearchAsync(
         PackageCategorieFindManyArgs findManyArgs
     );
 

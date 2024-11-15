@@ -50,11 +50,11 @@ public abstract class CommentsControllerBase : ControllerBase
     /// Find many CommentsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Comments>>> CommentsItems(
+    public async Task<ActionResult<List<Comments>>> CommentsSearchAsync(
         [FromQuery()] CommentFindManyArgs filter
     )
     {
-        return Ok(await _service.CommentsItems(filter));
+        return Ok(await _service.CommentsSearchAsync(filter));
     }
 
     /// <summary>

@@ -67,7 +67,7 @@ public abstract class PackageTypesServiceBase : IPackageTypesService
     /// <summary>
     /// Find many PackageTypesItems
     /// </summary>
-    public async Task<List<PackageTypes>> PackageTypesItems(PackageTypeFindManyArgs findManyArgs)
+    public async Task<List<PackageTypes>> PackageTypesSearchAsync(PackageTypeFindManyArgs findManyArgs)
     {
         var packageTypesItems = await _context
             .PackageTypesItems.ApplyWhere(findManyArgs.Where)
@@ -93,7 +93,7 @@ public abstract class PackageTypesServiceBase : IPackageTypesService
     /// </summary>
     public async Task<PackageTypes> PackageTypes(PackageTypesWhereUniqueInput uniqueId)
     {
-        var packageTypesItems = await this.PackageTypesItems(
+        var packageTypesItems = await this.PackageTypesSearchAsync(
             new PackageTypeFindManyArgs { Where = new PackageTypeWhereInput { Id = uniqueId.Id } }
         );
         var packageTypes = packageTypesItems.FirstOrDefault();

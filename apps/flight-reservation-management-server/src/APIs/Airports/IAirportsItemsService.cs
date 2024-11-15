@@ -18,7 +18,7 @@ public interface IAirportsService
     /// <summary>
     /// Find many AirportsItems
     /// </summary>
-    public Task<List<Airports>> AirportsItems(AirportFindManyArgs findManyArgs);
+    public Task<List<Airports>> AirportsSearchAsync(AirportFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Airports records

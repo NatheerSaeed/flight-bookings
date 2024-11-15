@@ -69,7 +69,7 @@ public abstract class GendersServiceBase : IGendersService
     /// <summary>
     /// Find many GendersItems
     /// </summary>
-    public async Task<List<Genders>> GendersItems(GenderFindManyArgs findManyArgs)
+    public async Task<List<Genders>> GendersSearchAsync(GenderFindManyArgs findManyArgs)
     {
         var gendersItems = await _context
             .GendersItems.Include(x => x.ProfilesItems)
@@ -96,7 +96,7 @@ public abstract class GendersServiceBase : IGendersService
     /// </summary>
     public async Task<Genders> Genders(GendersWhereUniqueInput uniqueId)
     {
-        var gendersItems = await this.GendersItems(
+        var gendersItems = await this.GendersSearchAsync(
             new GenderFindManyArgs { Where = new GenderWhereInput { Id = uniqueId.Id } }
         );
         var genders = gendersItems.FirstOrDefault();
@@ -146,7 +146,7 @@ public abstract class GendersServiceBase : IGendersService
     /// <summary>
     /// Connect multiple ProfilesItems records to Genders
     /// </summary>
-    public async Task ConnectProfilesItems(
+    public async Task ConnectProfilesSearchAsync(
         GendersWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] childrenIds
     )
@@ -180,7 +180,7 @@ public abstract class GendersServiceBase : IGendersService
     /// <summary>
     /// Disconnect multiple ProfilesItems records from Genders
     /// </summary>
-    public async Task DisconnectProfilesItems(
+    public async Task DisconnectProfilesSearchAsync(
         GendersWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] childrenIds
     )
@@ -207,7 +207,7 @@ public abstract class GendersServiceBase : IGendersService
     /// <summary>
     /// Find multiple ProfilesItems records for Genders
     /// </summary>
-    public async Task<List<Profiles>> FindProfilesItems(
+    public async Task<List<Profiles>> FindProfilesSearchAsync(
         GendersWhereUniqueInput uniqueId,
         ProfileFindManyArgs genderFindManyArgs
     )

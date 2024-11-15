@@ -18,7 +18,7 @@ public interface IMarkupsService
     /// <summary>
     /// Find many MarkupsItems
     /// </summary>
-    public Task<List<Markups>> MarkupsItems(MarkupFindManyArgs findManyArgs);
+    public Task<List<Markups>> MarkupsSearchAsync(MarkupFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Markups records

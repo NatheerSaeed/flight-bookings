@@ -18,7 +18,7 @@ public interface IPackagesService
     /// <summary>
     /// Find many PackagesItems
     /// </summary>
-    public Task<List<Packages>> PackagesItems(PackageFindManyArgs findManyArgs);
+    public Task<List<Packages>> PackagesSearchAsync(PackageFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Packages records
@@ -38,7 +38,7 @@ public interface IPackagesService
     /// <summary>
     /// Connect multiple AttractionsItems records to Packages
     /// </summary>
-    public Task ConnectAttractionsItems(
+    public Task ConnectAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         AttractionsWhereUniqueInput[] attractionsId
     );
@@ -46,7 +46,7 @@ public interface IPackagesService
     /// <summary>
     /// Disconnect multiple AttractionsItems records from Packages
     /// </summary>
-    public Task DisconnectAttractionsItems(
+    public Task DisconnectAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         AttractionsWhereUniqueInput[] attractionsId
     );
@@ -54,7 +54,7 @@ public interface IPackagesService
     /// <summary>
     /// Find multiple AttractionsItems records for Packages
     /// </summary>
-    public Task<List<Attractions>> FindAttractionsItems(
+    public Task<List<Attractions>> FindAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         AttractionFindManyArgs AttractionFindManyArgs
     );
@@ -70,7 +70,7 @@ public interface IPackagesService
     /// <summary>
     /// Connect multiple FlightDealsItems records to Packages
     /// </summary>
-    public Task ConnectFlightDealsItems(
+    public Task ConnectFlightDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         FlightDealsWhereUniqueInput[] flightDealsId
     );
@@ -78,7 +78,7 @@ public interface IPackagesService
     /// <summary>
     /// Disconnect multiple FlightDealsItems records from Packages
     /// </summary>
-    public Task DisconnectFlightDealsItems(
+    public Task DisconnectFlightDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         FlightDealsWhereUniqueInput[] flightDealsId
     );
@@ -86,7 +86,7 @@ public interface IPackagesService
     /// <summary>
     /// Find multiple FlightDealsItems records for Packages
     /// </summary>
-    public Task<List<FlightDeals>> FindFlightDealsItems(
+    public Task<List<FlightDeals>> FindFlightDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         FlightDealFindManyArgs FlightDealFindManyArgs
     );
@@ -102,7 +102,7 @@ public interface IPackagesService
     /// <summary>
     /// Connect multiple GalleriesItems records to Packages
     /// </summary>
-    public Task ConnectGalleriesItems(
+    public Task ConnectGalleriesSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GalleriesWhereUniqueInput[] galleriesId
     );
@@ -110,7 +110,7 @@ public interface IPackagesService
     /// <summary>
     /// Disconnect multiple GalleriesItems records from Packages
     /// </summary>
-    public Task DisconnectGalleriesItems(
+    public Task DisconnectGalleriesSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GalleriesWhereUniqueInput[] galleriesId
     );
@@ -118,7 +118,7 @@ public interface IPackagesService
     /// <summary>
     /// Find multiple GalleriesItems records for Packages
     /// </summary>
-    public Task<List<Galleries>> FindGalleriesItems(
+    public Task<List<Galleries>> FindGalleriesSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GallerieFindManyArgs GallerieFindManyArgs
     );
@@ -134,7 +134,7 @@ public interface IPackagesService
     /// <summary>
     /// Connect multiple GoodToKnowsItems records to Packages
     /// </summary>
-    public Task ConnectGoodToKnowsItems(
+    public Task ConnectGoodToKnowsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GoodToKnowsWhereUniqueInput[] goodToKnowsId
     );
@@ -142,7 +142,7 @@ public interface IPackagesService
     /// <summary>
     /// Disconnect multiple GoodToKnowsItems records from Packages
     /// </summary>
-    public Task DisconnectGoodToKnowsItems(
+    public Task DisconnectGoodToKnowsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GoodToKnowsWhereUniqueInput[] goodToKnowsId
     );
@@ -150,7 +150,7 @@ public interface IPackagesService
     /// <summary>
     /// Find multiple GoodToKnowsItems records for Packages
     /// </summary>
-    public Task<List<GoodToKnows>> FindGoodToKnowsItems(
+    public Task<List<GoodToKnows>> FindGoodToKnowsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GoodToKnowFindManyArgs GoodToKnowFindManyArgs
     );
@@ -166,7 +166,7 @@ public interface IPackagesService
     /// <summary>
     /// Connect multiple HotelDealsItems records to Packages
     /// </summary>
-    public Task ConnectHotelDealsItems(
+    public Task ConnectHotelDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         HotelDealsWhereUniqueInput[] hotelDealsId
     );
@@ -174,7 +174,7 @@ public interface IPackagesService
     /// <summary>
     /// Disconnect multiple HotelDealsItems records from Packages
     /// </summary>
-    public Task DisconnectHotelDealsItems(
+    public Task DisconnectHotelDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         HotelDealsWhereUniqueInput[] hotelDealsId
     );
@@ -182,7 +182,7 @@ public interface IPackagesService
     /// <summary>
     /// Find multiple HotelDealsItems records for Packages
     /// </summary>
-    public Task<List<HotelDeals>> FindHotelDealsItems(
+    public Task<List<HotelDeals>> FindHotelDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         HotelDealFindManyArgs HotelDealFindManyArgs
     );
@@ -198,7 +198,7 @@ public interface IPackagesService
     /// <summary>
     /// Connect multiple PackageAttractionsItems records to Packages
     /// </summary>
-    public Task ConnectPackageAttractionsItems(
+    public Task ConnectPackageAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageAttractionsWhereUniqueInput[] packageAttractionsId
     );
@@ -206,7 +206,7 @@ public interface IPackagesService
     /// <summary>
     /// Disconnect multiple PackageAttractionsItems records from Packages
     /// </summary>
-    public Task DisconnectPackageAttractionsItems(
+    public Task DisconnectPackageAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageAttractionsWhereUniqueInput[] packageAttractionsId
     );
@@ -214,7 +214,7 @@ public interface IPackagesService
     /// <summary>
     /// Find multiple PackageAttractionsItems records for Packages
     /// </summary>
-    public Task<List<PackageAttractions>> FindPackageAttractionsItems(
+    public Task<List<PackageAttractions>> FindPackageAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageAttractionFindManyArgs PackageAttractionFindManyArgs
     );
@@ -230,7 +230,7 @@ public interface IPackagesService
     /// <summary>
     /// Connect multiple PackageBookingsItems records to Packages
     /// </summary>
-    public Task ConnectPackageBookingsItems(
+    public Task ConnectPackageBookingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] packageBookingsId
     );
@@ -238,7 +238,7 @@ public interface IPackagesService
     /// <summary>
     /// Disconnect multiple PackageBookingsItems records from Packages
     /// </summary>
-    public Task DisconnectPackageBookingsItems(
+    public Task DisconnectPackageBookingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] packageBookingsId
     );
@@ -246,7 +246,7 @@ public interface IPackagesService
     /// <summary>
     /// Find multiple PackageBookingsItems records for Packages
     /// </summary>
-    public Task<List<PackageBookings>> FindPackageBookingsItems(
+    public Task<List<PackageBookings>> FindPackageBookingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageBookingFindManyArgs PackageBookingFindManyArgs
     );
@@ -262,7 +262,7 @@ public interface IPackagesService
     /// <summary>
     /// Connect multiple PackageFlightsItems records to Packages
     /// </summary>
-    public Task ConnectPackageFlightsItems(
+    public Task ConnectPackageFlightsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageFlightsWhereUniqueInput[] packageFlightsId
     );
@@ -270,7 +270,7 @@ public interface IPackagesService
     /// <summary>
     /// Disconnect multiple PackageFlightsItems records from Packages
     /// </summary>
-    public Task DisconnectPackageFlightsItems(
+    public Task DisconnectPackageFlightsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageFlightsWhereUniqueInput[] packageFlightsId
     );
@@ -278,7 +278,7 @@ public interface IPackagesService
     /// <summary>
     /// Find multiple PackageFlightsItems records for Packages
     /// </summary>
-    public Task<List<PackageFlights>> FindPackageFlightsItems(
+    public Task<List<PackageFlights>> FindPackageFlightsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageFlightFindManyArgs PackageFlightFindManyArgs
     );
@@ -294,7 +294,7 @@ public interface IPackagesService
     /// <summary>
     /// Connect multiple PackageHotelsItems records to Packages
     /// </summary>
-    public Task ConnectPackageHotelsItems(
+    public Task ConnectPackageHotelsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageHotelsWhereUniqueInput[] packageHotelsId
     );
@@ -302,7 +302,7 @@ public interface IPackagesService
     /// <summary>
     /// Disconnect multiple PackageHotelsItems records from Packages
     /// </summary>
-    public Task DisconnectPackageHotelsItems(
+    public Task DisconnectPackageHotelsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageHotelsWhereUniqueInput[] packageHotelsId
     );
@@ -310,7 +310,7 @@ public interface IPackagesService
     /// <summary>
     /// Find multiple PackageHotelsItems records for Packages
     /// </summary>
-    public Task<List<PackageHotels>> FindPackageHotelsItems(
+    public Task<List<PackageHotels>> FindPackageHotelsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageHotelFindManyArgs PackageHotelFindManyArgs
     );
@@ -326,7 +326,7 @@ public interface IPackagesService
     /// <summary>
     /// Connect multiple SightSeeingsItems records to Packages
     /// </summary>
-    public Task ConnectSightSeeingsItems(
+    public Task ConnectSightSeeingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] sightSeeingsId
     );
@@ -334,7 +334,7 @@ public interface IPackagesService
     /// <summary>
     /// Disconnect multiple SightSeeingsItems records from Packages
     /// </summary>
-    public Task DisconnectSightSeeingsItems(
+    public Task DisconnectSightSeeingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] sightSeeingsId
     );
@@ -342,7 +342,7 @@ public interface IPackagesService
     /// <summary>
     /// Find multiple SightSeeingsItems records for Packages
     /// </summary>
-    public Task<List<SightSeeings>> FindSightSeeingsItems(
+    public Task<List<SightSeeings>> FindSightSeeingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         SightSeeingFindManyArgs SightSeeingFindManyArgs
     );

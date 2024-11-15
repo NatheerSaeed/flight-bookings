@@ -18,7 +18,7 @@ public interface IBanksService
     /// <summary>
     /// Find many BanksItems
     /// </summary>
-    public Task<List<Banks>> BanksItems(BankFindManyArgs findManyArgs);
+    public Task<List<Banks>> BanksSearchAsync(BankFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Banks records
@@ -38,7 +38,7 @@ public interface IBanksService
     /// <summary>
     /// Connect multiple BankDetailsItems records to Banks
     /// </summary>
-    public Task ConnectBankDetailsItems(
+    public Task ConnectBankDetailsSearchAsync(
         BanksWhereUniqueInput uniqueId,
         BankDetailsWhereUniqueInput[] bankDetailsId
     );
@@ -46,7 +46,7 @@ public interface IBanksService
     /// <summary>
     /// Disconnect multiple BankDetailsItems records from Banks
     /// </summary>
-    public Task DisconnectBankDetailsItems(
+    public Task DisconnectBankDetailsSearchAsync(
         BanksWhereUniqueInput uniqueId,
         BankDetailsWhereUniqueInput[] bankDetailsId
     );
@@ -54,7 +54,7 @@ public interface IBanksService
     /// <summary>
     /// Find multiple BankDetailsItems records for Banks
     /// </summary>
-    public Task<List<BankDetails>> FindBankDetailsItems(
+    public Task<List<BankDetails>> FindBankDetailsSearchAsync(
         BanksWhereUniqueInput uniqueId,
         BankDetailFindManyArgs BankDetailFindManyArgs
     );

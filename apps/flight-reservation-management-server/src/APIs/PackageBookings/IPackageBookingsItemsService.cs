@@ -18,7 +18,7 @@ public interface IPackageBookingsService
     /// <summary>
     /// Find many PackageBookingsItems
     /// </summary>
-    public Task<List<PackageBookings>> PackageBookingsItems(
+    public Task<List<PackageBookings>> PackageBookingsSearchAsync(
         PackageBookingFindManyArgs findManyArgs
     );
 

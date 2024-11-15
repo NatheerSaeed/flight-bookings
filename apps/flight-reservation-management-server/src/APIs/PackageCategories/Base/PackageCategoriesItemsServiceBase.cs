@@ -69,7 +69,7 @@ public abstract class PackageCategoriesServiceBase : IPackageCategoriesService
     /// <summary>
     /// Find many PackageCategoriesItems
     /// </summary>
-    public async Task<List<PackageCategories>> PackageCategoriesItems(
+    public async Task<List<PackageCategories>> PackageCategoriesSearchAsync(
         PackageCategorieFindManyArgs findManyArgs
     )
     {
@@ -103,7 +103,7 @@ public abstract class PackageCategoriesServiceBase : IPackageCategoriesService
         PackageCategoriesWhereUniqueInput uniqueId
     )
     {
-        var packageCategoriesItems = await this.PackageCategoriesItems(
+        var packageCategoriesItems = await this.PackageCategoriesSearchAsync(
             new PackageCategorieFindManyArgs
             {
                 Where = new PackageCategorieWhereInput { Id = uniqueId.Id }

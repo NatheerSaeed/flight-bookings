@@ -72,7 +72,7 @@ public abstract class VisaApplicationsServiceBase : IVisaApplicationsService
     /// <summary>
     /// Find many VisaApplicationsItems
     /// </summary>
-    public async Task<List<VisaApplications>> VisaApplicationsItems(
+    public async Task<List<VisaApplications>> VisaApplicationsSearchAsync(
         VisaApplicationFindManyArgs findManyArgs
     )
     {
@@ -104,7 +104,7 @@ public abstract class VisaApplicationsServiceBase : IVisaApplicationsService
     /// </summary>
     public async Task<VisaApplications> VisaApplications(VisaApplicationsWhereUniqueInput uniqueId)
     {
-        var visaApplicationsItems = await this.VisaApplicationsItems(
+        var visaApplicationsItems = await this.VisaApplicationsSearchAsync(
             new VisaApplicationFindManyArgs
             {
                 Where = new VisaApplicationWhereInput { Id = uniqueId.Id }

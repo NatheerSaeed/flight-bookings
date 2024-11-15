@@ -77,7 +77,7 @@ public abstract class FlightDealsServiceBase : IFlightDealsService
     /// <summary>
     /// Find many FlightDealsItems
     /// </summary>
-    public async Task<List<FlightDeals>> FlightDealsItems(FlightDealFindManyArgs findManyArgs)
+    public async Task<List<FlightDeals>> FlightDealsSearchAsync(FlightDealFindManyArgs findManyArgs)
     {
         var flightDealsItems = await _context
             .FlightDealsItems.Include(x => x.PackageField)
@@ -104,7 +104,7 @@ public abstract class FlightDealsServiceBase : IFlightDealsService
     /// </summary>
     public async Task<FlightDeals> FlightDeals(FlightDealsWhereUniqueInput uniqueId)
     {
-        var flightDealsItems = await this.FlightDealsItems(
+        var flightDealsItems = await this.FlightDealsSearchAsync(
             new FlightDealFindManyArgs { Where = new FlightDealWhereInput { Id = uniqueId.Id } }
         );
         var flightDeals = flightDealsItems.FirstOrDefault();

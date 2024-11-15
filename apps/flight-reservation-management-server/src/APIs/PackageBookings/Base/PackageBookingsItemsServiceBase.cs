@@ -91,7 +91,7 @@ public abstract class PackageBookingsServiceBase : IPackageBookingsService
     /// <summary>
     /// Find many PackageBookingsItems
     /// </summary>
-    public async Task<List<PackageBookings>> PackageBookingsItems(
+    public async Task<List<PackageBookings>> PackageBookingsSearchAsync(
         PackageBookingFindManyArgs findManyArgs
     )
     {
@@ -121,7 +121,7 @@ public abstract class PackageBookingsServiceBase : IPackageBookingsService
     /// </summary>
     public async Task<PackageBookings> PackageBookings(PackageBookingsWhereUniqueInput uniqueId)
     {
-        var packageBookingsItems = await this.PackageBookingsItems(
+        var packageBookingsItems = await this.PackageBookingsSearchAsync(
             new PackageBookingFindManyArgs
             {
                 Where = new PackageBookingWhereInput { Id = uniqueId.Id }

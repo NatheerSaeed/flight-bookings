@@ -77,7 +77,7 @@ public abstract class PackageHotelsServiceBase : IPackageHotelsService
     /// <summary>
     /// Find many PackageHotelsItems
     /// </summary>
-    public async Task<List<PackageHotels>> PackageHotelsItems(PackageHotelFindManyArgs findManyArgs)
+    public async Task<List<PackageHotels>> PackageHotelsSearchAsync(PackageHotelFindManyArgs findManyArgs)
     {
         var packageHotelsItems = await _context
             .PackageHotelsItems.Include(x => x.PackageField)
@@ -104,7 +104,7 @@ public abstract class PackageHotelsServiceBase : IPackageHotelsService
     /// </summary>
     public async Task<PackageHotels> PackageHotels(PackageHotelsWhereUniqueInput uniqueId)
     {
-        var packageHotelsItems = await this.PackageHotelsItems(
+        var packageHotelsItems = await this.PackageHotelsSearchAsync(
             new PackageHotelFindManyArgs { Where = new PackageHotelWhereInput { Id = uniqueId.Id } }
         );
         var packageHotels = packageHotelsItems.FirstOrDefault();

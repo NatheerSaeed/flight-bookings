@@ -58,11 +58,11 @@ public abstract class EmailSubscribersControllerBase : ControllerBase
     /// Find many EmailSubscribersItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<EmailSubscribers>>> EmailSubscribersItems(
+    public async Task<ActionResult<List<EmailSubscribers>>> EmailSubscribersSearchAsync(
         [FromQuery()] EmailSubscriberFindManyArgs filter
     )
     {
-        return Ok(await _service.EmailSubscribersItems(filter));
+        return Ok(await _service.EmailSubscribersSearchAsync(filter));
     }
 
     /// <summary>

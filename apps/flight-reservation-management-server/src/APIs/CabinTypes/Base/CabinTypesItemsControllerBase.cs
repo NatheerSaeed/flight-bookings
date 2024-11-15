@@ -52,11 +52,11 @@ public abstract class CabinTypesControllerBase : ControllerBase
     /// Find many CabinTypesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<CabinTypes>>> CabinTypesItems(
+    public async Task<ActionResult<List<CabinTypes>>> CabinTypesSearchAsync(
         [FromQuery()] CabinTypeFindManyArgs filter
     )
     {
-        return Ok(await _service.CabinTypesItems(filter));
+        return Ok(await _service.CabinTypesSearchAsync(filter));
     }
 
     /// <summary>

@@ -18,7 +18,7 @@ public interface ICarBookingsService
     /// <summary>
     /// Find many CarBookingsItems
     /// </summary>
-    public Task<List<CarBookings>> CarBookingsItems(CarBookingFindManyArgs findManyArgs);
+    public Task<List<CarBookings>> CarBookingsSearchAsync(CarBookingFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about CarBookings records

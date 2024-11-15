@@ -18,7 +18,7 @@ public interface IPackageTypesService
     /// <summary>
     /// Find many PackageTypesItems
     /// </summary>
-    public Task<List<PackageTypes>> PackageTypesItems(PackageTypeFindManyArgs findManyArgs);
+    public Task<List<PackageTypes>> PackageTypesSearchAsync(PackageTypeFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about PackageTypes records

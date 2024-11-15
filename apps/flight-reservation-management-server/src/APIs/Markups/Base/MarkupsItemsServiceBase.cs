@@ -79,7 +79,7 @@ public abstract class MarkupsServiceBase : IMarkupsService
     /// <summary>
     /// Find many MarkupsItems
     /// </summary>
-    public async Task<List<Markups>> MarkupsItems(MarkupFindManyArgs findManyArgs)
+    public async Task<List<Markups>> MarkupsSearchAsync(MarkupFindManyArgs findManyArgs)
     {
         var markupsItems = await _context
             .MarkupsItems.Include(x => x.Role)
@@ -106,7 +106,7 @@ public abstract class MarkupsServiceBase : IMarkupsService
     /// </summary>
     public async Task<Markups> Markups(MarkupsWhereUniqueInput uniqueId)
     {
-        var markupsItems = await this.MarkupsItems(
+        var markupsItems = await this.MarkupsSearchAsync(
             new MarkupFindManyArgs { Where = new MarkupWhereInput { Id = uniqueId.Id } }
         );
         var markups = markupsItems.FirstOrDefault();

@@ -50,11 +50,11 @@ public abstract class MarkupsControllerBase : ControllerBase
     /// Find many MarkupsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Markups>>> MarkupsItems(
+    public async Task<ActionResult<List<Markups>>> MarkupsSearchAsync(
         [FromQuery()] MarkupFindManyArgs filter
     )
     {
-        return Ok(await _service.MarkupsItems(filter));
+        return Ok(await _service.MarkupsSearchAsync(filter));
     }
 
     /// <summary>

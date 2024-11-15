@@ -20,7 +20,7 @@ public interface IVisaApplicationsService
     /// <summary>
     /// Find many VisaApplicationsItems
     /// </summary>
-    public Task<List<VisaApplications>> VisaApplicationsItems(
+    public Task<List<VisaApplications>> VisaApplicationsSearchAsync(
         VisaApplicationFindManyArgs findManyArgs
     );
 

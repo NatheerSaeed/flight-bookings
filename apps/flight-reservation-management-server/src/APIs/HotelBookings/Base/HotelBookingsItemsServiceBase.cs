@@ -103,7 +103,7 @@ public abstract class HotelBookingsServiceBase : IHotelBookingsService
     /// <summary>
     /// Find many HotelBookingsItems
     /// </summary>
-    public async Task<List<HotelBookings>> HotelBookingsItems(HotelBookingFindManyArgs findManyArgs)
+    public async Task<List<HotelBookings>> HotelBookingsSearchAsync(HotelBookingFindManyArgs findManyArgs)
     {
         var hotelBookingsItems = await _context
             .HotelBookingsItems.Include(x => x.Voucher)
@@ -131,7 +131,7 @@ public abstract class HotelBookingsServiceBase : IHotelBookingsService
     /// </summary>
     public async Task<HotelBookings> HotelBookings(HotelBookingsWhereUniqueInput uniqueId)
     {
-        var hotelBookingsItems = await this.HotelBookingsItems(
+        var hotelBookingsItems = await this.HotelBookingsSearchAsync(
             new HotelBookingFindManyArgs { Where = new HotelBookingWhereInput { Id = uniqueId.Id } }
         );
         var hotelBookings = hotelBookingsItems.FirstOrDefault();

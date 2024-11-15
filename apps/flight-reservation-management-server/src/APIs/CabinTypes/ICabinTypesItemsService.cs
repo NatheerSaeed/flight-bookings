@@ -18,7 +18,7 @@ public interface ICabinTypesService
     /// <summary>
     /// Find many CabinTypesItems
     /// </summary>
-    public Task<List<CabinTypes>> CabinTypesItems(CabinTypeFindManyArgs findManyArgs);
+    public Task<List<CabinTypes>> CabinTypesSearchAsync(CabinTypeFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about CabinTypes records

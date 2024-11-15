@@ -52,11 +52,11 @@ public abstract class SightSeeingsControllerBase : ControllerBase
     /// Find many SightSeeingsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<SightSeeings>>> SightSeeingsItems(
+    public async Task<ActionResult<List<SightSeeings>>> SightSeeingsSearchAsync(
         [FromQuery()] SightSeeingFindManyArgs filter
     )
     {
-        return Ok(await _service.SightSeeingsItems(filter));
+        return Ok(await _service.SightSeeingsSearchAsync(filter));
     }
 
     /// <summary>

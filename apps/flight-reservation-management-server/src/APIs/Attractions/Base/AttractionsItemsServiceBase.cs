@@ -85,7 +85,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// <summary>
     /// Find many AttractionsItems
     /// </summary>
-    public async Task<List<Attractions>> AttractionsItems(AttractionFindManyArgs findManyArgs)
+    public async Task<List<Attractions>> AttractionsSearchAsync(AttractionFindManyArgs findManyArgs)
     {
         var attractionsItems = await _context
             .AttractionsItems.Include(x => x.SightSeeingsItems)
@@ -113,7 +113,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// </summary>
     public async Task<Attractions> Attractions(AttractionsWhereUniqueInput uniqueId)
     {
-        var attractionsItems = await this.AttractionsItems(
+        var attractionsItems = await this.AttractionsSearchAsync(
             new AttractionFindManyArgs { Where = new AttractionWhereInput { Id = uniqueId.Id } }
         );
         var attractions = attractionsItems.FirstOrDefault();
@@ -189,7 +189,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// <summary>
     /// Connect multiple SightSeeingsItems records to Attractions
     /// </summary>
-    public async Task ConnectSightSeeingsItems(
+    public async Task ConnectSightSeeingsSearchAsync(
         AttractionsWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] childrenIds
     )
@@ -223,7 +223,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// <summary>
     /// Disconnect multiple SightSeeingsItems records from Attractions
     /// </summary>
-    public async Task DisconnectSightSeeingsItems(
+    public async Task DisconnectSightSeeingsSearchAsync(
         AttractionsWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] childrenIds
     )
@@ -250,7 +250,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// <summary>
     /// Find multiple SightSeeingsItems records for Attractions
     /// </summary>
-    public async Task<List<SightSeeings>> FindSightSeeingsItems(
+    public async Task<List<SightSeeings>> FindSightSeeingsSearchAsync(
         AttractionsWhereUniqueInput uniqueId,
         SightSeeingFindManyArgs attractionFindManyArgs
     )

@@ -77,7 +77,7 @@ public abstract class BankDetailsServiceBase : IBankDetailsService
     /// <summary>
     /// Find many BankDetailsItems
     /// </summary>
-    public async Task<List<BankDetails>> BankDetailsItems(BankDetailFindManyArgs findManyArgs)
+    public async Task<List<BankDetails>> BankDetailsSearchAsync(BankDetailFindManyArgs findManyArgs)
     {
         var bankDetailsItems = await _context
             .BankDetailsItems.Include(x => x.Bank)
@@ -104,7 +104,7 @@ public abstract class BankDetailsServiceBase : IBankDetailsService
     /// </summary>
     public async Task<BankDetails> BankDetails(BankDetailsWhereUniqueInput uniqueId)
     {
-        var bankDetailsItems = await this.BankDetailsItems(
+        var bankDetailsItems = await this.BankDetailsSearchAsync(
             new BankDetailFindManyArgs { Where = new BankDetailWhereInput { Id = uniqueId.Id } }
         );
         var bankDetails = bankDetailsItems.FirstOrDefault();

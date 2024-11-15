@@ -50,9 +50,9 @@ public abstract class BanksControllerBase : ControllerBase
     /// Find many BanksItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Banks>>> BanksItems([FromQuery()] BankFindManyArgs filter)
+    public async Task<ActionResult<List<Banks>>> BanksSearchAsync([FromQuery()] BankFindManyArgs filter)
     {
-        return Ok(await _service.BanksItems(filter));
+        return Ok(await _service.BanksSearchAsync(filter));
     }
 
     /// <summary>
@@ -107,14 +107,14 @@ public abstract class BanksControllerBase : ControllerBase
     /// Connect multiple BankDetailsItems records to Banks
     /// </summary>
     [HttpPost("{Id}/bankDetailsItems")]
-    public async Task<ActionResult> ConnectBankDetailsItems(
+    public async Task<ActionResult> ConnectBankDetailsSearchAsync(
         [FromRoute()] BanksWhereUniqueInput uniqueId,
         [FromQuery()] BankDetailsWhereUniqueInput[] bankDetailsItemsId
     )
     {
         try
         {
-            await _service.ConnectBankDetailsItems(uniqueId, bankDetailsItemsId);
+            await _service.ConnectBankDetailsSearchAsync(uniqueId, bankDetailsItemsId);
         }
         catch (NotFoundException)
         {
@@ -128,14 +128,14 @@ public abstract class BanksControllerBase : ControllerBase
     /// Disconnect multiple BankDetailsItems records from Banks
     /// </summary>
     [HttpDelete("{Id}/bankDetailsItems")]
-    public async Task<ActionResult> DisconnectBankDetailsItems(
+    public async Task<ActionResult> DisconnectBankDetailsSearchAsync(
         [FromRoute()] BanksWhereUniqueInput uniqueId,
         [FromBody()] BankDetailsWhereUniqueInput[] bankDetailsItemsId
     )
     {
         try
         {
-            await _service.DisconnectBankDetailsItems(uniqueId, bankDetailsItemsId);
+            await _service.DisconnectBankDetailsSearchAsync(uniqueId, bankDetailsItemsId);
         }
         catch (NotFoundException)
         {
@@ -149,14 +149,14 @@ public abstract class BanksControllerBase : ControllerBase
     /// Find multiple BankDetailsItems records for Banks
     /// </summary>
     [HttpGet("{Id}/bankDetailsItems")]
-    public async Task<ActionResult<List<BankDetails>>> FindBankDetailsItems(
+    public async Task<ActionResult<List<BankDetails>>> FindBankDetailsSearchAsync(
         [FromRoute()] BanksWhereUniqueInput uniqueId,
         [FromQuery()] BankDetailFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindBankDetailsItems(uniqueId, filter));
+            return Ok(await _service.FindBankDetailsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {

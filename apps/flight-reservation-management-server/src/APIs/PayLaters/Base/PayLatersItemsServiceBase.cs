@@ -77,7 +77,7 @@ public abstract class PayLatersServiceBase : IPayLatersService
     /// <summary>
     /// Find many PayLatersItems
     /// </summary>
-    public async Task<List<PayLaters>> PayLatersItems(PayLaterFindManyArgs findManyArgs)
+    public async Task<List<PayLaters>> PayLatersSearchAsync(PayLaterFindManyArgs findManyArgs)
     {
         var payLatersItems = await _context
             .PayLatersItems.Include(x => x.User)
@@ -104,7 +104,7 @@ public abstract class PayLatersServiceBase : IPayLatersService
     /// </summary>
     public async Task<PayLaters> PayLaters(PayLatersWhereUniqueInput uniqueId)
     {
-        var payLatersItems = await this.PayLatersItems(
+        var payLatersItems = await this.PayLatersSearchAsync(
             new PayLaterFindManyArgs { Where = new PayLaterWhereInput { Id = uniqueId.Id } }
         );
         var payLaters = payLatersItems.FirstOrDefault();

@@ -69,7 +69,7 @@ public abstract class TitlesServiceBase : ITitlesService
     /// <summary>
     /// Find many TitlesItems
     /// </summary>
-    public async Task<List<Titles>> TitlesItems(TitleFindManyArgs findManyArgs)
+    public async Task<List<Titles>> TitlesSearchAsync(TitleFindManyArgs findManyArgs)
     {
         var titlesItems = await _context
             .TitlesItems.Include(x => x.ProfilesItems)
@@ -96,7 +96,7 @@ public abstract class TitlesServiceBase : ITitlesService
     /// </summary>
     public async Task<Titles> Titles(TitlesWhereUniqueInput uniqueId)
     {
-        var titlesItems = await this.TitlesItems(
+        var titlesItems = await this.TitlesSearchAsync(
             new TitleFindManyArgs { Where = new TitleWhereInput { Id = uniqueId.Id } }
         );
         var titles = titlesItems.FirstOrDefault();
@@ -146,7 +146,7 @@ public abstract class TitlesServiceBase : ITitlesService
     /// <summary>
     /// Connect multiple ProfilesItems records to Titles
     /// </summary>
-    public async Task ConnectProfilesItems(
+    public async Task ConnectProfilesSearchAsync(
         TitlesWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] childrenIds
     )
@@ -180,7 +180,7 @@ public abstract class TitlesServiceBase : ITitlesService
     /// <summary>
     /// Disconnect multiple ProfilesItems records from Titles
     /// </summary>
-    public async Task DisconnectProfilesItems(
+    public async Task DisconnectProfilesSearchAsync(
         TitlesWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] childrenIds
     )
@@ -207,7 +207,7 @@ public abstract class TitlesServiceBase : ITitlesService
     /// <summary>
     /// Find multiple ProfilesItems records for Titles
     /// </summary>
-    public async Task<List<Profiles>> FindProfilesItems(
+    public async Task<List<Profiles>> FindProfilesSearchAsync(
         TitlesWhereUniqueInput uniqueId,
         ProfileFindManyArgs titleFindManyArgs
     )

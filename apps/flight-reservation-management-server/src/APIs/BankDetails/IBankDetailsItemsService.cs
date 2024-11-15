@@ -18,7 +18,7 @@ public interface IBankDetailsService
     /// <summary>
     /// Find many BankDetailsItems
     /// </summary>
-    public Task<List<BankDetails>> BankDetailsItems(BankDetailFindManyArgs findManyArgs);
+    public Task<List<BankDetails>> BankDetailsSearchAsync(BankDetailFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about BankDetails records

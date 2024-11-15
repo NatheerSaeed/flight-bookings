@@ -52,11 +52,11 @@ public abstract class PackageHotelsControllerBase : ControllerBase
     /// Find many PackageHotelsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<PackageHotels>>> PackageHotelsItems(
+    public async Task<ActionResult<List<PackageHotels>>> PackageHotelsSearchAsync(
         [FromQuery()] PackageHotelFindManyArgs filter
     )
     {
-        return Ok(await _service.PackageHotelsItems(filter));
+        return Ok(await _service.PackageHotelsSearchAsync(filter));
     }
 
     /// <summary>

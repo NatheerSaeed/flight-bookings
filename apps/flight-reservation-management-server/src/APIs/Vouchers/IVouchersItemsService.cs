@@ -18,7 +18,7 @@ public interface IVouchersService
     /// <summary>
     /// Find many VouchersItems
     /// </summary>
-    public Task<List<Vouchers>> VouchersItems(VoucherFindManyArgs findManyArgs);
+    public Task<List<Vouchers>> VouchersSearchAsync(VoucherFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Vouchers records
@@ -38,7 +38,7 @@ public interface IVouchersService
     /// <summary>
     /// Connect multiple FlightBookingsItems records to Vouchers
     /// </summary>
-    public Task ConnectFlightBookingsItems(
+    public Task ConnectFlightBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] flightBookingsId
     );
@@ -46,7 +46,7 @@ public interface IVouchersService
     /// <summary>
     /// Disconnect multiple FlightBookingsItems records from Vouchers
     /// </summary>
-    public Task DisconnectFlightBookingsItems(
+    public Task DisconnectFlightBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] flightBookingsId
     );
@@ -54,7 +54,7 @@ public interface IVouchersService
     /// <summary>
     /// Find multiple FlightBookingsItems records for Vouchers
     /// </summary>
-    public Task<List<FlightBookings>> FindFlightBookingsItems(
+    public Task<List<FlightBookings>> FindFlightBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         FlightBookingFindManyArgs FlightBookingFindManyArgs
     );
@@ -70,7 +70,7 @@ public interface IVouchersService
     /// <summary>
     /// Connect multiple HotelBookingsItems records to Vouchers
     /// </summary>
-    public Task ConnectHotelBookingsItems(
+    public Task ConnectHotelBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] hotelBookingsId
     );
@@ -78,7 +78,7 @@ public interface IVouchersService
     /// <summary>
     /// Disconnect multiple HotelBookingsItems records from Vouchers
     /// </summary>
-    public Task DisconnectHotelBookingsItems(
+    public Task DisconnectHotelBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] hotelBookingsId
     );
@@ -86,7 +86,7 @@ public interface IVouchersService
     /// <summary>
     /// Find multiple HotelBookingsItems records for Vouchers
     /// </summary>
-    public Task<List<HotelBookings>> FindHotelBookingsItems(
+    public Task<List<HotelBookings>> FindHotelBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         HotelBookingFindManyArgs HotelBookingFindManyArgs
     );

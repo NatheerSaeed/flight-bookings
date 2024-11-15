@@ -77,7 +77,7 @@ public abstract class AirlinesServiceBase : IAirlinesService
     /// <summary>
     /// Find many AirlinesItems
     /// </summary>
-    public async Task<List<Airlines>> AirlinesItems(AirlineFindManyArgs findManyArgs)
+    public async Task<List<Airlines>> AirlinesSearchAsync(AirlineFindManyArgs findManyArgs)
     {
         var airlinesItems = await _context
             .AirlinesItems.Include(x => x.User)
@@ -104,7 +104,7 @@ public abstract class AirlinesServiceBase : IAirlinesService
     /// </summary>
     public async Task<Airlines> Airlines(AirlinesWhereUniqueInput uniqueId)
     {
-        var airlinesItems = await this.AirlinesItems(
+        var airlinesItems = await this.AirlinesSearchAsync(
             new AirlineFindManyArgs { Where = new AirlineWhereInput { Id = uniqueId.Id } }
         );
         var airlines = airlinesItems.FirstOrDefault();

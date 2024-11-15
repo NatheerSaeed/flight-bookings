@@ -18,7 +18,7 @@ public interface IAirlinesService
     /// <summary>
     /// Find many AirlinesItems
     /// </summary>
-    public Task<List<Airlines>> AirlinesItems(AirlineFindManyArgs findManyArgs);
+    public Task<List<Airlines>> AirlinesSearchAsync(AirlineFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Airlines records

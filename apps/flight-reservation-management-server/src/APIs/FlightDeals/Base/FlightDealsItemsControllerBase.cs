@@ -52,11 +52,11 @@ public abstract class FlightDealsControllerBase : ControllerBase
     /// Find many FlightDealsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<FlightDeals>>> FlightDealsItems(
+    public async Task<ActionResult<List<FlightDeals>>> FlightDealsSearchAsync(
         [FromQuery()] FlightDealFindManyArgs filter
     )
     {
-        return Ok(await _service.FlightDealsItems(filter));
+        return Ok(await _service.FlightDealsSearchAsync(filter));
     }
 
     /// <summary>

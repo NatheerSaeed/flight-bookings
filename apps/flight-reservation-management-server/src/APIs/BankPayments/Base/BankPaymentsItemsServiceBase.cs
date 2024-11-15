@@ -77,7 +77,7 @@ public abstract class BankPaymentsServiceBase : IBankPaymentsService
     /// <summary>
     /// Find many BankPaymentsItems
     /// </summary>
-    public async Task<List<BankPayments>> BankPaymentsItems(BankPaymentFindManyArgs findManyArgs)
+    public async Task<List<BankPayments>> BankPaymentsSearchAsync(BankPaymentFindManyArgs findManyArgs)
     {
         var bankPaymentsItems = await _context
             .BankPaymentsItems.Include(x => x.User)
@@ -104,7 +104,7 @@ public abstract class BankPaymentsServiceBase : IBankPaymentsService
     /// </summary>
     public async Task<BankPayments> BankPayments(BankPaymentsWhereUniqueInput uniqueId)
     {
-        var bankPaymentsItems = await this.BankPaymentsItems(
+        var bankPaymentsItems = await this.BankPaymentsSearchAsync(
             new BankPaymentFindManyArgs { Where = new BankPaymentWhereInput { Id = uniqueId.Id } }
         );
         var bankPayments = bankPaymentsItems.FirstOrDefault();

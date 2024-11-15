@@ -18,7 +18,7 @@ public interface IGoodToKnowsService
     /// <summary>
     /// Find many GoodToKnowsItems
     /// </summary>
-    public Task<List<GoodToKnows>> GoodToKnowsItems(GoodToKnowFindManyArgs findManyArgs);
+    public Task<List<GoodToKnows>> GoodToKnowsSearchAsync(GoodToKnowFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about GoodToKnows records

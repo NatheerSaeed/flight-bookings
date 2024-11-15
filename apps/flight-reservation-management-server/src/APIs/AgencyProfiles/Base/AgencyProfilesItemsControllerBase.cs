@@ -58,11 +58,11 @@ public abstract class AgencyProfilesControllerBase : ControllerBase
     /// Find many AgencyProfilesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<AgencyProfiles>>> AgencyProfilesItems(
+    public async Task<ActionResult<List<AgencyProfiles>>> AgencyProfilesSearchAsync(
         [FromQuery()] AgencyProfileFindManyArgs filter
     )
     {
-        return Ok(await _service.AgencyProfilesItems(filter));
+        return Ok(await _service.AgencyProfilesSearchAsync(filter));
     }
 
     /// <summary>

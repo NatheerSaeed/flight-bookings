@@ -74,7 +74,7 @@ public abstract class GalleriesServiceBase : IGalleriesService
     /// <summary>
     /// Find many GalleriesItems
     /// </summary>
-    public async Task<List<Galleries>> GalleriesItems(GallerieFindManyArgs findManyArgs)
+    public async Task<List<Galleries>> GalleriesSearchAsync(GallerieFindManyArgs findManyArgs)
     {
         var galleriesItems = await _context
             .GalleriesItems.Include(x => x.PackageField)
@@ -101,7 +101,7 @@ public abstract class GalleriesServiceBase : IGalleriesService
     /// </summary>
     public async Task<Galleries> Galleries(GalleriesWhereUniqueInput uniqueId)
     {
-        var galleriesItems = await this.GalleriesItems(
+        var galleriesItems = await this.GalleriesSearchAsync(
             new GallerieFindManyArgs { Where = new GallerieWhereInput { Id = uniqueId.Id } }
         );
         var galleries = galleriesItems.FirstOrDefault();

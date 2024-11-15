@@ -52,11 +52,11 @@ public abstract class GoodToKnowsControllerBase : ControllerBase
     /// Find many GoodToKnowsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<GoodToKnows>>> GoodToKnowsItems(
+    public async Task<ActionResult<List<GoodToKnows>>> GoodToKnowsSearchAsync(
         [FromQuery()] GoodToKnowFindManyArgs filter
     )
     {
-        return Ok(await _service.GoodToKnowsItems(filter));
+        return Ok(await _service.GoodToKnowsSearchAsync(filter));
     }
 
     /// <summary>

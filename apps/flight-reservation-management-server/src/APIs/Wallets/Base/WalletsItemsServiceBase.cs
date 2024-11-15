@@ -72,7 +72,7 @@ public abstract class WalletsServiceBase : IWalletsService
     /// <summary>
     /// Find many WalletsItems
     /// </summary>
-    public async Task<List<Wallets>> WalletsItems(WalletFindManyArgs findManyArgs)
+    public async Task<List<Wallets>> WalletsSearchAsync(WalletFindManyArgs findManyArgs)
     {
         var walletsItems = await _context
             .WalletsItems.Include(x => x.User)
@@ -99,7 +99,7 @@ public abstract class WalletsServiceBase : IWalletsService
     /// </summary>
     public async Task<Wallets> Wallets(WalletsWhereUniqueInput uniqueId)
     {
-        var walletsItems = await this.WalletsItems(
+        var walletsItems = await this.WalletsSearchAsync(
             new WalletFindManyArgs { Where = new WalletWhereInput { Id = uniqueId.Id } }
         );
         var wallets = walletsItems.FirstOrDefault();

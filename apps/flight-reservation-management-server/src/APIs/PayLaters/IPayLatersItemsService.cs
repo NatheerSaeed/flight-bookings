@@ -18,7 +18,7 @@ public interface IPayLatersService
     /// <summary>
     /// Find many PayLatersItems
     /// </summary>
-    public Task<List<PayLaters>> PayLatersItems(PayLaterFindManyArgs findManyArgs);
+    public Task<List<PayLaters>> PayLatersSearchAsync(PayLaterFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about PayLaters records

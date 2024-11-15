@@ -52,11 +52,11 @@ public abstract class BankDetailsControllerBase : ControllerBase
     /// Find many BankDetailsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<BankDetails>>> BankDetailsItems(
+    public async Task<ActionResult<List<BankDetails>>> BankDetailsSearchAsync(
         [FromQuery()] BankDetailFindManyArgs filter
     )
     {
-        return Ok(await _service.BankDetailsItems(filter));
+        return Ok(await _service.BankDetailsSearchAsync(filter));
     }
 
     /// <summary>

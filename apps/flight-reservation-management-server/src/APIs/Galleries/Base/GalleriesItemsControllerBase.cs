@@ -50,11 +50,11 @@ public abstract class GalleriesControllerBase : ControllerBase
     /// Find many GalleriesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Galleries>>> GalleriesItems(
+    public async Task<ActionResult<List<Galleries>>> GalleriesSearchAsync(
         [FromQuery()] GallerieFindManyArgs filter
     )
     {
-        return Ok(await _service.GalleriesItems(filter));
+        return Ok(await _service.GalleriesSearchAsync(filter));
     }
 
     /// <summary>

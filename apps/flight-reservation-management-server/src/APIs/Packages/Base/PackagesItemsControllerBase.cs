@@ -50,11 +50,11 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find many PackagesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Packages>>> PackagesItems(
+    public async Task<ActionResult<List<Packages>>> PackagesSearchAsync(
         [FromQuery()] PackageFindManyArgs filter
     )
     {
-        return Ok(await _service.PackagesItems(filter));
+        return Ok(await _service.PackagesSearchAsync(filter));
     }
 
     /// <summary>
@@ -111,14 +111,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Connect multiple AttractionsItems records to Packages
     /// </summary>
     [HttpPost("{Id}/attractionsItems")]
-    public async Task<ActionResult> ConnectAttractionsItems(
+    public async Task<ActionResult> ConnectAttractionsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] AttractionsWhereUniqueInput[] attractionsItemsId
     )
     {
         try
         {
-            await _service.ConnectAttractionsItems(uniqueId, attractionsItemsId);
+            await _service.ConnectAttractionsSearchAsync(uniqueId, attractionsItemsId);
         }
         catch (NotFoundException)
         {
@@ -132,14 +132,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Disconnect multiple AttractionsItems records from Packages
     /// </summary>
     [HttpDelete("{Id}/attractionsItems")]
-    public async Task<ActionResult> DisconnectAttractionsItems(
+    public async Task<ActionResult> DisconnectAttractionsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] AttractionsWhereUniqueInput[] attractionsItemsId
     )
     {
         try
         {
-            await _service.DisconnectAttractionsItems(uniqueId, attractionsItemsId);
+            await _service.DisconnectAttractionsSearchAsync(uniqueId, attractionsItemsId);
         }
         catch (NotFoundException)
         {
@@ -153,14 +153,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find multiple AttractionsItems records for Packages
     /// </summary>
     [HttpGet("{Id}/attractionsItems")]
-    public async Task<ActionResult<List<Attractions>>> FindAttractionsItems(
+    public async Task<ActionResult<List<Attractions>>> FindAttractionsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] AttractionFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindAttractionsItems(uniqueId, filter));
+            return Ok(await _service.FindAttractionsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -193,14 +193,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Connect multiple FlightDealsItems records to Packages
     /// </summary>
     [HttpPost("{Id}/flightDealsItems")]
-    public async Task<ActionResult> ConnectFlightDealsItems(
+    public async Task<ActionResult> ConnectFlightDealsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] FlightDealsWhereUniqueInput[] flightDealsItemsId
     )
     {
         try
         {
-            await _service.ConnectFlightDealsItems(uniqueId, flightDealsItemsId);
+            await _service.ConnectFlightDealsSearchAsync(uniqueId, flightDealsItemsId);
         }
         catch (NotFoundException)
         {
@@ -214,14 +214,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Disconnect multiple FlightDealsItems records from Packages
     /// </summary>
     [HttpDelete("{Id}/flightDealsItems")]
-    public async Task<ActionResult> DisconnectFlightDealsItems(
+    public async Task<ActionResult> DisconnectFlightDealsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] FlightDealsWhereUniqueInput[] flightDealsItemsId
     )
     {
         try
         {
-            await _service.DisconnectFlightDealsItems(uniqueId, flightDealsItemsId);
+            await _service.DisconnectFlightDealsSearchAsync(uniqueId, flightDealsItemsId);
         }
         catch (NotFoundException)
         {
@@ -235,14 +235,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find multiple FlightDealsItems records for Packages
     /// </summary>
     [HttpGet("{Id}/flightDealsItems")]
-    public async Task<ActionResult<List<FlightDeals>>> FindFlightDealsItems(
+    public async Task<ActionResult<List<FlightDeals>>> FindFlightDealsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] FlightDealFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindFlightDealsItems(uniqueId, filter));
+            return Ok(await _service.FindFlightDealsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -275,14 +275,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Connect multiple GalleriesItems records to Packages
     /// </summary>
     [HttpPost("{Id}/galleriesItems")]
-    public async Task<ActionResult> ConnectGalleriesItems(
+    public async Task<ActionResult> ConnectGalleriesSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] GalleriesWhereUniqueInput[] galleriesItemsId
     )
     {
         try
         {
-            await _service.ConnectGalleriesItems(uniqueId, galleriesItemsId);
+            await _service.ConnectGalleriesSearchAsync(uniqueId, galleriesItemsId);
         }
         catch (NotFoundException)
         {
@@ -296,14 +296,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Disconnect multiple GalleriesItems records from Packages
     /// </summary>
     [HttpDelete("{Id}/galleriesItems")]
-    public async Task<ActionResult> DisconnectGalleriesItems(
+    public async Task<ActionResult> DisconnectGalleriesSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] GalleriesWhereUniqueInput[] galleriesItemsId
     )
     {
         try
         {
-            await _service.DisconnectGalleriesItems(uniqueId, galleriesItemsId);
+            await _service.DisconnectGalleriesSearchAsync(uniqueId, galleriesItemsId);
         }
         catch (NotFoundException)
         {
@@ -317,14 +317,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find multiple GalleriesItems records for Packages
     /// </summary>
     [HttpGet("{Id}/galleriesItems")]
-    public async Task<ActionResult<List<Galleries>>> FindGalleriesItems(
+    public async Task<ActionResult<List<Galleries>>> FindGalleriesSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] GallerieFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindGalleriesItems(uniqueId, filter));
+            return Ok(await _service.FindGalleriesSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -357,14 +357,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Connect multiple GoodToKnowsItems records to Packages
     /// </summary>
     [HttpPost("{Id}/goodToKnowsItems")]
-    public async Task<ActionResult> ConnectGoodToKnowsItems(
+    public async Task<ActionResult> ConnectGoodToKnowsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] GoodToKnowsWhereUniqueInput[] goodToKnowsItemsId
     )
     {
         try
         {
-            await _service.ConnectGoodToKnowsItems(uniqueId, goodToKnowsItemsId);
+            await _service.ConnectGoodToKnowsSearchAsync(uniqueId, goodToKnowsItemsId);
         }
         catch (NotFoundException)
         {
@@ -378,14 +378,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Disconnect multiple GoodToKnowsItems records from Packages
     /// </summary>
     [HttpDelete("{Id}/goodToKnowsItems")]
-    public async Task<ActionResult> DisconnectGoodToKnowsItems(
+    public async Task<ActionResult> DisconnectGoodToKnowsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] GoodToKnowsWhereUniqueInput[] goodToKnowsItemsId
     )
     {
         try
         {
-            await _service.DisconnectGoodToKnowsItems(uniqueId, goodToKnowsItemsId);
+            await _service.DisconnectGoodToKnowsSearchAsync(uniqueId, goodToKnowsItemsId);
         }
         catch (NotFoundException)
         {
@@ -399,14 +399,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find multiple GoodToKnowsItems records for Packages
     /// </summary>
     [HttpGet("{Id}/goodToKnowsItems")]
-    public async Task<ActionResult<List<GoodToKnows>>> FindGoodToKnowsItems(
+    public async Task<ActionResult<List<GoodToKnows>>> FindGoodToKnowsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] GoodToKnowFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindGoodToKnowsItems(uniqueId, filter));
+            return Ok(await _service.FindGoodToKnowsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -439,14 +439,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Connect multiple HotelDealsItems records to Packages
     /// </summary>
     [HttpPost("{Id}/hotelDealsItems")]
-    public async Task<ActionResult> ConnectHotelDealsItems(
+    public async Task<ActionResult> ConnectHotelDealsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] HotelDealsWhereUniqueInput[] hotelDealsItemsId
     )
     {
         try
         {
-            await _service.ConnectHotelDealsItems(uniqueId, hotelDealsItemsId);
+            await _service.ConnectHotelDealsSearchAsync(uniqueId, hotelDealsItemsId);
         }
         catch (NotFoundException)
         {
@@ -460,14 +460,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Disconnect multiple HotelDealsItems records from Packages
     /// </summary>
     [HttpDelete("{Id}/hotelDealsItems")]
-    public async Task<ActionResult> DisconnectHotelDealsItems(
+    public async Task<ActionResult> DisconnectHotelDealsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] HotelDealsWhereUniqueInput[] hotelDealsItemsId
     )
     {
         try
         {
-            await _service.DisconnectHotelDealsItems(uniqueId, hotelDealsItemsId);
+            await _service.DisconnectHotelDealsSearchAsync(uniqueId, hotelDealsItemsId);
         }
         catch (NotFoundException)
         {
@@ -481,14 +481,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find multiple HotelDealsItems records for Packages
     /// </summary>
     [HttpGet("{Id}/hotelDealsItems")]
-    public async Task<ActionResult<List<HotelDeals>>> FindHotelDealsItems(
+    public async Task<ActionResult<List<HotelDeals>>> FindHotelDealsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] HotelDealFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindHotelDealsItems(uniqueId, filter));
+            return Ok(await _service.FindHotelDealsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -521,14 +521,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Connect multiple PackageAttractionsItems records to Packages
     /// </summary>
     [HttpPost("{Id}/packageAttractionsItems")]
-    public async Task<ActionResult> ConnectPackageAttractionsItems(
+    public async Task<ActionResult> ConnectPackageAttractionsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] PackageAttractionsWhereUniqueInput[] packageAttractionsItemsId
     )
     {
         try
         {
-            await _service.ConnectPackageAttractionsItems(uniqueId, packageAttractionsItemsId);
+            await _service.ConnectPackageAttractionsSearchAsync(uniqueId, packageAttractionsItemsId);
         }
         catch (NotFoundException)
         {
@@ -542,14 +542,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Disconnect multiple PackageAttractionsItems records from Packages
     /// </summary>
     [HttpDelete("{Id}/packageAttractionsItems")]
-    public async Task<ActionResult> DisconnectPackageAttractionsItems(
+    public async Task<ActionResult> DisconnectPackageAttractionsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] PackageAttractionsWhereUniqueInput[] packageAttractionsItemsId
     )
     {
         try
         {
-            await _service.DisconnectPackageAttractionsItems(uniqueId, packageAttractionsItemsId);
+            await _service.DisconnectPackageAttractionsSearchAsync(uniqueId, packageAttractionsItemsId);
         }
         catch (NotFoundException)
         {
@@ -563,14 +563,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find multiple PackageAttractionsItems records for Packages
     /// </summary>
     [HttpGet("{Id}/packageAttractionsItems")]
-    public async Task<ActionResult<List<PackageAttractions>>> FindPackageAttractionsItems(
+    public async Task<ActionResult<List<PackageAttractions>>> FindPackageAttractionsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] PackageAttractionFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindPackageAttractionsItems(uniqueId, filter));
+            return Ok(await _service.FindPackageAttractionsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -603,14 +603,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Connect multiple PackageBookingsItems records to Packages
     /// </summary>
     [HttpPost("{Id}/packageBookingsItems")]
-    public async Task<ActionResult> ConnectPackageBookingsItems(
+    public async Task<ActionResult> ConnectPackageBookingsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] PackageBookingsWhereUniqueInput[] packageBookingsItemsId
     )
     {
         try
         {
-            await _service.ConnectPackageBookingsItems(uniqueId, packageBookingsItemsId);
+            await _service.ConnectPackageBookingsSearchAsync(uniqueId, packageBookingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -624,14 +624,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Disconnect multiple PackageBookingsItems records from Packages
     /// </summary>
     [HttpDelete("{Id}/packageBookingsItems")]
-    public async Task<ActionResult> DisconnectPackageBookingsItems(
+    public async Task<ActionResult> DisconnectPackageBookingsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] PackageBookingsWhereUniqueInput[] packageBookingsItemsId
     )
     {
         try
         {
-            await _service.DisconnectPackageBookingsItems(uniqueId, packageBookingsItemsId);
+            await _service.DisconnectPackageBookingsSearchAsync(uniqueId, packageBookingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -645,14 +645,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find multiple PackageBookingsItems records for Packages
     /// </summary>
     [HttpGet("{Id}/packageBookingsItems")]
-    public async Task<ActionResult<List<PackageBookings>>> FindPackageBookingsItems(
+    public async Task<ActionResult<List<PackageBookings>>> FindPackageBookingsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] PackageBookingFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindPackageBookingsItems(uniqueId, filter));
+            return Ok(await _service.FindPackageBookingsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -685,14 +685,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Connect multiple PackageFlightsItems records to Packages
     /// </summary>
     [HttpPost("{Id}/packageFlightsItems")]
-    public async Task<ActionResult> ConnectPackageFlightsItems(
+    public async Task<ActionResult> ConnectPackageFlightsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] PackageFlightsWhereUniqueInput[] packageFlightsItemsId
     )
     {
         try
         {
-            await _service.ConnectPackageFlightsItems(uniqueId, packageFlightsItemsId);
+            await _service.ConnectPackageFlightsSearchAsync(uniqueId, packageFlightsItemsId);
         }
         catch (NotFoundException)
         {
@@ -706,14 +706,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Disconnect multiple PackageFlightsItems records from Packages
     /// </summary>
     [HttpDelete("{Id}/packageFlightsItems")]
-    public async Task<ActionResult> DisconnectPackageFlightsItems(
+    public async Task<ActionResult> DisconnectPackageFlightsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] PackageFlightsWhereUniqueInput[] packageFlightsItemsId
     )
     {
         try
         {
-            await _service.DisconnectPackageFlightsItems(uniqueId, packageFlightsItemsId);
+            await _service.DisconnectPackageFlightsSearchAsync(uniqueId, packageFlightsItemsId);
         }
         catch (NotFoundException)
         {
@@ -727,14 +727,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find multiple PackageFlightsItems records for Packages
     /// </summary>
     [HttpGet("{Id}/packageFlightsItems")]
-    public async Task<ActionResult<List<PackageFlights>>> FindPackageFlightsItems(
+    public async Task<ActionResult<List<PackageFlights>>> FindPackageFlightsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] PackageFlightFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindPackageFlightsItems(uniqueId, filter));
+            return Ok(await _service.FindPackageFlightsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -767,14 +767,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Connect multiple PackageHotelsItems records to Packages
     /// </summary>
     [HttpPost("{Id}/packageHotelsItems")]
-    public async Task<ActionResult> ConnectPackageHotelsItems(
+    public async Task<ActionResult> ConnectPackageHotelsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] PackageHotelsWhereUniqueInput[] packageHotelsItemsId
     )
     {
         try
         {
-            await _service.ConnectPackageHotelsItems(uniqueId, packageHotelsItemsId);
+            await _service.ConnectPackageHotelsSearchAsync(uniqueId, packageHotelsItemsId);
         }
         catch (NotFoundException)
         {
@@ -788,14 +788,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Disconnect multiple PackageHotelsItems records from Packages
     /// </summary>
     [HttpDelete("{Id}/packageHotelsItems")]
-    public async Task<ActionResult> DisconnectPackageHotelsItems(
+    public async Task<ActionResult> DisconnectPackageHotelsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] PackageHotelsWhereUniqueInput[] packageHotelsItemsId
     )
     {
         try
         {
-            await _service.DisconnectPackageHotelsItems(uniqueId, packageHotelsItemsId);
+            await _service.DisconnectPackageHotelsSearchAsync(uniqueId, packageHotelsItemsId);
         }
         catch (NotFoundException)
         {
@@ -809,14 +809,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find multiple PackageHotelsItems records for Packages
     /// </summary>
     [HttpGet("{Id}/packageHotelsItems")]
-    public async Task<ActionResult<List<PackageHotels>>> FindPackageHotelsItems(
+    public async Task<ActionResult<List<PackageHotels>>> FindPackageHotelsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] PackageHotelFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindPackageHotelsItems(uniqueId, filter));
+            return Ok(await _service.FindPackageHotelsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -849,14 +849,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Connect multiple SightSeeingsItems records to Packages
     /// </summary>
     [HttpPost("{Id}/sightSeeingsItems")]
-    public async Task<ActionResult> ConnectSightSeeingsItems(
+    public async Task<ActionResult> ConnectSightSeeingsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] SightSeeingsWhereUniqueInput[] sightSeeingsItemsId
     )
     {
         try
         {
-            await _service.ConnectSightSeeingsItems(uniqueId, sightSeeingsItemsId);
+            await _service.ConnectSightSeeingsSearchAsync(uniqueId, sightSeeingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -870,14 +870,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Disconnect multiple SightSeeingsItems records from Packages
     /// </summary>
     [HttpDelete("{Id}/sightSeeingsItems")]
-    public async Task<ActionResult> DisconnectSightSeeingsItems(
+    public async Task<ActionResult> DisconnectSightSeeingsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] SightSeeingsWhereUniqueInput[] sightSeeingsItemsId
     )
     {
         try
         {
-            await _service.DisconnectSightSeeingsItems(uniqueId, sightSeeingsItemsId);
+            await _service.DisconnectSightSeeingsSearchAsync(uniqueId, sightSeeingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -891,14 +891,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Find multiple SightSeeingsItems records for Packages
     /// </summary>
     [HttpGet("{Id}/sightSeeingsItems")]
-    public async Task<ActionResult<List<SightSeeings>>> FindSightSeeingsItems(
+    public async Task<ActionResult<List<SightSeeings>>> FindSightSeeingsSearchAsync(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] SightSeeingFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindSightSeeingsItems(uniqueId, filter));
+            return Ok(await _service.FindSightSeeingsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {

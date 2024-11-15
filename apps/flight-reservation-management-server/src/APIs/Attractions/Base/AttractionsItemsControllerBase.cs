@@ -52,11 +52,11 @@ public abstract class AttractionsControllerBase : ControllerBase
     /// Find many AttractionsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Attractions>>> AttractionsItems(
+    public async Task<ActionResult<List<Attractions>>> AttractionsSearchAsync(
         [FromQuery()] AttractionFindManyArgs filter
     )
     {
-        return Ok(await _service.AttractionsItems(filter));
+        return Ok(await _service.AttractionsSearchAsync(filter));
     }
 
     /// <summary>
@@ -125,14 +125,14 @@ public abstract class AttractionsControllerBase : ControllerBase
     /// Connect multiple SightSeeingsItems records to Attractions
     /// </summary>
     [HttpPost("{Id}/sightSeeingsItems")]
-    public async Task<ActionResult> ConnectSightSeeingsItems(
+    public async Task<ActionResult> ConnectSightSeeingsSearchAsync(
         [FromRoute()] AttractionsWhereUniqueInput uniqueId,
         [FromQuery()] SightSeeingsWhereUniqueInput[] sightSeeingsItemsId
     )
     {
         try
         {
-            await _service.ConnectSightSeeingsItems(uniqueId, sightSeeingsItemsId);
+            await _service.ConnectSightSeeingsSearchAsync(uniqueId, sightSeeingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -146,14 +146,14 @@ public abstract class AttractionsControllerBase : ControllerBase
     /// Disconnect multiple SightSeeingsItems records from Attractions
     /// </summary>
     [HttpDelete("{Id}/sightSeeingsItems")]
-    public async Task<ActionResult> DisconnectSightSeeingsItems(
+    public async Task<ActionResult> DisconnectSightSeeingsSearchAsync(
         [FromRoute()] AttractionsWhereUniqueInput uniqueId,
         [FromBody()] SightSeeingsWhereUniqueInput[] sightSeeingsItemsId
     )
     {
         try
         {
-            await _service.DisconnectSightSeeingsItems(uniqueId, sightSeeingsItemsId);
+            await _service.DisconnectSightSeeingsSearchAsync(uniqueId, sightSeeingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -167,14 +167,14 @@ public abstract class AttractionsControllerBase : ControllerBase
     /// Find multiple SightSeeingsItems records for Attractions
     /// </summary>
     [HttpGet("{Id}/sightSeeingsItems")]
-    public async Task<ActionResult<List<SightSeeings>>> FindSightSeeingsItems(
+    public async Task<ActionResult<List<SightSeeings>>> FindSightSeeingsSearchAsync(
         [FromRoute()] AttractionsWhereUniqueInput uniqueId,
         [FromQuery()] SightSeeingFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindSightSeeingsItems(uniqueId, filter));
+            return Ok(await _service.FindSightSeeingsSearchAsync(uniqueId, filter));
         }
         catch (NotFoundException)
         {

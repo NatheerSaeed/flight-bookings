@@ -18,7 +18,7 @@ public interface IPasswordResetsService
     /// <summary>
     /// Find many PasswordResetsItems
     /// </summary>
-    public Task<List<PasswordResets>> PasswordResetsItems(PasswordResetFindManyArgs findManyArgs);
+    public Task<List<PasswordResets>> PasswordResetsSearchAsync(PasswordResetFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about PasswordResets records

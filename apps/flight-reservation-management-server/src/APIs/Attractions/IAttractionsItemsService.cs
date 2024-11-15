@@ -18,7 +18,7 @@ public interface IAttractionsService
     /// <summary>
     /// Find many AttractionsItems
     /// </summary>
-    public Task<List<Attractions>> AttractionsItems(AttractionFindManyArgs findManyArgs);
+    public Task<List<Attractions>> AttractionsSearchAsync(AttractionFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Attractions records
@@ -46,7 +46,7 @@ public interface IAttractionsService
     /// <summary>
     /// Connect multiple SightSeeingsItems records to Attractions
     /// </summary>
-    public Task ConnectSightSeeingsItems(
+    public Task ConnectSightSeeingsSearchAsync(
         AttractionsWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] sightSeeingsId
     );
@@ -54,7 +54,7 @@ public interface IAttractionsService
     /// <summary>
     /// Disconnect multiple SightSeeingsItems records from Attractions
     /// </summary>
-    public Task DisconnectSightSeeingsItems(
+    public Task DisconnectSightSeeingsSearchAsync(
         AttractionsWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] sightSeeingsId
     );
@@ -62,7 +62,7 @@ public interface IAttractionsService
     /// <summary>
     /// Find multiple SightSeeingsItems records for Attractions
     /// </summary>
-    public Task<List<SightSeeings>> FindSightSeeingsItems(
+    public Task<List<SightSeeings>> FindSightSeeingsSearchAsync(
         AttractionsWhereUniqueInput uniqueId,
         SightSeeingFindManyArgs SightSeeingFindManyArgs
     );

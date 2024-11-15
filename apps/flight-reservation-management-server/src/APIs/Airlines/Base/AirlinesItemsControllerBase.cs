@@ -50,11 +50,11 @@ public abstract class AirlinesControllerBase : ControllerBase
     /// Find many AirlinesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Airlines>>> AirlinesItems(
+    public async Task<ActionResult<List<Airlines>>> AirlinesSearchAsync(
         [FromQuery()] AirlineFindManyArgs filter
     )
     {
-        return Ok(await _service.AirlinesItems(filter));
+        return Ok(await _service.AirlinesSearchAsync(filter));
     }
 
     /// <summary>

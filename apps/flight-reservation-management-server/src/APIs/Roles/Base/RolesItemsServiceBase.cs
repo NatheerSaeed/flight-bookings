@@ -100,7 +100,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Find many RolesItems
     /// </summary>
-    public async Task<List<Roles>> RolesItems(RoleFindManyArgs findManyArgs)
+    public async Task<List<Roles>> RolesSearchAsync(RoleFindManyArgs findManyArgs)
     {
         var rolesItems = await _context
             .RolesItems.Include(x => x.ContainerRole)
@@ -129,7 +129,7 @@ public abstract class RolesServiceBase : IRolesService
     /// </summary>
     public async Task<Roles> Roles(RolesWhereUniqueInput uniqueId)
     {
-        var rolesItems = await this.RolesItems(
+        var rolesItems = await this.RolesSearchAsync(
             new RoleFindManyArgs { Where = new RoleWhereInput { Id = uniqueId.Id } }
         );
         var roles = rolesItems.FirstOrDefault();
@@ -202,7 +202,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Connect multiple HotelsItems records to Roles
     /// </summary>
-    public async Task ConnectHotelsItems(
+    public async Task ConnectHotelsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         HotelsWhereUniqueInput[] childrenIds
     )
@@ -236,7 +236,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Disconnect multiple HotelsItems records from Roles
     /// </summary>
-    public async Task DisconnectHotelsItems(
+    public async Task DisconnectHotelsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         HotelsWhereUniqueInput[] childrenIds
     )
@@ -263,7 +263,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Find multiple HotelsItems records for Roles
     /// </summary>
-    public async Task<List<Hotels>> FindHotelsItems(
+    public async Task<List<Hotels>> FindHotelsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         HotelFindManyArgs roleFindManyArgs
     )
@@ -311,7 +311,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Connect multiple MarkupsItems records to Roles
     /// </summary>
-    public async Task ConnectMarkupsItems(
+    public async Task ConnectMarkupsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         MarkupsWhereUniqueInput[] childrenIds
     )
@@ -345,7 +345,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Disconnect multiple MarkupsItems records from Roles
     /// </summary>
-    public async Task DisconnectMarkupsItems(
+    public async Task DisconnectMarkupsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         MarkupsWhereUniqueInput[] childrenIds
     )
@@ -372,7 +372,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Find multiple MarkupsItems records for Roles
     /// </summary>
-    public async Task<List<Markups>> FindMarkupsItems(
+    public async Task<List<Markups>> FindMarkupsSearchAsync(
         RolesWhereUniqueInput uniqueId,
         MarkupFindManyArgs roleFindManyArgs
     )
@@ -436,7 +436,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Connect multiple RolesItems records to Roles
     /// </summary>
-    public async Task ConnectRolesItems(
+    public async Task ConnectRolesSearchAsync(
         RolesWhereUniqueInput uniqueId,
         RolesWhereUniqueInput[] childrenIds
     )
@@ -470,7 +470,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Disconnect multiple RolesItems records from Roles
     /// </summary>
-    public async Task DisconnectRolesItems(
+    public async Task DisconnectRolesSearchAsync(
         RolesWhereUniqueInput uniqueId,
         RolesWhereUniqueInput[] childrenIds
     )
@@ -497,7 +497,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Find multiple RolesItems records for Roles
     /// </summary>
-    public async Task<List<Roles>> FindRolesItems(
+    public async Task<List<Roles>> FindRolesSearchAsync(
         RolesWhereUniqueInput uniqueId,
         RoleFindManyArgs roleFindManyArgs
     )

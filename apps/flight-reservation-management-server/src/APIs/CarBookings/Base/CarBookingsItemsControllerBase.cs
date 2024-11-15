@@ -52,11 +52,11 @@ public abstract class CarBookingsControllerBase : ControllerBase
     /// Find many CarBookingsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<CarBookings>>> CarBookingsItems(
+    public async Task<ActionResult<List<CarBookings>>> CarBookingsSearchAsync(
         [FromQuery()] CarBookingFindManyArgs filter
     )
     {
-        return Ok(await _service.CarBookingsItems(filter));
+        return Ok(await _service.CarBookingsSearchAsync(filter));
     }
 
     /// <summary>

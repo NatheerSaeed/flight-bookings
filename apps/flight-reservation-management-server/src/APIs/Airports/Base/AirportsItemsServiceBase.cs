@@ -67,7 +67,7 @@ public abstract class AirportsServiceBase : IAirportsService
     /// <summary>
     /// Find many AirportsItems
     /// </summary>
-    public async Task<List<Airports>> AirportsItems(AirportFindManyArgs findManyArgs)
+    public async Task<List<Airports>> AirportsSearchAsync(AirportFindManyArgs findManyArgs)
     {
         var airportsItems = await _context
             .AirportsItems.ApplyWhere(findManyArgs.Where)
@@ -93,7 +93,7 @@ public abstract class AirportsServiceBase : IAirportsService
     /// </summary>
     public async Task<Airports> Airports(AirportsWhereUniqueInput uniqueId)
     {
-        var airportsItems = await this.AirportsItems(
+        var airportsItems = await this.AirportsSearchAsync(
             new AirportFindManyArgs { Where = new AirportWhereInput { Id = uniqueId.Id } }
         );
         var airports = airportsItems.FirstOrDefault();

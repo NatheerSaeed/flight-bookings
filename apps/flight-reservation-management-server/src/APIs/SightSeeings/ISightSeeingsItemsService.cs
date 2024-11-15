@@ -18,7 +18,7 @@ public interface ISightSeeingsService
     /// <summary>
     /// Find many SightSeeingsItems
     /// </summary>
-    public Task<List<SightSeeings>> SightSeeingsItems(SightSeeingFindManyArgs findManyArgs);
+    public Task<List<SightSeeings>> SightSeeingsSearchAsync(SightSeeingFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about SightSeeings records

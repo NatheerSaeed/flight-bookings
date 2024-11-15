@@ -68,7 +68,7 @@ public abstract class MarkdownsServiceBase : IMarkdownsService
     /// <summary>
     /// Find many MarkdownsItems
     /// </summary>
-    public async Task<List<Markdowns>> MarkdownsItems(MarkdownFindManyArgs findManyArgs)
+    public async Task<List<Markdowns>> MarkdownsSearchAsync(MarkdownFindManyArgs findManyArgs)
     {
         var markdownsItems = await _context
             .MarkdownsItems.ApplyWhere(findManyArgs.Where)
@@ -94,7 +94,7 @@ public abstract class MarkdownsServiceBase : IMarkdownsService
     /// </summary>
     public async Task<Markdowns> Markdowns(MarkdownsWhereUniqueInput uniqueId)
     {
-        var markdownsItems = await this.MarkdownsItems(
+        var markdownsItems = await this.MarkdownsSearchAsync(
             new MarkdownFindManyArgs { Where = new MarkdownWhereInput { Id = uniqueId.Id } }
         );
         var markdowns = markdownsItems.FirstOrDefault();

@@ -85,7 +85,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Find many VouchersItems
     /// </summary>
-    public async Task<List<Vouchers>> VouchersItems(VoucherFindManyArgs findManyArgs)
+    public async Task<List<Vouchers>> VouchersSearchAsync(VoucherFindManyArgs findManyArgs)
     {
         var vouchersItems = await _context
             .VouchersItems.Include(x => x.HotelBookingsItems)
@@ -113,7 +113,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// </summary>
     public async Task<Vouchers> Vouchers(VouchersWhereUniqueInput uniqueId)
     {
-        var vouchersItems = await this.VouchersItems(
+        var vouchersItems = await this.VouchersSearchAsync(
             new VoucherFindManyArgs { Where = new VoucherWhereInput { Id = uniqueId.Id } }
         );
         var vouchers = vouchersItems.FirstOrDefault();
@@ -172,7 +172,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Connect multiple FlightBookingsItems records to Vouchers
     /// </summary>
-    public async Task ConnectFlightBookingsItems(
+    public async Task ConnectFlightBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] childrenIds
     )
@@ -206,7 +206,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Disconnect multiple FlightBookingsItems records from Vouchers
     /// </summary>
-    public async Task DisconnectFlightBookingsItems(
+    public async Task DisconnectFlightBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] childrenIds
     )
@@ -233,7 +233,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Find multiple FlightBookingsItems records for Vouchers
     /// </summary>
-    public async Task<List<FlightBookings>> FindFlightBookingsItems(
+    public async Task<List<FlightBookings>> FindFlightBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         FlightBookingFindManyArgs voucherFindManyArgs
     )
@@ -281,7 +281,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Connect multiple HotelBookingsItems records to Vouchers
     /// </summary>
-    public async Task ConnectHotelBookingsItems(
+    public async Task ConnectHotelBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] childrenIds
     )
@@ -315,7 +315,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Disconnect multiple HotelBookingsItems records from Vouchers
     /// </summary>
-    public async Task DisconnectHotelBookingsItems(
+    public async Task DisconnectHotelBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] childrenIds
     )
@@ -342,7 +342,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Find multiple HotelBookingsItems records for Vouchers
     /// </summary>
-    public async Task<List<HotelBookings>> FindHotelBookingsItems(
+    public async Task<List<HotelBookings>> FindHotelBookingsSearchAsync(
         VouchersWhereUniqueInput uniqueId,
         HotelBookingFindManyArgs voucherFindManyArgs
     )

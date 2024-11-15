@@ -391,7 +391,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple AgencyProfilesItems records to User
     /// </summary>
-    public async Task ConnectAgencyProfilesItems(
+    public async Task ConnectAgencyProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AgencyProfilesWhereUniqueInput[] childrenIds
     )
@@ -425,7 +425,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple AgencyProfilesItems records from User
     /// </summary>
-    public async Task DisconnectAgencyProfilesItems(
+    public async Task DisconnectAgencyProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AgencyProfilesWhereUniqueInput[] childrenIds
     )
@@ -452,7 +452,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple AgencyProfilesItems records for User
     /// </summary>
-    public async Task<List<AgencyProfiles>> FindAgencyProfilesItems(
+    public async Task<List<AgencyProfiles>> FindAgencyProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AgencyProfileFindManyArgs userFindManyArgs
     )
@@ -500,7 +500,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple AirlinesItems records to User
     /// </summary>
-    public async Task ConnectAirlinesItems(
+    public async Task ConnectAirlinesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AirlinesWhereUniqueInput[] childrenIds
     )
@@ -534,7 +534,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple AirlinesItems records from User
     /// </summary>
-    public async Task DisconnectAirlinesItems(
+    public async Task DisconnectAirlinesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AirlinesWhereUniqueInput[] childrenIds
     )
@@ -561,7 +561,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple AirlinesItems records for User
     /// </summary>
-    public async Task<List<Airlines>> FindAirlinesItems(
+    public async Task<List<Airlines>> FindAirlinesSearchAsync(
         UserWhereUniqueInput uniqueId,
         AirlineFindManyArgs userFindManyArgs
     )
@@ -609,7 +609,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple BankPaymentsItems records to User
     /// </summary>
-    public async Task ConnectBankPaymentsItems(
+    public async Task ConnectBankPaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         BankPaymentsWhereUniqueInput[] childrenIds
     )
@@ -643,7 +643,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple BankPaymentsItems records from User
     /// </summary>
-    public async Task DisconnectBankPaymentsItems(
+    public async Task DisconnectBankPaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         BankPaymentsWhereUniqueInput[] childrenIds
     )
@@ -670,7 +670,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple BankPaymentsItems records for User
     /// </summary>
-    public async Task<List<BankPayments>> FindBankPaymentsItems(
+    public async Task<List<BankPayments>> FindBankPaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         BankPaymentFindManyArgs userFindManyArgs
     )
@@ -718,7 +718,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple CarBookingsItems records to User
     /// </summary>
-    public async Task ConnectCarBookingsItems(
+    public async Task ConnectCarBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         CarBookingsWhereUniqueInput[] childrenIds
     )
@@ -752,7 +752,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple CarBookingsItems records from User
     /// </summary>
-    public async Task DisconnectCarBookingsItems(
+    public async Task DisconnectCarBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         CarBookingsWhereUniqueInput[] childrenIds
     )
@@ -779,7 +779,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple CarBookingsItems records for User
     /// </summary>
-    public async Task<List<CarBookings>> FindCarBookingsItems(
+    public async Task<List<CarBookings>> FindCarBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         CarBookingFindManyArgs userFindManyArgs
     )
@@ -827,7 +827,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple CooperateCustomerProfilesItems records to User
     /// </summary>
-    public async Task ConnectCooperateCustomerProfilesItems(
+    public async Task ConnectCooperateCustomerProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         CooperateCustomerProfilesWhereUniqueInput[] childrenIds
     )
@@ -861,7 +861,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple CooperateCustomerProfilesItems records from User
     /// </summary>
-    public async Task DisconnectCooperateCustomerProfilesItems(
+    public async Task DisconnectCooperateCustomerProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         CooperateCustomerProfilesWhereUniqueInput[] childrenIds
     )
@@ -888,7 +888,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple CooperateCustomerProfilesItems records for User
     /// </summary>
-    public async Task<List<CooperateCustomerProfiles>> FindCooperateCustomerProfilesItems(
+    public async Task<List<CooperateCustomerProfiles>> FindCooperateCustomerProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         CooperateCustomerProfileFindManyArgs userFindManyArgs
     )
@@ -936,7 +936,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple FlightBookingsItems records to User
     /// </summary>
-    public async Task ConnectFlightBookingsItems(
+    public async Task ConnectFlightBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] childrenIds
     )
@@ -970,7 +970,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple FlightBookingsItems records from User
     /// </summary>
-    public async Task DisconnectFlightBookingsItems(
+    public async Task DisconnectFlightBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] childrenIds
     )
@@ -997,7 +997,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple FlightBookingsItems records for User
     /// </summary>
-    public async Task<List<FlightBookings>> FindFlightBookingsItems(
+    public async Task<List<FlightBookings>> FindFlightBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         FlightBookingFindManyArgs userFindManyArgs
     )
@@ -1045,7 +1045,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple HotelBookingsItems records to User
     /// </summary>
-    public async Task ConnectHotelBookingsItems(
+    public async Task ConnectHotelBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] childrenIds
     )
@@ -1079,7 +1079,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple HotelBookingsItems records from User
     /// </summary>
-    public async Task DisconnectHotelBookingsItems(
+    public async Task DisconnectHotelBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] childrenIds
     )
@@ -1106,7 +1106,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple HotelBookingsItems records for User
     /// </summary>
-    public async Task<List<HotelBookings>> FindHotelBookingsItems(
+    public async Task<List<HotelBookings>> FindHotelBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         HotelBookingFindManyArgs userFindManyArgs
     )
@@ -1154,7 +1154,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple OnlinePaymentsItems records to User
     /// </summary>
-    public async Task ConnectOnlinePaymentsItems(
+    public async Task ConnectOnlinePaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         OnlinePaymentsWhereUniqueInput[] childrenIds
     )
@@ -1188,7 +1188,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple OnlinePaymentsItems records from User
     /// </summary>
-    public async Task DisconnectOnlinePaymentsItems(
+    public async Task DisconnectOnlinePaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         OnlinePaymentsWhereUniqueInput[] childrenIds
     )
@@ -1215,7 +1215,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple OnlinePaymentsItems records for User
     /// </summary>
-    public async Task<List<OnlinePayments>> FindOnlinePaymentsItems(
+    public async Task<List<OnlinePayments>> FindOnlinePaymentsSearchAsync(
         UserWhereUniqueInput uniqueId,
         OnlinePaymentFindManyArgs userFindManyArgs
     )
@@ -1263,7 +1263,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple PackageBookingsItems records to User
     /// </summary>
-    public async Task ConnectPackageBookingsItems(
+    public async Task ConnectPackageBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] childrenIds
     )
@@ -1297,7 +1297,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple PackageBookingsItems records from User
     /// </summary>
-    public async Task DisconnectPackageBookingsItems(
+    public async Task DisconnectPackageBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] childrenIds
     )
@@ -1324,7 +1324,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple PackageBookingsItems records for User
     /// </summary>
-    public async Task<List<PackageBookings>> FindPackageBookingsItems(
+    public async Task<List<PackageBookings>> FindPackageBookingsSearchAsync(
         UserWhereUniqueInput uniqueId,
         PackageBookingFindManyArgs userFindManyArgs
     )
@@ -1372,7 +1372,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple PayLatersItems records to User
     /// </summary>
-    public async Task ConnectPayLatersItems(
+    public async Task ConnectPayLatersSearchAsync(
         UserWhereUniqueInput uniqueId,
         PayLatersWhereUniqueInput[] childrenIds
     )
@@ -1406,7 +1406,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple PayLatersItems records from User
     /// </summary>
-    public async Task DisconnectPayLatersItems(
+    public async Task DisconnectPayLatersSearchAsync(
         UserWhereUniqueInput uniqueId,
         PayLatersWhereUniqueInput[] childrenIds
     )
@@ -1433,7 +1433,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple PayLatersItems records for User
     /// </summary>
-    public async Task<List<PayLaters>> FindPayLatersItems(
+    public async Task<List<PayLaters>> FindPayLatersSearchAsync(
         UserWhereUniqueInput uniqueId,
         PayLaterFindManyArgs userFindManyArgs
     )
@@ -1481,7 +1481,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple ProfilesItems records to User
     /// </summary>
-    public async Task ConnectProfilesItems(
+    public async Task ConnectProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] childrenIds
     )
@@ -1515,7 +1515,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple ProfilesItems records from User
     /// </summary>
-    public async Task DisconnectProfilesItems(
+    public async Task DisconnectProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] childrenIds
     )
@@ -1542,7 +1542,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple ProfilesItems records for User
     /// </summary>
-    public async Task<List<Profiles>> FindProfilesItems(
+    public async Task<List<Profiles>> FindProfilesSearchAsync(
         UserWhereUniqueInput uniqueId,
         ProfileFindManyArgs userFindManyArgs
     )
@@ -1590,7 +1590,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple WalletLogsItems records to User
     /// </summary>
-    public async Task ConnectWalletLogsItems(
+    public async Task ConnectWalletLogsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletLogsWhereUniqueInput[] childrenIds
     )
@@ -1624,7 +1624,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple WalletLogsItems records from User
     /// </summary>
-    public async Task DisconnectWalletLogsItems(
+    public async Task DisconnectWalletLogsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletLogsWhereUniqueInput[] childrenIds
     )
@@ -1651,7 +1651,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple WalletLogsItems records for User
     /// </summary>
-    public async Task<List<WalletLogs>> FindWalletLogsItems(
+    public async Task<List<WalletLogs>> FindWalletLogsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletLogFindManyArgs userFindManyArgs
     )
@@ -1699,7 +1699,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Connect multiple WalletsItems records to User
     /// </summary>
-    public async Task ConnectWalletsItems(
+    public async Task ConnectWalletsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletsWhereUniqueInput[] childrenIds
     )
@@ -1733,7 +1733,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Disconnect multiple WalletsItems records from User
     /// </summary>
-    public async Task DisconnectWalletsItems(
+    public async Task DisconnectWalletsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletsWhereUniqueInput[] childrenIds
     )
@@ -1760,7 +1760,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Find multiple WalletsItems records for User
     /// </summary>
-    public async Task<List<Wallets>> FindWalletsItems(
+    public async Task<List<Wallets>> FindWalletsSearchAsync(
         UserWhereUniqueInput uniqueId,
         WalletFindManyArgs userFindManyArgs
     )

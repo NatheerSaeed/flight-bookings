@@ -78,7 +78,7 @@ public abstract class GoodToKnowsServiceBase : IGoodToKnowsService
     /// <summary>
     /// Find many GoodToKnowsItems
     /// </summary>
-    public async Task<List<GoodToKnows>> GoodToKnowsItems(GoodToKnowFindManyArgs findManyArgs)
+    public async Task<List<GoodToKnows>> GoodToKnowsSearchAsync(GoodToKnowFindManyArgs findManyArgs)
     {
         var goodToKnowsItems = await _context
             .GoodToKnowsItems.Include(x => x.PackageField)
@@ -105,7 +105,7 @@ public abstract class GoodToKnowsServiceBase : IGoodToKnowsService
     /// </summary>
     public async Task<GoodToKnows> GoodToKnows(GoodToKnowsWhereUniqueInput uniqueId)
     {
-        var goodToKnowsItems = await this.GoodToKnowsItems(
+        var goodToKnowsItems = await this.GoodToKnowsSearchAsync(
             new GoodToKnowFindManyArgs { Where = new GoodToKnowWhereInput { Id = uniqueId.Id } }
         );
         var goodToKnows = goodToKnowsItems.FirstOrDefault();

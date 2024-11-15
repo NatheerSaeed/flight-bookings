@@ -58,11 +58,11 @@ public abstract class PasswordResetsControllerBase : ControllerBase
     /// Find many PasswordResetsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<PasswordResets>>> PasswordResetsItems(
+    public async Task<ActionResult<List<PasswordResets>>> PasswordResetsSearchAsync(
         [FromQuery()] PasswordResetFindManyArgs filter
     )
     {
-        return Ok(await _service.PasswordResetsItems(filter));
+        return Ok(await _service.PasswordResetsSearchAsync(filter));
     }
 
     /// <summary>

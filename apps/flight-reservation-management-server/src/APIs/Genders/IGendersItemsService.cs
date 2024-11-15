@@ -18,7 +18,7 @@ public interface IGendersService
     /// <summary>
     /// Find many GendersItems
     /// </summary>
-    public Task<List<Genders>> GendersItems(GenderFindManyArgs findManyArgs);
+    public Task<List<Genders>> GendersSearchAsync(GenderFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Genders records
@@ -38,7 +38,7 @@ public interface IGendersService
     /// <summary>
     /// Connect multiple ProfilesItems records to Genders
     /// </summary>
-    public Task ConnectProfilesItems(
+    public Task ConnectProfilesSearchAsync(
         GendersWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] profilesId
     );
@@ -46,7 +46,7 @@ public interface IGendersService
     /// <summary>
     /// Disconnect multiple ProfilesItems records from Genders
     /// </summary>
-    public Task DisconnectProfilesItems(
+    public Task DisconnectProfilesSearchAsync(
         GendersWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] profilesId
     );
@@ -54,7 +54,7 @@ public interface IGendersService
     /// <summary>
     /// Find multiple ProfilesItems records for Genders
     /// </summary>
-    public Task<List<Profiles>> FindProfilesItems(
+    public Task<List<Profiles>> FindProfilesSearchAsync(
         GendersWhereUniqueInput uniqueId,
         ProfileFindManyArgs ProfileFindManyArgs
     );

@@ -18,7 +18,7 @@ public interface IMarkdownsService
     /// <summary>
     /// Find many MarkdownsItems
     /// </summary>
-    public Task<List<Markdowns>> MarkdownsItems(MarkdownFindManyArgs findManyArgs);
+    public Task<List<Markdowns>> MarkdownsSearchAsync(MarkdownFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Markdowns records

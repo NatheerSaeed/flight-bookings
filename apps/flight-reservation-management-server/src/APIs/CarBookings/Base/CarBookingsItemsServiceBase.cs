@@ -78,7 +78,7 @@ public abstract class CarBookingsServiceBase : ICarBookingsService
     /// <summary>
     /// Find many CarBookingsItems
     /// </summary>
-    public async Task<List<CarBookings>> CarBookingsItems(CarBookingFindManyArgs findManyArgs)
+    public async Task<List<CarBookings>> CarBookingsSearchAsync(CarBookingFindManyArgs findManyArgs)
     {
         var carBookingsItems = await _context
             .CarBookingsItems.Include(x => x.User)
@@ -105,7 +105,7 @@ public abstract class CarBookingsServiceBase : ICarBookingsService
     /// </summary>
     public async Task<CarBookings> CarBookings(CarBookingsWhereUniqueInput uniqueId)
     {
-        var carBookingsItems = await this.CarBookingsItems(
+        var carBookingsItems = await this.CarBookingsSearchAsync(
             new CarBookingFindManyArgs { Where = new CarBookingWhereInput { Id = uniqueId.Id } }
         );
         var carBookings = carBookingsItems.FirstOrDefault();

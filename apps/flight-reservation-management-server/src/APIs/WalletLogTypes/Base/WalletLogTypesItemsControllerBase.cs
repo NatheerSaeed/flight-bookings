@@ -58,11 +58,11 @@ public abstract class WalletLogTypesControllerBase : ControllerBase
     /// Find many WalletLogTypesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<WalletLogTypes>>> WalletLogTypesItems(
+    public async Task<ActionResult<List<WalletLogTypes>>> WalletLogTypesSearchAsync(
         [FromQuery()] WalletLogTypeFindManyArgs filter
     )
     {
-        return Ok(await _service.WalletLogTypesItems(filter));
+        return Ok(await _service.WalletLogTypesSearchAsync(filter));
     }
 
     /// <summary>

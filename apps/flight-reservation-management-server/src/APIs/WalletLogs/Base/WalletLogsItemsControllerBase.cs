@@ -52,11 +52,11 @@ public abstract class WalletLogsControllerBase : ControllerBase
     /// Find many WalletLogsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<WalletLogs>>> WalletLogsItems(
+    public async Task<ActionResult<List<WalletLogs>>> WalletLogsSearchAsync(
         [FromQuery()] WalletLogFindManyArgs filter
     )
     {
-        return Ok(await _service.WalletLogsItems(filter));
+        return Ok(await _service.WalletLogsSearchAsync(filter));
     }
 
     /// <summary>

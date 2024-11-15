@@ -58,11 +58,11 @@ public abstract class VisaApplicationsControllerBase : ControllerBase
     /// Find many VisaApplicationsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<VisaApplications>>> VisaApplicationsItems(
+    public async Task<ActionResult<List<VisaApplications>>> VisaApplicationsSearchAsync(
         [FromQuery()] VisaApplicationFindManyArgs filter
     )
     {
-        return Ok(await _service.VisaApplicationsItems(filter));
+        return Ok(await _service.VisaApplicationsSearchAsync(filter));
     }
 
     /// <summary>

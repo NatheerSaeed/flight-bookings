@@ -156,7 +156,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find many PackagesItems
     /// </summary>
-    public async Task<List<Packages>> PackagesItems(PackageFindManyArgs findManyArgs)
+    public async Task<List<Packages>> PackagesSearchAsync(PackageFindManyArgs findManyArgs)
     {
         var packagesItems = await _context
             .PackagesItems.Include(x => x.GoodToKnowsItems)
@@ -192,7 +192,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// </summary>
     public async Task<Packages> Packages(PackagesWhereUniqueInput uniqueId)
     {
-        var packagesItems = await this.PackagesItems(
+        var packagesItems = await this.PackagesSearchAsync(
             new PackageFindManyArgs { Where = new PackageWhereInput { Id = uniqueId.Id } }
         );
         var packages = packagesItems.FirstOrDefault();
@@ -323,7 +323,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Connect multiple AttractionsItems records to Packages
     /// </summary>
-    public async Task ConnectAttractionsItems(
+    public async Task ConnectAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         AttractionsWhereUniqueInput[] childrenIds
     )
@@ -357,7 +357,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Disconnect multiple AttractionsItems records from Packages
     /// </summary>
-    public async Task DisconnectAttractionsItems(
+    public async Task DisconnectAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         AttractionsWhereUniqueInput[] childrenIds
     )
@@ -384,7 +384,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find multiple AttractionsItems records for Packages
     /// </summary>
-    public async Task<List<Attractions>> FindAttractionsItems(
+    public async Task<List<Attractions>> FindAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         AttractionFindManyArgs packageFindManyArgs
     )
@@ -432,7 +432,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Connect multiple FlightDealsItems records to Packages
     /// </summary>
-    public async Task ConnectFlightDealsItems(
+    public async Task ConnectFlightDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         FlightDealsWhereUniqueInput[] childrenIds
     )
@@ -466,7 +466,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Disconnect multiple FlightDealsItems records from Packages
     /// </summary>
-    public async Task DisconnectFlightDealsItems(
+    public async Task DisconnectFlightDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         FlightDealsWhereUniqueInput[] childrenIds
     )
@@ -493,7 +493,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find multiple FlightDealsItems records for Packages
     /// </summary>
-    public async Task<List<FlightDeals>> FindFlightDealsItems(
+    public async Task<List<FlightDeals>> FindFlightDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         FlightDealFindManyArgs packageFindManyArgs
     )
@@ -541,7 +541,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Connect multiple GalleriesItems records to Packages
     /// </summary>
-    public async Task ConnectGalleriesItems(
+    public async Task ConnectGalleriesSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GalleriesWhereUniqueInput[] childrenIds
     )
@@ -575,7 +575,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Disconnect multiple GalleriesItems records from Packages
     /// </summary>
-    public async Task DisconnectGalleriesItems(
+    public async Task DisconnectGalleriesSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GalleriesWhereUniqueInput[] childrenIds
     )
@@ -602,7 +602,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find multiple GalleriesItems records for Packages
     /// </summary>
-    public async Task<List<Galleries>> FindGalleriesItems(
+    public async Task<List<Galleries>> FindGalleriesSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GallerieFindManyArgs packageFindManyArgs
     )
@@ -650,7 +650,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Connect multiple GoodToKnowsItems records to Packages
     /// </summary>
-    public async Task ConnectGoodToKnowsItems(
+    public async Task ConnectGoodToKnowsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GoodToKnowsWhereUniqueInput[] childrenIds
     )
@@ -684,7 +684,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Disconnect multiple GoodToKnowsItems records from Packages
     /// </summary>
-    public async Task DisconnectGoodToKnowsItems(
+    public async Task DisconnectGoodToKnowsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GoodToKnowsWhereUniqueInput[] childrenIds
     )
@@ -711,7 +711,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find multiple GoodToKnowsItems records for Packages
     /// </summary>
-    public async Task<List<GoodToKnows>> FindGoodToKnowsItems(
+    public async Task<List<GoodToKnows>> FindGoodToKnowsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         GoodToKnowFindManyArgs packageFindManyArgs
     )
@@ -759,7 +759,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Connect multiple HotelDealsItems records to Packages
     /// </summary>
-    public async Task ConnectHotelDealsItems(
+    public async Task ConnectHotelDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         HotelDealsWhereUniqueInput[] childrenIds
     )
@@ -793,7 +793,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Disconnect multiple HotelDealsItems records from Packages
     /// </summary>
-    public async Task DisconnectHotelDealsItems(
+    public async Task DisconnectHotelDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         HotelDealsWhereUniqueInput[] childrenIds
     )
@@ -820,7 +820,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find multiple HotelDealsItems records for Packages
     /// </summary>
-    public async Task<List<HotelDeals>> FindHotelDealsItems(
+    public async Task<List<HotelDeals>> FindHotelDealsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         HotelDealFindManyArgs packageFindManyArgs
     )
@@ -868,7 +868,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Connect multiple PackageAttractionsItems records to Packages
     /// </summary>
-    public async Task ConnectPackageAttractionsItems(
+    public async Task ConnectPackageAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageAttractionsWhereUniqueInput[] childrenIds
     )
@@ -902,7 +902,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Disconnect multiple PackageAttractionsItems records from Packages
     /// </summary>
-    public async Task DisconnectPackageAttractionsItems(
+    public async Task DisconnectPackageAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageAttractionsWhereUniqueInput[] childrenIds
     )
@@ -929,7 +929,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find multiple PackageAttractionsItems records for Packages
     /// </summary>
-    public async Task<List<PackageAttractions>> FindPackageAttractionsItems(
+    public async Task<List<PackageAttractions>> FindPackageAttractionsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageAttractionFindManyArgs packageFindManyArgs
     )
@@ -977,7 +977,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Connect multiple PackageBookingsItems records to Packages
     /// </summary>
-    public async Task ConnectPackageBookingsItems(
+    public async Task ConnectPackageBookingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] childrenIds
     )
@@ -1011,7 +1011,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Disconnect multiple PackageBookingsItems records from Packages
     /// </summary>
-    public async Task DisconnectPackageBookingsItems(
+    public async Task DisconnectPackageBookingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] childrenIds
     )
@@ -1038,7 +1038,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find multiple PackageBookingsItems records for Packages
     /// </summary>
-    public async Task<List<PackageBookings>> FindPackageBookingsItems(
+    public async Task<List<PackageBookings>> FindPackageBookingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageBookingFindManyArgs packageFindManyArgs
     )
@@ -1086,7 +1086,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Connect multiple PackageFlightsItems records to Packages
     /// </summary>
-    public async Task ConnectPackageFlightsItems(
+    public async Task ConnectPackageFlightsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageFlightsWhereUniqueInput[] childrenIds
     )
@@ -1120,7 +1120,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Disconnect multiple PackageFlightsItems records from Packages
     /// </summary>
-    public async Task DisconnectPackageFlightsItems(
+    public async Task DisconnectPackageFlightsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageFlightsWhereUniqueInput[] childrenIds
     )
@@ -1147,7 +1147,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find multiple PackageFlightsItems records for Packages
     /// </summary>
-    public async Task<List<PackageFlights>> FindPackageFlightsItems(
+    public async Task<List<PackageFlights>> FindPackageFlightsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageFlightFindManyArgs packageFindManyArgs
     )
@@ -1195,7 +1195,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Connect multiple PackageHotelsItems records to Packages
     /// </summary>
-    public async Task ConnectPackageHotelsItems(
+    public async Task ConnectPackageHotelsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageHotelsWhereUniqueInput[] childrenIds
     )
@@ -1229,7 +1229,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Disconnect multiple PackageHotelsItems records from Packages
     /// </summary>
-    public async Task DisconnectPackageHotelsItems(
+    public async Task DisconnectPackageHotelsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageHotelsWhereUniqueInput[] childrenIds
     )
@@ -1256,7 +1256,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find multiple PackageHotelsItems records for Packages
     /// </summary>
-    public async Task<List<PackageHotels>> FindPackageHotelsItems(
+    public async Task<List<PackageHotels>> FindPackageHotelsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         PackageHotelFindManyArgs packageFindManyArgs
     )
@@ -1304,7 +1304,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Connect multiple SightSeeingsItems records to Packages
     /// </summary>
-    public async Task ConnectSightSeeingsItems(
+    public async Task ConnectSightSeeingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] childrenIds
     )
@@ -1338,7 +1338,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Disconnect multiple SightSeeingsItems records from Packages
     /// </summary>
-    public async Task DisconnectSightSeeingsItems(
+    public async Task DisconnectSightSeeingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] childrenIds
     )
@@ -1365,7 +1365,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Find multiple SightSeeingsItems records for Packages
     /// </summary>
-    public async Task<List<SightSeeings>> FindSightSeeingsItems(
+    public async Task<List<SightSeeings>> FindSightSeeingsSearchAsync(
         PackagesWhereUniqueInput uniqueId,
         SightSeeingFindManyArgs packageFindManyArgs
     )

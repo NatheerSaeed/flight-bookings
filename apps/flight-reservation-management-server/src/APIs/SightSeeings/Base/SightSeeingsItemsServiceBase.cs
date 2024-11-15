@@ -80,7 +80,7 @@ public abstract class SightSeeingsServiceBase : ISightSeeingsService
     /// <summary>
     /// Find many SightSeeingsItems
     /// </summary>
-    public async Task<List<SightSeeings>> SightSeeingsItems(SightSeeingFindManyArgs findManyArgs)
+    public async Task<List<SightSeeings>> SightSeeingsSearchAsync(SightSeeingFindManyArgs findManyArgs)
     {
         var sightSeeingsItems = await _context
             .SightSeeingsItems.Include(x => x.Attraction)
@@ -108,7 +108,7 @@ public abstract class SightSeeingsServiceBase : ISightSeeingsService
     /// </summary>
     public async Task<SightSeeings> SightSeeings(SightSeeingsWhereUniqueInput uniqueId)
     {
-        var sightSeeingsItems = await this.SightSeeingsItems(
+        var sightSeeingsItems = await this.SightSeeingsSearchAsync(
             new SightSeeingFindManyArgs { Where = new SightSeeingWhereInput { Id = uniqueId.Id } }
         );
         var sightSeeings = sightSeeingsItems.FirstOrDefault();
