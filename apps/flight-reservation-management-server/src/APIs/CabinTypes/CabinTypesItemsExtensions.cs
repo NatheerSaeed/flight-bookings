@@ -9,6 +9,8 @@ public static class CabinTypesItemsExtensions
     {
         return new CabinTypes
         {
+            CabinCode = model.CabinCode,
+            CabinName = model.CabinName,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
             UpdatedAt = model.UpdatedAt,
@@ -20,7 +22,12 @@ public static class CabinTypesItemsExtensions
         CabinTypesWhereUniqueInput uniqueId
     )
     {
-        var cabinTypes = new CabinTypesDbModel { Id = uniqueId.Id };
+        var cabinTypes = new CabinTypesDbModel
+        {
+            Id = uniqueId.Id,
+            CabinCode = updateDto.CabinCode,
+            CabinName = updateDto.CabinName
+        };
 
         if (updateDto.CreatedAt != null)
         {

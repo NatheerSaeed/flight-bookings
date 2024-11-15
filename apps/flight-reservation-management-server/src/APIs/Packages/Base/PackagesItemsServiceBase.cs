@@ -51,11 +51,49 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
                 .ToListAsync();
         }
 
+        if (createDto.GalleriesItems != null)
+        {
+            packages.GalleriesItems = await _context
+                .GalleriesItems.Where(galleries =>
+                    createDto.GalleriesItems.Select(t => t.Id).Contains(galleries.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (createDto.GoodToKnowsItems != null)
+        {
+            packages.GoodToKnowsItems = await _context
+                .GoodToKnowsItems.Where(goodToKnows =>
+                    createDto.GoodToKnowsItems.Select(t => t.Id).Contains(goodToKnows.Id)
+                )
+                .ToListAsync();
+        }
+
         if (createDto.HotelDealsItems != null)
         {
             packages.HotelDealsItems = await _context
                 .HotelDealsItems.Where(hotelDeals =>
                     createDto.HotelDealsItems.Select(t => t.Id).Contains(hotelDeals.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (createDto.PackageAttractionsItems != null)
+        {
+            packages.PackageAttractionsItems = await _context
+                .PackageAttractionsItems.Where(packageAttractions =>
+                    createDto
+                        .PackageAttractionsItems.Select(t => t.Id)
+                        .Contains(packageAttractions.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (createDto.PackageBookingsItems != null)
+        {
+            packages.PackageBookingsItems = await _context
+                .PackageBookingsItems.Where(packageBookings =>
+                    createDto.PackageBookingsItems.Select(t => t.Id).Contains(packageBookings.Id)
                 )
                 .ToListAsync();
         }
@@ -121,11 +159,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     public async Task<List<Packages>> PackagesItems(PackagesFindManyArgs findManyArgs)
     {
         var packagesItems = await _context
-            .PackagesItems.Include(x => x.SightSeeingsItems)
+            .PackagesItems.Include(x => x.GoodToKnowsItems)
+            .Include(x => x.GalleriesItems)
+            .Include(x => x.SightSeeingsItems)
             .Include(x => x.PackageHotelsItems)
             .Include(x => x.AttractionsItems)
             .Include(x => x.FlightDealsItems)
             .Include(x => x.HotelDealsItems)
+            .Include(x => x.PackageAttractionsItems)
+            .Include(x => x.PackageBookingsItems)
             .Include(x => x.PackageFlightsItems)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
@@ -190,11 +232,47 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
                 .ToListAsync();
         }
 
+        if (updateDto.GalleriesItems != null)
+        {
+            packages.GalleriesItems = await _context
+                .GalleriesItems.Where(galleries =>
+                    updateDto.GalleriesItems.Select(t => t).Contains(galleries.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.GoodToKnowsItems != null)
+        {
+            packages.GoodToKnowsItems = await _context
+                .GoodToKnowsItems.Where(goodToKnows =>
+                    updateDto.GoodToKnowsItems.Select(t => t).Contains(goodToKnows.Id)
+                )
+                .ToListAsync();
+        }
+
         if (updateDto.HotelDealsItems != null)
         {
             packages.HotelDealsItems = await _context
                 .HotelDealsItems.Where(hotelDeals =>
                     updateDto.HotelDealsItems.Select(t => t).Contains(hotelDeals.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.PackageAttractionsItems != null)
+        {
+            packages.PackageAttractionsItems = await _context
+                .PackageAttractionsItems.Where(packageAttractions =>
+                    updateDto.PackageAttractionsItems.Select(t => t).Contains(packageAttractions.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.PackageBookingsItems != null)
+        {
+            packages.PackageBookingsItems = await _context
+                .PackageBookingsItems.Where(packageBookings =>
+                    updateDto.PackageBookingsItems.Select(t => t).Contains(packageBookings.Id)
                 )
                 .ToListAsync();
         }
@@ -464,6 +542,224 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     }
 
     /// <summary>
+    /// Connect multiple GalleriesItems records to Packages
+    /// </summary>
+    public async Task ConnectGalleriesItems(
+        PackagesWhereUniqueInput uniqueId,
+        GalleriesWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .PackagesItems.Include(x => x.GalleriesItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .GalleriesItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.GalleriesItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.GalleriesItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple GalleriesItems records from Packages
+    /// </summary>
+    public async Task DisconnectGalleriesItems(
+        PackagesWhereUniqueInput uniqueId,
+        GalleriesWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .PackagesItems.Include(x => x.GalleriesItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .GalleriesItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.GalleriesItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple GalleriesItems records for Packages
+    /// </summary>
+    public async Task<List<Galleries>> FindGalleriesItems(
+        PackagesWhereUniqueInput uniqueId,
+        GalleriesFindManyArgs packagesFindManyArgs
+    )
+    {
+        var galleriesItems = await _context
+            .GalleriesItems.Where(m => m.PackageFieldId == uniqueId.Id)
+            .ApplyWhere(packagesFindManyArgs.Where)
+            .ApplySkip(packagesFindManyArgs.Skip)
+            .ApplyTake(packagesFindManyArgs.Take)
+            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return galleriesItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple GalleriesItems records for Packages
+    /// </summary>
+    public async Task UpdateGalleriesItems(
+        PackagesWhereUniqueInput uniqueId,
+        GalleriesWhereUniqueInput[] childrenIds
+    )
+    {
+        var packages = await _context
+            .PackagesItems.Include(t => t.GalleriesItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (packages == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .GalleriesItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        packages.GalleriesItems = children;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Connect multiple GoodToKnowsItems records to Packages
+    /// </summary>
+    public async Task ConnectGoodToKnowsItems(
+        PackagesWhereUniqueInput uniqueId,
+        GoodToKnowsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .PackagesItems.Include(x => x.GoodToKnowsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .GoodToKnowsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.GoodToKnowsItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.GoodToKnowsItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple GoodToKnowsItems records from Packages
+    /// </summary>
+    public async Task DisconnectGoodToKnowsItems(
+        PackagesWhereUniqueInput uniqueId,
+        GoodToKnowsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .PackagesItems.Include(x => x.GoodToKnowsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .GoodToKnowsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.GoodToKnowsItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple GoodToKnowsItems records for Packages
+    /// </summary>
+    public async Task<List<GoodToKnows>> FindGoodToKnowsItems(
+        PackagesWhereUniqueInput uniqueId,
+        GoodToKnowsFindManyArgs packagesFindManyArgs
+    )
+    {
+        var goodToKnowsItems = await _context
+            .GoodToKnowsItems.Where(m => m.PackageFieldId == uniqueId.Id)
+            .ApplyWhere(packagesFindManyArgs.Where)
+            .ApplySkip(packagesFindManyArgs.Skip)
+            .ApplyTake(packagesFindManyArgs.Take)
+            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return goodToKnowsItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple GoodToKnowsItems records for Packages
+    /// </summary>
+    public async Task UpdateGoodToKnowsItems(
+        PackagesWhereUniqueInput uniqueId,
+        GoodToKnowsWhereUniqueInput[] childrenIds
+    )
+    {
+        var packages = await _context
+            .PackagesItems.Include(t => t.GoodToKnowsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (packages == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .GoodToKnowsItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        packages.GoodToKnowsItems = children;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
     /// Connect multiple HotelDealsItems records to Packages
     /// </summary>
     public async Task ConnectHotelDealsItems(
@@ -569,6 +865,224 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
         }
 
         packages.HotelDealsItems = children;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Connect multiple PackageAttractionsItems records to Packages
+    /// </summary>
+    public async Task ConnectPackageAttractionsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageAttractionsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .PackagesItems.Include(x => x.PackageAttractionsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .PackageAttractionsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.PackageAttractionsItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.PackageAttractionsItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple PackageAttractionsItems records from Packages
+    /// </summary>
+    public async Task DisconnectPackageAttractionsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageAttractionsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .PackagesItems.Include(x => x.PackageAttractionsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .PackageAttractionsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.PackageAttractionsItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple PackageAttractionsItems records for Packages
+    /// </summary>
+    public async Task<List<PackageAttractions>> FindPackageAttractionsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageAttractionsFindManyArgs packagesFindManyArgs
+    )
+    {
+        var packageAttractionsItems = await _context
+            .PackageAttractionsItems.Where(m => m.PackageFieldId == uniqueId.Id)
+            .ApplyWhere(packagesFindManyArgs.Where)
+            .ApplySkip(packagesFindManyArgs.Skip)
+            .ApplyTake(packagesFindManyArgs.Take)
+            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return packageAttractionsItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple PackageAttractionsItems records for Packages
+    /// </summary>
+    public async Task UpdatePackageAttractionsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageAttractionsWhereUniqueInput[] childrenIds
+    )
+    {
+        var packages = await _context
+            .PackagesItems.Include(t => t.PackageAttractionsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (packages == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .PackageAttractionsItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        packages.PackageAttractionsItems = children;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Connect multiple PackageBookingsItems records to Packages
+    /// </summary>
+    public async Task ConnectPackageBookingsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .PackagesItems.Include(x => x.PackageBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .PackageBookingsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.PackageBookingsItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.PackageBookingsItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple PackageBookingsItems records from Packages
+    /// </summary>
+    public async Task DisconnectPackageBookingsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .PackagesItems.Include(x => x.PackageBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .PackageBookingsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.PackageBookingsItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple PackageBookingsItems records for Packages
+    /// </summary>
+    public async Task<List<PackageBookings>> FindPackageBookingsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageBookingsFindManyArgs packagesFindManyArgs
+    )
+    {
+        var packageBookingsItems = await _context
+            .PackageBookingsItems.Where(m => m.PackageFieldId == uniqueId.Id)
+            .ApplyWhere(packagesFindManyArgs.Where)
+            .ApplySkip(packagesFindManyArgs.Skip)
+            .ApplyTake(packagesFindManyArgs.Take)
+            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return packageBookingsItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple PackageBookingsItems records for Packages
+    /// </summary>
+    public async Task UpdatePackageBookingsItems(
+        PackagesWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var packages = await _context
+            .PackagesItems.Include(t => t.PackageBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (packages == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .PackageBookingsItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        packages.PackageBookingsItems = children;
         await _context.SaveChangesAsync();
     }
 

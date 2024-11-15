@@ -37,4 +37,9 @@ public interface IGoodToKnowsItemsService
         GoodToKnowsWhereUniqueInput uniqueId,
         GoodToKnowsUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a package_ record for GoodToKnows
+    /// </summary>
+    public Task<Packages> GetPackageField(GoodToKnowsWhereUniqueInput uniqueId);
 }

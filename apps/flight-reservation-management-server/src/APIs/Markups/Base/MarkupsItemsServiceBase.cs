@@ -25,13 +25,27 @@ public abstract class MarkupsItemsServiceBase : IMarkupsItemsService
     {
         var markups = new MarkupsDbModel
         {
+            CarMarkupType = createDto.CarMarkupType,
+            CarMarkupValue = createDto.CarMarkupValue,
             CreatedAt = createDto.CreatedAt,
+            FlightMarkupType = createDto.FlightMarkupType,
+            FlightMarkupValue = createDto.FlightMarkupValue,
+            HotelMarkupType = createDto.HotelMarkupType,
+            HotelMarkupValue = createDto.HotelMarkupValue,
+            PackageMarkupType = createDto.PackageMarkupType,
+            PackageMarkupValue = createDto.PackageMarkupValue,
             UpdatedAt = createDto.UpdatedAt
         };
 
         if (createDto.Id != null)
         {
             markups.Id = createDto.Id;
+        }
+        if (createDto.Role != null)
+        {
+            markups.Role = await _context
+                .RolesItems.Where(roles => createDto.Role.Id == roles.Id)
+                .FirstOrDefaultAsync();
         }
 
         _context.MarkupsItems.Add(markups);
@@ -68,7 +82,8 @@ public abstract class MarkupsItemsServiceBase : IMarkupsItemsService
     public async Task<List<Markups>> MarkupsItems(MarkupsFindManyArgs findManyArgs)
     {
         var markupsItems = await _context
-            .MarkupsItems.ApplyWhere(findManyArgs.Where)
+            .MarkupsItems.Include(x => x.Role)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -110,6 +125,13 @@ public abstract class MarkupsItemsServiceBase : IMarkupsItemsService
     {
         var markups = updateDto.ToModel(uniqueId);
 
+        if (updateDto.Role != null)
+        {
+            markups.Role = await _context
+                .RolesItems.Where(roles => updateDto.Role == roles.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.Entry(markups).State = EntityState.Modified;
 
         try
@@ -127,5 +149,21 @@ public abstract class MarkupsItemsServiceBase : IMarkupsItemsService
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a role_ record for Markups
+    /// </summary>
+    public async Task<Roles> GetRole(MarkupsWhereUniqueInput uniqueId)
+    {
+        var markups = await _context
+            .MarkupsItems.Where(markups => markups.Id == uniqueId.Id)
+            .Include(markups => markups.Role)
+            .FirstOrDefaultAsync();
+        if (markups == null)
+        {
+            throw new NotFoundException();
+        }
+        return markups.Role.ToDto();
     }
 }

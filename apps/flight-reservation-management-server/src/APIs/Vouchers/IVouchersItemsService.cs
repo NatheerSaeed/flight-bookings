@@ -36,6 +36,38 @@ public interface IVouchersItemsService
     public Task UpdateVouchers(VouchersWhereUniqueInput uniqueId, VouchersUpdateInput updateDto);
 
     /// <summary>
+    /// Connect multiple FlightBookingsItems records to Vouchers
+    /// </summary>
+    public Task ConnectFlightBookingsItems(
+        VouchersWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] flightBookingsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple FlightBookingsItems records from Vouchers
+    /// </summary>
+    public Task DisconnectFlightBookingsItems(
+        VouchersWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] flightBookingsId
+    );
+
+    /// <summary>
+    /// Find multiple FlightBookingsItems records for Vouchers
+    /// </summary>
+    public Task<List<FlightBookings>> FindFlightBookingsItems(
+        VouchersWhereUniqueInput uniqueId,
+        FlightBookingsFindManyArgs FlightBookingsFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple FlightBookingsItems records for Vouchers
+    /// </summary>
+    public Task UpdateFlightBookingsItems(
+        VouchersWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] flightBookingsId
+    );
+
+    /// <summary>
     /// Connect multiple HotelBookingsItems records to Vouchers
     /// </summary>
     public Task ConnectHotelBookingsItems(

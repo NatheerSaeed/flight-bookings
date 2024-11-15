@@ -25,13 +25,26 @@ public abstract class OnlinePaymentsItemsServiceBase : IOnlinePaymentsItemsServi
     {
         var onlinePayments = new OnlinePaymentsDbModel
         {
+            Amount = createDto.Amount,
+            BookingReference = createDto.BookingReference,
             CreatedAt = createDto.CreatedAt,
+            PaymentStatus = createDto.PaymentStatus,
+            Reference = createDto.Reference,
+            ResponseCode = createDto.ResponseCode,
+            ResponseDescription = createDto.ResponseDescription,
+            ResponseFull = createDto.ResponseFull,
             UpdatedAt = createDto.UpdatedAt
         };
 
         if (createDto.Id != null)
         {
             onlinePayments.Id = createDto.Id;
+        }
+        if (createDto.User != null)
+        {
+            onlinePayments.User = await _context
+                .Users.Where(user => createDto.User.Id == user.Id)
+                .FirstOrDefaultAsync();
         }
 
         _context.OnlinePaymentsItems.Add(onlinePayments);
@@ -70,7 +83,8 @@ public abstract class OnlinePaymentsItemsServiceBase : IOnlinePaymentsItemsServi
     )
     {
         var onlinePaymentsItems = await _context
-            .OnlinePaymentsItems.ApplyWhere(findManyArgs.Where)
+            .OnlinePaymentsItems.Include(x => x.User)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -118,6 +132,13 @@ public abstract class OnlinePaymentsItemsServiceBase : IOnlinePaymentsItemsServi
     {
         var onlinePayments = updateDto.ToModel(uniqueId);
 
+        if (updateDto.User != null)
+        {
+            onlinePayments.User = await _context
+                .Users.Where(user => updateDto.User == user.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.Entry(onlinePayments).State = EntityState.Modified;
 
         try
@@ -135,5 +156,21 @@ public abstract class OnlinePaymentsItemsServiceBase : IOnlinePaymentsItemsServi
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a user_ record for OnlinePayments
+    /// </summary>
+    public async Task<User> GetUser(OnlinePaymentsWhereUniqueInput uniqueId)
+    {
+        var onlinePayments = await _context
+            .OnlinePaymentsItems.Where(onlinePayments => onlinePayments.Id == uniqueId.Id)
+            .Include(onlinePayments => onlinePayments.User)
+            .FirstOrDefaultAsync();
+        if (onlinePayments == null)
+        {
+            throw new NotFoundException();
+        }
+        return onlinePayments.User.ToDto();
     }
 }

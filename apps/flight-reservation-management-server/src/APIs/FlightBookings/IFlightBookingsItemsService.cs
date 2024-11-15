@@ -37,4 +37,14 @@ public interface IFlightBookingsItemsService
         FlightBookingsWhereUniqueInput uniqueId,
         FlightBookingsUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a user_ record for FlightBookings
+    /// </summary>
+    public Task<User> GetUser(FlightBookingsWhereUniqueInput uniqueId);
+
+    /// <summary>
+    /// Get a voucher_ record for FlightBookings
+    /// </summary>
+    public Task<Vouchers> GetVoucher(FlightBookingsWhereUniqueInput uniqueId);
 }

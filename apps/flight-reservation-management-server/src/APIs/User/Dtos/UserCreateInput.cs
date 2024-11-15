@@ -10,6 +10,10 @@ public class UserCreateInput
 
     public List<BankPayments>? BankPaymentsItems { get; set; }
 
+    public List<CarBookings>? CarBookingsItems { get; set; }
+
+    public List<CooperateCustomerProfiles>? CooperateCustomerProfilesItems { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public int? DeleteStatus { get; set; }
@@ -18,11 +22,17 @@ public class UserCreateInput
 
     public string? FirstName { get; set; }
 
+    public List<FlightBookings>? FlightBookingsItems { get; set; }
+
     public List<HotelBookings>? HotelBookingsItems { get; set; }
 
     public string? Id { get; set; }
 
     public string? LastName { get; set; }
+
+    public List<OnlinePayments>? OnlinePaymentsItems { get; set; }
+
+    public List<PackageBookings>? PackageBookingsItems { get; set; }
 
     public string Password { get; set; }
 

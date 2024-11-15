@@ -45,4 +45,9 @@ public interface ICooperateCustomerProfilesItemsService
         CooperateCustomerProfilesWhereUniqueInput uniqueId,
         CooperateCustomerProfilesUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a user_ record for CooperateCustomerProfiles
+    /// </summary>
+    public Task<User> GetUser(CooperateCustomerProfilesWhereUniqueInput uniqueId);
 }

@@ -25,13 +25,40 @@ public abstract class FlightBookingsItemsServiceBase : IFlightBookingsItemsServi
     {
         var flightBookings = new FlightBookingsDbModel
         {
+            CancelTicketStatus = createDto.CancelTicketStatus,
             CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
+            IssueTicketStatus = createDto.IssueTicketStatus,
+            ItineraryAmount = createDto.ItineraryAmount,
+            Markdown = createDto.Markdown,
+            Markup = createDto.Markup,
+            PaymentStatus = createDto.PaymentStatus,
+            Pnr = createDto.Pnr,
+            PnrRequestResponse = createDto.PnrRequestResponse,
+            Reference = createDto.Reference,
+            TicketTimeLimit = createDto.TicketTimeLimit,
+            TotalAmount = createDto.TotalAmount,
+            UpdatedAt = createDto.UpdatedAt,
+            Vat = createDto.Vat,
+            VoidTicketStatus = createDto.VoidTicketStatus,
+            VoucherAmount = createDto.VoucherAmount
         };
 
         if (createDto.Id != null)
         {
             flightBookings.Id = createDto.Id;
+        }
+        if (createDto.User != null)
+        {
+            flightBookings.User = await _context
+                .Users.Where(user => createDto.User.Id == user.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        if (createDto.Voucher != null)
+        {
+            flightBookings.Voucher = await _context
+                .VouchersItems.Where(vouchers => createDto.Voucher.Id == vouchers.Id)
+                .FirstOrDefaultAsync();
         }
 
         _context.FlightBookingsItems.Add(flightBookings);
@@ -70,7 +97,9 @@ public abstract class FlightBookingsItemsServiceBase : IFlightBookingsItemsServi
     )
     {
         var flightBookingsItems = await _context
-            .FlightBookingsItems.ApplyWhere(findManyArgs.Where)
+            .FlightBookingsItems.Include(x => x.Voucher)
+            .Include(x => x.User)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -118,6 +147,20 @@ public abstract class FlightBookingsItemsServiceBase : IFlightBookingsItemsServi
     {
         var flightBookings = updateDto.ToModel(uniqueId);
 
+        if (updateDto.User != null)
+        {
+            flightBookings.User = await _context
+                .Users.Where(user => updateDto.User == user.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        if (updateDto.Voucher != null)
+        {
+            flightBookings.Voucher = await _context
+                .VouchersItems.Where(vouchers => updateDto.Voucher == vouchers.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.Entry(flightBookings).State = EntityState.Modified;
 
         try
@@ -135,5 +178,37 @@ public abstract class FlightBookingsItemsServiceBase : IFlightBookingsItemsServi
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a user_ record for FlightBookings
+    /// </summary>
+    public async Task<User> GetUser(FlightBookingsWhereUniqueInput uniqueId)
+    {
+        var flightBookings = await _context
+            .FlightBookingsItems.Where(flightBookings => flightBookings.Id == uniqueId.Id)
+            .Include(flightBookings => flightBookings.User)
+            .FirstOrDefaultAsync();
+        if (flightBookings == null)
+        {
+            throw new NotFoundException();
+        }
+        return flightBookings.User.ToDto();
+    }
+
+    /// <summary>
+    /// Get a voucher_ record for FlightBookings
+    /// </summary>
+    public async Task<Vouchers> GetVoucher(FlightBookingsWhereUniqueInput uniqueId)
+    {
+        var flightBookings = await _context
+            .FlightBookingsItems.Where(flightBookings => flightBookings.Id == uniqueId.Id)
+            .Include(flightBookings => flightBookings.Voucher)
+            .FirstOrDefaultAsync();
+        if (flightBookings == null)
+        {
+            throw new NotFoundException();
+        }
+        return flightBookings.Voucher.ToDto();
     }
 }

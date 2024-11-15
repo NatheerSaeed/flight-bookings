@@ -26,12 +26,21 @@ public abstract class GalleriesItemsServiceBase : IGalleriesItemsService
         var galleries = new GalleriesDbModel
         {
             CreatedAt = createDto.CreatedAt,
+            ImagePath = createDto.ImagePath,
+            ImageTypeId = createDto.ImageTypeId,
+            ParentId = createDto.ParentId,
             UpdatedAt = createDto.UpdatedAt
         };
 
         if (createDto.Id != null)
         {
             galleries.Id = createDto.Id;
+        }
+        if (createDto.PackageField != null)
+        {
+            galleries.PackageField = await _context
+                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .FirstOrDefaultAsync();
         }
 
         _context.GalleriesItems.Add(galleries);
@@ -68,7 +77,8 @@ public abstract class GalleriesItemsServiceBase : IGalleriesItemsService
     public async Task<List<Galleries>> GalleriesItems(GalleriesFindManyArgs findManyArgs)
     {
         var galleriesItems = await _context
-            .GalleriesItems.ApplyWhere(findManyArgs.Where)
+            .GalleriesItems.Include(x => x.PackageField)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -113,6 +123,13 @@ public abstract class GalleriesItemsServiceBase : IGalleriesItemsService
     {
         var galleries = updateDto.ToModel(uniqueId);
 
+        if (updateDto.PackageField != null)
+        {
+            galleries.PackageField = await _context
+                .PackagesItems.Where(packages => updateDto.PackageField == packages.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.Entry(galleries).State = EntityState.Modified;
 
         try
@@ -130,5 +147,21 @@ public abstract class GalleriesItemsServiceBase : IGalleriesItemsService
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a package_ record for Galleries
+    /// </summary>
+    public async Task<Packages> GetPackageField(GalleriesWhereUniqueInput uniqueId)
+    {
+        var galleries = await _context
+            .GalleriesItems.Where(galleries => galleries.Id == uniqueId.Id)
+            .Include(galleries => galleries.PackageField)
+            .FirstOrDefaultAsync();
+        if (galleries == null)
+        {
+            throw new NotFoundException();
+        }
+        return galleries.PackageField.ToDto();
     }
 }

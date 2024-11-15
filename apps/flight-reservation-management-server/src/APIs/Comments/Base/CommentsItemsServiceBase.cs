@@ -25,7 +25,11 @@ public abstract class CommentsItemsServiceBase : ICommentsItemsService
     {
         var comments = new CommentsDbModel
         {
+            Content = createDto.Content,
             CreatedAt = createDto.CreatedAt,
+            Email = createDto.Email,
+            Ip = createDto.Ip,
+            Name = createDto.Name,
             UpdatedAt = createDto.UpdatedAt
         };
 

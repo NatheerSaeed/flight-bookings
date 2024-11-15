@@ -37,4 +37,9 @@ public interface ICarBookingsItemsService
         CarBookingsWhereUniqueInput uniqueId,
         CarBookingsUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a user_ record for CarBookings
+    /// </summary>
+    public Task<User> GetUser(CarBookingsWhereUniqueInput uniqueId);
 }

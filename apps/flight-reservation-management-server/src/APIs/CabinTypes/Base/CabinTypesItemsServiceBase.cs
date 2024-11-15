@@ -25,6 +25,8 @@ public abstract class CabinTypesItemsServiceBase : ICabinTypesItemsService
     {
         var cabinTypes = new CabinTypesDbModel
         {
+            CabinCode = createDto.CabinCode,
+            CabinName = createDto.CabinName,
             CreatedAt = createDto.CreatedAt,
             UpdatedAt = createDto.UpdatedAt
         };

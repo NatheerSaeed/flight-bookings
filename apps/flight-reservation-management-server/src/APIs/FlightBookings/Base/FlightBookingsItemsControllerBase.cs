@@ -114,4 +114,28 @@ public abstract class FlightBookingsItemsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a user_ record for FlightBookings
+    /// </summary>
+    [HttpGet("{Id}/user")]
+    public async Task<ActionResult<List<User>>> GetUser(
+        [FromRoute()] FlightBookingsWhereUniqueInput uniqueId
+    )
+    {
+        var user = await _service.GetUser(uniqueId);
+        return Ok(user);
+    }
+
+    /// <summary>
+    /// Get a voucher_ record for FlightBookings
+    /// </summary>
+    [HttpGet("{Id}/voucher")]
+    public async Task<ActionResult<List<Vouchers>>> GetVoucher(
+        [FromRoute()] FlightBookingsWhereUniqueInput uniqueId
+    )
+    {
+        var vouchers = await _service.GetVoucher(uniqueId);
+        return Ok(vouchers);
+    }
 }

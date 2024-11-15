@@ -348,6 +348,263 @@ public abstract class UsersControllerBase : ControllerBase
     }
 
     /// <summary>
+    /// Connect multiple CarBookingsItems records to User
+    /// </summary>
+    [HttpPost("{Id}/carBookingsItems")]
+    public async Task<ActionResult> ConnectCarBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromQuery()] CarBookingsWhereUniqueInput[] carBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectCarBookingsItems(uniqueId, carBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple CarBookingsItems records from User
+    /// </summary>
+    [HttpDelete("{Id}/carBookingsItems")]
+    public async Task<ActionResult> DisconnectCarBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromBody()] CarBookingsWhereUniqueInput[] carBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectCarBookingsItems(uniqueId, carBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple CarBookingsItems records for User
+    /// </summary>
+    [HttpGet("{Id}/carBookingsItems")]
+    public async Task<ActionResult<List<CarBookings>>> FindCarBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromQuery()] CarBookingsFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindCarBookingsItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple CarBookingsItems records for User
+    /// </summary>
+    [HttpPatch("{Id}/carBookingsItems")]
+    public async Task<ActionResult> UpdateCarBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromBody()] CarBookingsWhereUniqueInput[] carBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdateCarBookingsItems(uniqueId, carBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Connect multiple CooperateCustomerProfilesItems records to User
+    /// </summary>
+    [HttpPost("{Id}/cooperateCustomerProfilesItems")]
+    public async Task<ActionResult> ConnectCooperateCustomerProfilesItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromQuery()] CooperateCustomerProfilesWhereUniqueInput[] cooperateCustomerProfilesItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectCooperateCustomerProfilesItems(
+                uniqueId,
+                cooperateCustomerProfilesItemsId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple CooperateCustomerProfilesItems records from User
+    /// </summary>
+    [HttpDelete("{Id}/cooperateCustomerProfilesItems")]
+    public async Task<ActionResult> DisconnectCooperateCustomerProfilesItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromBody()] CooperateCustomerProfilesWhereUniqueInput[] cooperateCustomerProfilesItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectCooperateCustomerProfilesItems(
+                uniqueId,
+                cooperateCustomerProfilesItemsId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple CooperateCustomerProfilesItems records for User
+    /// </summary>
+    [HttpGet("{Id}/cooperateCustomerProfilesItems")]
+    public async Task<
+        ActionResult<List<CooperateCustomerProfiles>>
+    > FindCooperateCustomerProfilesItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromQuery()] CooperateCustomerProfilesFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindCooperateCustomerProfilesItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple CooperateCustomerProfilesItems records for User
+    /// </summary>
+    [HttpPatch("{Id}/cooperateCustomerProfilesItems")]
+    public async Task<ActionResult> UpdateCooperateCustomerProfilesItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromBody()] CooperateCustomerProfilesWhereUniqueInput[] cooperateCustomerProfilesItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdateCooperateCustomerProfilesItems(
+                uniqueId,
+                cooperateCustomerProfilesItemsId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Connect multiple FlightBookingsItems records to User
+    /// </summary>
+    [HttpPost("{Id}/flightBookingsItems")]
+    public async Task<ActionResult> ConnectFlightBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromQuery()] FlightBookingsWhereUniqueInput[] flightBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectFlightBookingsItems(uniqueId, flightBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple FlightBookingsItems records from User
+    /// </summary>
+    [HttpDelete("{Id}/flightBookingsItems")]
+    public async Task<ActionResult> DisconnectFlightBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromBody()] FlightBookingsWhereUniqueInput[] flightBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectFlightBookingsItems(uniqueId, flightBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple FlightBookingsItems records for User
+    /// </summary>
+    [HttpGet("{Id}/flightBookingsItems")]
+    public async Task<ActionResult<List<FlightBookings>>> FindFlightBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromQuery()] FlightBookingsFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindFlightBookingsItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple FlightBookingsItems records for User
+    /// </summary>
+    [HttpPatch("{Id}/flightBookingsItems")]
+    public async Task<ActionResult> UpdateFlightBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromBody()] FlightBookingsWhereUniqueInput[] flightBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdateFlightBookingsItems(uniqueId, flightBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
     /// Connect multiple HotelBookingsItems records to User
     /// </summary>
     [HttpPost("{Id}/hotelBookingsItems")]
@@ -420,6 +677,170 @@ public abstract class UsersControllerBase : ControllerBase
         try
         {
             await _service.UpdateHotelBookingsItems(uniqueId, hotelBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Connect multiple OnlinePaymentsItems records to User
+    /// </summary>
+    [HttpPost("{Id}/onlinePaymentsItems")]
+    public async Task<ActionResult> ConnectOnlinePaymentsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromQuery()] OnlinePaymentsWhereUniqueInput[] onlinePaymentsItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectOnlinePaymentsItems(uniqueId, onlinePaymentsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple OnlinePaymentsItems records from User
+    /// </summary>
+    [HttpDelete("{Id}/onlinePaymentsItems")]
+    public async Task<ActionResult> DisconnectOnlinePaymentsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromBody()] OnlinePaymentsWhereUniqueInput[] onlinePaymentsItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectOnlinePaymentsItems(uniqueId, onlinePaymentsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple OnlinePaymentsItems records for User
+    /// </summary>
+    [HttpGet("{Id}/onlinePaymentsItems")]
+    public async Task<ActionResult<List<OnlinePayments>>> FindOnlinePaymentsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromQuery()] OnlinePaymentsFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindOnlinePaymentsItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple OnlinePaymentsItems records for User
+    /// </summary>
+    [HttpPatch("{Id}/onlinePaymentsItems")]
+    public async Task<ActionResult> UpdateOnlinePaymentsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromBody()] OnlinePaymentsWhereUniqueInput[] onlinePaymentsItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdateOnlinePaymentsItems(uniqueId, onlinePaymentsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Connect multiple PackageBookingsItems records to User
+    /// </summary>
+    [HttpPost("{Id}/packageBookingsItems")]
+    public async Task<ActionResult> ConnectPackageBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromQuery()] PackageBookingsWhereUniqueInput[] packageBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectPackageBookingsItems(uniqueId, packageBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple PackageBookingsItems records from User
+    /// </summary>
+    [HttpDelete("{Id}/packageBookingsItems")]
+    public async Task<ActionResult> DisconnectPackageBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromBody()] PackageBookingsWhereUniqueInput[] packageBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectPackageBookingsItems(uniqueId, packageBookingsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple PackageBookingsItems records for User
+    /// </summary>
+    [HttpGet("{Id}/packageBookingsItems")]
+    public async Task<ActionResult<List<PackageBookings>>> FindPackageBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromQuery()] PackageBookingsFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindPackageBookingsItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple PackageBookingsItems records for User
+    /// </summary>
+    [HttpPatch("{Id}/packageBookingsItems")]
+    public async Task<ActionResult> UpdatePackageBookingsItems(
+        [FromRoute()] UserWhereUniqueInput uniqueId,
+        [FromBody()] PackageBookingsWhereUniqueInput[] packageBookingsItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdatePackageBookingsItems(uniqueId, packageBookingsItemsId);
         }
         catch (NotFoundException)
         {

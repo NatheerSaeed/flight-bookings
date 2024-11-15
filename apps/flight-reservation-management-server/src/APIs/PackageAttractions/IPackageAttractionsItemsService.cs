@@ -43,4 +43,9 @@ public interface IPackageAttractionsItemsService
         PackageAttractionsWhereUniqueInput uniqueId,
         PackageAttractionsUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a package_ record for PackageAttractions
+    /// </summary>
+    public Task<Packages> GetPackageField(PackageAttractionsWhereUniqueInput uniqueId);
 }

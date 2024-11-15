@@ -15,6 +15,9 @@ public class VouchersDbModel
     [Required()]
     public DateTime CreatedAt { get; set; }
 
+    public List<FlightBookingsDbModel>? FlightBookingsItems { get; set; } =
+        new List<FlightBookingsDbModel>();
+
     public List<HotelBookingsDbModel>? HotelBookingsItems { get; set; } =
         new List<HotelBookingsDbModel>();
 

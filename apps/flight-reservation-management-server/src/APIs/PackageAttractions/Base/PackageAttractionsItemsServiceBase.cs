@@ -27,6 +27,8 @@ public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsIt
     {
         var packageAttractions = new PackageAttractionsDbModel
         {
+            Address = createDto.Address,
+            AttractionName = createDto.AttractionName,
             CreatedAt = createDto.CreatedAt,
             UpdatedAt = createDto.UpdatedAt
         };
@@ -34,6 +36,12 @@ public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsIt
         if (createDto.Id != null)
         {
             packageAttractions.Id = createDto.Id;
+        }
+        if (createDto.PackageField != null)
+        {
+            packageAttractions.PackageField = await _context
+                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .FirstOrDefaultAsync();
         }
 
         _context.PackageAttractionsItems.Add(packageAttractions);
@@ -72,7 +80,8 @@ public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsIt
     )
     {
         var packageAttractionsItems = await _context
-            .PackageAttractionsItems.ApplyWhere(findManyArgs.Where)
+            .PackageAttractionsItems.Include(x => x.PackageField)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -126,6 +135,13 @@ public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsIt
     {
         var packageAttractions = updateDto.ToModel(uniqueId);
 
+        if (updateDto.PackageField != null)
+        {
+            packageAttractions.PackageField = await _context
+                .PackagesItems.Where(packages => updateDto.PackageField == packages.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.Entry(packageAttractions).State = EntityState.Modified;
 
         try
@@ -143,5 +159,23 @@ public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsIt
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a package_ record for PackageAttractions
+    /// </summary>
+    public async Task<Packages> GetPackageField(PackageAttractionsWhereUniqueInput uniqueId)
+    {
+        var packageAttractions = await _context
+            .PackageAttractionsItems.Where(packageAttractions =>
+                packageAttractions.Id == uniqueId.Id
+            )
+            .Include(packageAttractions => packageAttractions.PackageField)
+            .FirstOrDefaultAsync();
+        if (packageAttractions == null)
+        {
+            throw new NotFoundException();
+        }
+        return packageAttractions.PackageField.ToDto();
     }
 }

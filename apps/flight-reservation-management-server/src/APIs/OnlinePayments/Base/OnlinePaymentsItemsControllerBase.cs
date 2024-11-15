@@ -114,4 +114,16 @@ public abstract class OnlinePaymentsItemsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a user_ record for OnlinePayments
+    /// </summary>
+    [HttpGet("{Id}/user")]
+    public async Task<ActionResult<List<User>>> GetUser(
+        [FromRoute()] OnlinePaymentsWhereUniqueInput uniqueId
+    )
+    {
+        var user = await _service.GetUser(uniqueId);
+        return Ok(user);
+    }
 }

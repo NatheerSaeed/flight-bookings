@@ -36,6 +36,15 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
         {
             vouchers.Id = createDto.Id;
         }
+        if (createDto.FlightBookingsItems != null)
+        {
+            vouchers.FlightBookingsItems = await _context
+                .FlightBookingsItems.Where(flightBookings =>
+                    createDto.FlightBookingsItems.Select(t => t.Id).Contains(flightBookings.Id)
+                )
+                .ToListAsync();
+        }
+
         if (createDto.HotelBookingsItems != null)
         {
             vouchers.HotelBookingsItems = await _context
@@ -80,6 +89,7 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
     {
         var vouchersItems = await _context
             .VouchersItems.Include(x => x.HotelBookingsItems)
+            .Include(x => x.FlightBookingsItems)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -125,6 +135,15 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
     {
         var vouchers = updateDto.ToModel(uniqueId);
 
+        if (updateDto.FlightBookingsItems != null)
+        {
+            vouchers.FlightBookingsItems = await _context
+                .FlightBookingsItems.Where(flightBookings =>
+                    updateDto.FlightBookingsItems.Select(t => t).Contains(flightBookings.Id)
+                )
+                .ToListAsync();
+        }
+
         if (updateDto.HotelBookingsItems != null)
         {
             vouchers.HotelBookingsItems = await _context
@@ -151,6 +170,115 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Connect multiple FlightBookingsItems records to Vouchers
+    /// </summary>
+    public async Task ConnectFlightBookingsItems(
+        VouchersWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .VouchersItems.Include(x => x.FlightBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .FlightBookingsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.FlightBookingsItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.FlightBookingsItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple FlightBookingsItems records from Vouchers
+    /// </summary>
+    public async Task DisconnectFlightBookingsItems(
+        VouchersWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .VouchersItems.Include(x => x.FlightBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .FlightBookingsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.FlightBookingsItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple FlightBookingsItems records for Vouchers
+    /// </summary>
+    public async Task<List<FlightBookings>> FindFlightBookingsItems(
+        VouchersWhereUniqueInput uniqueId,
+        FlightBookingsFindManyArgs vouchersFindManyArgs
+    )
+    {
+        var flightBookingsItems = await _context
+            .FlightBookingsItems.Where(m => m.VoucherId == uniqueId.Id)
+            .ApplyWhere(vouchersFindManyArgs.Where)
+            .ApplySkip(vouchersFindManyArgs.Skip)
+            .ApplyTake(vouchersFindManyArgs.Take)
+            .ApplyOrderBy(vouchersFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return flightBookingsItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple FlightBookingsItems records for Vouchers
+    /// </summary>
+    public async Task UpdateFlightBookingsItems(
+        VouchersWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var vouchers = await _context
+            .VouchersItems.Include(t => t.FlightBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (vouchers == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .FlightBookingsItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        vouchers.FlightBookingsItems = children;
+        await _context.SaveChangesAsync();
     }
 
     /// <summary>

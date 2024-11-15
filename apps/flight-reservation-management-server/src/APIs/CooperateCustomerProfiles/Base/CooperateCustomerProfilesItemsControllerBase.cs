@@ -119,4 +119,16 @@ public abstract class CooperateCustomerProfilesItemsControllerBase : ControllerB
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a user_ record for CooperateCustomerProfiles
+    /// </summary>
+    [HttpGet("{Id}/user")]
+    public async Task<ActionResult<List<User>>> GetUser(
+        [FromRoute()] CooperateCustomerProfilesWhereUniqueInput uniqueId
+    )
+    {
+        var user = await _service.GetUser(uniqueId);
+        return Ok(user);
+    }
 }

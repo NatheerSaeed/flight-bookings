@@ -12,6 +12,8 @@ public class RolesUpdateInput
 
     public string? Id { get; set; }
 
+    public List<string>? MarkupsItems { get; set; }
+
     public string? Name { get; set; }
 
     public string? PermissionId { get; set; }

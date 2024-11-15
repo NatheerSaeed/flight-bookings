@@ -28,6 +28,14 @@ public abstract class CooperateCustomerProfilesItemsServiceBase
     {
         var cooperateCustomerProfiles = new CooperateCustomerProfilesDbModel
         {
+            CompanyAddress = createDto.CompanyAddress,
+            CompanyCacRcNumber = createDto.CompanyCacRcNumber,
+            CompanyContactPersonAddress = createDto.CompanyContactPersonAddress,
+            CompanyContactPersonEmail = createDto.CompanyContactPersonEmail,
+            CompanyContactPersonPhoneNumber = createDto.CompanyContactPersonPhoneNumber,
+            CompanyEmail = createDto.CompanyEmail,
+            CompanyName = createDto.CompanyName,
+            CompanyPhoneNumber = createDto.CompanyPhoneNumber,
             CreatedAt = createDto.CreatedAt,
             UpdatedAt = createDto.UpdatedAt
         };
@@ -35,6 +43,12 @@ public abstract class CooperateCustomerProfilesItemsServiceBase
         if (createDto.Id != null)
         {
             cooperateCustomerProfiles.Id = createDto.Id;
+        }
+        if (createDto.User != null)
+        {
+            cooperateCustomerProfiles.User = await _context
+                .Users.Where(user => createDto.User.Id == user.Id)
+                .FirstOrDefaultAsync();
         }
 
         _context.CooperateCustomerProfilesItems.Add(cooperateCustomerProfiles);
@@ -79,7 +93,8 @@ public abstract class CooperateCustomerProfilesItemsServiceBase
     )
     {
         var cooperateCustomerProfilesItems = await _context
-            .CooperateCustomerProfilesItems.ApplyWhere(findManyArgs.Where)
+            .CooperateCustomerProfilesItems.Include(x => x.User)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -135,6 +150,13 @@ public abstract class CooperateCustomerProfilesItemsServiceBase
     {
         var cooperateCustomerProfiles = updateDto.ToModel(uniqueId);
 
+        if (updateDto.User != null)
+        {
+            cooperateCustomerProfiles.User = await _context
+                .Users.Where(user => updateDto.User == user.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.Entry(cooperateCustomerProfiles).State = EntityState.Modified;
 
         try
@@ -156,5 +178,23 @@ public abstract class CooperateCustomerProfilesItemsServiceBase
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a user_ record for CooperateCustomerProfiles
+    /// </summary>
+    public async Task<User> GetUser(CooperateCustomerProfilesWhereUniqueInput uniqueId)
+    {
+        var cooperateCustomerProfiles = await _context
+            .CooperateCustomerProfilesItems.Where(cooperateCustomerProfiles =>
+                cooperateCustomerProfiles.Id == uniqueId.Id
+            )
+            .Include(cooperateCustomerProfiles => cooperateCustomerProfiles.User)
+            .FirstOrDefaultAsync();
+        if (cooperateCustomerProfiles == null)
+        {
+            throw new NotFoundException();
+        }
+        return cooperateCustomerProfiles.User.ToDto();
     }
 }

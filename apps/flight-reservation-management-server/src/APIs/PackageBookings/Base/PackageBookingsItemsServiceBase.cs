@@ -25,13 +25,39 @@ public abstract class PackageBookingsItemsServiceBase : IPackageBookingsItemsSer
     {
         var packageBookings = new PackageBookingsDbModel
         {
+            Adults = createDto.Adults,
+            BookingStatus = createDto.BookingStatus,
+            Children = createDto.Children,
             CreatedAt = createDto.CreatedAt,
+            CustomerEmail = createDto.CustomerEmail,
+            CustomerFirstName = createDto.CustomerFirstName,
+            CustomerOtherName = createDto.CustomerOtherName,
+            CustomerPhone = createDto.CustomerPhone,
+            CustomerSurName = createDto.CustomerSurName,
+            CustomerTitleId = createDto.CustomerTitleId,
+            Infants = createDto.Infants,
+            PaymentStatus = createDto.PaymentStatus,
+            Reference = createDto.Reference,
+            TotalAmount = createDto.TotalAmount,
             UpdatedAt = createDto.UpdatedAt
         };
 
         if (createDto.Id != null)
         {
             packageBookings.Id = createDto.Id;
+        }
+        if (createDto.PackageField != null)
+        {
+            packageBookings.PackageField = await _context
+                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        if (createDto.User != null)
+        {
+            packageBookings.User = await _context
+                .Users.Where(user => createDto.User.Id == user.Id)
+                .FirstOrDefaultAsync();
         }
 
         _context.PackageBookingsItems.Add(packageBookings);
@@ -70,7 +96,9 @@ public abstract class PackageBookingsItemsServiceBase : IPackageBookingsItemsSer
     )
     {
         var packageBookingsItems = await _context
-            .PackageBookingsItems.ApplyWhere(findManyArgs.Where)
+            .PackageBookingsItems.Include(x => x.PackageField)
+            .Include(x => x.User)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -120,6 +148,20 @@ public abstract class PackageBookingsItemsServiceBase : IPackageBookingsItemsSer
     {
         var packageBookings = updateDto.ToModel(uniqueId);
 
+        if (updateDto.PackageField != null)
+        {
+            packageBookings.PackageField = await _context
+                .PackagesItems.Where(packages => updateDto.PackageField == packages.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        if (updateDto.User != null)
+        {
+            packageBookings.User = await _context
+                .Users.Where(user => updateDto.User == user.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.Entry(packageBookings).State = EntityState.Modified;
 
         try
@@ -137,5 +179,37 @@ public abstract class PackageBookingsItemsServiceBase : IPackageBookingsItemsSer
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a package_ record for PackageBookings
+    /// </summary>
+    public async Task<Packages> GetPackageField(PackageBookingsWhereUniqueInput uniqueId)
+    {
+        var packageBookings = await _context
+            .PackageBookingsItems.Where(packageBookings => packageBookings.Id == uniqueId.Id)
+            .Include(packageBookings => packageBookings.PackageField)
+            .FirstOrDefaultAsync();
+        if (packageBookings == null)
+        {
+            throw new NotFoundException();
+        }
+        return packageBookings.PackageField.ToDto();
+    }
+
+    /// <summary>
+    /// Get a user_ record for PackageBookings
+    /// </summary>
+    public async Task<User> GetUser(PackageBookingsWhereUniqueInput uniqueId)
+    {
+        var packageBookings = await _context
+            .PackageBookingsItems.Where(packageBookings => packageBookings.Id == uniqueId.Id)
+            .Include(packageBookings => packageBookings.User)
+            .FirstOrDefaultAsync();
+        if (packageBookings == null)
+        {
+            throw new NotFoundException();
+        }
+        return packageBookings.User.ToDto();
     }
 }

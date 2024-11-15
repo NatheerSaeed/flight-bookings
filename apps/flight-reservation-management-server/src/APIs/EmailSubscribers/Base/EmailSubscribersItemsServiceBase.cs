@@ -28,6 +28,8 @@ public abstract class EmailSubscribersItemsServiceBase : IEmailSubscribersItemsS
         var emailSubscribers = new EmailSubscribersDbModel
         {
             CreatedAt = createDto.CreatedAt,
+            Email = createDto.Email,
+            IpAddress = createDto.IpAddress,
             UpdatedAt = createDto.UpdatedAt
         };
 

@@ -108,4 +108,16 @@ public abstract class GoodToKnowsItemsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a package_ record for GoodToKnows
+    /// </summary>
+    [HttpGet("{Id}/packageField")]
+    public async Task<ActionResult<List<Packages>>> GetPackageField(
+        [FromRoute()] GoodToKnowsWhereUniqueInput uniqueId
+    )
+    {
+        var packages = await _service.GetPackageField(uniqueId);
+        return Ok(packages);
+    }
 }

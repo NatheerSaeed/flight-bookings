@@ -12,6 +12,7 @@ public static class VouchersItemsExtensions
             Amount = model.Amount,
             Code = model.Code,
             CreatedAt = model.CreatedAt,
+            FlightBookingsItems = model.FlightBookingsItems?.Select(x => x.Id).ToList(),
             HotelBookingsItems = model.HotelBookingsItems?.Select(x => x.Id).ToList(),
             Id = model.Id,
             Status = model.Status,

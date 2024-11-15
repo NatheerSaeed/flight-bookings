@@ -186,6 +186,88 @@ public abstract class RolesItemsControllerBase : ControllerBase
     }
 
     /// <summary>
+    /// Connect multiple MarkupsItems records to Roles
+    /// </summary>
+    [HttpPost("{Id}/markupsItems")]
+    public async Task<ActionResult> ConnectMarkupsItems(
+        [FromRoute()] RolesWhereUniqueInput uniqueId,
+        [FromQuery()] MarkupsWhereUniqueInput[] markupsItemsId
+    )
+    {
+        try
+        {
+            await _service.ConnectMarkupsItems(uniqueId, markupsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple MarkupsItems records from Roles
+    /// </summary>
+    [HttpDelete("{Id}/markupsItems")]
+    public async Task<ActionResult> DisconnectMarkupsItems(
+        [FromRoute()] RolesWhereUniqueInput uniqueId,
+        [FromBody()] MarkupsWhereUniqueInput[] markupsItemsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectMarkupsItems(uniqueId, markupsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple MarkupsItems records for Roles
+    /// </summary>
+    [HttpGet("{Id}/markupsItems")]
+    public async Task<ActionResult<List<Markups>>> FindMarkupsItems(
+        [FromRoute()] RolesWhereUniqueInput uniqueId,
+        [FromQuery()] MarkupsFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindMarkupsItems(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple MarkupsItems records for Roles
+    /// </summary>
+    [HttpPatch("{Id}/markupsItems")]
+    public async Task<ActionResult> UpdateMarkupsItems(
+        [FromRoute()] RolesWhereUniqueInput uniqueId,
+        [FromBody()] MarkupsWhereUniqueInput[] markupsItemsId
+    )
+    {
+        try
+        {
+            await _service.UpdateMarkupsItems(uniqueId, markupsItemsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
     /// Get a role_ record for Roles
     /// </summary>
     [HttpGet("{Id}/role")]

@@ -9,9 +9,12 @@ public static class MarkdownsItemsExtensions
     {
         return new Markdowns
         {
+            AirlineCode = model.AirlineCode,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
+            TypeField = model.TypeField,
             UpdatedAt = model.UpdatedAt,
+            Value = model.Value,
         };
     }
 
@@ -20,7 +23,13 @@ public static class MarkdownsItemsExtensions
         MarkdownsWhereUniqueInput uniqueId
     )
     {
-        var markdowns = new MarkdownsDbModel { Id = uniqueId.Id };
+        var markdowns = new MarkdownsDbModel
+        {
+            Id = uniqueId.Id,
+            AirlineCode = updateDto.AirlineCode,
+            TypeField = updateDto.TypeField,
+            Value = updateDto.Value
+        };
 
         if (updateDto.CreatedAt != null)
         {

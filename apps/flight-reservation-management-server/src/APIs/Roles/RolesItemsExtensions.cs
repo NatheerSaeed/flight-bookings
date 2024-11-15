@@ -14,6 +14,7 @@ public static class RolesItemsExtensions
             DisplayName = model.DisplayName,
             HotelsItems = model.HotelsItems?.Select(x => x.Id).ToList(),
             Id = model.Id,
+            MarkupsItems = model.MarkupsItems?.Select(x => x.Id).ToList(),
             Name = model.Name,
             PermissionId = model.PermissionId,
             Role = model.RoleId,

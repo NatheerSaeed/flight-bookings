@@ -46,6 +46,15 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
                 .ToListAsync();
         }
 
+        if (createDto.MarkupsItems != null)
+        {
+            roles.MarkupsItems = await _context
+                .MarkupsItems.Where(markups =>
+                    createDto.MarkupsItems.Select(t => t.Id).Contains(markups.Id)
+                )
+                .ToListAsync();
+        }
+
         if (createDto.Role != null)
         {
             roles.Role = await _context
@@ -96,8 +105,9 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
     public async Task<List<Roles>> RolesItems(RolesFindManyArgs findManyArgs)
     {
         var rolesItems = await _context
-            .RolesItems.Include(x => x.HotelsItems)
-            .Include(x => x.Role)
+            .RolesItems.Include(x => x.Role)
+            .Include(x => x.HotelsItems)
+            .Include(x => x.MarkupsItems)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -145,6 +155,15 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
             roles.HotelsItems = await _context
                 .HotelsItems.Where(hotels =>
                     updateDto.HotelsItems.Select(t => t).Contains(hotels.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.MarkupsItems != null)
+        {
+            roles.MarkupsItems = await _context
+                .MarkupsItems.Where(markups =>
+                    updateDto.MarkupsItems.Select(t => t).Contains(markups.Id)
                 )
                 .ToListAsync();
         }
@@ -288,6 +307,115 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
         }
 
         roles.HotelsItems = children;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Connect multiple MarkupsItems records to Roles
+    /// </summary>
+    public async Task ConnectMarkupsItems(
+        RolesWhereUniqueInput uniqueId,
+        MarkupsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .RolesItems.Include(x => x.MarkupsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .MarkupsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.MarkupsItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.MarkupsItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple MarkupsItems records from Roles
+    /// </summary>
+    public async Task DisconnectMarkupsItems(
+        RolesWhereUniqueInput uniqueId,
+        MarkupsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .RolesItems.Include(x => x.MarkupsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .MarkupsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.MarkupsItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple MarkupsItems records for Roles
+    /// </summary>
+    public async Task<List<Markups>> FindMarkupsItems(
+        RolesWhereUniqueInput uniqueId,
+        MarkupsFindManyArgs rolesFindManyArgs
+    )
+    {
+        var markupsItems = await _context
+            .MarkupsItems.Where(m => m.RoleId == uniqueId.Id)
+            .ApplyWhere(rolesFindManyArgs.Where)
+            .ApplySkip(rolesFindManyArgs.Skip)
+            .ApplyTake(rolesFindManyArgs.Take)
+            .ApplyOrderBy(rolesFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return markupsItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple MarkupsItems records for Roles
+    /// </summary>
+    public async Task UpdateMarkupsItems(
+        RolesWhereUniqueInput uniqueId,
+        MarkupsWhereUniqueInput[] childrenIds
+    )
+    {
+        var roles = await _context
+            .RolesItems.Include(t => t.MarkupsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (roles == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .MarkupsItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        roles.MarkupsItems = children;
         await _context.SaveChangesAsync();
     }
 

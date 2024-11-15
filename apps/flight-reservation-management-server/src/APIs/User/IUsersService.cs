@@ -132,6 +132,102 @@ public interface IUsersService
     );
 
     /// <summary>
+    /// Connect multiple CarBookingsItems records to User
+    /// </summary>
+    public Task ConnectCarBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        CarBookingsWhereUniqueInput[] carBookingsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple CarBookingsItems records from User
+    /// </summary>
+    public Task DisconnectCarBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        CarBookingsWhereUniqueInput[] carBookingsId
+    );
+
+    /// <summary>
+    /// Find multiple CarBookingsItems records for User
+    /// </summary>
+    public Task<List<CarBookings>> FindCarBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        CarBookingsFindManyArgs CarBookingsFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple CarBookingsItems records for User
+    /// </summary>
+    public Task UpdateCarBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        CarBookingsWhereUniqueInput[] carBookingsId
+    );
+
+    /// <summary>
+    /// Connect multiple CooperateCustomerProfilesItems records to User
+    /// </summary>
+    public Task ConnectCooperateCustomerProfilesItems(
+        UserWhereUniqueInput uniqueId,
+        CooperateCustomerProfilesWhereUniqueInput[] cooperateCustomerProfilesId
+    );
+
+    /// <summary>
+    /// Disconnect multiple CooperateCustomerProfilesItems records from User
+    /// </summary>
+    public Task DisconnectCooperateCustomerProfilesItems(
+        UserWhereUniqueInput uniqueId,
+        CooperateCustomerProfilesWhereUniqueInput[] cooperateCustomerProfilesId
+    );
+
+    /// <summary>
+    /// Find multiple CooperateCustomerProfilesItems records for User
+    /// </summary>
+    public Task<List<CooperateCustomerProfiles>> FindCooperateCustomerProfilesItems(
+        UserWhereUniqueInput uniqueId,
+        CooperateCustomerProfilesFindManyArgs CooperateCustomerProfilesFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple CooperateCustomerProfilesItems records for User
+    /// </summary>
+    public Task UpdateCooperateCustomerProfilesItems(
+        UserWhereUniqueInput uniqueId,
+        CooperateCustomerProfilesWhereUniqueInput[] cooperateCustomerProfilesId
+    );
+
+    /// <summary>
+    /// Connect multiple FlightBookingsItems records to User
+    /// </summary>
+    public Task ConnectFlightBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] flightBookingsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple FlightBookingsItems records from User
+    /// </summary>
+    public Task DisconnectFlightBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] flightBookingsId
+    );
+
+    /// <summary>
+    /// Find multiple FlightBookingsItems records for User
+    /// </summary>
+    public Task<List<FlightBookings>> FindFlightBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        FlightBookingsFindManyArgs FlightBookingsFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple FlightBookingsItems records for User
+    /// </summary>
+    public Task UpdateFlightBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] flightBookingsId
+    );
+
+    /// <summary>
     /// Connect multiple HotelBookingsItems records to User
     /// </summary>
     public Task ConnectHotelBookingsItems(
@@ -161,6 +257,70 @@ public interface IUsersService
     public Task UpdateHotelBookingsItems(
         UserWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] hotelBookingsId
+    );
+
+    /// <summary>
+    /// Connect multiple OnlinePaymentsItems records to User
+    /// </summary>
+    public Task ConnectOnlinePaymentsItems(
+        UserWhereUniqueInput uniqueId,
+        OnlinePaymentsWhereUniqueInput[] onlinePaymentsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple OnlinePaymentsItems records from User
+    /// </summary>
+    public Task DisconnectOnlinePaymentsItems(
+        UserWhereUniqueInput uniqueId,
+        OnlinePaymentsWhereUniqueInput[] onlinePaymentsId
+    );
+
+    /// <summary>
+    /// Find multiple OnlinePaymentsItems records for User
+    /// </summary>
+    public Task<List<OnlinePayments>> FindOnlinePaymentsItems(
+        UserWhereUniqueInput uniqueId,
+        OnlinePaymentsFindManyArgs OnlinePaymentsFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple OnlinePaymentsItems records for User
+    /// </summary>
+    public Task UpdateOnlinePaymentsItems(
+        UserWhereUniqueInput uniqueId,
+        OnlinePaymentsWhereUniqueInput[] onlinePaymentsId
+    );
+
+    /// <summary>
+    /// Connect multiple PackageBookingsItems records to User
+    /// </summary>
+    public Task ConnectPackageBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] packageBookingsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple PackageBookingsItems records from User
+    /// </summary>
+    public Task DisconnectPackageBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] packageBookingsId
+    );
+
+    /// <summary>
+    /// Find multiple PackageBookingsItems records for User
+    /// </summary>
+    public Task<List<PackageBookings>> FindPackageBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        PackageBookingsFindManyArgs PackageBookingsFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple PackageBookingsItems records for User
+    /// </summary>
+    public Task UpdatePackageBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] packageBookingsId
     );
 
     /// <summary>

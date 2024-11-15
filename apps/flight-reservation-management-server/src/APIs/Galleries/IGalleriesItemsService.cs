@@ -34,4 +34,9 @@ public interface IGalleriesItemsService
     /// Update one Galleries
     /// </summary>
     public Task UpdateGalleries(GalleriesWhereUniqueInput uniqueId, GalleriesUpdateInput updateDto);
+
+    /// <summary>
+    /// Get a package_ record for Galleries
+    /// </summary>
+    public Task<Packages> GetPackageField(GalleriesWhereUniqueInput uniqueId);
 }

@@ -25,13 +25,26 @@ public abstract class GoodToKnowsItemsServiceBase : IGoodToKnowsItemsService
     {
         var goodToKnows = new GoodToKnowsDbModel
         {
+            CancellationPrepayment = createDto.CancellationPrepayment,
+            CheckIn = createDto.CheckIn,
+            CheckOut = createDto.CheckOut,
+            ChildrenBeds = createDto.ChildrenBeds,
             CreatedAt = createDto.CreatedAt,
+            Groups = createDto.Groups,
+            Internet = createDto.Internet,
+            Pets = createDto.Pets,
             UpdatedAt = createDto.UpdatedAt
         };
 
         if (createDto.Id != null)
         {
             goodToKnows.Id = createDto.Id;
+        }
+        if (createDto.PackageField != null)
+        {
+            goodToKnows.PackageField = await _context
+                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .FirstOrDefaultAsync();
         }
 
         _context.GoodToKnowsItems.Add(goodToKnows);
@@ -68,7 +81,8 @@ public abstract class GoodToKnowsItemsServiceBase : IGoodToKnowsItemsService
     public async Task<List<GoodToKnows>> GoodToKnowsItems(GoodToKnowsFindManyArgs findManyArgs)
     {
         var goodToKnowsItems = await _context
-            .GoodToKnowsItems.ApplyWhere(findManyArgs.Where)
+            .GoodToKnowsItems.Include(x => x.PackageField)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -113,6 +127,13 @@ public abstract class GoodToKnowsItemsServiceBase : IGoodToKnowsItemsService
     {
         var goodToKnows = updateDto.ToModel(uniqueId);
 
+        if (updateDto.PackageField != null)
+        {
+            goodToKnows.PackageField = await _context
+                .PackagesItems.Where(packages => updateDto.PackageField == packages.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.Entry(goodToKnows).State = EntityState.Modified;
 
         try
@@ -130,5 +151,21 @@ public abstract class GoodToKnowsItemsServiceBase : IGoodToKnowsItemsService
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a package_ record for GoodToKnows
+    /// </summary>
+    public async Task<Packages> GetPackageField(GoodToKnowsWhereUniqueInput uniqueId)
+    {
+        var goodToKnows = await _context
+            .GoodToKnowsItems.Where(goodToKnows => goodToKnows.Id == uniqueId.Id)
+            .Include(goodToKnows => goodToKnows.PackageField)
+            .FirstOrDefaultAsync();
+        if (goodToKnows == null)
+        {
+            throw new NotFoundException();
+        }
+        return goodToKnows.PackageField.ToDto();
     }
 }

@@ -69,11 +69,58 @@ public abstract class UsersServiceBase : IUsersService
                 .ToListAsync();
         }
 
+        if (createDto.CarBookingsItems != null)
+        {
+            user.CarBookingsItems = await _context
+                .CarBookingsItems.Where(carBookings =>
+                    createDto.CarBookingsItems.Select(t => t.Id).Contains(carBookings.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (createDto.CooperateCustomerProfilesItems != null)
+        {
+            user.CooperateCustomerProfilesItems = await _context
+                .CooperateCustomerProfilesItems.Where(cooperateCustomerProfiles =>
+                    createDto
+                        .CooperateCustomerProfilesItems.Select(t => t.Id)
+                        .Contains(cooperateCustomerProfiles.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (createDto.FlightBookingsItems != null)
+        {
+            user.FlightBookingsItems = await _context
+                .FlightBookingsItems.Where(flightBookings =>
+                    createDto.FlightBookingsItems.Select(t => t.Id).Contains(flightBookings.Id)
+                )
+                .ToListAsync();
+        }
+
         if (createDto.HotelBookingsItems != null)
         {
             user.HotelBookingsItems = await _context
                 .HotelBookingsItems.Where(hotelBookings =>
                     createDto.HotelBookingsItems.Select(t => t.Id).Contains(hotelBookings.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (createDto.OnlinePaymentsItems != null)
+        {
+            user.OnlinePaymentsItems = await _context
+                .OnlinePaymentsItems.Where(onlinePayments =>
+                    createDto.OnlinePaymentsItems.Select(t => t.Id).Contains(onlinePayments.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (createDto.PackageBookingsItems != null)
+        {
+            user.PackageBookingsItems = await _context
+                .PackageBookingsItems.Where(packageBookings =>
+                    createDto.PackageBookingsItems.Select(t => t.Id).Contains(packageBookings.Id)
                 )
                 .ToListAsync();
         }
@@ -149,12 +196,17 @@ public abstract class UsersServiceBase : IUsersService
     {
         var users = await _context
             .Users.Include(x => x.HotelBookingsItems)
+            .Include(x => x.CarBookingsItems)
             .Include(x => x.AirlinesItems)
             .Include(x => x.BankPaymentsItems)
             .Include(x => x.ProfilesItems)
+            .Include(x => x.OnlinePaymentsItems)
             .Include(x => x.PayLatersItems)
+            .Include(x => x.CooperateCustomerProfilesItems)
             .Include(x => x.WalletsItems)
             .Include(x => x.WalletLogsItems)
+            .Include(x => x.PackageBookingsItems)
+            .Include(x => x.FlightBookingsItems)
             .Include(x => x.AgencyProfilesItems)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
@@ -225,11 +277,58 @@ public abstract class UsersServiceBase : IUsersService
                 .ToListAsync();
         }
 
+        if (updateDto.CarBookingsItems != null)
+        {
+            user.CarBookingsItems = await _context
+                .CarBookingsItems.Where(carBookings =>
+                    updateDto.CarBookingsItems.Select(t => t).Contains(carBookings.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.CooperateCustomerProfilesItems != null)
+        {
+            user.CooperateCustomerProfilesItems = await _context
+                .CooperateCustomerProfilesItems.Where(cooperateCustomerProfiles =>
+                    updateDto
+                        .CooperateCustomerProfilesItems.Select(t => t)
+                        .Contains(cooperateCustomerProfiles.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.FlightBookingsItems != null)
+        {
+            user.FlightBookingsItems = await _context
+                .FlightBookingsItems.Where(flightBookings =>
+                    updateDto.FlightBookingsItems.Select(t => t).Contains(flightBookings.Id)
+                )
+                .ToListAsync();
+        }
+
         if (updateDto.HotelBookingsItems != null)
         {
             user.HotelBookingsItems = await _context
                 .HotelBookingsItems.Where(hotelBookings =>
                     updateDto.HotelBookingsItems.Select(t => t).Contains(hotelBookings.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.OnlinePaymentsItems != null)
+        {
+            user.OnlinePaymentsItems = await _context
+                .OnlinePaymentsItems.Where(onlinePayments =>
+                    updateDto.OnlinePaymentsItems.Select(t => t).Contains(onlinePayments.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.PackageBookingsItems != null)
+        {
+            user.PackageBookingsItems = await _context
+                .PackageBookingsItems.Where(packageBookings =>
+                    updateDto.PackageBookingsItems.Select(t => t).Contains(packageBookings.Id)
                 )
                 .ToListAsync();
         }
@@ -617,6 +716,333 @@ public abstract class UsersServiceBase : IUsersService
     }
 
     /// <summary>
+    /// Connect multiple CarBookingsItems records to User
+    /// </summary>
+    public async Task ConnectCarBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        CarBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .Users.Include(x => x.CarBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .CarBookingsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.CarBookingsItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.CarBookingsItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple CarBookingsItems records from User
+    /// </summary>
+    public async Task DisconnectCarBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        CarBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .Users.Include(x => x.CarBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .CarBookingsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.CarBookingsItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple CarBookingsItems records for User
+    /// </summary>
+    public async Task<List<CarBookings>> FindCarBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        CarBookingsFindManyArgs userFindManyArgs
+    )
+    {
+        var carBookingsItems = await _context
+            .CarBookingsItems.Where(m => m.UserId == uniqueId.Id)
+            .ApplyWhere(userFindManyArgs.Where)
+            .ApplySkip(userFindManyArgs.Skip)
+            .ApplyTake(userFindManyArgs.Take)
+            .ApplyOrderBy(userFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return carBookingsItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple CarBookingsItems records for User
+    /// </summary>
+    public async Task UpdateCarBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        CarBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var user = await _context
+            .Users.Include(t => t.CarBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (user == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .CarBookingsItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        user.CarBookingsItems = children;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Connect multiple CooperateCustomerProfilesItems records to User
+    /// </summary>
+    public async Task ConnectCooperateCustomerProfilesItems(
+        UserWhereUniqueInput uniqueId,
+        CooperateCustomerProfilesWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .Users.Include(x => x.CooperateCustomerProfilesItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .CooperateCustomerProfilesItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.CooperateCustomerProfilesItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.CooperateCustomerProfilesItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple CooperateCustomerProfilesItems records from User
+    /// </summary>
+    public async Task DisconnectCooperateCustomerProfilesItems(
+        UserWhereUniqueInput uniqueId,
+        CooperateCustomerProfilesWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .Users.Include(x => x.CooperateCustomerProfilesItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .CooperateCustomerProfilesItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.CooperateCustomerProfilesItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple CooperateCustomerProfilesItems records for User
+    /// </summary>
+    public async Task<List<CooperateCustomerProfiles>> FindCooperateCustomerProfilesItems(
+        UserWhereUniqueInput uniqueId,
+        CooperateCustomerProfilesFindManyArgs userFindManyArgs
+    )
+    {
+        var cooperateCustomerProfilesItems = await _context
+            .CooperateCustomerProfilesItems.Where(m => m.UserId == uniqueId.Id)
+            .ApplyWhere(userFindManyArgs.Where)
+            .ApplySkip(userFindManyArgs.Skip)
+            .ApplyTake(userFindManyArgs.Take)
+            .ApplyOrderBy(userFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return cooperateCustomerProfilesItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple CooperateCustomerProfilesItems records for User
+    /// </summary>
+    public async Task UpdateCooperateCustomerProfilesItems(
+        UserWhereUniqueInput uniqueId,
+        CooperateCustomerProfilesWhereUniqueInput[] childrenIds
+    )
+    {
+        var user = await _context
+            .Users.Include(t => t.CooperateCustomerProfilesItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (user == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .CooperateCustomerProfilesItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        user.CooperateCustomerProfilesItems = children;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Connect multiple FlightBookingsItems records to User
+    /// </summary>
+    public async Task ConnectFlightBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .Users.Include(x => x.FlightBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .FlightBookingsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.FlightBookingsItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.FlightBookingsItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple FlightBookingsItems records from User
+    /// </summary>
+    public async Task DisconnectFlightBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .Users.Include(x => x.FlightBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .FlightBookingsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.FlightBookingsItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple FlightBookingsItems records for User
+    /// </summary>
+    public async Task<List<FlightBookings>> FindFlightBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        FlightBookingsFindManyArgs userFindManyArgs
+    )
+    {
+        var flightBookingsItems = await _context
+            .FlightBookingsItems.Where(m => m.UserId == uniqueId.Id)
+            .ApplyWhere(userFindManyArgs.Where)
+            .ApplySkip(userFindManyArgs.Skip)
+            .ApplyTake(userFindManyArgs.Take)
+            .ApplyOrderBy(userFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return flightBookingsItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple FlightBookingsItems records for User
+    /// </summary>
+    public async Task UpdateFlightBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        FlightBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var user = await _context
+            .Users.Include(t => t.FlightBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (user == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .FlightBookingsItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        user.FlightBookingsItems = children;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
     /// Connect multiple HotelBookingsItems records to User
     /// </summary>
     public async Task ConnectHotelBookingsItems(
@@ -722,6 +1148,224 @@ public abstract class UsersServiceBase : IUsersService
         }
 
         user.HotelBookingsItems = children;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Connect multiple OnlinePaymentsItems records to User
+    /// </summary>
+    public async Task ConnectOnlinePaymentsItems(
+        UserWhereUniqueInput uniqueId,
+        OnlinePaymentsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .Users.Include(x => x.OnlinePaymentsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .OnlinePaymentsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.OnlinePaymentsItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.OnlinePaymentsItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple OnlinePaymentsItems records from User
+    /// </summary>
+    public async Task DisconnectOnlinePaymentsItems(
+        UserWhereUniqueInput uniqueId,
+        OnlinePaymentsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .Users.Include(x => x.OnlinePaymentsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .OnlinePaymentsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.OnlinePaymentsItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple OnlinePaymentsItems records for User
+    /// </summary>
+    public async Task<List<OnlinePayments>> FindOnlinePaymentsItems(
+        UserWhereUniqueInput uniqueId,
+        OnlinePaymentsFindManyArgs userFindManyArgs
+    )
+    {
+        var onlinePaymentsItems = await _context
+            .OnlinePaymentsItems.Where(m => m.UserId == uniqueId.Id)
+            .ApplyWhere(userFindManyArgs.Where)
+            .ApplySkip(userFindManyArgs.Skip)
+            .ApplyTake(userFindManyArgs.Take)
+            .ApplyOrderBy(userFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return onlinePaymentsItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple OnlinePaymentsItems records for User
+    /// </summary>
+    public async Task UpdateOnlinePaymentsItems(
+        UserWhereUniqueInput uniqueId,
+        OnlinePaymentsWhereUniqueInput[] childrenIds
+    )
+    {
+        var user = await _context
+            .Users.Include(t => t.OnlinePaymentsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (user == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .OnlinePaymentsItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        user.OnlinePaymentsItems = children;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Connect multiple PackageBookingsItems records to User
+    /// </summary>
+    public async Task ConnectPackageBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .Users.Include(x => x.PackageBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .PackageBookingsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var childrenToConnect = children.Except(parent.PackageBookingsItems);
+
+        foreach (var child in childrenToConnect)
+        {
+            parent.PackageBookingsItems.Add(child);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple PackageBookingsItems records from User
+    /// </summary>
+    public async Task DisconnectPackageBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var parent = await _context
+            .Users.Include(x => x.PackageBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .PackageBookingsItems.Where(t => childrenIds.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var child in children)
+        {
+            parent.PackageBookingsItems?.Remove(child);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple PackageBookingsItems records for User
+    /// </summary>
+    public async Task<List<PackageBookings>> FindPackageBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        PackageBookingsFindManyArgs userFindManyArgs
+    )
+    {
+        var packageBookingsItems = await _context
+            .PackageBookingsItems.Where(m => m.UserId == uniqueId.Id)
+            .ApplyWhere(userFindManyArgs.Where)
+            .ApplySkip(userFindManyArgs.Skip)
+            .ApplyTake(userFindManyArgs.Take)
+            .ApplyOrderBy(userFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return packageBookingsItems.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple PackageBookingsItems records for User
+    /// </summary>
+    public async Task UpdatePackageBookingsItems(
+        UserWhereUniqueInput uniqueId,
+        PackageBookingsWhereUniqueInput[] childrenIds
+    )
+    {
+        var user = await _context
+            .Users.Include(t => t.PackageBookingsItems)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (user == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var children = await _context
+            .PackageBookingsItems.Where(a => childrenIds.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (children.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        user.PackageBookingsItems = children;
         await _context.SaveChangesAsync();
     }
 
