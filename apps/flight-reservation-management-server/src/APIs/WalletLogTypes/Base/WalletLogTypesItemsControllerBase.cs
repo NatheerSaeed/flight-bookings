@@ -21,11 +21,11 @@ public abstract class WalletLogTypesControllerBase : ControllerBase
     /// Create one WalletLogTypes
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<WalletLogTypes>> CreateWalletLogTypes(
+    public async Task<ActionResult<WalletLogTypes>> CreateWalletLogType(
         WalletLogTypeCreateInput input
     )
     {
-        var walletLogTypes = await _service.CreateWalletLogTypes(input);
+        var walletLogTypes = await _service.CreateWalletLogType(input);
 
         return CreatedAtAction(
             nameof(WalletLogTypes),
@@ -38,13 +38,13 @@ public abstract class WalletLogTypesControllerBase : ControllerBase
     /// Delete one WalletLogTypes
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteWalletLogTypes(
+    public async Task<ActionResult> DeleteWalletLogType(
         [FromRoute()] WalletLogTypesWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteWalletLogTypes(uniqueId);
+            await _service.DeleteWalletLogType(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class WalletLogTypesControllerBase : ControllerBase
     /// Update one WalletLogTypes
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateWalletLogTypes(
+    public async Task<ActionResult> UpdateWalletLogType(
         [FromRoute()] WalletLogTypesWhereUniqueInput uniqueId,
         [FromQuery()] WalletLogTypeUpdateInput walletLogTypesUpdateDto
     )
     {
         try
         {
-            await _service.UpdateWalletLogTypes(uniqueId, walletLogTypesUpdateDto);
+            await _service.UpdateWalletLogType(uniqueId, walletLogTypesUpdateDto);
         }
         catch (NotFoundException)
         {

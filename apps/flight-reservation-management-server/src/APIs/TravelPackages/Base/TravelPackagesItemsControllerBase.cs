@@ -21,11 +21,11 @@ public abstract class TravelPackagesControllerBase : ControllerBase
     /// Create one TravelPackages
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<TravelPackages>> CreateTravelPackages(
+    public async Task<ActionResult<TravelPackages>> CreateTravelPackage(
         TravelPackageCreateInput input
     )
     {
-        var travelPackages = await _service.CreateTravelPackages(input);
+        var travelPackages = await _service.CreateTravelPackage(input);
 
         return CreatedAtAction(
             nameof(TravelPackages),
@@ -38,13 +38,13 @@ public abstract class TravelPackagesControllerBase : ControllerBase
     /// Delete one TravelPackages
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteTravelPackages(
+    public async Task<ActionResult> DeleteTravelPackage(
         [FromRoute()] TravelPackagesWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteTravelPackages(uniqueId);
+            await _service.DeleteTravelPackage(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class TravelPackagesControllerBase : ControllerBase
     /// Update one TravelPackages
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateTravelPackages(
+    public async Task<ActionResult> UpdateTravelPackage(
         [FromRoute()] TravelPackagesWhereUniqueInput uniqueId,
         [FromQuery()] TravelPackageUpdateInput travelPackagesUpdateDto
     )
     {
         try
         {
-            await _service.UpdateTravelPackages(uniqueId, travelPackagesUpdateDto);
+            await _service.UpdateTravelPackage(uniqueId, travelPackagesUpdateDto);
         }
         catch (NotFoundException)
         {

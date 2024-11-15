@@ -21,7 +21,7 @@ public abstract class AgencyProfilesServiceBase : IAgencyProfilesService
     /// <summary>
     /// Create one AgencyProfiles
     /// </summary>
-    public async Task<AgencyProfiles> CreateAgencyProfiles(AgencyProfileCreateInput inputDto)
+    public async Task<AgencyProfiles> CreateAgencyProfile(AgencyProfileCreateInput inputDto)
     {
         var agencyProfiles = new AgencyProfile
         {
@@ -64,7 +64,7 @@ public abstract class AgencyProfilesServiceBase : IAgencyProfilesService
     /// <summary>
     /// Delete one AgencyProfiles
     /// </summary>
-    public async Task DeleteAgencyProfiles(AgencyProfilesWhereUniqueInput uniqueId)
+    public async Task DeleteAgencyProfile(AgencyProfilesWhereUniqueInput uniqueId)
     {
         var agencyProfiles = await _context.AgencyProfilesItems.FindAsync(uniqueId.Id);
         if (agencyProfiles == null)
@@ -126,7 +126,7 @@ public abstract class AgencyProfilesServiceBase : IAgencyProfilesService
     /// <summary>
     /// Update one AgencyProfiles
     /// </summary>
-    public async Task UpdateAgencyProfiles(
+    public async Task UpdateAgencyProfile(
         AgencyProfilesWhereUniqueInput uniqueId,
         AgencyProfileUpdateInput updateDto
     )

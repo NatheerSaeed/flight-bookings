@@ -8,12 +8,12 @@ public interface IPackageBookingsService
     /// <summary>
     /// Create one PackageBookings
     /// </summary>
-    public Task<PackageBookings> CreatePackageBookings(PackageBookingCreateInput packagebookings);
+    public Task<PackageBookings> CreatePackageBooking(PackageBookingCreateInput packagebookings);
 
     /// <summary>
     /// Delete one PackageBookings
     /// </summary>
-    public Task DeletePackageBookings(PackageBookingsWhereUniqueInput uniqueId);
+    public Task DeletePackageBooking(PackageBookingsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many PackageBookingsItems
@@ -35,7 +35,7 @@ public interface IPackageBookingsService
     /// <summary>
     /// Update one PackageBookings
     /// </summary>
-    public Task UpdatePackageBookings(
+    public Task UpdatePackageBooking(
         PackageBookingsWhereUniqueInput uniqueId,
         PackageBookingUpdateInput updateDto
     );

@@ -8,12 +8,12 @@ public interface IGoodToKnowsService
     /// <summary>
     /// Create one GoodToKnows
     /// </summary>
-    public Task<GoodToKnows> CreateGoodToKnows(GoodToKnowCreateInput goodtoknows);
+    public Task<GoodToKnows> CreateGoodToKnow(GoodToKnowCreateInput goodtoknows);
 
     /// <summary>
     /// Delete one GoodToKnows
     /// </summary>
-    public Task DeleteGoodToKnows(GoodToKnowsWhereUniqueInput uniqueId);
+    public Task DeleteGoodToKnow(GoodToKnowsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many GoodToKnowsItems
@@ -33,7 +33,7 @@ public interface IGoodToKnowsService
     /// <summary>
     /// Update one GoodToKnows
     /// </summary>
-    public Task UpdateGoodToKnows(
+    public Task UpdateGoodToKnow(
         GoodToKnowsWhereUniqueInput uniqueId,
         GoodToKnowUpdateInput updateDto
     );

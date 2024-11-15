@@ -8,12 +8,12 @@ public interface IAirportsService
     /// <summary>
     /// Create one Airports
     /// </summary>
-    public Task<Airports> CreateAirports(AirportCreateInput airports);
+    public Task<Airports> CreateAirport(AirportCreateInput airports);
 
     /// <summary>
     /// Delete one Airports
     /// </summary>
-    public Task DeleteAirports(AirportsWhereUniqueInput uniqueId);
+    public Task DeleteAirport(AirportsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many AirportsItems
@@ -33,5 +33,5 @@ public interface IAirportsService
     /// <summary>
     /// Update one Airports
     /// </summary>
-    public Task UpdateAirports(AirportsWhereUniqueInput uniqueId, AirportUpdateInput updateDto);
+    public Task UpdateAirport(AirportsWhereUniqueInput uniqueId, AirportUpdateInput updateDto);
 }

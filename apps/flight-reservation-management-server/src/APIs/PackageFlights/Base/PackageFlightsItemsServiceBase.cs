@@ -21,7 +21,7 @@ public abstract class PackageFlightsServiceBase : IPackageFlightsService
     /// <summary>
     /// Create one PackageFlights
     /// </summary>
-    public async Task<PackageFlights> CreatePackageFlights(PackageFlightCreateInput inputDto)
+    public async Task<PackageFlights> CreatePackageFlight(PackageFlightCreateInput inputDto)
     {
         var packageFlights = new PackageFlight
         {
@@ -61,7 +61,7 @@ public abstract class PackageFlightsServiceBase : IPackageFlightsService
     /// <summary>
     /// Delete one PackageFlights
     /// </summary>
-    public async Task DeletePackageFlights(PackageFlightsWhereUniqueInput uniqueId)
+    public async Task DeletePackageFlight(PackageFlightsWhereUniqueInput uniqueId)
     {
         var packageFlights = await _context.PackageFlightsItems.FindAsync(uniqueId.Id);
         if (packageFlights == null)
@@ -123,7 +123,7 @@ public abstract class PackageFlightsServiceBase : IPackageFlightsService
     /// <summary>
     /// Update one PackageFlights
     /// </summary>
-    public async Task UpdatePackageFlights(
+    public async Task UpdatePackageFlight(
         PackageFlightsWhereUniqueInput uniqueId,
         PackageFlightUpdateInput updateDto
     )

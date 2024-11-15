@@ -21,7 +21,7 @@ public abstract class VatsServiceBase : IVatsService
     /// <summary>
     /// Create one Vats
     /// </summary>
-    public async Task<Vats> CreateVats(VatCreateInput inputDto)
+    public async Task<Vats> CreateVat(VatCreateInput inputDto)
     {
         var vats = new Vat
         {
@@ -58,7 +58,7 @@ public abstract class VatsServiceBase : IVatsService
     /// <summary>
     /// Delete one Vats
     /// </summary>
-    public async Task DeleteVats(VatsWhereUniqueInput uniqueId)
+    public async Task DeleteVat(VatsWhereUniqueInput uniqueId)
     {
         var vats = await _context.VatsItems.FindAsync(uniqueId.Id);
         if (vats == null)
@@ -114,7 +114,7 @@ public abstract class VatsServiceBase : IVatsService
     /// <summary>
     /// Update one Vats
     /// </summary>
-    public async Task UpdateVats(VatsWhereUniqueInput uniqueId, VatUpdateInput updateDto)
+    public async Task UpdateVat(VatsWhereUniqueInput uniqueId, VatUpdateInput updateDto)
     {
         var vats = updateDto.ToModel(uniqueId);
 

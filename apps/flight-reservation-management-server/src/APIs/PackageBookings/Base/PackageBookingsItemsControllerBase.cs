@@ -21,11 +21,11 @@ public abstract class PackageBookingsControllerBase : ControllerBase
     /// Create one PackageBookings
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<PackageBookings>> CreatePackageBookings(
+    public async Task<ActionResult<PackageBookings>> CreatePackageBooking(
         PackageBookingCreateInput input
     )
     {
-        var packageBookings = await _service.CreatePackageBookings(input);
+        var packageBookings = await _service.CreatePackageBooking(input);
 
         return CreatedAtAction(
             nameof(PackageBookings),
@@ -38,13 +38,13 @@ public abstract class PackageBookingsControllerBase : ControllerBase
     /// Delete one PackageBookings
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeletePackageBookings(
+    public async Task<ActionResult> DeletePackageBooking(
         [FromRoute()] PackageBookingsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeletePackageBookings(uniqueId);
+            await _service.DeletePackageBooking(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class PackageBookingsControllerBase : ControllerBase
     /// Update one PackageBookings
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdatePackageBookings(
+    public async Task<ActionResult> UpdatePackageBooking(
         [FromRoute()] PackageBookingsWhereUniqueInput uniqueId,
         [FromQuery()] PackageBookingUpdateInput packageBookingsUpdateDto
     )
     {
         try
         {
-            await _service.UpdatePackageBookings(uniqueId, packageBookingsUpdateDto);
+            await _service.UpdatePackageBooking(uniqueId, packageBookingsUpdateDto);
         }
         catch (NotFoundException)
         {

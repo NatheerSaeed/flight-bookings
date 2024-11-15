@@ -21,7 +21,7 @@ public abstract class GendersServiceBase : IGendersService
     /// <summary>
     /// Create one Genders
     /// </summary>
-    public async Task<Genders> CreateGenders(GenderCreateInput inputDto)
+    public async Task<Genders> CreateGender(GenderCreateInput inputDto)
     {
         var genders = new Gender { CreatedAt = inputDto.CreatedAt, UpdatedAt = inputDto.UpdatedAt };
 
@@ -54,7 +54,7 @@ public abstract class GendersServiceBase : IGendersService
     /// <summary>
     /// Delete one Genders
     /// </summary>
-    public async Task DeleteGenders(GendersWhereUniqueInput uniqueId)
+    public async Task DeleteGender(GendersWhereUniqueInput uniqueId)
     {
         var genders = await _context.GendersItems.FindAsync(uniqueId.Id);
         if (genders == null)
@@ -111,7 +111,7 @@ public abstract class GendersServiceBase : IGendersService
     /// <summary>
     /// Update one Genders
     /// </summary>
-    public async Task UpdateGenders(GendersWhereUniqueInput uniqueId, GenderUpdateInput updateDto)
+    public async Task UpdateGender(GendersWhereUniqueInput uniqueId, GenderUpdateInput updateDto)
     {
         var genders = updateDto.ToModel(uniqueId);
 
@@ -226,7 +226,7 @@ public abstract class GendersServiceBase : IGendersService
     /// <summary>
     /// Update multiple ProfilesItems records for Genders
     /// </summary>
-    public async Task UpdateProfilesItems(
+    public async Task UpdateProfilesItem(
         GendersWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] childrenIds
     )

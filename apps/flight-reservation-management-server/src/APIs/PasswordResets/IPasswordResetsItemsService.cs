@@ -8,12 +8,12 @@ public interface IPasswordResetsService
     /// <summary>
     /// Create one PasswordResets
     /// </summary>
-    public Task<PasswordResets> CreatePasswordResets(PasswordResetCreateInput passwordresets);
+    public Task<PasswordResets> CreatePasswordReset(PasswordResetCreateInput passwordresets);
 
     /// <summary>
     /// Delete one PasswordResets
     /// </summary>
-    public Task DeletePasswordResets(PasswordResetsWhereUniqueInput uniqueId);
+    public Task DeletePasswordReset(PasswordResetsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many PasswordResetsItems
@@ -33,7 +33,7 @@ public interface IPasswordResetsService
     /// <summary>
     /// Update one PasswordResets
     /// </summary>
-    public Task UpdatePasswordResets(
+    public Task UpdatePasswordReset(
         PasswordResetsWhereUniqueInput uniqueId,
         PasswordResetUpdateInput updateDto
     );

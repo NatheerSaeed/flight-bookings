@@ -21,7 +21,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Create one Roles
     /// </summary>
-    public async Task<Roles> CreateRoles(RoleCreateInput inputDto)
+    public async Task<Roles> CreateRole(RoleCreateInput inputDto)
     {
         var roles = new Role
         {
@@ -85,7 +85,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Delete one Roles
     /// </summary>
-    public async Task DeleteRoles(RolesWhereUniqueInput uniqueId)
+    public async Task DeleteRole(RolesWhereUniqueInput uniqueId)
     {
         var roles = await _context.RolesItems.FindAsync(uniqueId.Id);
         if (roles == null)
@@ -144,7 +144,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Update one Roles
     /// </summary>
-    public async Task UpdateRoles(RolesWhereUniqueInput uniqueId, RoleUpdateInput updateDto)
+    public async Task UpdateRole(RolesWhereUniqueInput uniqueId, RoleUpdateInput updateDto)
     {
         var roles = updateDto.ToModel(uniqueId);
 
@@ -282,7 +282,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Update multiple HotelsItems records for Roles
     /// </summary>
-    public async Task UpdateHotelsItems(
+    public async Task UpdateHotelsItem(
         RolesWhereUniqueInput uniqueId,
         HotelsWhereUniqueInput[] childrenIds
     )
@@ -391,7 +391,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Update multiple MarkupsItems records for Roles
     /// </summary>
-    public async Task UpdateMarkupsItems(
+    public async Task UpdateMarkupsItem(
         RolesWhereUniqueInput uniqueId,
         MarkupsWhereUniqueInput[] childrenIds
     )
@@ -516,7 +516,7 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Update multiple RolesItems records for Roles
     /// </summary>
-    public async Task UpdateRolesItems(
+    public async Task UpdateRolesItem(
         RolesWhereUniqueInput uniqueId,
         RolesWhereUniqueInput[] childrenIds
     )

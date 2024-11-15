@@ -21,9 +21,9 @@ public abstract class SightSeeingsControllerBase : ControllerBase
     /// Create one SightSeeings
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<SightSeeings>> CreateSightSeeings(SightSeeingCreateInput input)
+    public async Task<ActionResult<SightSeeings>> CreateSightSeeing(SightSeeingCreateInput input)
     {
-        var sightSeeings = await _service.CreateSightSeeings(input);
+        var sightSeeings = await _service.CreateSightSeeing(input);
 
         return CreatedAtAction(nameof(SightSeeings), new { id = sightSeeings.Id }, sightSeeings);
     }
@@ -32,13 +32,13 @@ public abstract class SightSeeingsControllerBase : ControllerBase
     /// Delete one SightSeeings
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteSightSeeings(
+    public async Task<ActionResult> DeleteSightSeeing(
         [FromRoute()] SightSeeingsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteSightSeeings(uniqueId);
+            await _service.DeleteSightSeeing(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +92,14 @@ public abstract class SightSeeingsControllerBase : ControllerBase
     /// Update one SightSeeings
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateSightSeeings(
+    public async Task<ActionResult> UpdateSightSeeing(
         [FromRoute()] SightSeeingsWhereUniqueInput uniqueId,
         [FromQuery()] SightSeeingUpdateInput sightSeeingsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateSightSeeings(uniqueId, sightSeeingsUpdateDto);
+            await _service.UpdateSightSeeing(uniqueId, sightSeeingsUpdateDto);
         }
         catch (NotFoundException)
         {

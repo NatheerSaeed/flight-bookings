@@ -21,7 +21,7 @@ public abstract class BankPaymentsServiceBase : IBankPaymentsService
     /// <summary>
     /// Create one BankPayments
     /// </summary>
-    public async Task<BankPayments> CreateBankPayments(BankPaymentCreateInput inputDto)
+    public async Task<BankPayments> CreateBankPayment(BankPaymentCreateInput inputDto)
     {
         var bankPayments = new BankPayment
         {
@@ -62,7 +62,7 @@ public abstract class BankPaymentsServiceBase : IBankPaymentsService
     /// <summary>
     /// Delete one BankPayments
     /// </summary>
-    public async Task DeleteBankPayments(BankPaymentsWhereUniqueInput uniqueId)
+    public async Task DeleteBankPayment(BankPaymentsWhereUniqueInput uniqueId)
     {
         var bankPayments = await _context.BankPaymentsItems.FindAsync(uniqueId.Id);
         if (bankPayments == null)
@@ -119,7 +119,7 @@ public abstract class BankPaymentsServiceBase : IBankPaymentsService
     /// <summary>
     /// Update one BankPayments
     /// </summary>
-    public async Task UpdateBankPayments(
+    public async Task UpdateBankPayment(
         BankPaymentsWhereUniqueInput uniqueId,
         BankPaymentUpdateInput updateDto
     )

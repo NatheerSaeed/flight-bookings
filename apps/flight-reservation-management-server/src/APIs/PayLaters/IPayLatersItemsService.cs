@@ -8,12 +8,12 @@ public interface IPayLatersService
     /// <summary>
     /// Create one PayLaters
     /// </summary>
-    public Task<PayLaters> CreatePayLaters(PayLaterCreateInput paylaters);
+    public Task<PayLaters> CreatePayLater(PayLaterCreateInput paylaters);
 
     /// <summary>
     /// Delete one PayLaters
     /// </summary>
-    public Task DeletePayLaters(PayLatersWhereUniqueInput uniqueId);
+    public Task DeletePayLater(PayLatersWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many PayLatersItems
@@ -33,7 +33,7 @@ public interface IPayLatersService
     /// <summary>
     /// Update one PayLaters
     /// </summary>
-    public Task UpdatePayLaters(PayLatersWhereUniqueInput uniqueId, PayLaterUpdateInput updateDto);
+    public Task UpdatePayLater(PayLatersWhereUniqueInput uniqueId, PayLaterUpdateInput updateDto);
 
     /// <summary>
     /// Get a user_ record for PayLaters

@@ -21,7 +21,7 @@ public abstract class PackageCategoriesServiceBase : IPackageCategoriesService
     /// <summary>
     /// Create one PackageCategories
     /// </summary>
-    public async Task<PackageCategories> CreatePackageCategories(
+    public async Task<PackageCategories> CreatePackageCategorie(
         PackageCategorieCreateInput inputDto
     )
     {
@@ -54,7 +54,7 @@ public abstract class PackageCategoriesServiceBase : IPackageCategoriesService
     /// <summary>
     /// Delete one PackageCategories
     /// </summary>
-    public async Task DeletePackageCategories(PackageCategoriesWhereUniqueInput uniqueId)
+    public async Task DeletePackageCategorie(PackageCategoriesWhereUniqueInput uniqueId)
     {
         var packageCategories = await _context.PackageCategoriesItems.FindAsync(uniqueId.Id);
         if (packageCategories == null)
@@ -121,7 +121,7 @@ public abstract class PackageCategoriesServiceBase : IPackageCategoriesService
     /// <summary>
     /// Update one PackageCategories
     /// </summary>
-    public async Task UpdatePackageCategories(
+    public async Task UpdatePackageCategorie(
         PackageCategoriesWhereUniqueInput uniqueId,
         PackageCategorieUpdateInput updateDto
     )

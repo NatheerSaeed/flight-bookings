@@ -21,9 +21,9 @@ public abstract class WalletsControllerBase : ControllerBase
     /// Create one Wallets
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Wallets>> CreateWallets(WalletCreateInput input)
+    public async Task<ActionResult<Wallets>> CreateWallet(WalletCreateInput input)
     {
-        var wallets = await _service.CreateWallets(input);
+        var wallets = await _service.CreateWallet(input);
 
         return CreatedAtAction(nameof(Wallets), new { id = wallets.Id }, wallets);
     }
@@ -32,11 +32,11 @@ public abstract class WalletsControllerBase : ControllerBase
     /// Delete one Wallets
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteWallets([FromRoute()] WalletsWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteWallet([FromRoute()] WalletsWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteWallets(uniqueId);
+            await _service.DeleteWallet(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -88,14 +88,14 @@ public abstract class WalletsControllerBase : ControllerBase
     /// Update one Wallets
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateWallets(
+    public async Task<ActionResult> UpdateWallet(
         [FromRoute()] WalletsWhereUniqueInput uniqueId,
         [FromQuery()] WalletUpdateInput walletsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateWallets(uniqueId, walletsUpdateDto);
+            await _service.UpdateWallet(uniqueId, walletsUpdateDto);
         }
         catch (NotFoundException)
         {

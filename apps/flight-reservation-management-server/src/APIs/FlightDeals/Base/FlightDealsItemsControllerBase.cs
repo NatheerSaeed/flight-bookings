@@ -21,9 +21,9 @@ public abstract class FlightDealsControllerBase : ControllerBase
     /// Create one FlightDeals
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<FlightDeals>> CreateFlightDeals(FlightDealCreateInput input)
+    public async Task<ActionResult<FlightDeals>> CreateFlightDeal(FlightDealCreateInput input)
     {
-        var flightDeals = await _service.CreateFlightDeals(input);
+        var flightDeals = await _service.CreateFlightDeal(input);
 
         return CreatedAtAction(nameof(FlightDeals), new { id = flightDeals.Id }, flightDeals);
     }
@@ -32,13 +32,13 @@ public abstract class FlightDealsControllerBase : ControllerBase
     /// Delete one FlightDeals
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteFlightDeals(
+    public async Task<ActionResult> DeleteFlightDeal(
         [FromRoute()] FlightDealsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteFlightDeals(uniqueId);
+            await _service.DeleteFlightDeal(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +92,14 @@ public abstract class FlightDealsControllerBase : ControllerBase
     /// Update one FlightDeals
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateFlightDeals(
+    public async Task<ActionResult> UpdateFlightDeal(
         [FromRoute()] FlightDealsWhereUniqueInput uniqueId,
         [FromQuery()] FlightDealUpdateInput flightDealsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateFlightDeals(uniqueId, flightDealsUpdateDto);
+            await _service.UpdateFlightDeal(uniqueId, flightDealsUpdateDto);
         }
         catch (NotFoundException)
         {

@@ -21,9 +21,9 @@ public abstract class AirportsControllerBase : ControllerBase
     /// Create one Airports
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Airports>> CreateAirports(AirportCreateInput input)
+    public async Task<ActionResult<Airports>> CreateAirport(AirportCreateInput input)
     {
-        var airports = await _service.CreateAirports(input);
+        var airports = await _service.CreateAirport(input);
 
         return CreatedAtAction(nameof(Airports), new { id = airports.Id }, airports);
     }
@@ -32,11 +32,11 @@ public abstract class AirportsControllerBase : ControllerBase
     /// Delete one Airports
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteAirports([FromRoute()] AirportsWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteAirport([FromRoute()] AirportsWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteAirports(uniqueId);
+            await _service.DeleteAirport(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -90,14 +90,14 @@ public abstract class AirportsControllerBase : ControllerBase
     /// Update one Airports
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateAirports(
+    public async Task<ActionResult> UpdateAirport(
         [FromRoute()] AirportsWhereUniqueInput uniqueId,
         [FromQuery()] AirportUpdateInput airportsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateAirports(uniqueId, airportsUpdateDto);
+            await _service.UpdateAirport(uniqueId, airportsUpdateDto);
         }
         catch (NotFoundException)
         {

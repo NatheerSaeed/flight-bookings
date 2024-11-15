@@ -21,7 +21,7 @@ public abstract class HotelsServiceBase : IHotelsService
     /// <summary>
     /// Create one Hotels
     /// </summary>
-    public async Task<Hotels> CreateHotels(HotelCreateInput inputDto)
+    public async Task<Hotels> CreateHotel(HotelCreateInput inputDto)
     {
         var hotels = new Hotel
         {
@@ -67,7 +67,7 @@ public abstract class HotelsServiceBase : IHotelsService
     /// <summary>
     /// Delete one Hotels
     /// </summary>
-    public async Task DeleteHotels(HotelsWhereUniqueInput uniqueId)
+    public async Task DeleteHotel(HotelsWhereUniqueInput uniqueId)
     {
         var hotels = await _context.HotelsItems.FindAsync(uniqueId.Id);
         if (hotels == null)
@@ -124,7 +124,7 @@ public abstract class HotelsServiceBase : IHotelsService
     /// <summary>
     /// Update one Hotels
     /// </summary>
-    public async Task UpdateHotels(HotelsWhereUniqueInput uniqueId, HotelUpdateInput updateDto)
+    public async Task UpdateHotel(HotelsWhereUniqueInput uniqueId, HotelUpdateInput updateDto)
     {
         var hotels = updateDto.ToModel(uniqueId);
 

@@ -21,11 +21,11 @@ public abstract class CooperateCustomerProfilesControllerBase : ControllerBase
     /// Create one CooperateCustomerProfiles
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<CooperateCustomerProfiles>> CreateCooperateCustomerProfiles(
+    public async Task<ActionResult<CooperateCustomerProfiles>> CreateCooperateCustomerProfile(
         CooperateCustomerProfileCreateInput input
     )
     {
-        var cooperateCustomerProfiles = await _service.CreateCooperateCustomerProfiles(input);
+        var cooperateCustomerProfiles = await _service.CreateCooperateCustomerProfile(input);
 
         return CreatedAtAction(
             nameof(CooperateCustomerProfiles),
@@ -38,13 +38,13 @@ public abstract class CooperateCustomerProfilesControllerBase : ControllerBase
     /// Delete one CooperateCustomerProfiles
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteCooperateCustomerProfiles(
+    public async Task<ActionResult> DeleteCooperateCustomerProfile(
         [FromRoute()] CooperateCustomerProfilesWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteCooperateCustomerProfiles(uniqueId);
+            await _service.DeleteCooperateCustomerProfile(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class CooperateCustomerProfilesControllerBase : ControllerBase
     /// Update one CooperateCustomerProfiles
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateCooperateCustomerProfiles(
+    public async Task<ActionResult> UpdateCooperateCustomerProfile(
         [FromRoute()] CooperateCustomerProfilesWhereUniqueInput uniqueId,
         [FromQuery()] CooperateCustomerProfileUpdateInput cooperateCustomerProfilesUpdateDto
     )
     {
         try
         {
-            await _service.UpdateCooperateCustomerProfiles(
+            await _service.UpdateCooperateCustomerProfile(
                 uniqueId,
                 cooperateCustomerProfilesUpdateDto
             );

@@ -21,9 +21,9 @@ public abstract class GendersControllerBase : ControllerBase
     /// Create one Genders
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Genders>> CreateGenders(GenderCreateInput input)
+    public async Task<ActionResult<Genders>> CreateGender(GenderCreateInput input)
     {
-        var genders = await _service.CreateGenders(input);
+        var genders = await _service.CreateGender(input);
 
         return CreatedAtAction(nameof(Genders), new { id = genders.Id }, genders);
     }
@@ -32,11 +32,11 @@ public abstract class GendersControllerBase : ControllerBase
     /// Delete one Genders
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteGenders([FromRoute()] GendersWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteGender([FromRoute()] GendersWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteGenders(uniqueId);
+            await _service.DeleteGender(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -88,14 +88,14 @@ public abstract class GendersControllerBase : ControllerBase
     /// Update one Genders
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateGenders(
+    public async Task<ActionResult> UpdateGender(
         [FromRoute()] GendersWhereUniqueInput uniqueId,
         [FromQuery()] GenderUpdateInput gendersUpdateDto
     )
     {
         try
         {
-            await _service.UpdateGenders(uniqueId, gendersUpdateDto);
+            await _service.UpdateGender(uniqueId, gendersUpdateDto);
         }
         catch (NotFoundException)
         {
@@ -170,14 +170,14 @@ public abstract class GendersControllerBase : ControllerBase
     /// Update multiple ProfilesItems records for Genders
     /// </summary>
     [HttpPatch("{Id}/profilesItems")]
-    public async Task<ActionResult> UpdateProfilesItems(
+    public async Task<ActionResult> UpdateProfilesItem(
         [FromRoute()] GendersWhereUniqueInput uniqueId,
         [FromBody()] ProfilesWhereUniqueInput[] profilesItemsId
     )
     {
         try
         {
-            await _service.UpdateProfilesItems(uniqueId, profilesItemsId);
+            await _service.UpdateProfilesItem(uniqueId, profilesItemsId);
         }
         catch (NotFoundException)
         {

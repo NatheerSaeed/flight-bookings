@@ -21,9 +21,9 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Create one Packages
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Packages>> CreatePackages(PackageCreateInput input)
+    public async Task<ActionResult<Packages>> CreatePackage(PackageCreateInput input)
     {
-        var packages = await _service.CreatePackages(input);
+        var packages = await _service.CreatePackage(input);
 
         return CreatedAtAction(nameof(Packages), new { id = packages.Id }, packages);
     }
@@ -32,11 +32,11 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Delete one Packages
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeletePackages([FromRoute()] PackagesWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeletePackage([FromRoute()] PackagesWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeletePackages(uniqueId);
+            await _service.DeletePackage(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -90,14 +90,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update one Packages
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdatePackages(
+    public async Task<ActionResult> UpdatePackage(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromQuery()] PackageUpdateInput packagesUpdateDto
     )
     {
         try
         {
-            await _service.UpdatePackages(uniqueId, packagesUpdateDto);
+            await _service.UpdatePackage(uniqueId, packagesUpdateDto);
         }
         catch (NotFoundException)
         {
@@ -172,14 +172,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update multiple AttractionsItems records for Packages
     /// </summary>
     [HttpPatch("{Id}/attractionsItems")]
-    public async Task<ActionResult> UpdateAttractionsItems(
+    public async Task<ActionResult> UpdateAttractionsItem(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] AttractionsWhereUniqueInput[] attractionsItemsId
     )
     {
         try
         {
-            await _service.UpdateAttractionsItems(uniqueId, attractionsItemsId);
+            await _service.UpdateAttractionsItem(uniqueId, attractionsItemsId);
         }
         catch (NotFoundException)
         {
@@ -254,14 +254,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update multiple FlightDealsItems records for Packages
     /// </summary>
     [HttpPatch("{Id}/flightDealsItems")]
-    public async Task<ActionResult> UpdateFlightDealsItems(
+    public async Task<ActionResult> UpdateFlightDealsItem(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] FlightDealsWhereUniqueInput[] flightDealsItemsId
     )
     {
         try
         {
-            await _service.UpdateFlightDealsItems(uniqueId, flightDealsItemsId);
+            await _service.UpdateFlightDealsItem(uniqueId, flightDealsItemsId);
         }
         catch (NotFoundException)
         {
@@ -336,14 +336,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update multiple GalleriesItems records for Packages
     /// </summary>
     [HttpPatch("{Id}/galleriesItems")]
-    public async Task<ActionResult> UpdateGalleriesItems(
+    public async Task<ActionResult> UpdateGalleriesItem(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] GalleriesWhereUniqueInput[] galleriesItemsId
     )
     {
         try
         {
-            await _service.UpdateGalleriesItems(uniqueId, galleriesItemsId);
+            await _service.UpdateGalleriesItem(uniqueId, galleriesItemsId);
         }
         catch (NotFoundException)
         {
@@ -418,14 +418,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update multiple GoodToKnowsItems records for Packages
     /// </summary>
     [HttpPatch("{Id}/goodToKnowsItems")]
-    public async Task<ActionResult> UpdateGoodToKnowsItems(
+    public async Task<ActionResult> UpdateGoodToKnowsItem(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] GoodToKnowsWhereUniqueInput[] goodToKnowsItemsId
     )
     {
         try
         {
-            await _service.UpdateGoodToKnowsItems(uniqueId, goodToKnowsItemsId);
+            await _service.UpdateGoodToKnowsItem(uniqueId, goodToKnowsItemsId);
         }
         catch (NotFoundException)
         {
@@ -500,14 +500,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update multiple HotelDealsItems records for Packages
     /// </summary>
     [HttpPatch("{Id}/hotelDealsItems")]
-    public async Task<ActionResult> UpdateHotelDealsItems(
+    public async Task<ActionResult> UpdateHotelDealsItem(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] HotelDealsWhereUniqueInput[] hotelDealsItemsId
     )
     {
         try
         {
-            await _service.UpdateHotelDealsItems(uniqueId, hotelDealsItemsId);
+            await _service.UpdateHotelDealsItem(uniqueId, hotelDealsItemsId);
         }
         catch (NotFoundException)
         {
@@ -582,14 +582,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update multiple PackageAttractionsItems records for Packages
     /// </summary>
     [HttpPatch("{Id}/packageAttractionsItems")]
-    public async Task<ActionResult> UpdatePackageAttractionsItems(
+    public async Task<ActionResult> UpdatePackageAttractionsItem(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] PackageAttractionsWhereUniqueInput[] packageAttractionsItemsId
     )
     {
         try
         {
-            await _service.UpdatePackageAttractionsItems(uniqueId, packageAttractionsItemsId);
+            await _service.UpdatePackageAttractionsItem(uniqueId, packageAttractionsItemsId);
         }
         catch (NotFoundException)
         {
@@ -664,14 +664,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update multiple PackageBookingsItems records for Packages
     /// </summary>
     [HttpPatch("{Id}/packageBookingsItems")]
-    public async Task<ActionResult> UpdatePackageBookingsItems(
+    public async Task<ActionResult> UpdatePackageBookingsItem(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] PackageBookingsWhereUniqueInput[] packageBookingsItemsId
     )
     {
         try
         {
-            await _service.UpdatePackageBookingsItems(uniqueId, packageBookingsItemsId);
+            await _service.UpdatePackageBookingsItem(uniqueId, packageBookingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -746,14 +746,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update multiple PackageFlightsItems records for Packages
     /// </summary>
     [HttpPatch("{Id}/packageFlightsItems")]
-    public async Task<ActionResult> UpdatePackageFlightsItems(
+    public async Task<ActionResult> UpdatePackageFlightsItem(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] PackageFlightsWhereUniqueInput[] packageFlightsItemsId
     )
     {
         try
         {
-            await _service.UpdatePackageFlightsItems(uniqueId, packageFlightsItemsId);
+            await _service.UpdatePackageFlightsItem(uniqueId, packageFlightsItemsId);
         }
         catch (NotFoundException)
         {
@@ -828,14 +828,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update multiple PackageHotelsItems records for Packages
     /// </summary>
     [HttpPatch("{Id}/packageHotelsItems")]
-    public async Task<ActionResult> UpdatePackageHotelsItems(
+    public async Task<ActionResult> UpdatePackageHotelsItem(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] PackageHotelsWhereUniqueInput[] packageHotelsItemsId
     )
     {
         try
         {
-            await _service.UpdatePackageHotelsItems(uniqueId, packageHotelsItemsId);
+            await _service.UpdatePackageHotelsItem(uniqueId, packageHotelsItemsId);
         }
         catch (NotFoundException)
         {
@@ -910,14 +910,14 @@ public abstract class PackagesControllerBase : ControllerBase
     /// Update multiple SightSeeingsItems records for Packages
     /// </summary>
     [HttpPatch("{Id}/sightSeeingsItems")]
-    public async Task<ActionResult> UpdateSightSeeingsItems(
+    public async Task<ActionResult> UpdateSightSeeingsItem(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
         [FromBody()] SightSeeingsWhereUniqueInput[] sightSeeingsItemsId
     )
     {
         try
         {
-            await _service.UpdateSightSeeingsItems(uniqueId, sightSeeingsItemsId);
+            await _service.UpdateSightSeeingsItem(uniqueId, sightSeeingsItemsId);
         }
         catch (NotFoundException)
         {

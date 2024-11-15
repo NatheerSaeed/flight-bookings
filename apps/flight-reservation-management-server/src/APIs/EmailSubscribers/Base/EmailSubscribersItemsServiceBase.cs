@@ -21,7 +21,7 @@ public abstract class EmailSubscribersServiceBase : IEmailSubscribersService
     /// <summary>
     /// Create one EmailSubscribers
     /// </summary>
-    public async Task<EmailSubscribers> CreateEmailSubscribers(EmailSubscriberCreateInput inputDto)
+    public async Task<EmailSubscribers> CreateEmailSubscriber(EmailSubscriberCreateInput inputDto)
     {
         var emailSubscribers = new EmailSubscriber
         {
@@ -52,7 +52,7 @@ public abstract class EmailSubscribersServiceBase : IEmailSubscribersService
     /// <summary>
     /// Delete one EmailSubscribers
     /// </summary>
-    public async Task DeleteEmailSubscribers(EmailSubscribersWhereUniqueInput uniqueId)
+    public async Task DeleteEmailSubscriber(EmailSubscribersWhereUniqueInput uniqueId)
     {
         var emailSubscribers = await _context.EmailSubscribersItems.FindAsync(uniqueId.Id);
         if (emailSubscribers == null)
@@ -117,7 +117,7 @@ public abstract class EmailSubscribersServiceBase : IEmailSubscribersService
     /// <summary>
     /// Update one EmailSubscribers
     /// </summary>
-    public async Task UpdateEmailSubscribers(
+    public async Task UpdateEmailSubscriber(
         EmailSubscribersWhereUniqueInput uniqueId,
         EmailSubscriberUpdateInput updateDto
     )

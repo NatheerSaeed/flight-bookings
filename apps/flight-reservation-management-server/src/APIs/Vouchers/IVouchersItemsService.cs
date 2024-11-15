@@ -8,12 +8,12 @@ public interface IVouchersService
     /// <summary>
     /// Create one Vouchers
     /// </summary>
-    public Task<Vouchers> CreateVouchers(VoucherCreateInput vouchers);
+    public Task<Vouchers> CreateVoucher(VoucherCreateInput vouchers);
 
     /// <summary>
     /// Delete one Vouchers
     /// </summary>
-    public Task DeleteVouchers(VouchersWhereUniqueInput uniqueId);
+    public Task DeleteVoucher(VouchersWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many VouchersItems
@@ -33,7 +33,7 @@ public interface IVouchersService
     /// <summary>
     /// Update one Vouchers
     /// </summary>
-    public Task UpdateVouchers(VouchersWhereUniqueInput uniqueId, VoucherUpdateInput updateDto);
+    public Task UpdateVoucher(VouchersWhereUniqueInput uniqueId, VoucherUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple FlightBookingsItems records to Vouchers
@@ -62,7 +62,7 @@ public interface IVouchersService
     /// <summary>
     /// Update multiple FlightBookingsItems records for Vouchers
     /// </summary>
-    public Task UpdateFlightBookingsItems(
+    public Task UpdateFlightBookingsItem(
         VouchersWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] flightBookingsId
     );
@@ -94,7 +94,7 @@ public interface IVouchersService
     /// <summary>
     /// Update multiple HotelBookingsItems records for Vouchers
     /// </summary>
-    public Task UpdateHotelBookingsItems(
+    public Task UpdateHotelBookingsItem(
         VouchersWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] hotelBookingsId
     );

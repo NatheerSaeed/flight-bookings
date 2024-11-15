@@ -21,7 +21,7 @@ public abstract class PackageAttractionsServiceBase : IPackageAttractionsService
     /// <summary>
     /// Create one PackageAttractions
     /// </summary>
-    public async Task<PackageAttractions> CreatePackageAttractions(
+    public async Task<PackageAttractions> CreatePackageAttraction(
         PackageAttractionCreateInput inputDto
     )
     {
@@ -60,7 +60,7 @@ public abstract class PackageAttractionsServiceBase : IPackageAttractionsService
     /// <summary>
     /// Delete one PackageAttractions
     /// </summary>
-    public async Task DeletePackageAttractions(PackageAttractionsWhereUniqueInput uniqueId)
+    public async Task DeletePackageAttraction(PackageAttractionsWhereUniqueInput uniqueId)
     {
         var packageAttractions = await _context.PackageAttractionsItems.FindAsync(uniqueId.Id);
         if (packageAttractions == null)
@@ -128,7 +128,7 @@ public abstract class PackageAttractionsServiceBase : IPackageAttractionsService
     /// <summary>
     /// Update one PackageAttractions
     /// </summary>
-    public async Task UpdatePackageAttractions(
+    public async Task UpdatePackageAttraction(
         PackageAttractionsWhereUniqueInput uniqueId,
         PackageAttractionUpdateInput updateDto
     )

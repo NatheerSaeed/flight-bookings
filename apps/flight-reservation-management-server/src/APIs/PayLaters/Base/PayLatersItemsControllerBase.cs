@@ -21,9 +21,9 @@ public abstract class PayLatersControllerBase : ControllerBase
     /// Create one PayLaters
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<PayLaters>> CreatePayLaters(PayLaterCreateInput input)
+    public async Task<ActionResult<PayLaters>> CreatePayLater(PayLaterCreateInput input)
     {
-        var payLaters = await _service.CreatePayLaters(input);
+        var payLaters = await _service.CreatePayLater(input);
 
         return CreatedAtAction(nameof(PayLaters), new { id = payLaters.Id }, payLaters);
     }
@@ -32,13 +32,11 @@ public abstract class PayLatersControllerBase : ControllerBase
     /// Delete one PayLaters
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeletePayLaters(
-        [FromRoute()] PayLatersWhereUniqueInput uniqueId
-    )
+    public async Task<ActionResult> DeletePayLater([FromRoute()] PayLatersWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeletePayLaters(uniqueId);
+            await _service.DeletePayLater(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +90,14 @@ public abstract class PayLatersControllerBase : ControllerBase
     /// Update one PayLaters
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdatePayLaters(
+    public async Task<ActionResult> UpdatePayLater(
         [FromRoute()] PayLatersWhereUniqueInput uniqueId,
         [FromQuery()] PayLaterUpdateInput payLatersUpdateDto
     )
     {
         try
         {
-            await _service.UpdatePayLaters(uniqueId, payLatersUpdateDto);
+            await _service.UpdatePayLater(uniqueId, payLatersUpdateDto);
         }
         catch (NotFoundException)
         {

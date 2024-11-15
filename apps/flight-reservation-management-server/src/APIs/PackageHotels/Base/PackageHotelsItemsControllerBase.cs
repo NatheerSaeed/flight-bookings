@@ -21,11 +21,9 @@ public abstract class PackageHotelsControllerBase : ControllerBase
     /// Create one PackageHotels
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<PackageHotels>> CreatePackageHotels(
-        PackageHotelCreateInput input
-    )
+    public async Task<ActionResult<PackageHotels>> CreatePackageHotel(PackageHotelCreateInput input)
     {
-        var packageHotels = await _service.CreatePackageHotels(input);
+        var packageHotels = await _service.CreatePackageHotel(input);
 
         return CreatedAtAction(nameof(PackageHotels), new { id = packageHotels.Id }, packageHotels);
     }
@@ -34,13 +32,13 @@ public abstract class PackageHotelsControllerBase : ControllerBase
     /// Delete one PackageHotels
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeletePackageHotels(
+    public async Task<ActionResult> DeletePackageHotel(
         [FromRoute()] PackageHotelsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeletePackageHotels(uniqueId);
+            await _service.DeletePackageHotel(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -94,14 +92,14 @@ public abstract class PackageHotelsControllerBase : ControllerBase
     /// Update one PackageHotels
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdatePackageHotels(
+    public async Task<ActionResult> UpdatePackageHotel(
         [FromRoute()] PackageHotelsWhereUniqueInput uniqueId,
         [FromQuery()] PackageHotelUpdateInput packageHotelsUpdateDto
     )
     {
         try
         {
-            await _service.UpdatePackageHotels(uniqueId, packageHotelsUpdateDto);
+            await _service.UpdatePackageHotel(uniqueId, packageHotelsUpdateDto);
         }
         catch (NotFoundException)
         {

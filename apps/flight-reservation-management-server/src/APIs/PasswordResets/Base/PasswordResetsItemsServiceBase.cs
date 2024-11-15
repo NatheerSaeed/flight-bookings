@@ -21,7 +21,7 @@ public abstract class PasswordResetsServiceBase : IPasswordResetsService
     /// <summary>
     /// Create one PasswordResets
     /// </summary>
-    public async Task<PasswordResets> CreatePasswordResets(PasswordResetCreateInput inputDto)
+    public async Task<PasswordResets> CreatePasswordReset(PasswordResetCreateInput inputDto)
     {
         var passwordResets = new PasswordReset
         {
@@ -52,7 +52,7 @@ public abstract class PasswordResetsServiceBase : IPasswordResetsService
     /// <summary>
     /// Delete one PasswordResets
     /// </summary>
-    public async Task DeletePasswordResets(PasswordResetsWhereUniqueInput uniqueId)
+    public async Task DeletePasswordReset(PasswordResetsWhereUniqueInput uniqueId)
     {
         var passwordResets = await _context.PasswordResetsItems.FindAsync(uniqueId.Id);
         if (passwordResets == null)
@@ -113,7 +113,7 @@ public abstract class PasswordResetsServiceBase : IPasswordResetsService
     /// <summary>
     /// Update one PasswordResets
     /// </summary>
-    public async Task UpdatePasswordResets(
+    public async Task UpdatePasswordReset(
         PasswordResetsWhereUniqueInput uniqueId,
         PasswordResetUpdateInput updateDto
     )

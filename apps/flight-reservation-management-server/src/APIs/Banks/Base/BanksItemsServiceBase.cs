@@ -21,7 +21,7 @@ public abstract class BanksServiceBase : IBanksService
     /// <summary>
     /// Create one Banks
     /// </summary>
-    public async Task<Banks> CreateBanks(BankCreateInput inputDto)
+    public async Task<Banks> CreateBank(BankCreateInput inputDto)
     {
         var banks = new Bank
         {
@@ -59,7 +59,7 @@ public abstract class BanksServiceBase : IBanksService
     /// <summary>
     /// Delete one Banks
     /// </summary>
-    public async Task DeleteBanks(BanksWhereUniqueInput uniqueId)
+    public async Task DeleteBank(BanksWhereUniqueInput uniqueId)
     {
         var banks = await _context.BanksItems.FindAsync(uniqueId.Id);
         if (banks == null)
@@ -116,7 +116,7 @@ public abstract class BanksServiceBase : IBanksService
     /// <summary>
     /// Update one Banks
     /// </summary>
-    public async Task UpdateBanks(BanksWhereUniqueInput uniqueId, BankUpdateInput updateDto)
+    public async Task UpdateBank(BanksWhereUniqueInput uniqueId, BankUpdateInput updateDto)
     {
         var banks = updateDto.ToModel(uniqueId);
 
@@ -231,7 +231,7 @@ public abstract class BanksServiceBase : IBanksService
     /// <summary>
     /// Update multiple BankDetailsItems records for Banks
     /// </summary>
-    public async Task UpdateBankDetailsItems(
+    public async Task UpdateBankDetailsItem(
         BanksWhereUniqueInput uniqueId,
         BankDetailsWhereUniqueInput[] childrenIds
     )

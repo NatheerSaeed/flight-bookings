@@ -8,12 +8,12 @@ public interface ICabinTypesService
     /// <summary>
     /// Create one CabinTypes
     /// </summary>
-    public Task<CabinTypes> CreateCabinTypes(CabinTypeCreateInput cabintypes);
+    public Task<CabinTypes> CreateCabinType(CabinTypeCreateInput cabintypes);
 
     /// <summary>
     /// Delete one CabinTypes
     /// </summary>
-    public Task DeleteCabinTypes(CabinTypesWhereUniqueInput uniqueId);
+    public Task DeleteCabinType(CabinTypesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many CabinTypesItems
@@ -33,7 +33,7 @@ public interface ICabinTypesService
     /// <summary>
     /// Update one CabinTypes
     /// </summary>
-    public Task UpdateCabinTypes(
+    public Task UpdateCabinType(
         CabinTypesWhereUniqueInput uniqueId,
         CabinTypeUpdateInput updateDto
     );

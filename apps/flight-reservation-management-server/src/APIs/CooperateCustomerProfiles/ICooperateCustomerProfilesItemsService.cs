@@ -8,14 +8,14 @@ public interface ICooperateCustomerProfilesService
     /// <summary>
     /// Create one CooperateCustomerProfiles
     /// </summary>
-    public Task<CooperateCustomerProfiles> CreateCooperateCustomerProfiles(
+    public Task<CooperateCustomerProfiles> CreateCooperateCustomerProfile(
         CooperateCustomerProfileCreateInput cooperatecustomerprofiles
     );
 
     /// <summary>
     /// Delete one CooperateCustomerProfiles
     /// </summary>
-    public Task DeleteCooperateCustomerProfiles(CooperateCustomerProfilesWhereUniqueInput uniqueId);
+    public Task DeleteCooperateCustomerProfile(CooperateCustomerProfilesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many CooperateCustomerProfilesItems
@@ -41,7 +41,7 @@ public interface ICooperateCustomerProfilesService
     /// <summary>
     /// Update one CooperateCustomerProfiles
     /// </summary>
-    public Task UpdateCooperateCustomerProfiles(
+    public Task UpdateCooperateCustomerProfile(
         CooperateCustomerProfilesWhereUniqueInput uniqueId,
         CooperateCustomerProfileUpdateInput updateDto
     );

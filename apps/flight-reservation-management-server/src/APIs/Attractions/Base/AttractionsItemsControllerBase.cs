@@ -21,9 +21,9 @@ public abstract class AttractionsControllerBase : ControllerBase
     /// Create one Attractions
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Attractions>> CreateAttractions(AttractionCreateInput input)
+    public async Task<ActionResult<Attractions>> CreateAttraction(AttractionCreateInput input)
     {
-        var attractions = await _service.CreateAttractions(input);
+        var attractions = await _service.CreateAttraction(input);
 
         return CreatedAtAction(nameof(Attractions), new { id = attractions.Id }, attractions);
     }
@@ -32,13 +32,13 @@ public abstract class AttractionsControllerBase : ControllerBase
     /// Delete one Attractions
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteAttractions(
+    public async Task<ActionResult> DeleteAttraction(
         [FromRoute()] AttractionsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteAttractions(uniqueId);
+            await _service.DeleteAttraction(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +92,14 @@ public abstract class AttractionsControllerBase : ControllerBase
     /// Update one Attractions
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateAttractions(
+    public async Task<ActionResult> UpdateAttraction(
         [FromRoute()] AttractionsWhereUniqueInput uniqueId,
         [FromQuery()] AttractionUpdateInput attractionsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateAttractions(uniqueId, attractionsUpdateDto);
+            await _service.UpdateAttraction(uniqueId, attractionsUpdateDto);
         }
         catch (NotFoundException)
         {
@@ -186,14 +186,14 @@ public abstract class AttractionsControllerBase : ControllerBase
     /// Update multiple SightSeeingsItems records for Attractions
     /// </summary>
     [HttpPatch("{Id}/sightSeeingsItems")]
-    public async Task<ActionResult> UpdateSightSeeingsItems(
+    public async Task<ActionResult> UpdateSightSeeingsItem(
         [FromRoute()] AttractionsWhereUniqueInput uniqueId,
         [FromBody()] SightSeeingsWhereUniqueInput[] sightSeeingsItemsId
     )
     {
         try
         {
-            await _service.UpdateSightSeeingsItems(uniqueId, sightSeeingsItemsId);
+            await _service.UpdateSightSeeingsItem(uniqueId, sightSeeingsItemsId);
         }
         catch (NotFoundException)
         {

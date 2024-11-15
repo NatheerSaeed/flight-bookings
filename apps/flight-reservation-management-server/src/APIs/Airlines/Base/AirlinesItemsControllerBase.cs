@@ -21,9 +21,9 @@ public abstract class AirlinesControllerBase : ControllerBase
     /// Create one Airlines
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Airlines>> CreateAirlines(AirlineCreateInput input)
+    public async Task<ActionResult<Airlines>> CreateAirline(AirlineCreateInput input)
     {
-        var airlines = await _service.CreateAirlines(input);
+        var airlines = await _service.CreateAirline(input);
 
         return CreatedAtAction(nameof(Airlines), new { id = airlines.Id }, airlines);
     }
@@ -32,11 +32,11 @@ public abstract class AirlinesControllerBase : ControllerBase
     /// Delete one Airlines
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteAirlines([FromRoute()] AirlinesWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteAirline([FromRoute()] AirlinesWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteAirlines(uniqueId);
+            await _service.DeleteAirline(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -90,14 +90,14 @@ public abstract class AirlinesControllerBase : ControllerBase
     /// Update one Airlines
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateAirlines(
+    public async Task<ActionResult> UpdateAirline(
         [FromRoute()] AirlinesWhereUniqueInput uniqueId,
         [FromQuery()] AirlineUpdateInput airlinesUpdateDto
     )
     {
         try
         {
-            await _service.UpdateAirlines(uniqueId, airlinesUpdateDto);
+            await _service.UpdateAirline(uniqueId, airlinesUpdateDto);
         }
         catch (NotFoundException)
         {

@@ -8,12 +8,12 @@ public interface IWalletLogsService
     /// <summary>
     /// Create one WalletLogs
     /// </summary>
-    public Task<WalletLogs> CreateWalletLogs(WalletLogCreateInput walletlogs);
+    public Task<WalletLogs> CreateWalletLog(WalletLogCreateInput walletlogs);
 
     /// <summary>
     /// Delete one WalletLogs
     /// </summary>
-    public Task DeleteWalletLogs(WalletLogsWhereUniqueInput uniqueId);
+    public Task DeleteWalletLog(WalletLogsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many WalletLogsItems
@@ -33,7 +33,7 @@ public interface IWalletLogsService
     /// <summary>
     /// Update one WalletLogs
     /// </summary>
-    public Task UpdateWalletLogs(
+    public Task UpdateWalletLog(
         WalletLogsWhereUniqueInput uniqueId,
         WalletLogUpdateInput updateDto
     );

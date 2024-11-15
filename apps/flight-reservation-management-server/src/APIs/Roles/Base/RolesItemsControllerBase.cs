@@ -21,9 +21,9 @@ public abstract class RolesControllerBase : ControllerBase
     /// Create one Roles
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Roles>> CreateRoles(RoleCreateInput input)
+    public async Task<ActionResult<Roles>> CreateRole(RoleCreateInput input)
     {
-        var roles = await _service.CreateRoles(input);
+        var roles = await _service.CreateRole(input);
 
         return CreatedAtAction(nameof(Roles), new { id = roles.Id }, roles);
     }
@@ -32,11 +32,11 @@ public abstract class RolesControllerBase : ControllerBase
     /// Delete one Roles
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteRoles([FromRoute()] RolesWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteRole([FromRoute()] RolesWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteRoles(uniqueId);
+            await _service.DeleteRole(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -86,14 +86,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Update one Roles
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateRoles(
+    public async Task<ActionResult> UpdateRole(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromQuery()] RoleUpdateInput rolesUpdateDto
     )
     {
         try
         {
-            await _service.UpdateRoles(uniqueId, rolesUpdateDto);
+            await _service.UpdateRole(uniqueId, rolesUpdateDto);
         }
         catch (NotFoundException)
         {
@@ -168,14 +168,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Update multiple HotelsItems records for Roles
     /// </summary>
     [HttpPatch("{Id}/hotelsItems")]
-    public async Task<ActionResult> UpdateHotelsItems(
+    public async Task<ActionResult> UpdateHotelsItem(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromBody()] HotelsWhereUniqueInput[] hotelsItemsId
     )
     {
         try
         {
-            await _service.UpdateHotelsItems(uniqueId, hotelsItemsId);
+            await _service.UpdateHotelsItem(uniqueId, hotelsItemsId);
         }
         catch (NotFoundException)
         {
@@ -250,14 +250,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Update multiple MarkupsItems records for Roles
     /// </summary>
     [HttpPatch("{Id}/markupsItems")]
-    public async Task<ActionResult> UpdateMarkupsItems(
+    public async Task<ActionResult> UpdateMarkupsItem(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromBody()] MarkupsWhereUniqueInput[] markupsItemsId
     )
     {
         try
         {
-            await _service.UpdateMarkupsItems(uniqueId, markupsItemsId);
+            await _service.UpdateMarkupsItem(uniqueId, markupsItemsId);
         }
         catch (NotFoundException)
         {
@@ -344,14 +344,14 @@ public abstract class RolesControllerBase : ControllerBase
     /// Update multiple RolesItems records for Roles
     /// </summary>
     [HttpPatch("{Id}/rolesItems")]
-    public async Task<ActionResult> UpdateRolesItems(
+    public async Task<ActionResult> UpdateRolesItem(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
         [FromBody()] RolesWhereUniqueInput[] rolesItemsId
     )
     {
         try
         {
-            await _service.UpdateRolesItems(uniqueId, rolesItemsId);
+            await _service.UpdateRolesItem(uniqueId, rolesItemsId);
         }
         catch (NotFoundException)
         {

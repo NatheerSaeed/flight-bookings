@@ -21,7 +21,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Create one Vouchers
     /// </summary>
-    public async Task<Vouchers> CreateVouchers(VoucherCreateInput inputDto)
+    public async Task<Vouchers> CreateVoucher(VoucherCreateInput inputDto)
     {
         var vouchers = new Voucher
         {
@@ -70,7 +70,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Delete one Vouchers
     /// </summary>
-    public async Task DeleteVouchers(VouchersWhereUniqueInput uniqueId)
+    public async Task DeleteVoucher(VouchersWhereUniqueInput uniqueId)
     {
         var vouchers = await _context.VouchersItems.FindAsync(uniqueId.Id);
         if (vouchers == null)
@@ -128,10 +128,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Update one Vouchers
     /// </summary>
-    public async Task UpdateVouchers(
-        VouchersWhereUniqueInput uniqueId,
-        VoucherUpdateInput updateDto
-    )
+    public async Task UpdateVoucher(VouchersWhereUniqueInput uniqueId, VoucherUpdateInput updateDto)
     {
         var vouchers = updateDto.ToModel(uniqueId);
 
@@ -255,7 +252,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Update multiple FlightBookingsItems records for Vouchers
     /// </summary>
-    public async Task UpdateFlightBookingsItems(
+    public async Task UpdateFlightBookingsItem(
         VouchersWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] childrenIds
     )
@@ -364,7 +361,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Update multiple HotelBookingsItems records for Vouchers
     /// </summary>
-    public async Task UpdateHotelBookingsItems(
+    public async Task UpdateHotelBookingsItem(
         VouchersWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] childrenIds
     )

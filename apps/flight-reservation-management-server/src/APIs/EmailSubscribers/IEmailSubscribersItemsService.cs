@@ -8,14 +8,14 @@ public interface IEmailSubscribersService
     /// <summary>
     /// Create one EmailSubscribers
     /// </summary>
-    public Task<EmailSubscribers> CreateEmailSubscribers(
+    public Task<EmailSubscribers> CreateEmailSubscriber(
         EmailSubscriberCreateInput emailsubscribers
     );
 
     /// <summary>
     /// Delete one EmailSubscribers
     /// </summary>
-    public Task DeleteEmailSubscribers(EmailSubscribersWhereUniqueInput uniqueId);
+    public Task DeleteEmailSubscriber(EmailSubscribersWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many EmailSubscribersItems
@@ -37,7 +37,7 @@ public interface IEmailSubscribersService
     /// <summary>
     /// Update one EmailSubscribers
     /// </summary>
-    public Task UpdateEmailSubscribers(
+    public Task UpdateEmailSubscriber(
         EmailSubscribersWhereUniqueInput uniqueId,
         EmailSubscriberUpdateInput updateDto
     );

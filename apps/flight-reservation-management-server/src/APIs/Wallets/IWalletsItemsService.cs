@@ -8,12 +8,12 @@ public interface IWalletsService
     /// <summary>
     /// Create one Wallets
     /// </summary>
-    public Task<Wallets> CreateWallets(WalletCreateInput wallets);
+    public Task<Wallets> CreateWallet(WalletCreateInput wallets);
 
     /// <summary>
     /// Delete one Wallets
     /// </summary>
-    public Task DeleteWallets(WalletsWhereUniqueInput uniqueId);
+    public Task DeleteWallet(WalletsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many WalletsItems
@@ -33,7 +33,7 @@ public interface IWalletsService
     /// <summary>
     /// Update one Wallets
     /// </summary>
-    public Task UpdateWallets(WalletsWhereUniqueInput uniqueId, WalletUpdateInput updateDto);
+    public Task UpdateWallet(WalletsWhereUniqueInput uniqueId, WalletUpdateInput updateDto);
 
     /// <summary>
     /// Get a user_ record for Wallets

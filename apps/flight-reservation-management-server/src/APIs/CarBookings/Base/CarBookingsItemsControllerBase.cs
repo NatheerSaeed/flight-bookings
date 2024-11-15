@@ -21,9 +21,9 @@ public abstract class CarBookingsControllerBase : ControllerBase
     /// Create one CarBookings
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<CarBookings>> CreateCarBookings(CarBookingCreateInput input)
+    public async Task<ActionResult<CarBookings>> CreateCarBooking(CarBookingCreateInput input)
     {
-        var carBookings = await _service.CreateCarBookings(input);
+        var carBookings = await _service.CreateCarBooking(input);
 
         return CreatedAtAction(nameof(CarBookings), new { id = carBookings.Id }, carBookings);
     }
@@ -32,13 +32,13 @@ public abstract class CarBookingsControllerBase : ControllerBase
     /// Delete one CarBookings
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteCarBookings(
+    public async Task<ActionResult> DeleteCarBooking(
         [FromRoute()] CarBookingsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteCarBookings(uniqueId);
+            await _service.DeleteCarBooking(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +92,14 @@ public abstract class CarBookingsControllerBase : ControllerBase
     /// Update one CarBookings
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateCarBookings(
+    public async Task<ActionResult> UpdateCarBooking(
         [FromRoute()] CarBookingsWhereUniqueInput uniqueId,
         [FromQuery()] CarBookingUpdateInput carBookingsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateCarBookings(uniqueId, carBookingsUpdateDto);
+            await _service.UpdateCarBooking(uniqueId, carBookingsUpdateDto);
         }
         catch (NotFoundException)
         {

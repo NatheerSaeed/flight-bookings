@@ -21,9 +21,9 @@ public abstract class MarkdownsControllerBase : ControllerBase
     /// Create one Markdowns
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Markdowns>> CreateMarkdowns(MarkdownCreateInput input)
+    public async Task<ActionResult<Markdowns>> CreateMarkdown(MarkdownCreateInput input)
     {
-        var markdowns = await _service.CreateMarkdowns(input);
+        var markdowns = await _service.CreateMarkdown(input);
 
         return CreatedAtAction(nameof(Markdowns), new { id = markdowns.Id }, markdowns);
     }
@@ -32,13 +32,11 @@ public abstract class MarkdownsControllerBase : ControllerBase
     /// Delete one Markdowns
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteMarkdowns(
-        [FromRoute()] MarkdownsWhereUniqueInput uniqueId
-    )
+    public async Task<ActionResult> DeleteMarkdown([FromRoute()] MarkdownsWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteMarkdowns(uniqueId);
+            await _service.DeleteMarkdown(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +90,14 @@ public abstract class MarkdownsControllerBase : ControllerBase
     /// Update one Markdowns
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateMarkdowns(
+    public async Task<ActionResult> UpdateMarkdown(
         [FromRoute()] MarkdownsWhereUniqueInput uniqueId,
         [FromQuery()] MarkdownUpdateInput markdownsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateMarkdowns(uniqueId, markdownsUpdateDto);
+            await _service.UpdateMarkdown(uniqueId, markdownsUpdateDto);
         }
         catch (NotFoundException)
         {

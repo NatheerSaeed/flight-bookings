@@ -8,12 +8,12 @@ public interface IHotelsService
     /// <summary>
     /// Create one Hotels
     /// </summary>
-    public Task<Hotels> CreateHotels(HotelCreateInput hotels);
+    public Task<Hotels> CreateHotel(HotelCreateInput hotels);
 
     /// <summary>
     /// Delete one Hotels
     /// </summary>
-    public Task DeleteHotels(HotelsWhereUniqueInput uniqueId);
+    public Task DeleteHotel(HotelsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many HotelsItems
@@ -33,7 +33,7 @@ public interface IHotelsService
     /// <summary>
     /// Update one Hotels
     /// </summary>
-    public Task UpdateHotels(HotelsWhereUniqueInput uniqueId, HotelUpdateInput updateDto);
+    public Task UpdateHotel(HotelsWhereUniqueInput uniqueId, HotelUpdateInput updateDto);
 
     /// <summary>
     /// Get a role_ record for Hotels

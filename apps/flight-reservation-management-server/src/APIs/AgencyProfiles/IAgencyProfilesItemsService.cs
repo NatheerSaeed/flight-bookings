@@ -8,12 +8,12 @@ public interface IAgencyProfilesService
     /// <summary>
     /// Create one AgencyProfiles
     /// </summary>
-    public Task<AgencyProfiles> CreateAgencyProfiles(AgencyProfileCreateInput agencyprofiles);
+    public Task<AgencyProfiles> CreateAgencyProfile(AgencyProfileCreateInput agencyprofiles);
 
     /// <summary>
     /// Delete one AgencyProfiles
     /// </summary>
-    public Task DeleteAgencyProfiles(AgencyProfilesWhereUniqueInput uniqueId);
+    public Task DeleteAgencyProfile(AgencyProfilesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many AgencyProfilesItems
@@ -33,7 +33,7 @@ public interface IAgencyProfilesService
     /// <summary>
     /// Update one AgencyProfiles
     /// </summary>
-    public Task UpdateAgencyProfiles(
+    public Task UpdateAgencyProfile(
         AgencyProfilesWhereUniqueInput uniqueId,
         AgencyProfileUpdateInput updateDto
     );

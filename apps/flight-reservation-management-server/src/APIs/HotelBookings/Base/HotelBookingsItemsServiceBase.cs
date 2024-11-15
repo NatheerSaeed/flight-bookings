@@ -21,7 +21,7 @@ public abstract class HotelBookingsServiceBase : IHotelBookingsService
     /// <summary>
     /// Create one HotelBookings
     /// </summary>
-    public async Task<HotelBookings> CreateHotelBookings(HotelBookingCreateInput inputDto)
+    public async Task<HotelBookings> CreateHotelBooking(HotelBookingCreateInput inputDto)
     {
         var hotelBookings = new HotelBooking
         {
@@ -88,7 +88,7 @@ public abstract class HotelBookingsServiceBase : IHotelBookingsService
     /// <summary>
     /// Delete one HotelBookings
     /// </summary>
-    public async Task DeleteHotelBookings(HotelBookingsWhereUniqueInput uniqueId)
+    public async Task DeleteHotelBooking(HotelBookingsWhereUniqueInput uniqueId)
     {
         var hotelBookings = await _context.HotelBookingsItems.FindAsync(uniqueId.Id);
         if (hotelBookings == null)
@@ -146,7 +146,7 @@ public abstract class HotelBookingsServiceBase : IHotelBookingsService
     /// <summary>
     /// Update one HotelBookings
     /// </summary>
-    public async Task UpdateHotelBookings(
+    public async Task UpdateHotelBooking(
         HotelBookingsWhereUniqueInput uniqueId,
         HotelBookingUpdateInput updateDto
     )

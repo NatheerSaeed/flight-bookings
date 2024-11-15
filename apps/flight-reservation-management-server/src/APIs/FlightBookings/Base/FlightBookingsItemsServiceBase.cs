@@ -21,7 +21,7 @@ public abstract class FlightBookingsServiceBase : IFlightBookingsService
     /// <summary>
     /// Create one FlightBookings
     /// </summary>
-    public async Task<FlightBookings> CreateFlightBookings(FlightBookingCreateInput inputDto)
+    public async Task<FlightBookings> CreateFlightBooking(FlightBookingCreateInput inputDto)
     {
         var flightBookings = new FlightBooking
         {
@@ -77,7 +77,7 @@ public abstract class FlightBookingsServiceBase : IFlightBookingsService
     /// <summary>
     /// Delete one FlightBookings
     /// </summary>
-    public async Task DeleteFlightBookings(FlightBookingsWhereUniqueInput uniqueId)
+    public async Task DeleteFlightBooking(FlightBookingsWhereUniqueInput uniqueId)
     {
         var flightBookings = await _context.FlightBookingsItems.FindAsync(uniqueId.Id);
         if (flightBookings == null)
@@ -140,7 +140,7 @@ public abstract class FlightBookingsServiceBase : IFlightBookingsService
     /// <summary>
     /// Update one FlightBookings
     /// </summary>
-    public async Task UpdateFlightBookings(
+    public async Task UpdateFlightBooking(
         FlightBookingsWhereUniqueInput uniqueId,
         FlightBookingUpdateInput updateDto
     )

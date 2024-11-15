@@ -21,9 +21,9 @@ public abstract class BanksControllerBase : ControllerBase
     /// Create one Banks
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Banks>> CreateBanks(BankCreateInput input)
+    public async Task<ActionResult<Banks>> CreateBank(BankCreateInput input)
     {
-        var banks = await _service.CreateBanks(input);
+        var banks = await _service.CreateBank(input);
 
         return CreatedAtAction(nameof(Banks), new { id = banks.Id }, banks);
     }
@@ -32,11 +32,11 @@ public abstract class BanksControllerBase : ControllerBase
     /// Delete one Banks
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteBanks([FromRoute()] BanksWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteBank([FromRoute()] BanksWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteBanks(uniqueId);
+            await _service.DeleteBank(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -86,14 +86,14 @@ public abstract class BanksControllerBase : ControllerBase
     /// Update one Banks
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateBanks(
+    public async Task<ActionResult> UpdateBank(
         [FromRoute()] BanksWhereUniqueInput uniqueId,
         [FromQuery()] BankUpdateInput banksUpdateDto
     )
     {
         try
         {
-            await _service.UpdateBanks(uniqueId, banksUpdateDto);
+            await _service.UpdateBank(uniqueId, banksUpdateDto);
         }
         catch (NotFoundException)
         {
@@ -168,14 +168,14 @@ public abstract class BanksControllerBase : ControllerBase
     /// Update multiple BankDetailsItems records for Banks
     /// </summary>
     [HttpPatch("{Id}/bankDetailsItems")]
-    public async Task<ActionResult> UpdateBankDetailsItems(
+    public async Task<ActionResult> UpdateBankDetailsItem(
         [FromRoute()] BanksWhereUniqueInput uniqueId,
         [FromBody()] BankDetailsWhereUniqueInput[] bankDetailsItemsId
     )
     {
         try
         {
-            await _service.UpdateBankDetailsItems(uniqueId, bankDetailsItemsId);
+            await _service.UpdateBankDetailsItem(uniqueId, bankDetailsItemsId);
         }
         catch (NotFoundException)
         {

@@ -8,12 +8,12 @@ public interface IPackagesService
     /// <summary>
     /// Create one Packages
     /// </summary>
-    public Task<Packages> CreatePackages(PackageCreateInput packages);
+    public Task<Packages> CreatePackage(PackageCreateInput packages);
 
     /// <summary>
     /// Delete one Packages
     /// </summary>
-    public Task DeletePackages(PackagesWhereUniqueInput uniqueId);
+    public Task DeletePackage(PackagesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many PackagesItems
@@ -33,7 +33,7 @@ public interface IPackagesService
     /// <summary>
     /// Update one Packages
     /// </summary>
-    public Task UpdatePackages(PackagesWhereUniqueInput uniqueId, PackageUpdateInput updateDto);
+    public Task UpdatePackage(PackagesWhereUniqueInput uniqueId, PackageUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple AttractionsItems records to Packages
@@ -62,7 +62,7 @@ public interface IPackagesService
     /// <summary>
     /// Update multiple AttractionsItems records for Packages
     /// </summary>
-    public Task UpdateAttractionsItems(
+    public Task UpdateAttractionsItem(
         PackagesWhereUniqueInput uniqueId,
         AttractionsWhereUniqueInput[] attractionsId
     );
@@ -94,7 +94,7 @@ public interface IPackagesService
     /// <summary>
     /// Update multiple FlightDealsItems records for Packages
     /// </summary>
-    public Task UpdateFlightDealsItems(
+    public Task UpdateFlightDealsItem(
         PackagesWhereUniqueInput uniqueId,
         FlightDealsWhereUniqueInput[] flightDealsId
     );
@@ -126,7 +126,7 @@ public interface IPackagesService
     /// <summary>
     /// Update multiple GalleriesItems records for Packages
     /// </summary>
-    public Task UpdateGalleriesItems(
+    public Task UpdateGalleriesItem(
         PackagesWhereUniqueInput uniqueId,
         GalleriesWhereUniqueInput[] galleriesId
     );
@@ -158,7 +158,7 @@ public interface IPackagesService
     /// <summary>
     /// Update multiple GoodToKnowsItems records for Packages
     /// </summary>
-    public Task UpdateGoodToKnowsItems(
+    public Task UpdateGoodToKnowsItem(
         PackagesWhereUniqueInput uniqueId,
         GoodToKnowsWhereUniqueInput[] goodToKnowsId
     );
@@ -190,7 +190,7 @@ public interface IPackagesService
     /// <summary>
     /// Update multiple HotelDealsItems records for Packages
     /// </summary>
-    public Task UpdateHotelDealsItems(
+    public Task UpdateHotelDealsItem(
         PackagesWhereUniqueInput uniqueId,
         HotelDealsWhereUniqueInput[] hotelDealsId
     );
@@ -222,7 +222,7 @@ public interface IPackagesService
     /// <summary>
     /// Update multiple PackageAttractionsItems records for Packages
     /// </summary>
-    public Task UpdatePackageAttractionsItems(
+    public Task UpdatePackageAttractionsItem(
         PackagesWhereUniqueInput uniqueId,
         PackageAttractionsWhereUniqueInput[] packageAttractionsId
     );
@@ -254,7 +254,7 @@ public interface IPackagesService
     /// <summary>
     /// Update multiple PackageBookingsItems records for Packages
     /// </summary>
-    public Task UpdatePackageBookingsItems(
+    public Task UpdatePackageBookingsItem(
         PackagesWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] packageBookingsId
     );
@@ -286,7 +286,7 @@ public interface IPackagesService
     /// <summary>
     /// Update multiple PackageFlightsItems records for Packages
     /// </summary>
-    public Task UpdatePackageFlightsItems(
+    public Task UpdatePackageFlightsItem(
         PackagesWhereUniqueInput uniqueId,
         PackageFlightsWhereUniqueInput[] packageFlightsId
     );
@@ -318,7 +318,7 @@ public interface IPackagesService
     /// <summary>
     /// Update multiple PackageHotelsItems records for Packages
     /// </summary>
-    public Task UpdatePackageHotelsItems(
+    public Task UpdatePackageHotelsItem(
         PackagesWhereUniqueInput uniqueId,
         PackageHotelsWhereUniqueInput[] packageHotelsId
     );
@@ -350,7 +350,7 @@ public interface IPackagesService
     /// <summary>
     /// Update multiple SightSeeingsItems records for Packages
     /// </summary>
-    public Task UpdateSightSeeingsItems(
+    public Task UpdateSightSeeingsItem(
         PackagesWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] sightSeeingsId
     );

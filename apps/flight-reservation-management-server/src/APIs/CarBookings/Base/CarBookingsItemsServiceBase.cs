@@ -21,7 +21,7 @@ public abstract class CarBookingsServiceBase : ICarBookingsService
     /// <summary>
     /// Create one CarBookings
     /// </summary>
-    public async Task<CarBookings> CreateCarBookings(CarBookingCreateInput inputDto)
+    public async Task<CarBookings> CreateCarBooking(CarBookingCreateInput inputDto)
     {
         var carBookings = new CarBooking
         {
@@ -63,7 +63,7 @@ public abstract class CarBookingsServiceBase : ICarBookingsService
     /// <summary>
     /// Delete one CarBookings
     /// </summary>
-    public async Task DeleteCarBookings(CarBookingsWhereUniqueInput uniqueId)
+    public async Task DeleteCarBooking(CarBookingsWhereUniqueInput uniqueId)
     {
         var carBookings = await _context.CarBookingsItems.FindAsync(uniqueId.Id);
         if (carBookings == null)
@@ -120,7 +120,7 @@ public abstract class CarBookingsServiceBase : ICarBookingsService
     /// <summary>
     /// Update one CarBookings
     /// </summary>
-    public async Task UpdateCarBookings(
+    public async Task UpdateCarBooking(
         CarBookingsWhereUniqueInput uniqueId,
         CarBookingUpdateInput updateDto
     )

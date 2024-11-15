@@ -8,12 +8,12 @@ public interface ITravelPackagesService
     /// <summary>
     /// Create one TravelPackages
     /// </summary>
-    public Task<TravelPackages> CreateTravelPackages(TravelPackageCreateInput travelpackages);
+    public Task<TravelPackages> CreateTravelPackage(TravelPackageCreateInput travelpackages);
 
     /// <summary>
     /// Delete one TravelPackages
     /// </summary>
-    public Task DeleteTravelPackages(TravelPackagesWhereUniqueInput uniqueId);
+    public Task DeleteTravelPackage(TravelPackagesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many TravelPackagesItems
@@ -33,7 +33,7 @@ public interface ITravelPackagesService
     /// <summary>
     /// Update one TravelPackages
     /// </summary>
-    public Task UpdateTravelPackages(
+    public Task UpdateTravelPackage(
         TravelPackagesWhereUniqueInput uniqueId,
         TravelPackageUpdateInput updateDto
     );

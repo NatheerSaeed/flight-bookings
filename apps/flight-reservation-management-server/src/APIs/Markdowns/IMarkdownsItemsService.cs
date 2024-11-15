@@ -8,12 +8,12 @@ public interface IMarkdownsService
     /// <summary>
     /// Create one Markdowns
     /// </summary>
-    public Task<Markdowns> CreateMarkdowns(MarkdownCreateInput markdowns);
+    public Task<Markdowns> CreateMarkdown(MarkdownCreateInput markdowns);
 
     /// <summary>
     /// Delete one Markdowns
     /// </summary>
-    public Task DeleteMarkdowns(MarkdownsWhereUniqueInput uniqueId);
+    public Task DeleteMarkdown(MarkdownsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many MarkdownsItems
@@ -33,5 +33,5 @@ public interface IMarkdownsService
     /// <summary>
     /// Update one Markdowns
     /// </summary>
-    public Task UpdateMarkdowns(MarkdownsWhereUniqueInput uniqueId, MarkdownUpdateInput updateDto);
+    public Task UpdateMarkdown(MarkdownsWhereUniqueInput uniqueId, MarkdownUpdateInput updateDto);
 }

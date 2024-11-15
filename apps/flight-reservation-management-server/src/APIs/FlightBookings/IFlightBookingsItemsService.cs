@@ -8,12 +8,12 @@ public interface IFlightBookingsService
     /// <summary>
     /// Create one FlightBookings
     /// </summary>
-    public Task<FlightBookings> CreateFlightBookings(FlightBookingCreateInput flightbookings);
+    public Task<FlightBookings> CreateFlightBooking(FlightBookingCreateInput flightbookings);
 
     /// <summary>
     /// Delete one FlightBookings
     /// </summary>
-    public Task DeleteFlightBookings(FlightBookingsWhereUniqueInput uniqueId);
+    public Task DeleteFlightBooking(FlightBookingsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many FlightBookingsItems
@@ -33,7 +33,7 @@ public interface IFlightBookingsService
     /// <summary>
     /// Update one FlightBookings
     /// </summary>
-    public Task UpdateFlightBookings(
+    public Task UpdateFlightBooking(
         FlightBookingsWhereUniqueInput uniqueId,
         FlightBookingUpdateInput updateDto
     );

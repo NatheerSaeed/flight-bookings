@@ -21,11 +21,11 @@ public abstract class OnlinePaymentsControllerBase : ControllerBase
     /// Create one OnlinePayments
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<OnlinePayments>> CreateOnlinePayments(
+    public async Task<ActionResult<OnlinePayments>> CreateOnlinePayment(
         OnlinePaymentCreateInput input
     )
     {
-        var onlinePayments = await _service.CreateOnlinePayments(input);
+        var onlinePayments = await _service.CreateOnlinePayment(input);
 
         return CreatedAtAction(
             nameof(OnlinePayments),
@@ -38,13 +38,13 @@ public abstract class OnlinePaymentsControllerBase : ControllerBase
     /// Delete one OnlinePayments
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteOnlinePayments(
+    public async Task<ActionResult> DeleteOnlinePayment(
         [FromRoute()] OnlinePaymentsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteOnlinePayments(uniqueId);
+            await _service.DeleteOnlinePayment(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class OnlinePaymentsControllerBase : ControllerBase
     /// Update one OnlinePayments
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateOnlinePayments(
+    public async Task<ActionResult> UpdateOnlinePayment(
         [FromRoute()] OnlinePaymentsWhereUniqueInput uniqueId,
         [FromQuery()] OnlinePaymentUpdateInput onlinePaymentsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateOnlinePayments(uniqueId, onlinePaymentsUpdateDto);
+            await _service.UpdateOnlinePayment(uniqueId, onlinePaymentsUpdateDto);
         }
         catch (NotFoundException)
         {

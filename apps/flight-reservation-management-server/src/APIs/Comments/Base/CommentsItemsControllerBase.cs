@@ -21,9 +21,9 @@ public abstract class CommentsControllerBase : ControllerBase
     /// Create one Comments
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Comments>> CreateComments(CommentCreateInput input)
+    public async Task<ActionResult<Comments>> CreateComment(CommentCreateInput input)
     {
-        var comments = await _service.CreateComments(input);
+        var comments = await _service.CreateComment(input);
 
         return CreatedAtAction(nameof(Comments), new { id = comments.Id }, comments);
     }
@@ -32,11 +32,11 @@ public abstract class CommentsControllerBase : ControllerBase
     /// Delete one Comments
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteComments([FromRoute()] CommentsWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteComment([FromRoute()] CommentsWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteComments(uniqueId);
+            await _service.DeleteComment(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -90,14 +90,14 @@ public abstract class CommentsControllerBase : ControllerBase
     /// Update one Comments
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateComments(
+    public async Task<ActionResult> UpdateComment(
         [FromRoute()] CommentsWhereUniqueInput uniqueId,
         [FromQuery()] CommentUpdateInput commentsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateComments(uniqueId, commentsUpdateDto);
+            await _service.UpdateComment(uniqueId, commentsUpdateDto);
         }
         catch (NotFoundException)
         {

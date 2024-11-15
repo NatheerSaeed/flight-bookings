@@ -8,12 +8,12 @@ public interface IProfilesService
     /// <summary>
     /// Create one Profiles
     /// </summary>
-    public Task<Profiles> CreateProfiles(ProfileCreateInput profiles);
+    public Task<Profiles> CreateProfile(ProfileCreateInput profiles);
 
     /// <summary>
     /// Delete one Profiles
     /// </summary>
-    public Task DeleteProfiles(ProfilesWhereUniqueInput uniqueId);
+    public Task DeleteProfile(ProfilesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many ProfilesItems
@@ -33,7 +33,7 @@ public interface IProfilesService
     /// <summary>
     /// Update one Profiles
     /// </summary>
-    public Task UpdateProfiles(ProfilesWhereUniqueInput uniqueId, ProfileUpdateInput updateDto);
+    public Task UpdateProfile(ProfilesWhereUniqueInput uniqueId, ProfileUpdateInput updateDto);
 
     /// <summary>
     /// Get a gender_ record for Profiles

@@ -8,12 +8,12 @@ public interface IFlightDealsService
     /// <summary>
     /// Create one FlightDeals
     /// </summary>
-    public Task<FlightDeals> CreateFlightDeals(FlightDealCreateInput flightdeals);
+    public Task<FlightDeals> CreateFlightDeal(FlightDealCreateInput flightdeals);
 
     /// <summary>
     /// Delete one FlightDeals
     /// </summary>
-    public Task DeleteFlightDeals(FlightDealsWhereUniqueInput uniqueId);
+    public Task DeleteFlightDeal(FlightDealsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many FlightDealsItems
@@ -33,7 +33,7 @@ public interface IFlightDealsService
     /// <summary>
     /// Update one FlightDeals
     /// </summary>
-    public Task UpdateFlightDeals(
+    public Task UpdateFlightDeal(
         FlightDealsWhereUniqueInput uniqueId,
         FlightDealUpdateInput updateDto
     );

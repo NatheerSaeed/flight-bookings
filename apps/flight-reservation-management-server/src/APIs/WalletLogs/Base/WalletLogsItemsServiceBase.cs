@@ -21,7 +21,7 @@ public abstract class WalletLogsServiceBase : IWalletLogsService
     /// <summary>
     /// Create one WalletLogs
     /// </summary>
-    public async Task<WalletLogs> CreateWalletLogs(WalletLogCreateInput inputDto)
+    public async Task<WalletLogs> CreateWalletLog(WalletLogCreateInput inputDto)
     {
         var walletLogs = new WalletLog
         {
@@ -59,7 +59,7 @@ public abstract class WalletLogsServiceBase : IWalletLogsService
     /// <summary>
     /// Delete one WalletLogs
     /// </summary>
-    public async Task DeleteWalletLogs(WalletLogsWhereUniqueInput uniqueId)
+    public async Task DeleteWalletLog(WalletLogsWhereUniqueInput uniqueId)
     {
         var walletLogs = await _context.WalletLogsItems.FindAsync(uniqueId.Id);
         if (walletLogs == null)
@@ -116,7 +116,7 @@ public abstract class WalletLogsServiceBase : IWalletLogsService
     /// <summary>
     /// Update one WalletLogs
     /// </summary>
-    public async Task UpdateWalletLogs(
+    public async Task UpdateWalletLog(
         WalletLogsWhereUniqueInput uniqueId,
         WalletLogUpdateInput updateDto
     )

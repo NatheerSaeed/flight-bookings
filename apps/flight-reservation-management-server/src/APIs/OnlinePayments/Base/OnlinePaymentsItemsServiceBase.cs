@@ -21,7 +21,7 @@ public abstract class OnlinePaymentsServiceBase : IOnlinePaymentsService
     /// <summary>
     /// Create one OnlinePayments
     /// </summary>
-    public async Task<OnlinePayments> CreateOnlinePayments(OnlinePaymentCreateInput inputDto)
+    public async Task<OnlinePayments> CreateOnlinePayment(OnlinePaymentCreateInput inputDto)
     {
         var onlinePayments = new OnlinePayment
         {
@@ -63,7 +63,7 @@ public abstract class OnlinePaymentsServiceBase : IOnlinePaymentsService
     /// <summary>
     /// Delete one OnlinePayments
     /// </summary>
-    public async Task DeleteOnlinePayments(OnlinePaymentsWhereUniqueInput uniqueId)
+    public async Task DeleteOnlinePayment(OnlinePaymentsWhereUniqueInput uniqueId)
     {
         var onlinePayments = await _context.OnlinePaymentsItems.FindAsync(uniqueId.Id);
         if (onlinePayments == null)
@@ -125,7 +125,7 @@ public abstract class OnlinePaymentsServiceBase : IOnlinePaymentsService
     /// <summary>
     /// Update one OnlinePayments
     /// </summary>
-    public async Task UpdateOnlinePayments(
+    public async Task UpdateOnlinePayment(
         OnlinePaymentsWhereUniqueInput uniqueId,
         OnlinePaymentUpdateInput updateDto
     )

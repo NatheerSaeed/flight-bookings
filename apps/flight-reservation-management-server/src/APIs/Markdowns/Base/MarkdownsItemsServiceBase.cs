@@ -21,7 +21,7 @@ public abstract class MarkdownsServiceBase : IMarkdownsService
     /// <summary>
     /// Create one Markdowns
     /// </summary>
-    public async Task<Markdowns> CreateMarkdowns(MarkdownCreateInput inputDto)
+    public async Task<Markdowns> CreateMarkdown(MarkdownCreateInput inputDto)
     {
         var markdowns = new Markdown
         {
@@ -53,7 +53,7 @@ public abstract class MarkdownsServiceBase : IMarkdownsService
     /// <summary>
     /// Delete one Markdowns
     /// </summary>
-    public async Task DeleteMarkdowns(MarkdownsWhereUniqueInput uniqueId)
+    public async Task DeleteMarkdown(MarkdownsWhereUniqueInput uniqueId)
     {
         var markdowns = await _context.MarkdownsItems.FindAsync(uniqueId.Id);
         if (markdowns == null)
@@ -109,7 +109,7 @@ public abstract class MarkdownsServiceBase : IMarkdownsService
     /// <summary>
     /// Update one Markdowns
     /// </summary>
-    public async Task UpdateMarkdowns(
+    public async Task UpdateMarkdown(
         MarkdownsWhereUniqueInput uniqueId,
         MarkdownUpdateInput updateDto
     )

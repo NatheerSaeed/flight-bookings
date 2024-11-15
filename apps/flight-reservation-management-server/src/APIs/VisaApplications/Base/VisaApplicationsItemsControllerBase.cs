@@ -21,11 +21,11 @@ public abstract class VisaApplicationsControllerBase : ControllerBase
     /// Create one VisaApplications
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<VisaApplications>> CreateVisaApplications(
+    public async Task<ActionResult<VisaApplications>> CreateVisaApplication(
         VisaApplicationCreateInput input
     )
     {
-        var visaApplications = await _service.CreateVisaApplications(input);
+        var visaApplications = await _service.CreateVisaApplication(input);
 
         return CreatedAtAction(
             nameof(VisaApplications),
@@ -38,13 +38,13 @@ public abstract class VisaApplicationsControllerBase : ControllerBase
     /// Delete one VisaApplications
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteVisaApplications(
+    public async Task<ActionResult> DeleteVisaApplication(
         [FromRoute()] VisaApplicationsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteVisaApplications(uniqueId);
+            await _service.DeleteVisaApplication(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class VisaApplicationsControllerBase : ControllerBase
     /// Update one VisaApplications
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateVisaApplications(
+    public async Task<ActionResult> UpdateVisaApplication(
         [FromRoute()] VisaApplicationsWhereUniqueInput uniqueId,
         [FromQuery()] VisaApplicationUpdateInput visaApplicationsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateVisaApplications(uniqueId, visaApplicationsUpdateDto);
+            await _service.UpdateVisaApplication(uniqueId, visaApplicationsUpdateDto);
         }
         catch (NotFoundException)
         {

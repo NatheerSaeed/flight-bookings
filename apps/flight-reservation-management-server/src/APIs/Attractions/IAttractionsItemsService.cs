@@ -8,12 +8,12 @@ public interface IAttractionsService
     /// <summary>
     /// Create one Attractions
     /// </summary>
-    public Task<Attractions> CreateAttractions(AttractionCreateInput attractions);
+    public Task<Attractions> CreateAttraction(AttractionCreateInput attractions);
 
     /// <summary>
     /// Delete one Attractions
     /// </summary>
-    public Task DeleteAttractions(AttractionsWhereUniqueInput uniqueId);
+    public Task DeleteAttraction(AttractionsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many AttractionsItems
@@ -33,7 +33,7 @@ public interface IAttractionsService
     /// <summary>
     /// Update one Attractions
     /// </summary>
-    public Task UpdateAttractions(
+    public Task UpdateAttraction(
         AttractionsWhereUniqueInput uniqueId,
         AttractionUpdateInput updateDto
     );
@@ -70,7 +70,7 @@ public interface IAttractionsService
     /// <summary>
     /// Update multiple SightSeeingsItems records for Attractions
     /// </summary>
-    public Task UpdateSightSeeingsItems(
+    public Task UpdateSightSeeingsItem(
         AttractionsWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] sightSeeingsId
     );

@@ -21,9 +21,9 @@ public abstract class GoodToKnowsControllerBase : ControllerBase
     /// Create one GoodToKnows
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<GoodToKnows>> CreateGoodToKnows(GoodToKnowCreateInput input)
+    public async Task<ActionResult<GoodToKnows>> CreateGoodToKnow(GoodToKnowCreateInput input)
     {
-        var goodToKnows = await _service.CreateGoodToKnows(input);
+        var goodToKnows = await _service.CreateGoodToKnow(input);
 
         return CreatedAtAction(nameof(GoodToKnows), new { id = goodToKnows.Id }, goodToKnows);
     }
@@ -32,13 +32,13 @@ public abstract class GoodToKnowsControllerBase : ControllerBase
     /// Delete one GoodToKnows
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteGoodToKnows(
+    public async Task<ActionResult> DeleteGoodToKnow(
         [FromRoute()] GoodToKnowsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteGoodToKnows(uniqueId);
+            await _service.DeleteGoodToKnow(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +92,14 @@ public abstract class GoodToKnowsControllerBase : ControllerBase
     /// Update one GoodToKnows
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateGoodToKnows(
+    public async Task<ActionResult> UpdateGoodToKnow(
         [FromRoute()] GoodToKnowsWhereUniqueInput uniqueId,
         [FromQuery()] GoodToKnowUpdateInput goodToKnowsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateGoodToKnows(uniqueId, goodToKnowsUpdateDto);
+            await _service.UpdateGoodToKnow(uniqueId, goodToKnowsUpdateDto);
         }
         catch (NotFoundException)
         {

@@ -8,12 +8,12 @@ public interface IHotelBookingsService
     /// <summary>
     /// Create one HotelBookings
     /// </summary>
-    public Task<HotelBookings> CreateHotelBookings(HotelBookingCreateInput hotelbookings);
+    public Task<HotelBookings> CreateHotelBooking(HotelBookingCreateInput hotelbookings);
 
     /// <summary>
     /// Delete one HotelBookings
     /// </summary>
-    public Task DeleteHotelBookings(HotelBookingsWhereUniqueInput uniqueId);
+    public Task DeleteHotelBooking(HotelBookingsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many HotelBookingsItems
@@ -33,7 +33,7 @@ public interface IHotelBookingsService
     /// <summary>
     /// Update one HotelBookings
     /// </summary>
-    public Task UpdateHotelBookings(
+    public Task UpdateHotelBooking(
         HotelBookingsWhereUniqueInput uniqueId,
         HotelBookingUpdateInput updateDto
     );

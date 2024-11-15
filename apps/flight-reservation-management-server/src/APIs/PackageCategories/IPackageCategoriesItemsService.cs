@@ -8,14 +8,14 @@ public interface IPackageCategoriesService
     /// <summary>
     /// Create one PackageCategories
     /// </summary>
-    public Task<PackageCategories> CreatePackageCategories(
+    public Task<PackageCategories> CreatePackageCategorie(
         PackageCategorieCreateInput packagecategories
     );
 
     /// <summary>
     /// Delete one PackageCategories
     /// </summary>
-    public Task DeletePackageCategories(PackageCategoriesWhereUniqueInput uniqueId);
+    public Task DeletePackageCategorie(PackageCategoriesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many PackageCategoriesItems
@@ -37,7 +37,7 @@ public interface IPackageCategoriesService
     /// <summary>
     /// Update one PackageCategories
     /// </summary>
-    public Task UpdatePackageCategories(
+    public Task UpdatePackageCategorie(
         PackageCategoriesWhereUniqueInput uniqueId,
         PackageCategorieUpdateInput updateDto
     );

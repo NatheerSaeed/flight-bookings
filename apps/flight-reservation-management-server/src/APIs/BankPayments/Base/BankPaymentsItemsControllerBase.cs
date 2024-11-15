@@ -21,9 +21,9 @@ public abstract class BankPaymentsControllerBase : ControllerBase
     /// Create one BankPayments
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<BankPayments>> CreateBankPayments(BankPaymentCreateInput input)
+    public async Task<ActionResult<BankPayments>> CreateBankPayment(BankPaymentCreateInput input)
     {
-        var bankPayments = await _service.CreateBankPayments(input);
+        var bankPayments = await _service.CreateBankPayment(input);
 
         return CreatedAtAction(nameof(BankPayments), new { id = bankPayments.Id }, bankPayments);
     }
@@ -32,13 +32,13 @@ public abstract class BankPaymentsControllerBase : ControllerBase
     /// Delete one BankPayments
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteBankPayments(
+    public async Task<ActionResult> DeleteBankPayment(
         [FromRoute()] BankPaymentsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteBankPayments(uniqueId);
+            await _service.DeleteBankPayment(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +92,14 @@ public abstract class BankPaymentsControllerBase : ControllerBase
     /// Update one BankPayments
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateBankPayments(
+    public async Task<ActionResult> UpdateBankPayment(
         [FromRoute()] BankPaymentsWhereUniqueInput uniqueId,
         [FromQuery()] BankPaymentUpdateInput bankPaymentsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateBankPayments(uniqueId, bankPaymentsUpdateDto);
+            await _service.UpdateBankPayment(uniqueId, bankPaymentsUpdateDto);
         }
         catch (NotFoundException)
         {

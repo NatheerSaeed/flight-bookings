@@ -8,12 +8,12 @@ public interface IPackageFlightsService
     /// <summary>
     /// Create one PackageFlights
     /// </summary>
-    public Task<PackageFlights> CreatePackageFlights(PackageFlightCreateInput packageflights);
+    public Task<PackageFlights> CreatePackageFlight(PackageFlightCreateInput packageflights);
 
     /// <summary>
     /// Delete one PackageFlights
     /// </summary>
-    public Task DeletePackageFlights(PackageFlightsWhereUniqueInput uniqueId);
+    public Task DeletePackageFlight(PackageFlightsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many PackageFlightsItems
@@ -33,7 +33,7 @@ public interface IPackageFlightsService
     /// <summary>
     /// Update one PackageFlights
     /// </summary>
-    public Task UpdatePackageFlights(
+    public Task UpdatePackageFlight(
         PackageFlightsWhereUniqueInput uniqueId,
         PackageFlightUpdateInput updateDto
     );

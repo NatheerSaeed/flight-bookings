@@ -21,11 +21,11 @@ public abstract class PasswordResetsControllerBase : ControllerBase
     /// Create one PasswordResets
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<PasswordResets>> CreatePasswordResets(
+    public async Task<ActionResult<PasswordResets>> CreatePasswordReset(
         PasswordResetCreateInput input
     )
     {
-        var passwordResets = await _service.CreatePasswordResets(input);
+        var passwordResets = await _service.CreatePasswordReset(input);
 
         return CreatedAtAction(
             nameof(PasswordResets),
@@ -38,13 +38,13 @@ public abstract class PasswordResetsControllerBase : ControllerBase
     /// Delete one PasswordResets
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeletePasswordResets(
+    public async Task<ActionResult> DeletePasswordReset(
         [FromRoute()] PasswordResetsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeletePasswordResets(uniqueId);
+            await _service.DeletePasswordReset(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class PasswordResetsControllerBase : ControllerBase
     /// Update one PasswordResets
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdatePasswordResets(
+    public async Task<ActionResult> UpdatePasswordReset(
         [FromRoute()] PasswordResetsWhereUniqueInput uniqueId,
         [FromQuery()] PasswordResetUpdateInput passwordResetsUpdateDto
     )
     {
         try
         {
-            await _service.UpdatePasswordResets(uniqueId, passwordResetsUpdateDto);
+            await _service.UpdatePasswordReset(uniqueId, passwordResetsUpdateDto);
         }
         catch (NotFoundException)
         {

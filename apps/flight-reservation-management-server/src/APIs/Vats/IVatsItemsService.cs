@@ -8,12 +8,12 @@ public interface IVatsService
     /// <summary>
     /// Create one Vats
     /// </summary>
-    public Task<Vats> CreateVats(VatCreateInput vats);
+    public Task<Vats> CreateVat(VatCreateInput vats);
 
     /// <summary>
     /// Delete one Vats
     /// </summary>
-    public Task DeleteVats(VatsWhereUniqueInput uniqueId);
+    public Task DeleteVat(VatsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many VatsItems
@@ -33,5 +33,5 @@ public interface IVatsService
     /// <summary>
     /// Update one Vats
     /// </summary>
-    public Task UpdateVats(VatsWhereUniqueInput uniqueId, VatUpdateInput updateDto);
+    public Task UpdateVat(VatsWhereUniqueInput uniqueId, VatUpdateInput updateDto);
 }

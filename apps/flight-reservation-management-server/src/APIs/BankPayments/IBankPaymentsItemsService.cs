@@ -8,12 +8,12 @@ public interface IBankPaymentsService
     /// <summary>
     /// Create one BankPayments
     /// </summary>
-    public Task<BankPayments> CreateBankPayments(BankPaymentCreateInput bankpayments);
+    public Task<BankPayments> CreateBankPayment(BankPaymentCreateInput bankpayments);
 
     /// <summary>
     /// Delete one BankPayments
     /// </summary>
-    public Task DeleteBankPayments(BankPaymentsWhereUniqueInput uniqueId);
+    public Task DeleteBankPayment(BankPaymentsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many BankPaymentsItems
@@ -33,7 +33,7 @@ public interface IBankPaymentsService
     /// <summary>
     /// Update one BankPayments
     /// </summary>
-    public Task UpdateBankPayments(
+    public Task UpdateBankPayment(
         BankPaymentsWhereUniqueInput uniqueId,
         BankPaymentUpdateInput updateDto
     );

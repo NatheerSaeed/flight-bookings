@@ -21,7 +21,7 @@ public abstract class TitlesServiceBase : ITitlesService
     /// <summary>
     /// Create one Titles
     /// </summary>
-    public async Task<Titles> CreateTitles(TitleCreateInput inputDto)
+    public async Task<Titles> CreateTitle(TitleCreateInput inputDto)
     {
         var titles = new Title { CreatedAt = inputDto.CreatedAt, UpdatedAt = inputDto.UpdatedAt };
 
@@ -54,7 +54,7 @@ public abstract class TitlesServiceBase : ITitlesService
     /// <summary>
     /// Delete one Titles
     /// </summary>
-    public async Task DeleteTitles(TitlesWhereUniqueInput uniqueId)
+    public async Task DeleteTitle(TitlesWhereUniqueInput uniqueId)
     {
         var titles = await _context.TitlesItems.FindAsync(uniqueId.Id);
         if (titles == null)
@@ -111,7 +111,7 @@ public abstract class TitlesServiceBase : ITitlesService
     /// <summary>
     /// Update one Titles
     /// </summary>
-    public async Task UpdateTitles(TitlesWhereUniqueInput uniqueId, TitleUpdateInput updateDto)
+    public async Task UpdateTitle(TitlesWhereUniqueInput uniqueId, TitleUpdateInput updateDto)
     {
         var titles = updateDto.ToModel(uniqueId);
 
@@ -226,7 +226,7 @@ public abstract class TitlesServiceBase : ITitlesService
     /// <summary>
     /// Update multiple ProfilesItems records for Titles
     /// </summary>
-    public async Task UpdateProfilesItems(
+    public async Task UpdateProfilesItem(
         TitlesWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] childrenIds
     )

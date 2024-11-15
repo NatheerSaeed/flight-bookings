@@ -21,9 +21,9 @@ public abstract class VatsControllerBase : ControllerBase
     /// Create one Vats
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Vats>> CreateVats(VatCreateInput input)
+    public async Task<ActionResult<Vats>> CreateVat(VatCreateInput input)
     {
-        var vats = await _service.CreateVats(input);
+        var vats = await _service.CreateVat(input);
 
         return CreatedAtAction(nameof(Vats), new { id = vats.Id }, vats);
     }
@@ -32,11 +32,11 @@ public abstract class VatsControllerBase : ControllerBase
     /// Delete one Vats
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteVats([FromRoute()] VatsWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteVat([FromRoute()] VatsWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteVats(uniqueId);
+            await _service.DeleteVat(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -84,14 +84,14 @@ public abstract class VatsControllerBase : ControllerBase
     /// Update one Vats
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateVats(
+    public async Task<ActionResult> UpdateVat(
         [FromRoute()] VatsWhereUniqueInput uniqueId,
         [FromQuery()] VatUpdateInput vatsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateVats(uniqueId, vatsUpdateDto);
+            await _service.UpdateVat(uniqueId, vatsUpdateDto);
         }
         catch (NotFoundException)
         {

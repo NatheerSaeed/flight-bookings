@@ -21,11 +21,11 @@ public abstract class PackageAttractionsControllerBase : ControllerBase
     /// Create one PackageAttractions
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<PackageAttractions>> CreatePackageAttractions(
+    public async Task<ActionResult<PackageAttractions>> CreatePackageAttraction(
         PackageAttractionCreateInput input
     )
     {
-        var packageAttractions = await _service.CreatePackageAttractions(input);
+        var packageAttractions = await _service.CreatePackageAttraction(input);
 
         return CreatedAtAction(
             nameof(PackageAttractions),
@@ -38,13 +38,13 @@ public abstract class PackageAttractionsControllerBase : ControllerBase
     /// Delete one PackageAttractions
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeletePackageAttractions(
+    public async Task<ActionResult> DeletePackageAttraction(
         [FromRoute()] PackageAttractionsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeletePackageAttractions(uniqueId);
+            await _service.DeletePackageAttraction(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class PackageAttractionsControllerBase : ControllerBase
     /// Update one PackageAttractions
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdatePackageAttractions(
+    public async Task<ActionResult> UpdatePackageAttraction(
         [FromRoute()] PackageAttractionsWhereUniqueInput uniqueId,
         [FromQuery()] PackageAttractionUpdateInput packageAttractionsUpdateDto
     )
     {
         try
         {
-            await _service.UpdatePackageAttractions(uniqueId, packageAttractionsUpdateDto);
+            await _service.UpdatePackageAttraction(uniqueId, packageAttractionsUpdateDto);
         }
         catch (NotFoundException)
         {

@@ -21,11 +21,11 @@ public abstract class PackageFlightsControllerBase : ControllerBase
     /// Create one PackageFlights
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<PackageFlights>> CreatePackageFlights(
+    public async Task<ActionResult<PackageFlights>> CreatePackageFlight(
         PackageFlightCreateInput input
     )
     {
-        var packageFlights = await _service.CreatePackageFlights(input);
+        var packageFlights = await _service.CreatePackageFlight(input);
 
         return CreatedAtAction(
             nameof(PackageFlights),
@@ -38,13 +38,13 @@ public abstract class PackageFlightsControllerBase : ControllerBase
     /// Delete one PackageFlights
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeletePackageFlights(
+    public async Task<ActionResult> DeletePackageFlight(
         [FromRoute()] PackageFlightsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeletePackageFlights(uniqueId);
+            await _service.DeletePackageFlight(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class PackageFlightsControllerBase : ControllerBase
     /// Update one PackageFlights
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdatePackageFlights(
+    public async Task<ActionResult> UpdatePackageFlight(
         [FromRoute()] PackageFlightsWhereUniqueInput uniqueId,
         [FromQuery()] PackageFlightUpdateInput packageFlightsUpdateDto
     )
     {
         try
         {
-            await _service.UpdatePackageFlights(uniqueId, packageFlightsUpdateDto);
+            await _service.UpdatePackageFlight(uniqueId, packageFlightsUpdateDto);
         }
         catch (NotFoundException)
         {

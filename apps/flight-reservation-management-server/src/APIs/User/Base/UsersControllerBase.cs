@@ -166,14 +166,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple AgencyProfilesItems records for User
     /// </summary>
     [HttpPatch("{Id}/agencyProfilesItems")]
-    public async Task<ActionResult> UpdateAgencyProfilesItems(
+    public async Task<ActionResult> UpdateAgencyProfilesItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] AgencyProfilesWhereUniqueInput[] agencyProfilesItemsId
     )
     {
         try
         {
-            await _service.UpdateAgencyProfilesItems(uniqueId, agencyProfilesItemsId);
+            await _service.UpdateAgencyProfilesItem(uniqueId, agencyProfilesItemsId);
         }
         catch (NotFoundException)
         {
@@ -248,14 +248,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple AirlinesItems records for User
     /// </summary>
     [HttpPatch("{Id}/airlinesItems")]
-    public async Task<ActionResult> UpdateAirlinesItems(
+    public async Task<ActionResult> UpdateAirlinesItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] AirlinesWhereUniqueInput[] airlinesItemsId
     )
     {
         try
         {
-            await _service.UpdateAirlinesItems(uniqueId, airlinesItemsId);
+            await _service.UpdateAirlinesItem(uniqueId, airlinesItemsId);
         }
         catch (NotFoundException)
         {
@@ -330,14 +330,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple BankPaymentsItems records for User
     /// </summary>
     [HttpPatch("{Id}/bankPaymentsItems")]
-    public async Task<ActionResult> UpdateBankPaymentsItems(
+    public async Task<ActionResult> UpdateBankPaymentsItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] BankPaymentsWhereUniqueInput[] bankPaymentsItemsId
     )
     {
         try
         {
-            await _service.UpdateBankPaymentsItems(uniqueId, bankPaymentsItemsId);
+            await _service.UpdateBankPaymentsItem(uniqueId, bankPaymentsItemsId);
         }
         catch (NotFoundException)
         {
@@ -412,14 +412,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple CarBookingsItems records for User
     /// </summary>
     [HttpPatch("{Id}/carBookingsItems")]
-    public async Task<ActionResult> UpdateCarBookingsItems(
+    public async Task<ActionResult> UpdateCarBookingsItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] CarBookingsWhereUniqueInput[] carBookingsItemsId
     )
     {
         try
         {
-            await _service.UpdateCarBookingsItems(uniqueId, carBookingsItemsId);
+            await _service.UpdateCarBookingsItem(uniqueId, carBookingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -502,14 +502,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple CooperateCustomerProfilesItems records for User
     /// </summary>
     [HttpPatch("{Id}/cooperateCustomerProfilesItems")]
-    public async Task<ActionResult> UpdateCooperateCustomerProfilesItems(
+    public async Task<ActionResult> UpdateCooperateCustomerProfilesItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] CooperateCustomerProfilesWhereUniqueInput[] cooperateCustomerProfilesItemsId
     )
     {
         try
         {
-            await _service.UpdateCooperateCustomerProfilesItems(
+            await _service.UpdateCooperateCustomerProfilesItem(
                 uniqueId,
                 cooperateCustomerProfilesItemsId
             );
@@ -587,14 +587,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple FlightBookingsItems records for User
     /// </summary>
     [HttpPatch("{Id}/flightBookingsItems")]
-    public async Task<ActionResult> UpdateFlightBookingsItems(
+    public async Task<ActionResult> UpdateFlightBookingsItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] FlightBookingsWhereUniqueInput[] flightBookingsItemsId
     )
     {
         try
         {
-            await _service.UpdateFlightBookingsItems(uniqueId, flightBookingsItemsId);
+            await _service.UpdateFlightBookingsItem(uniqueId, flightBookingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -669,14 +669,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple HotelBookingsItems records for User
     /// </summary>
     [HttpPatch("{Id}/hotelBookingsItems")]
-    public async Task<ActionResult> UpdateHotelBookingsItems(
+    public async Task<ActionResult> UpdateHotelBookingsItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] HotelBookingsWhereUniqueInput[] hotelBookingsItemsId
     )
     {
         try
         {
-            await _service.UpdateHotelBookingsItems(uniqueId, hotelBookingsItemsId);
+            await _service.UpdateHotelBookingsItem(uniqueId, hotelBookingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -751,14 +751,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple OnlinePaymentsItems records for User
     /// </summary>
     [HttpPatch("{Id}/onlinePaymentsItems")]
-    public async Task<ActionResult> UpdateOnlinePaymentsItems(
+    public async Task<ActionResult> UpdateOnlinePaymentsItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] OnlinePaymentsWhereUniqueInput[] onlinePaymentsItemsId
     )
     {
         try
         {
-            await _service.UpdateOnlinePaymentsItems(uniqueId, onlinePaymentsItemsId);
+            await _service.UpdateOnlinePaymentsItem(uniqueId, onlinePaymentsItemsId);
         }
         catch (NotFoundException)
         {
@@ -833,14 +833,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple PackageBookingsItems records for User
     /// </summary>
     [HttpPatch("{Id}/packageBookingsItems")]
-    public async Task<ActionResult> UpdatePackageBookingsItems(
+    public async Task<ActionResult> UpdatePackageBookingsItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] PackageBookingsWhereUniqueInput[] packageBookingsItemsId
     )
     {
         try
         {
-            await _service.UpdatePackageBookingsItems(uniqueId, packageBookingsItemsId);
+            await _service.UpdatePackageBookingsItem(uniqueId, packageBookingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -915,14 +915,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple PayLatersItems records for User
     /// </summary>
     [HttpPatch("{Id}/payLatersItems")]
-    public async Task<ActionResult> UpdatePayLatersItems(
+    public async Task<ActionResult> UpdatePayLatersItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] PayLatersWhereUniqueInput[] payLatersItemsId
     )
     {
         try
         {
-            await _service.UpdatePayLatersItems(uniqueId, payLatersItemsId);
+            await _service.UpdatePayLatersItem(uniqueId, payLatersItemsId);
         }
         catch (NotFoundException)
         {
@@ -997,14 +997,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple ProfilesItems records for User
     /// </summary>
     [HttpPatch("{Id}/profilesItems")]
-    public async Task<ActionResult> UpdateProfilesItems(
+    public async Task<ActionResult> UpdateProfilesItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] ProfilesWhereUniqueInput[] profilesItemsId
     )
     {
         try
         {
-            await _service.UpdateProfilesItems(uniqueId, profilesItemsId);
+            await _service.UpdateProfilesItem(uniqueId, profilesItemsId);
         }
         catch (NotFoundException)
         {
@@ -1079,14 +1079,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple WalletLogsItems records for User
     /// </summary>
     [HttpPatch("{Id}/walletLogsItems")]
-    public async Task<ActionResult> UpdateWalletLogsItems(
+    public async Task<ActionResult> UpdateWalletLogsItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] WalletLogsWhereUniqueInput[] walletLogsItemsId
     )
     {
         try
         {
-            await _service.UpdateWalletLogsItems(uniqueId, walletLogsItemsId);
+            await _service.UpdateWalletLogsItem(uniqueId, walletLogsItemsId);
         }
         catch (NotFoundException)
         {
@@ -1161,14 +1161,14 @@ public abstract class UsersControllerBase : ControllerBase
     /// Update multiple WalletsItems records for User
     /// </summary>
     [HttpPatch("{Id}/walletsItems")]
-    public async Task<ActionResult> UpdateWalletsItems(
+    public async Task<ActionResult> UpdateWalletsItem(
         [FromRoute()] UserWhereUniqueInput uniqueId,
         [FromBody()] WalletsWhereUniqueInput[] walletsItemsId
     )
     {
         try
         {
-            await _service.UpdateWalletsItems(uniqueId, walletsItemsId);
+            await _service.UpdateWalletsItem(uniqueId, walletsItemsId);
         }
         catch (NotFoundException)
         {

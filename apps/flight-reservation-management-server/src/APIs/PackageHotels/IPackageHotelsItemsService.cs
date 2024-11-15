@@ -8,12 +8,12 @@ public interface IPackageHotelsService
     /// <summary>
     /// Create one PackageHotels
     /// </summary>
-    public Task<PackageHotels> CreatePackageHotels(PackageHotelCreateInput packagehotels);
+    public Task<PackageHotels> CreatePackageHotel(PackageHotelCreateInput packagehotels);
 
     /// <summary>
     /// Delete one PackageHotels
     /// </summary>
-    public Task DeletePackageHotels(PackageHotelsWhereUniqueInput uniqueId);
+    public Task DeletePackageHotel(PackageHotelsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many PackageHotelsItems
@@ -33,7 +33,7 @@ public interface IPackageHotelsService
     /// <summary>
     /// Update one PackageHotels
     /// </summary>
-    public Task UpdatePackageHotels(
+    public Task UpdatePackageHotel(
         PackageHotelsWhereUniqueInput uniqueId,
         PackageHotelUpdateInput updateDto
     );

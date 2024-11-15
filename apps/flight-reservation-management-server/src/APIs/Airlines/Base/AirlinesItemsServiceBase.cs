@@ -21,7 +21,7 @@ public abstract class AirlinesServiceBase : IAirlinesService
     /// <summary>
     /// Create one Airlines
     /// </summary>
-    public async Task<Airlines> CreateAirlines(AirlineCreateInput inputDto)
+    public async Task<Airlines> CreateAirline(AirlineCreateInput inputDto)
     {
         var airlines = new Airline
         {
@@ -62,7 +62,7 @@ public abstract class AirlinesServiceBase : IAirlinesService
     /// <summary>
     /// Delete one Airlines
     /// </summary>
-    public async Task DeleteAirlines(AirlinesWhereUniqueInput uniqueId)
+    public async Task DeleteAirline(AirlinesWhereUniqueInput uniqueId)
     {
         var airlines = await _context.AirlinesItems.FindAsync(uniqueId.Id);
         if (airlines == null)
@@ -119,10 +119,7 @@ public abstract class AirlinesServiceBase : IAirlinesService
     /// <summary>
     /// Update one Airlines
     /// </summary>
-    public async Task UpdateAirlines(
-        AirlinesWhereUniqueInput uniqueId,
-        AirlineUpdateInput updateDto
-    )
+    public async Task UpdateAirline(AirlinesWhereUniqueInput uniqueId, AirlineUpdateInput updateDto)
     {
         var airlines = updateDto.ToModel(uniqueId);
 

@@ -21,7 +21,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Create one Packages
     /// </summary>
-    public async Task<Packages> CreatePackages(PackageCreateInput inputDto)
+    public async Task<Packages> CreatePackage(PackageCreateInput inputDto)
     {
         var packages = new Package
         {
@@ -141,7 +141,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Delete one Packages
     /// </summary>
-    public async Task DeletePackages(PackagesWhereUniqueInput uniqueId)
+    public async Task DeletePackage(PackagesWhereUniqueInput uniqueId)
     {
         var packages = await _context.PackagesItems.FindAsync(uniqueId.Id);
         if (packages == null)
@@ -207,10 +207,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update one Packages
     /// </summary>
-    public async Task UpdatePackages(
-        PackagesWhereUniqueInput uniqueId,
-        PackageUpdateInput updateDto
-    )
+    public async Task UpdatePackage(PackagesWhereUniqueInput uniqueId, PackageUpdateInput updateDto)
     {
         var packages = updateDto.ToModel(uniqueId);
 
@@ -406,7 +403,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update multiple AttractionsItems records for Packages
     /// </summary>
-    public async Task UpdateAttractionsItems(
+    public async Task UpdateAttractionsItem(
         PackagesWhereUniqueInput uniqueId,
         AttractionsWhereUniqueInput[] childrenIds
     )
@@ -515,7 +512,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update multiple FlightDealsItems records for Packages
     /// </summary>
-    public async Task UpdateFlightDealsItems(
+    public async Task UpdateFlightDealsItem(
         PackagesWhereUniqueInput uniqueId,
         FlightDealsWhereUniqueInput[] childrenIds
     )
@@ -624,7 +621,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update multiple GalleriesItems records for Packages
     /// </summary>
-    public async Task UpdateGalleriesItems(
+    public async Task UpdateGalleriesItem(
         PackagesWhereUniqueInput uniqueId,
         GalleriesWhereUniqueInput[] childrenIds
     )
@@ -733,7 +730,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update multiple GoodToKnowsItems records for Packages
     /// </summary>
-    public async Task UpdateGoodToKnowsItems(
+    public async Task UpdateGoodToKnowsItem(
         PackagesWhereUniqueInput uniqueId,
         GoodToKnowsWhereUniqueInput[] childrenIds
     )
@@ -842,7 +839,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update multiple HotelDealsItems records for Packages
     /// </summary>
-    public async Task UpdateHotelDealsItems(
+    public async Task UpdateHotelDealsItem(
         PackagesWhereUniqueInput uniqueId,
         HotelDealsWhereUniqueInput[] childrenIds
     )
@@ -951,7 +948,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update multiple PackageAttractionsItems records for Packages
     /// </summary>
-    public async Task UpdatePackageAttractionsItems(
+    public async Task UpdatePackageAttractionsItem(
         PackagesWhereUniqueInput uniqueId,
         PackageAttractionsWhereUniqueInput[] childrenIds
     )
@@ -1060,7 +1057,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update multiple PackageBookingsItems records for Packages
     /// </summary>
-    public async Task UpdatePackageBookingsItems(
+    public async Task UpdatePackageBookingsItem(
         PackagesWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] childrenIds
     )
@@ -1169,7 +1166,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update multiple PackageFlightsItems records for Packages
     /// </summary>
-    public async Task UpdatePackageFlightsItems(
+    public async Task UpdatePackageFlightsItem(
         PackagesWhereUniqueInput uniqueId,
         PackageFlightsWhereUniqueInput[] childrenIds
     )
@@ -1278,7 +1275,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update multiple PackageHotelsItems records for Packages
     /// </summary>
-    public async Task UpdatePackageHotelsItems(
+    public async Task UpdatePackageHotelsItem(
         PackagesWhereUniqueInput uniqueId,
         PackageHotelsWhereUniqueInput[] childrenIds
     )
@@ -1387,7 +1384,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Update multiple SightSeeingsItems records for Packages
     /// </summary>
-    public async Task UpdateSightSeeingsItems(
+    public async Task UpdateSightSeeingsItem(
         PackagesWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] childrenIds
     )

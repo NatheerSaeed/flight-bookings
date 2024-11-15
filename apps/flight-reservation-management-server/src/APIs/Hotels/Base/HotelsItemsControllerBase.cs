@@ -21,9 +21,9 @@ public abstract class HotelsControllerBase : ControllerBase
     /// Create one Hotels
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Hotels>> CreateHotels(HotelCreateInput input)
+    public async Task<ActionResult<Hotels>> CreateHotel(HotelCreateInput input)
     {
-        var hotels = await _service.CreateHotels(input);
+        var hotels = await _service.CreateHotel(input);
 
         return CreatedAtAction(nameof(Hotels), new { id = hotels.Id }, hotels);
     }
@@ -32,11 +32,11 @@ public abstract class HotelsControllerBase : ControllerBase
     /// Delete one Hotels
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteHotels([FromRoute()] HotelsWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteHotel([FromRoute()] HotelsWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteHotels(uniqueId);
+            await _service.DeleteHotel(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -88,14 +88,14 @@ public abstract class HotelsControllerBase : ControllerBase
     /// Update one Hotels
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateHotels(
+    public async Task<ActionResult> UpdateHotel(
         [FromRoute()] HotelsWhereUniqueInput uniqueId,
         [FromQuery()] HotelUpdateInput hotelsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateHotels(uniqueId, hotelsUpdateDto);
+            await _service.UpdateHotel(uniqueId, hotelsUpdateDto);
         }
         catch (NotFoundException)
         {

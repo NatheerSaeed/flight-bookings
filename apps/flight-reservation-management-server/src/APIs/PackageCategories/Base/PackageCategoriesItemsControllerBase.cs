@@ -21,11 +21,11 @@ public abstract class PackageCategoriesControllerBase : ControllerBase
     /// Create one PackageCategories
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<PackageCategories>> CreatePackageCategories(
+    public async Task<ActionResult<PackageCategories>> CreatePackageCategorie(
         PackageCategorieCreateInput input
     )
     {
-        var packageCategories = await _service.CreatePackageCategories(input);
+        var packageCategories = await _service.CreatePackageCategorie(input);
 
         return CreatedAtAction(
             nameof(PackageCategories),
@@ -38,13 +38,13 @@ public abstract class PackageCategoriesControllerBase : ControllerBase
     /// Delete one PackageCategories
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeletePackageCategories(
+    public async Task<ActionResult> DeletePackageCategorie(
         [FromRoute()] PackageCategoriesWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeletePackageCategories(uniqueId);
+            await _service.DeletePackageCategorie(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class PackageCategoriesControllerBase : ControllerBase
     /// Update one PackageCategories
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdatePackageCategories(
+    public async Task<ActionResult> UpdatePackageCategorie(
         [FromRoute()] PackageCategoriesWhereUniqueInput uniqueId,
         [FromQuery()] PackageCategorieUpdateInput packageCategoriesUpdateDto
     )
     {
         try
         {
-            await _service.UpdatePackageCategories(uniqueId, packageCategoriesUpdateDto);
+            await _service.UpdatePackageCategorie(uniqueId, packageCategoriesUpdateDto);
         }
         catch (NotFoundException)
         {

@@ -21,9 +21,9 @@ public abstract class GalleriesControllerBase : ControllerBase
     /// Create one Galleries
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Galleries>> CreateGalleries(GallerieCreateInput input)
+    public async Task<ActionResult<Galleries>> CreateGallerie(GallerieCreateInput input)
     {
-        var galleries = await _service.CreateGalleries(input);
+        var galleries = await _service.CreateGallerie(input);
 
         return CreatedAtAction(nameof(Galleries), new { id = galleries.Id }, galleries);
     }
@@ -32,13 +32,11 @@ public abstract class GalleriesControllerBase : ControllerBase
     /// Delete one Galleries
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteGalleries(
-        [FromRoute()] GalleriesWhereUniqueInput uniqueId
-    )
+    public async Task<ActionResult> DeleteGallerie([FromRoute()] GalleriesWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteGalleries(uniqueId);
+            await _service.DeleteGallerie(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +90,14 @@ public abstract class GalleriesControllerBase : ControllerBase
     /// Update one Galleries
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateGalleries(
+    public async Task<ActionResult> UpdateGallerie(
         [FromRoute()] GalleriesWhereUniqueInput uniqueId,
         [FromQuery()] GallerieUpdateInput galleriesUpdateDto
     )
     {
         try
         {
-            await _service.UpdateGalleries(uniqueId, galleriesUpdateDto);
+            await _service.UpdateGallerie(uniqueId, galleriesUpdateDto);
         }
         catch (NotFoundException)
         {

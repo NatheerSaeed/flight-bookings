@@ -8,12 +8,12 @@ public interface IGendersService
     /// <summary>
     /// Create one Genders
     /// </summary>
-    public Task<Genders> CreateGenders(GenderCreateInput genders);
+    public Task<Genders> CreateGender(GenderCreateInput genders);
 
     /// <summary>
     /// Delete one Genders
     /// </summary>
-    public Task DeleteGenders(GendersWhereUniqueInput uniqueId);
+    public Task DeleteGender(GendersWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many GendersItems
@@ -33,7 +33,7 @@ public interface IGendersService
     /// <summary>
     /// Update one Genders
     /// </summary>
-    public Task UpdateGenders(GendersWhereUniqueInput uniqueId, GenderUpdateInput updateDto);
+    public Task UpdateGender(GendersWhereUniqueInput uniqueId, GenderUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple ProfilesItems records to Genders
@@ -62,7 +62,7 @@ public interface IGendersService
     /// <summary>
     /// Update multiple ProfilesItems records for Genders
     /// </summary>
-    public Task UpdateProfilesItems(
+    public Task UpdateProfilesItem(
         GendersWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] profilesId
     );

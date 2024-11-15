@@ -62,7 +62,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple AgencyProfilesItems records for User
     /// </summary>
-    public Task UpdateAgencyProfilesItems(
+    public Task UpdateAgencyProfilesItem(
         UserWhereUniqueInput uniqueId,
         AgencyProfilesWhereUniqueInput[] agencyProfilesId
     );
@@ -94,7 +94,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple AirlinesItems records for User
     /// </summary>
-    public Task UpdateAirlinesItems(
+    public Task UpdateAirlinesItem(
         UserWhereUniqueInput uniqueId,
         AirlinesWhereUniqueInput[] airlinesId
     );
@@ -126,7 +126,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple BankPaymentsItems records for User
     /// </summary>
-    public Task UpdateBankPaymentsItems(
+    public Task UpdateBankPaymentsItem(
         UserWhereUniqueInput uniqueId,
         BankPaymentsWhereUniqueInput[] bankPaymentsId
     );
@@ -158,7 +158,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple CarBookingsItems records for User
     /// </summary>
-    public Task UpdateCarBookingsItems(
+    public Task UpdateCarBookingsItem(
         UserWhereUniqueInput uniqueId,
         CarBookingsWhereUniqueInput[] carBookingsId
     );
@@ -190,7 +190,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple CooperateCustomerProfilesItems records for User
     /// </summary>
-    public Task UpdateCooperateCustomerProfilesItems(
+    public Task UpdateCooperateCustomerProfilesItem(
         UserWhereUniqueInput uniqueId,
         CooperateCustomerProfilesWhereUniqueInput[] cooperateCustomerProfilesId
     );
@@ -222,7 +222,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple FlightBookingsItems records for User
     /// </summary>
-    public Task UpdateFlightBookingsItems(
+    public Task UpdateFlightBookingsItem(
         UserWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] flightBookingsId
     );
@@ -254,7 +254,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple HotelBookingsItems records for User
     /// </summary>
-    public Task UpdateHotelBookingsItems(
+    public Task UpdateHotelBookingsItem(
         UserWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] hotelBookingsId
     );
@@ -286,7 +286,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple OnlinePaymentsItems records for User
     /// </summary>
-    public Task UpdateOnlinePaymentsItems(
+    public Task UpdateOnlinePaymentsItem(
         UserWhereUniqueInput uniqueId,
         OnlinePaymentsWhereUniqueInput[] onlinePaymentsId
     );
@@ -318,7 +318,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple PackageBookingsItems records for User
     /// </summary>
-    public Task UpdatePackageBookingsItems(
+    public Task UpdatePackageBookingsItem(
         UserWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] packageBookingsId
     );
@@ -350,7 +350,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple PayLatersItems records for User
     /// </summary>
-    public Task UpdatePayLatersItems(
+    public Task UpdatePayLatersItem(
         UserWhereUniqueInput uniqueId,
         PayLatersWhereUniqueInput[] payLatersId
     );
@@ -382,7 +382,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple ProfilesItems records for User
     /// </summary>
-    public Task UpdateProfilesItems(
+    public Task UpdateProfilesItem(
         UserWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] profilesId
     );
@@ -414,7 +414,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple WalletLogsItems records for User
     /// </summary>
-    public Task UpdateWalletLogsItems(
+    public Task UpdateWalletLogsItem(
         UserWhereUniqueInput uniqueId,
         WalletLogsWhereUniqueInput[] walletLogsId
     );
@@ -446,7 +446,7 @@ public interface IUsersService
     /// <summary>
     /// Update multiple WalletsItems records for User
     /// </summary>
-    public Task UpdateWalletsItems(
+    public Task UpdateWalletsItem(
         UserWhereUniqueInput uniqueId,
         WalletsWhereUniqueInput[] walletsId
     );

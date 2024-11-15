@@ -21,7 +21,7 @@ public abstract class SightSeeingsServiceBase : ISightSeeingsService
     /// <summary>
     /// Create one SightSeeings
     /// </summary>
-    public async Task<SightSeeings> CreateSightSeeings(SightSeeingCreateInput inputDto)
+    public async Task<SightSeeings> CreateSightSeeing(SightSeeingCreateInput inputDto)
     {
         var sightSeeings = new SightSeeing
         {
@@ -65,7 +65,7 @@ public abstract class SightSeeingsServiceBase : ISightSeeingsService
     /// <summary>
     /// Delete one SightSeeings
     /// </summary>
-    public async Task DeleteSightSeeings(SightSeeingsWhereUniqueInput uniqueId)
+    public async Task DeleteSightSeeing(SightSeeingsWhereUniqueInput uniqueId)
     {
         var sightSeeings = await _context.SightSeeingsItems.FindAsync(uniqueId.Id);
         if (sightSeeings == null)
@@ -123,7 +123,7 @@ public abstract class SightSeeingsServiceBase : ISightSeeingsService
     /// <summary>
     /// Update one SightSeeings
     /// </summary>
-    public async Task UpdateSightSeeings(
+    public async Task UpdateSightSeeing(
         SightSeeingsWhereUniqueInput uniqueId,
         SightSeeingUpdateInput updateDto
     )

@@ -21,7 +21,7 @@ public abstract class PayLatersServiceBase : IPayLatersService
     /// <summary>
     /// Create one PayLaters
     /// </summary>
-    public async Task<PayLaters> CreatePayLaters(PayLaterCreateInput inputDto)
+    public async Task<PayLaters> CreatePayLater(PayLaterCreateInput inputDto)
     {
         var payLaters = new PayLater
         {
@@ -62,7 +62,7 @@ public abstract class PayLatersServiceBase : IPayLatersService
     /// <summary>
     /// Delete one PayLaters
     /// </summary>
-    public async Task DeletePayLaters(PayLatersWhereUniqueInput uniqueId)
+    public async Task DeletePayLater(PayLatersWhereUniqueInput uniqueId)
     {
         var payLaters = await _context.PayLatersItems.FindAsync(uniqueId.Id);
         if (payLaters == null)
@@ -119,7 +119,7 @@ public abstract class PayLatersServiceBase : IPayLatersService
     /// <summary>
     /// Update one PayLaters
     /// </summary>
-    public async Task UpdatePayLaters(
+    public async Task UpdatePayLater(
         PayLatersWhereUniqueInput uniqueId,
         PayLaterUpdateInput updateDto
     )

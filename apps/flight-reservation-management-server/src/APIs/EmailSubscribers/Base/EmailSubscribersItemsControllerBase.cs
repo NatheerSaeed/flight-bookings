@@ -21,11 +21,11 @@ public abstract class EmailSubscribersControllerBase : ControllerBase
     /// Create one EmailSubscribers
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<EmailSubscribers>> CreateEmailSubscribers(
+    public async Task<ActionResult<EmailSubscribers>> CreateEmailSubscriber(
         EmailSubscriberCreateInput input
     )
     {
-        var emailSubscribers = await _service.CreateEmailSubscribers(input);
+        var emailSubscribers = await _service.CreateEmailSubscriber(input);
 
         return CreatedAtAction(
             nameof(EmailSubscribers),
@@ -38,13 +38,13 @@ public abstract class EmailSubscribersControllerBase : ControllerBase
     /// Delete one EmailSubscribers
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteEmailSubscribers(
+    public async Task<ActionResult> DeleteEmailSubscriber(
         [FromRoute()] EmailSubscribersWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteEmailSubscribers(uniqueId);
+            await _service.DeleteEmailSubscriber(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class EmailSubscribersControllerBase : ControllerBase
     /// Update one EmailSubscribers
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateEmailSubscribers(
+    public async Task<ActionResult> UpdateEmailSubscriber(
         [FromRoute()] EmailSubscribersWhereUniqueInput uniqueId,
         [FromQuery()] EmailSubscriberUpdateInput emailSubscribersUpdateDto
     )
     {
         try
         {
-            await _service.UpdateEmailSubscribers(uniqueId, emailSubscribersUpdateDto);
+            await _service.UpdateEmailSubscriber(uniqueId, emailSubscribersUpdateDto);
         }
         catch (NotFoundException)
         {

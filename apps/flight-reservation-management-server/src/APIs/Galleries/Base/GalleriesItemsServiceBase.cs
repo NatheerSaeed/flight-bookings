@@ -21,7 +21,7 @@ public abstract class GalleriesServiceBase : IGalleriesService
     /// <summary>
     /// Create one Galleries
     /// </summary>
-    public async Task<Galleries> CreateGalleries(GallerieCreateInput inputDto)
+    public async Task<Galleries> CreateGallerie(GallerieCreateInput inputDto)
     {
         var galleries = new Gallerie
         {
@@ -59,7 +59,7 @@ public abstract class GalleriesServiceBase : IGalleriesService
     /// <summary>
     /// Delete one Galleries
     /// </summary>
-    public async Task DeleteGalleries(GalleriesWhereUniqueInput uniqueId)
+    public async Task DeleteGallerie(GalleriesWhereUniqueInput uniqueId)
     {
         var galleries = await _context.GalleriesItems.FindAsync(uniqueId.Id);
         if (galleries == null)
@@ -116,7 +116,7 @@ public abstract class GalleriesServiceBase : IGalleriesService
     /// <summary>
     /// Update one Galleries
     /// </summary>
-    public async Task UpdateGalleries(
+    public async Task UpdateGallerie(
         GalleriesWhereUniqueInput uniqueId,
         GallerieUpdateInput updateDto
     )

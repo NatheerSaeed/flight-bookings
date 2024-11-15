@@ -21,11 +21,11 @@ public abstract class AgencyProfilesControllerBase : ControllerBase
     /// Create one AgencyProfiles
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<AgencyProfiles>> CreateAgencyProfiles(
+    public async Task<ActionResult<AgencyProfiles>> CreateAgencyProfile(
         AgencyProfileCreateInput input
     )
     {
-        var agencyProfiles = await _service.CreateAgencyProfiles(input);
+        var agencyProfiles = await _service.CreateAgencyProfile(input);
 
         return CreatedAtAction(
             nameof(AgencyProfiles),
@@ -38,13 +38,13 @@ public abstract class AgencyProfilesControllerBase : ControllerBase
     /// Delete one AgencyProfiles
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteAgencyProfiles(
+    public async Task<ActionResult> DeleteAgencyProfile(
         [FromRoute()] AgencyProfilesWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteAgencyProfiles(uniqueId);
+            await _service.DeleteAgencyProfile(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -98,14 +98,14 @@ public abstract class AgencyProfilesControllerBase : ControllerBase
     /// Update one AgencyProfiles
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateAgencyProfiles(
+    public async Task<ActionResult> UpdateAgencyProfile(
         [FromRoute()] AgencyProfilesWhereUniqueInput uniqueId,
         [FromQuery()] AgencyProfileUpdateInput agencyProfilesUpdateDto
     )
     {
         try
         {
-            await _service.UpdateAgencyProfiles(uniqueId, agencyProfilesUpdateDto);
+            await _service.UpdateAgencyProfile(uniqueId, agencyProfilesUpdateDto);
         }
         catch (NotFoundException)
         {

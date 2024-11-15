@@ -8,12 +8,12 @@ public interface IRolesService
     /// <summary>
     /// Create one Roles
     /// </summary>
-    public Task<Roles> CreateRoles(RoleCreateInput roles);
+    public Task<Roles> CreateRole(RoleCreateInput roles);
 
     /// <summary>
     /// Delete one Roles
     /// </summary>
-    public Task DeleteRoles(RolesWhereUniqueInput uniqueId);
+    public Task DeleteRole(RolesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many RolesItems
@@ -33,7 +33,7 @@ public interface IRolesService
     /// <summary>
     /// Update one Roles
     /// </summary>
-    public Task UpdateRoles(RolesWhereUniqueInput uniqueId, RoleUpdateInput updateDto);
+    public Task UpdateRole(RolesWhereUniqueInput uniqueId, RoleUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple HotelsItems records to Roles
@@ -62,10 +62,7 @@ public interface IRolesService
     /// <summary>
     /// Update multiple HotelsItems records for Roles
     /// </summary>
-    public Task UpdateHotelsItems(
-        RolesWhereUniqueInput uniqueId,
-        HotelsWhereUniqueInput[] hotelsId
-    );
+    public Task UpdateHotelsItem(RolesWhereUniqueInput uniqueId, HotelsWhereUniqueInput[] hotelsId);
 
     /// <summary>
     /// Connect multiple MarkupsItems records to Roles
@@ -94,7 +91,7 @@ public interface IRolesService
     /// <summary>
     /// Update multiple MarkupsItems records for Roles
     /// </summary>
-    public Task UpdateMarkupsItems(
+    public Task UpdateMarkupsItem(
         RolesWhereUniqueInput uniqueId,
         MarkupsWhereUniqueInput[] markupsId
     );
@@ -128,5 +125,5 @@ public interface IRolesService
     /// <summary>
     /// Update multiple RolesItems records for Roles
     /// </summary>
-    public Task UpdateRolesItems(RolesWhereUniqueInput uniqueId, RolesWhereUniqueInput[] rolesId);
+    public Task UpdateRolesItem(RolesWhereUniqueInput uniqueId, RolesWhereUniqueInput[] rolesId);
 }

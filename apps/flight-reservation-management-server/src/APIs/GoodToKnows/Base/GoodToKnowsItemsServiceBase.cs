@@ -21,7 +21,7 @@ public abstract class GoodToKnowsServiceBase : IGoodToKnowsService
     /// <summary>
     /// Create one GoodToKnows
     /// </summary>
-    public async Task<GoodToKnows> CreateGoodToKnows(GoodToKnowCreateInput inputDto)
+    public async Task<GoodToKnows> CreateGoodToKnow(GoodToKnowCreateInput inputDto)
     {
         var goodToKnows = new GoodToKnow
         {
@@ -63,7 +63,7 @@ public abstract class GoodToKnowsServiceBase : IGoodToKnowsService
     /// <summary>
     /// Delete one GoodToKnows
     /// </summary>
-    public async Task DeleteGoodToKnows(GoodToKnowsWhereUniqueInput uniqueId)
+    public async Task DeleteGoodToKnow(GoodToKnowsWhereUniqueInput uniqueId)
     {
         var goodToKnows = await _context.GoodToKnowsItems.FindAsync(uniqueId.Id);
         if (goodToKnows == null)
@@ -120,7 +120,7 @@ public abstract class GoodToKnowsServiceBase : IGoodToKnowsService
     /// <summary>
     /// Update one GoodToKnows
     /// </summary>
-    public async Task UpdateGoodToKnows(
+    public async Task UpdateGoodToKnow(
         GoodToKnowsWhereUniqueInput uniqueId,
         GoodToKnowUpdateInput updateDto
     )

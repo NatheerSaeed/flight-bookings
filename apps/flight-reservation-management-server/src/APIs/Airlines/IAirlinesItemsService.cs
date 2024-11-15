@@ -8,12 +8,12 @@ public interface IAirlinesService
     /// <summary>
     /// Create one Airlines
     /// </summary>
-    public Task<Airlines> CreateAirlines(AirlineCreateInput airlines);
+    public Task<Airlines> CreateAirline(AirlineCreateInput airlines);
 
     /// <summary>
     /// Delete one Airlines
     /// </summary>
-    public Task DeleteAirlines(AirlinesWhereUniqueInput uniqueId);
+    public Task DeleteAirline(AirlinesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many AirlinesItems
@@ -33,7 +33,7 @@ public interface IAirlinesService
     /// <summary>
     /// Update one Airlines
     /// </summary>
-    public Task UpdateAirlines(AirlinesWhereUniqueInput uniqueId, AirlineUpdateInput updateDto);
+    public Task UpdateAirline(AirlinesWhereUniqueInput uniqueId, AirlineUpdateInput updateDto);
 
     /// <summary>
     /// Get a user_ record for Airlines

@@ -21,7 +21,7 @@ public abstract class PackageTypesServiceBase : IPackageTypesService
     /// <summary>
     /// Create one PackageTypes
     /// </summary>
-    public async Task<PackageTypes> CreatePackageTypes(PackageTypeCreateInput inputDto)
+    public async Task<PackageTypes> CreatePackageType(PackageTypeCreateInput inputDto)
     {
         var packageTypes = new PackageType
         {
@@ -52,7 +52,7 @@ public abstract class PackageTypesServiceBase : IPackageTypesService
     /// <summary>
     /// Delete one PackageTypes
     /// </summary>
-    public async Task DeletePackageTypes(PackageTypesWhereUniqueInput uniqueId)
+    public async Task DeletePackageType(PackageTypesWhereUniqueInput uniqueId)
     {
         var packageTypes = await _context.PackageTypesItems.FindAsync(uniqueId.Id);
         if (packageTypes == null)
@@ -108,7 +108,7 @@ public abstract class PackageTypesServiceBase : IPackageTypesService
     /// <summary>
     /// Update one PackageTypes
     /// </summary>
-    public async Task UpdatePackageTypes(
+    public async Task UpdatePackageType(
         PackageTypesWhereUniqueInput uniqueId,
         PackageTypeUpdateInput updateDto
     )

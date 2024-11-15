@@ -21,7 +21,7 @@ public abstract class AirportsServiceBase : IAirportsService
     /// <summary>
     /// Create one Airports
     /// </summary>
-    public async Task<Airports> CreateAirports(AirportCreateInput inputDto)
+    public async Task<Airports> CreateAirport(AirportCreateInput inputDto)
     {
         var airports = new Airport
         {
@@ -52,7 +52,7 @@ public abstract class AirportsServiceBase : IAirportsService
     /// <summary>
     /// Delete one Airports
     /// </summary>
-    public async Task DeleteAirports(AirportsWhereUniqueInput uniqueId)
+    public async Task DeleteAirport(AirportsWhereUniqueInput uniqueId)
     {
         var airports = await _context.AirportsItems.FindAsync(uniqueId.Id);
         if (airports == null)
@@ -108,10 +108,7 @@ public abstract class AirportsServiceBase : IAirportsService
     /// <summary>
     /// Update one Airports
     /// </summary>
-    public async Task UpdateAirports(
-        AirportsWhereUniqueInput uniqueId,
-        AirportUpdateInput updateDto
-    )
+    public async Task UpdateAirport(AirportsWhereUniqueInput uniqueId, AirportUpdateInput updateDto)
     {
         var airports = updateDto.ToModel(uniqueId);
 

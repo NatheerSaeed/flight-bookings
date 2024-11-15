@@ -21,7 +21,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// <summary>
     /// Create one Attractions
     /// </summary>
-    public async Task<Attractions> CreateAttractions(AttractionCreateInput inputDto)
+    public async Task<Attractions> CreateAttraction(AttractionCreateInput inputDto)
     {
         var attractions = new Attraction
         {
@@ -70,7 +70,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// <summary>
     /// Delete one Attractions
     /// </summary>
-    public async Task DeleteAttractions(AttractionsWhereUniqueInput uniqueId)
+    public async Task DeleteAttraction(AttractionsWhereUniqueInput uniqueId)
     {
         var attractions = await _context.AttractionsItems.FindAsync(uniqueId.Id);
         if (attractions == null)
@@ -128,7 +128,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// <summary>
     /// Update one Attractions
     /// </summary>
-    public async Task UpdateAttractions(
+    public async Task UpdateAttraction(
         AttractionsWhereUniqueInput uniqueId,
         AttractionUpdateInput updateDto
     )
@@ -269,7 +269,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// <summary>
     /// Update multiple SightSeeingsItems records for Attractions
     /// </summary>
-    public async Task UpdateSightSeeingsItems(
+    public async Task UpdateSightSeeingsItem(
         AttractionsWhereUniqueInput uniqueId,
         SightSeeingsWhereUniqueInput[] childrenIds
     )

@@ -21,7 +21,7 @@ public abstract class VisaApplicationsServiceBase : IVisaApplicationsService
     /// <summary>
     /// Create one VisaApplications
     /// </summary>
-    public async Task<VisaApplications> CreateVisaApplications(VisaApplicationCreateInput inputDto)
+    public async Task<VisaApplications> CreateVisaApplication(VisaApplicationCreateInput inputDto)
     {
         var visaApplications = new VisaApplication
         {
@@ -57,7 +57,7 @@ public abstract class VisaApplicationsServiceBase : IVisaApplicationsService
     /// <summary>
     /// Delete one VisaApplications
     /// </summary>
-    public async Task DeleteVisaApplications(VisaApplicationsWhereUniqueInput uniqueId)
+    public async Task DeleteVisaApplication(VisaApplicationsWhereUniqueInput uniqueId)
     {
         var visaApplications = await _context.VisaApplicationsItems.FindAsync(uniqueId.Id);
         if (visaApplications == null)
@@ -122,7 +122,7 @@ public abstract class VisaApplicationsServiceBase : IVisaApplicationsService
     /// <summary>
     /// Update one VisaApplications
     /// </summary>
-    public async Task UpdateVisaApplications(
+    public async Task UpdateVisaApplication(
         VisaApplicationsWhereUniqueInput uniqueId,
         VisaApplicationUpdateInput updateDto
     )

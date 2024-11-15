@@ -8,12 +8,12 @@ public interface ISightSeeingsService
     /// <summary>
     /// Create one SightSeeings
     /// </summary>
-    public Task<SightSeeings> CreateSightSeeings(SightSeeingCreateInput sightseeings);
+    public Task<SightSeeings> CreateSightSeeing(SightSeeingCreateInput sightseeings);
 
     /// <summary>
     /// Delete one SightSeeings
     /// </summary>
-    public Task DeleteSightSeeings(SightSeeingsWhereUniqueInput uniqueId);
+    public Task DeleteSightSeeing(SightSeeingsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many SightSeeingsItems
@@ -33,7 +33,7 @@ public interface ISightSeeingsService
     /// <summary>
     /// Update one SightSeeings
     /// </summary>
-    public Task UpdateSightSeeings(
+    public Task UpdateSightSeeing(
         SightSeeingsWhereUniqueInput uniqueId,
         SightSeeingUpdateInput updateDto
     );

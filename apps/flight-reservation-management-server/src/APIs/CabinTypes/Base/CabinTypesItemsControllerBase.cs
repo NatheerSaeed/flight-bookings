@@ -21,9 +21,9 @@ public abstract class CabinTypesControllerBase : ControllerBase
     /// Create one CabinTypes
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<CabinTypes>> CreateCabinTypes(CabinTypeCreateInput input)
+    public async Task<ActionResult<CabinTypes>> CreateCabinType(CabinTypeCreateInput input)
     {
-        var cabinTypes = await _service.CreateCabinTypes(input);
+        var cabinTypes = await _service.CreateCabinType(input);
 
         return CreatedAtAction(nameof(CabinTypes), new { id = cabinTypes.Id }, cabinTypes);
     }
@@ -32,13 +32,13 @@ public abstract class CabinTypesControllerBase : ControllerBase
     /// Delete one CabinTypes
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteCabinTypes(
+    public async Task<ActionResult> DeleteCabinType(
         [FromRoute()] CabinTypesWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteCabinTypes(uniqueId);
+            await _service.DeleteCabinType(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +92,14 @@ public abstract class CabinTypesControllerBase : ControllerBase
     /// Update one CabinTypes
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateCabinTypes(
+    public async Task<ActionResult> UpdateCabinType(
         [FromRoute()] CabinTypesWhereUniqueInput uniqueId,
         [FromQuery()] CabinTypeUpdateInput cabinTypesUpdateDto
     )
     {
         try
         {
-            await _service.UpdateCabinTypes(uniqueId, cabinTypesUpdateDto);
+            await _service.UpdateCabinType(uniqueId, cabinTypesUpdateDto);
         }
         catch (NotFoundException)
         {

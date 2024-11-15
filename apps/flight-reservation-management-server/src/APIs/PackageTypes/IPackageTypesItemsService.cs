@@ -8,12 +8,12 @@ public interface IPackageTypesService
     /// <summary>
     /// Create one PackageTypes
     /// </summary>
-    public Task<PackageTypes> CreatePackageTypes(PackageTypeCreateInput packagetypes);
+    public Task<PackageTypes> CreatePackageType(PackageTypeCreateInput packagetypes);
 
     /// <summary>
     /// Delete one PackageTypes
     /// </summary>
-    public Task DeletePackageTypes(PackageTypesWhereUniqueInput uniqueId);
+    public Task DeletePackageType(PackageTypesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many PackageTypesItems
@@ -33,7 +33,7 @@ public interface IPackageTypesService
     /// <summary>
     /// Update one PackageTypes
     /// </summary>
-    public Task UpdatePackageTypes(
+    public Task UpdatePackageType(
         PackageTypesWhereUniqueInput uniqueId,
         PackageTypeUpdateInput updateDto
     );

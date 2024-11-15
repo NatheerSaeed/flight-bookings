@@ -21,7 +21,7 @@ public abstract class WalletsServiceBase : IWalletsService
     /// <summary>
     /// Create one Wallets
     /// </summary>
-    public async Task<Wallets> CreateWallets(WalletCreateInput inputDto)
+    public async Task<Wallets> CreateWallet(WalletCreateInput inputDto)
     {
         var wallets = new Wallet
         {
@@ -57,7 +57,7 @@ public abstract class WalletsServiceBase : IWalletsService
     /// <summary>
     /// Delete one Wallets
     /// </summary>
-    public async Task DeleteWallets(WalletsWhereUniqueInput uniqueId)
+    public async Task DeleteWallet(WalletsWhereUniqueInput uniqueId)
     {
         var wallets = await _context.WalletsItems.FindAsync(uniqueId.Id);
         if (wallets == null)
@@ -114,7 +114,7 @@ public abstract class WalletsServiceBase : IWalletsService
     /// <summary>
     /// Update one Wallets
     /// </summary>
-    public async Task UpdateWallets(WalletsWhereUniqueInput uniqueId, WalletUpdateInput updateDto)
+    public async Task UpdateWallet(WalletsWhereUniqueInput uniqueId, WalletUpdateInput updateDto)
     {
         var wallets = updateDto.ToModel(uniqueId);
 

@@ -471,7 +471,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple AgencyProfilesItems records for User
     /// </summary>
-    public async Task UpdateAgencyProfilesItems(
+    public async Task UpdateAgencyProfilesItem(
         UserWhereUniqueInput uniqueId,
         AgencyProfilesWhereUniqueInput[] childrenIds
     )
@@ -580,7 +580,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple AirlinesItems records for User
     /// </summary>
-    public async Task UpdateAirlinesItems(
+    public async Task UpdateAirlinesItem(
         UserWhereUniqueInput uniqueId,
         AirlinesWhereUniqueInput[] childrenIds
     )
@@ -689,7 +689,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple BankPaymentsItems records for User
     /// </summary>
-    public async Task UpdateBankPaymentsItems(
+    public async Task UpdateBankPaymentsItem(
         UserWhereUniqueInput uniqueId,
         BankPaymentsWhereUniqueInput[] childrenIds
     )
@@ -798,7 +798,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple CarBookingsItems records for User
     /// </summary>
-    public async Task UpdateCarBookingsItems(
+    public async Task UpdateCarBookingsItem(
         UserWhereUniqueInput uniqueId,
         CarBookingsWhereUniqueInput[] childrenIds
     )
@@ -907,7 +907,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple CooperateCustomerProfilesItems records for User
     /// </summary>
-    public async Task UpdateCooperateCustomerProfilesItems(
+    public async Task UpdateCooperateCustomerProfilesItem(
         UserWhereUniqueInput uniqueId,
         CooperateCustomerProfilesWhereUniqueInput[] childrenIds
     )
@@ -1016,7 +1016,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple FlightBookingsItems records for User
     /// </summary>
-    public async Task UpdateFlightBookingsItems(
+    public async Task UpdateFlightBookingsItem(
         UserWhereUniqueInput uniqueId,
         FlightBookingsWhereUniqueInput[] childrenIds
     )
@@ -1125,7 +1125,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple HotelBookingsItems records for User
     /// </summary>
-    public async Task UpdateHotelBookingsItems(
+    public async Task UpdateHotelBookingsItem(
         UserWhereUniqueInput uniqueId,
         HotelBookingsWhereUniqueInput[] childrenIds
     )
@@ -1234,7 +1234,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple OnlinePaymentsItems records for User
     /// </summary>
-    public async Task UpdateOnlinePaymentsItems(
+    public async Task UpdateOnlinePaymentsItem(
         UserWhereUniqueInput uniqueId,
         OnlinePaymentsWhereUniqueInput[] childrenIds
     )
@@ -1343,7 +1343,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple PackageBookingsItems records for User
     /// </summary>
-    public async Task UpdatePackageBookingsItems(
+    public async Task UpdatePackageBookingsItem(
         UserWhereUniqueInput uniqueId,
         PackageBookingsWhereUniqueInput[] childrenIds
     )
@@ -1452,7 +1452,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple PayLatersItems records for User
     /// </summary>
-    public async Task UpdatePayLatersItems(
+    public async Task UpdatePayLatersItem(
         UserWhereUniqueInput uniqueId,
         PayLatersWhereUniqueInput[] childrenIds
     )
@@ -1561,7 +1561,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple ProfilesItems records for User
     /// </summary>
-    public async Task UpdateProfilesItems(
+    public async Task UpdateProfilesItem(
         UserWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] childrenIds
     )
@@ -1670,7 +1670,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple WalletLogsItems records for User
     /// </summary>
-    public async Task UpdateWalletLogsItems(
+    public async Task UpdateWalletLogsItem(
         UserWhereUniqueInput uniqueId,
         WalletLogsWhereUniqueInput[] childrenIds
     )
@@ -1779,7 +1779,7 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Update multiple WalletsItems records for User
     /// </summary>
-    public async Task UpdateWalletsItems(
+    public async Task UpdateWalletsItem(
         UserWhereUniqueInput uniqueId,
         WalletsWhereUniqueInput[] childrenIds
     )

@@ -8,12 +8,12 @@ public interface ICommentsService
     /// <summary>
     /// Create one Comments
     /// </summary>
-    public Task<Comments> CreateComments(CommentCreateInput comments);
+    public Task<Comments> CreateComment(CommentCreateInput comments);
 
     /// <summary>
     /// Delete one Comments
     /// </summary>
-    public Task DeleteComments(CommentsWhereUniqueInput uniqueId);
+    public Task DeleteComment(CommentsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many CommentsItems
@@ -33,5 +33,5 @@ public interface ICommentsService
     /// <summary>
     /// Update one Comments
     /// </summary>
-    public Task UpdateComments(CommentsWhereUniqueInput uniqueId, CommentUpdateInput updateDto);
+    public Task UpdateComment(CommentsWhereUniqueInput uniqueId, CommentUpdateInput updateDto);
 }

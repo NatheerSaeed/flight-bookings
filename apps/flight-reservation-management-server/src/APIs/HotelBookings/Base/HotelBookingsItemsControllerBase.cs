@@ -21,11 +21,9 @@ public abstract class HotelBookingsControllerBase : ControllerBase
     /// Create one HotelBookings
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<HotelBookings>> CreateHotelBookings(
-        HotelBookingCreateInput input
-    )
+    public async Task<ActionResult<HotelBookings>> CreateHotelBooking(HotelBookingCreateInput input)
     {
-        var hotelBookings = await _service.CreateHotelBookings(input);
+        var hotelBookings = await _service.CreateHotelBooking(input);
 
         return CreatedAtAction(nameof(HotelBookings), new { id = hotelBookings.Id }, hotelBookings);
     }
@@ -34,13 +32,13 @@ public abstract class HotelBookingsControllerBase : ControllerBase
     /// Delete one HotelBookings
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteHotelBookings(
+    public async Task<ActionResult> DeleteHotelBooking(
         [FromRoute()] HotelBookingsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteHotelBookings(uniqueId);
+            await _service.DeleteHotelBooking(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -94,14 +92,14 @@ public abstract class HotelBookingsControllerBase : ControllerBase
     /// Update one HotelBookings
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateHotelBookings(
+    public async Task<ActionResult> UpdateHotelBooking(
         [FromRoute()] HotelBookingsWhereUniqueInput uniqueId,
         [FromQuery()] HotelBookingUpdateInput hotelBookingsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateHotelBookings(uniqueId, hotelBookingsUpdateDto);
+            await _service.UpdateHotelBooking(uniqueId, hotelBookingsUpdateDto);
         }
         catch (NotFoundException)
         {

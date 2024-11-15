@@ -8,12 +8,12 @@ public interface IBankDetailsService
     /// <summary>
     /// Create one BankDetails
     /// </summary>
-    public Task<BankDetails> CreateBankDetails(BankDetailCreateInput bankdetails);
+    public Task<BankDetails> CreateBankDetail(BankDetailCreateInput bankdetails);
 
     /// <summary>
     /// Delete one BankDetails
     /// </summary>
-    public Task DeleteBankDetails(BankDetailsWhereUniqueInput uniqueId);
+    public Task DeleteBankDetail(BankDetailsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many BankDetailsItems
@@ -33,7 +33,7 @@ public interface IBankDetailsService
     /// <summary>
     /// Update one BankDetails
     /// </summary>
-    public Task UpdateBankDetails(
+    public Task UpdateBankDetail(
         BankDetailsWhereUniqueInput uniqueId,
         BankDetailUpdateInput updateDto
     );

@@ -21,7 +21,7 @@ public abstract class CooperateCustomerProfilesServiceBase : ICooperateCustomerP
     /// <summary>
     /// Create one CooperateCustomerProfiles
     /// </summary>
-    public async Task<CooperateCustomerProfiles> CreateCooperateCustomerProfiles(
+    public async Task<CooperateCustomerProfiles> CreateCooperateCustomerProfile(
         CooperateCustomerProfileCreateInput inputDto
     )
     {
@@ -68,7 +68,7 @@ public abstract class CooperateCustomerProfilesServiceBase : ICooperateCustomerP
     /// <summary>
     /// Delete one CooperateCustomerProfiles
     /// </summary>
-    public async Task DeleteCooperateCustomerProfiles(
+    public async Task DeleteCooperateCustomerProfile(
         CooperateCustomerProfilesWhereUniqueInput uniqueId
     )
     {
@@ -142,7 +142,7 @@ public abstract class CooperateCustomerProfilesServiceBase : ICooperateCustomerP
     /// <summary>
     /// Update one CooperateCustomerProfiles
     /// </summary>
-    public async Task UpdateCooperateCustomerProfiles(
+    public async Task UpdateCooperateCustomerProfile(
         CooperateCustomerProfilesWhereUniqueInput uniqueId,
         CooperateCustomerProfileUpdateInput updateDto
     )

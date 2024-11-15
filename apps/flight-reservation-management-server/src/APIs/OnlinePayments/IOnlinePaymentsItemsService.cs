@@ -8,12 +8,12 @@ public interface IOnlinePaymentsService
     /// <summary>
     /// Create one OnlinePayments
     /// </summary>
-    public Task<OnlinePayments> CreateOnlinePayments(OnlinePaymentCreateInput onlinepayments);
+    public Task<OnlinePayments> CreateOnlinePayment(OnlinePaymentCreateInput onlinepayments);
 
     /// <summary>
     /// Delete one OnlinePayments
     /// </summary>
-    public Task DeleteOnlinePayments(OnlinePaymentsWhereUniqueInput uniqueId);
+    public Task DeleteOnlinePayment(OnlinePaymentsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many OnlinePaymentsItems
@@ -33,7 +33,7 @@ public interface IOnlinePaymentsService
     /// <summary>
     /// Update one OnlinePayments
     /// </summary>
-    public Task UpdateOnlinePayments(
+    public Task UpdateOnlinePayment(
         OnlinePaymentsWhereUniqueInput uniqueId,
         OnlinePaymentUpdateInput updateDto
     );

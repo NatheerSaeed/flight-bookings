@@ -21,7 +21,7 @@ public abstract class MarkupsServiceBase : IMarkupsService
     /// <summary>
     /// Create one Markups
     /// </summary>
-    public async Task<Markups> CreateMarkups(MarkupCreateInput inputDto)
+    public async Task<Markups> CreateMarkup(MarkupCreateInput inputDto)
     {
         var markups = new Markup
         {
@@ -64,7 +64,7 @@ public abstract class MarkupsServiceBase : IMarkupsService
     /// <summary>
     /// Delete one Markups
     /// </summary>
-    public async Task DeleteMarkups(MarkupsWhereUniqueInput uniqueId)
+    public async Task DeleteMarkup(MarkupsWhereUniqueInput uniqueId)
     {
         var markups = await _context.MarkupsItems.FindAsync(uniqueId.Id);
         if (markups == null)
@@ -121,7 +121,7 @@ public abstract class MarkupsServiceBase : IMarkupsService
     /// <summary>
     /// Update one Markups
     /// </summary>
-    public async Task UpdateMarkups(MarkupsWhereUniqueInput uniqueId, MarkupUpdateInput updateDto)
+    public async Task UpdateMarkup(MarkupsWhereUniqueInput uniqueId, MarkupUpdateInput updateDto)
     {
         var markups = updateDto.ToModel(uniqueId);
 

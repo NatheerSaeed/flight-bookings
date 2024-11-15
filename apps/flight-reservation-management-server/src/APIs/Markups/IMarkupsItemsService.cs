@@ -8,12 +8,12 @@ public interface IMarkupsService
     /// <summary>
     /// Create one Markups
     /// </summary>
-    public Task<Markups> CreateMarkups(MarkupCreateInput markups);
+    public Task<Markups> CreateMarkup(MarkupCreateInput markups);
 
     /// <summary>
     /// Delete one Markups
     /// </summary>
-    public Task DeleteMarkups(MarkupsWhereUniqueInput uniqueId);
+    public Task DeleteMarkup(MarkupsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many MarkupsItems
@@ -33,7 +33,7 @@ public interface IMarkupsService
     /// <summary>
     /// Update one Markups
     /// </summary>
-    public Task UpdateMarkups(MarkupsWhereUniqueInput uniqueId, MarkupUpdateInput updateDto);
+    public Task UpdateMarkup(MarkupsWhereUniqueInput uniqueId, MarkupUpdateInput updateDto);
 
     /// <summary>
     /// Get a role_ record for Markups

@@ -21,7 +21,7 @@ public abstract class FlightDealsServiceBase : IFlightDealsService
     /// <summary>
     /// Create one FlightDeals
     /// </summary>
-    public async Task<FlightDeals> CreateFlightDeals(FlightDealCreateInput inputDto)
+    public async Task<FlightDeals> CreateFlightDeal(FlightDealCreateInput inputDto)
     {
         var flightDeals = new FlightDeal
         {
@@ -62,7 +62,7 @@ public abstract class FlightDealsServiceBase : IFlightDealsService
     /// <summary>
     /// Delete one FlightDeals
     /// </summary>
-    public async Task DeleteFlightDeals(FlightDealsWhereUniqueInput uniqueId)
+    public async Task DeleteFlightDeal(FlightDealsWhereUniqueInput uniqueId)
     {
         var flightDeals = await _context.FlightDealsItems.FindAsync(uniqueId.Id);
         if (flightDeals == null)
@@ -119,7 +119,7 @@ public abstract class FlightDealsServiceBase : IFlightDealsService
     /// <summary>
     /// Update one FlightDeals
     /// </summary>
-    public async Task UpdateFlightDeals(
+    public async Task UpdateFlightDeal(
         FlightDealsWhereUniqueInput uniqueId,
         FlightDealUpdateInput updateDto
     )

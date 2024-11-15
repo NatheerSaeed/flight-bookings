@@ -21,7 +21,7 @@ public abstract class CabinTypesServiceBase : ICabinTypesService
     /// <summary>
     /// Create one CabinTypes
     /// </summary>
-    public async Task<CabinTypes> CreateCabinTypes(CabinTypeCreateInput inputDto)
+    public async Task<CabinTypes> CreateCabinType(CabinTypeCreateInput inputDto)
     {
         var cabinTypes = new CabinType
         {
@@ -52,7 +52,7 @@ public abstract class CabinTypesServiceBase : ICabinTypesService
     /// <summary>
     /// Delete one CabinTypes
     /// </summary>
-    public async Task DeleteCabinTypes(CabinTypesWhereUniqueInput uniqueId)
+    public async Task DeleteCabinType(CabinTypesWhereUniqueInput uniqueId)
     {
         var cabinTypes = await _context.CabinTypesItems.FindAsync(uniqueId.Id);
         if (cabinTypes == null)
@@ -108,7 +108,7 @@ public abstract class CabinTypesServiceBase : ICabinTypesService
     /// <summary>
     /// Update one CabinTypes
     /// </summary>
-    public async Task UpdateCabinTypes(
+    public async Task UpdateCabinType(
         CabinTypesWhereUniqueInput uniqueId,
         CabinTypeUpdateInput updateDto
     )

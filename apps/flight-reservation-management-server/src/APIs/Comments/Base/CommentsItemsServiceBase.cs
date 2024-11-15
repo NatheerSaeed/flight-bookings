@@ -21,7 +21,7 @@ public abstract class CommentsServiceBase : ICommentsService
     /// <summary>
     /// Create one Comments
     /// </summary>
-    public async Task<Comments> CreateComments(CommentCreateInput inputDto)
+    public async Task<Comments> CreateComment(CommentCreateInput inputDto)
     {
         var comments = new Comment
         {
@@ -54,7 +54,7 @@ public abstract class CommentsServiceBase : ICommentsService
     /// <summary>
     /// Delete one Comments
     /// </summary>
-    public async Task DeleteComments(CommentsWhereUniqueInput uniqueId)
+    public async Task DeleteComment(CommentsWhereUniqueInput uniqueId)
     {
         var comments = await _context.CommentsItems.FindAsync(uniqueId.Id);
         if (comments == null)
@@ -110,10 +110,7 @@ public abstract class CommentsServiceBase : ICommentsService
     /// <summary>
     /// Update one Comments
     /// </summary>
-    public async Task UpdateComments(
-        CommentsWhereUniqueInput uniqueId,
-        CommentUpdateInput updateDto
-    )
+    public async Task UpdateComment(CommentsWhereUniqueInput uniqueId, CommentUpdateInput updateDto)
     {
         var comments = updateDto.ToModel(uniqueId);
 

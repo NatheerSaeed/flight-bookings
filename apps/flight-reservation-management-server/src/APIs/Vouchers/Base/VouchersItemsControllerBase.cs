@@ -21,9 +21,9 @@ public abstract class VouchersControllerBase : ControllerBase
     /// Create one Vouchers
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Vouchers>> CreateVouchers(VoucherCreateInput input)
+    public async Task<ActionResult<Vouchers>> CreateVoucher(VoucherCreateInput input)
     {
-        var vouchers = await _service.CreateVouchers(input);
+        var vouchers = await _service.CreateVoucher(input);
 
         return CreatedAtAction(nameof(Vouchers), new { id = vouchers.Id }, vouchers);
     }
@@ -32,11 +32,11 @@ public abstract class VouchersControllerBase : ControllerBase
     /// Delete one Vouchers
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteVouchers([FromRoute()] VouchersWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteVoucher([FromRoute()] VouchersWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteVouchers(uniqueId);
+            await _service.DeleteVoucher(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -90,14 +90,14 @@ public abstract class VouchersControllerBase : ControllerBase
     /// Update one Vouchers
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateVouchers(
+    public async Task<ActionResult> UpdateVoucher(
         [FromRoute()] VouchersWhereUniqueInput uniqueId,
         [FromQuery()] VoucherUpdateInput vouchersUpdateDto
     )
     {
         try
         {
-            await _service.UpdateVouchers(uniqueId, vouchersUpdateDto);
+            await _service.UpdateVoucher(uniqueId, vouchersUpdateDto);
         }
         catch (NotFoundException)
         {
@@ -172,14 +172,14 @@ public abstract class VouchersControllerBase : ControllerBase
     /// Update multiple FlightBookingsItems records for Vouchers
     /// </summary>
     [HttpPatch("{Id}/flightBookingsItems")]
-    public async Task<ActionResult> UpdateFlightBookingsItems(
+    public async Task<ActionResult> UpdateFlightBookingsItem(
         [FromRoute()] VouchersWhereUniqueInput uniqueId,
         [FromBody()] FlightBookingsWhereUniqueInput[] flightBookingsItemsId
     )
     {
         try
         {
-            await _service.UpdateFlightBookingsItems(uniqueId, flightBookingsItemsId);
+            await _service.UpdateFlightBookingsItem(uniqueId, flightBookingsItemsId);
         }
         catch (NotFoundException)
         {
@@ -254,14 +254,14 @@ public abstract class VouchersControllerBase : ControllerBase
     /// Update multiple HotelBookingsItems records for Vouchers
     /// </summary>
     [HttpPatch("{Id}/hotelBookingsItems")]
-    public async Task<ActionResult> UpdateHotelBookingsItems(
+    public async Task<ActionResult> UpdateHotelBookingsItem(
         [FromRoute()] VouchersWhereUniqueInput uniqueId,
         [FromBody()] HotelBookingsWhereUniqueInput[] hotelBookingsItemsId
     )
     {
         try
         {
-            await _service.UpdateHotelBookingsItems(uniqueId, hotelBookingsItemsId);
+            await _service.UpdateHotelBookingsItem(uniqueId, hotelBookingsItemsId);
         }
         catch (NotFoundException)
         {

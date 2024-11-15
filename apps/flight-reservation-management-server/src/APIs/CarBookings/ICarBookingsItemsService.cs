@@ -8,12 +8,12 @@ public interface ICarBookingsService
     /// <summary>
     /// Create one CarBookings
     /// </summary>
-    public Task<CarBookings> CreateCarBookings(CarBookingCreateInput carbookings);
+    public Task<CarBookings> CreateCarBooking(CarBookingCreateInput carbookings);
 
     /// <summary>
     /// Delete one CarBookings
     /// </summary>
-    public Task DeleteCarBookings(CarBookingsWhereUniqueInput uniqueId);
+    public Task DeleteCarBooking(CarBookingsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many CarBookingsItems
@@ -33,7 +33,7 @@ public interface ICarBookingsService
     /// <summary>
     /// Update one CarBookings
     /// </summary>
-    public Task UpdateCarBookings(
+    public Task UpdateCarBooking(
         CarBookingsWhereUniqueInput uniqueId,
         CarBookingUpdateInput updateDto
     );

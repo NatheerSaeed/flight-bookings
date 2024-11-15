@@ -21,9 +21,9 @@ public abstract class BankDetailsControllerBase : ControllerBase
     /// Create one BankDetails
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<BankDetails>> CreateBankDetails(BankDetailCreateInput input)
+    public async Task<ActionResult<BankDetails>> CreateBankDetail(BankDetailCreateInput input)
     {
-        var bankDetails = await _service.CreateBankDetails(input);
+        var bankDetails = await _service.CreateBankDetail(input);
 
         return CreatedAtAction(nameof(BankDetails), new { id = bankDetails.Id }, bankDetails);
     }
@@ -32,13 +32,13 @@ public abstract class BankDetailsControllerBase : ControllerBase
     /// Delete one BankDetails
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteBankDetails(
+    public async Task<ActionResult> DeleteBankDetail(
         [FromRoute()] BankDetailsWhereUniqueInput uniqueId
     )
     {
         try
         {
-            await _service.DeleteBankDetails(uniqueId);
+            await _service.DeleteBankDetail(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -92,14 +92,14 @@ public abstract class BankDetailsControllerBase : ControllerBase
     /// Update one BankDetails
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateBankDetails(
+    public async Task<ActionResult> UpdateBankDetail(
         [FromRoute()] BankDetailsWhereUniqueInput uniqueId,
         [FromQuery()] BankDetailUpdateInput bankDetailsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateBankDetails(uniqueId, bankDetailsUpdateDto);
+            await _service.UpdateBankDetail(uniqueId, bankDetailsUpdateDto);
         }
         catch (NotFoundException)
         {

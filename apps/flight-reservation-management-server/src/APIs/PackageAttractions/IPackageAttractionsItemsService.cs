@@ -8,14 +8,14 @@ public interface IPackageAttractionsService
     /// <summary>
     /// Create one PackageAttractions
     /// </summary>
-    public Task<PackageAttractions> CreatePackageAttractions(
+    public Task<PackageAttractions> CreatePackageAttraction(
         PackageAttractionCreateInput packageattractions
     );
 
     /// <summary>
     /// Delete one PackageAttractions
     /// </summary>
-    public Task DeletePackageAttractions(PackageAttractionsWhereUniqueInput uniqueId);
+    public Task DeletePackageAttraction(PackageAttractionsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many PackageAttractionsItems
@@ -39,7 +39,7 @@ public interface IPackageAttractionsService
     /// <summary>
     /// Update one PackageAttractions
     /// </summary>
-    public Task UpdatePackageAttractions(
+    public Task UpdatePackageAttraction(
         PackageAttractionsWhereUniqueInput uniqueId,
         PackageAttractionUpdateInput updateDto
     );

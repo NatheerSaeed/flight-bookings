@@ -8,12 +8,12 @@ public interface ITitlesService
     /// <summary>
     /// Create one Titles
     /// </summary>
-    public Task<Titles> CreateTitles(TitleCreateInput titles);
+    public Task<Titles> CreateTitle(TitleCreateInput titles);
 
     /// <summary>
     /// Delete one Titles
     /// </summary>
-    public Task DeleteTitles(TitlesWhereUniqueInput uniqueId);
+    public Task DeleteTitle(TitlesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many TitlesItems
@@ -33,7 +33,7 @@ public interface ITitlesService
     /// <summary>
     /// Update one Titles
     /// </summary>
-    public Task UpdateTitles(TitlesWhereUniqueInput uniqueId, TitleUpdateInput updateDto);
+    public Task UpdateTitle(TitlesWhereUniqueInput uniqueId, TitleUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple ProfilesItems records to Titles
@@ -62,7 +62,7 @@ public interface ITitlesService
     /// <summary>
     /// Update multiple ProfilesItems records for Titles
     /// </summary>
-    public Task UpdateProfilesItems(
+    public Task UpdateProfilesItem(
         TitlesWhereUniqueInput uniqueId,
         ProfilesWhereUniqueInput[] profilesId
     );

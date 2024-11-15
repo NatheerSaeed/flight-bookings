@@ -21,7 +21,7 @@ public abstract class ProfilesServiceBase : IProfilesService
     /// <summary>
     /// Create one Profiles
     /// </summary>
-    public async Task<Profiles> CreateProfiles(ProfileCreateInput inputDto)
+    public async Task<Profiles> CreateProfile(ProfileCreateInput inputDto)
     {
         var profiles = new Profile
         {
@@ -76,7 +76,7 @@ public abstract class ProfilesServiceBase : IProfilesService
     /// <summary>
     /// Delete one Profiles
     /// </summary>
-    public async Task DeleteProfiles(ProfilesWhereUniqueInput uniqueId)
+    public async Task DeleteProfile(ProfilesWhereUniqueInput uniqueId)
     {
         var profiles = await _context.ProfilesItems.FindAsync(uniqueId.Id);
         if (profiles == null)
@@ -135,10 +135,7 @@ public abstract class ProfilesServiceBase : IProfilesService
     /// <summary>
     /// Update one Profiles
     /// </summary>
-    public async Task UpdateProfiles(
-        ProfilesWhereUniqueInput uniqueId,
-        ProfileUpdateInput updateDto
-    )
+    public async Task UpdateProfile(ProfilesWhereUniqueInput uniqueId, ProfileUpdateInput updateDto)
     {
         var profiles = updateDto.ToModel(uniqueId);
 

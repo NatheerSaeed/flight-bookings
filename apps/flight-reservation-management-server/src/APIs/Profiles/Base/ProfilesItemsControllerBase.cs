@@ -21,9 +21,9 @@ public abstract class ProfilesControllerBase : ControllerBase
     /// Create one Profiles
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Profiles>> CreateProfiles(ProfileCreateInput input)
+    public async Task<ActionResult<Profiles>> CreateProfile(ProfileCreateInput input)
     {
-        var profiles = await _service.CreateProfiles(input);
+        var profiles = await _service.CreateProfile(input);
 
         return CreatedAtAction(nameof(Profiles), new { id = profiles.Id }, profiles);
     }
@@ -32,11 +32,11 @@ public abstract class ProfilesControllerBase : ControllerBase
     /// Delete one Profiles
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteProfiles([FromRoute()] ProfilesWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteProfile([FromRoute()] ProfilesWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteProfiles(uniqueId);
+            await _service.DeleteProfile(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -90,14 +90,14 @@ public abstract class ProfilesControllerBase : ControllerBase
     /// Update one Profiles
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateProfiles(
+    public async Task<ActionResult> UpdateProfile(
         [FromRoute()] ProfilesWhereUniqueInput uniqueId,
         [FromQuery()] ProfileUpdateInput profilesUpdateDto
     )
     {
         try
         {
-            await _service.UpdateProfiles(uniqueId, profilesUpdateDto);
+            await _service.UpdateProfile(uniqueId, profilesUpdateDto);
         }
         catch (NotFoundException)
         {

@@ -21,7 +21,7 @@ public abstract class TravelPackagesServiceBase : ITravelPackagesService
     /// <summary>
     /// Create one TravelPackages
     /// </summary>
-    public async Task<TravelPackages> CreateTravelPackages(TravelPackageCreateInput inputDto)
+    public async Task<TravelPackages> CreateTravelPackage(TravelPackageCreateInput inputDto)
     {
         var travelPackages = new TravelPackage
         {
@@ -61,7 +61,7 @@ public abstract class TravelPackagesServiceBase : ITravelPackagesService
     /// <summary>
     /// Delete one TravelPackages
     /// </summary>
-    public async Task DeleteTravelPackages(TravelPackagesWhereUniqueInput uniqueId)
+    public async Task DeleteTravelPackage(TravelPackagesWhereUniqueInput uniqueId)
     {
         var travelPackages = await _context.TravelPackagesItems.FindAsync(uniqueId.Id);
         if (travelPackages == null)
@@ -122,7 +122,7 @@ public abstract class TravelPackagesServiceBase : ITravelPackagesService
     /// <summary>
     /// Update one TravelPackages
     /// </summary>
-    public async Task UpdateTravelPackages(
+    public async Task UpdateTravelPackage(
         TravelPackagesWhereUniqueInput uniqueId,
         TravelPackageUpdateInput updateDto
     )

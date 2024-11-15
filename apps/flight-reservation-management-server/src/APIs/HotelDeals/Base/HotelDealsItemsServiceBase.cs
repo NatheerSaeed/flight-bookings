@@ -21,7 +21,7 @@ public abstract class HotelDealsServiceBase : IHotelDealsService
     /// <summary>
     /// Create one HotelDeals
     /// </summary>
-    public async Task<HotelDeals> CreateHotelDeals(HotelDealCreateInput inputDto)
+    public async Task<HotelDeals> CreateHotelDeal(HotelDealCreateInput inputDto)
     {
         var hotelDeals = new HotelDeal
         {
@@ -64,7 +64,7 @@ public abstract class HotelDealsServiceBase : IHotelDealsService
     /// <summary>
     /// Delete one HotelDeals
     /// </summary>
-    public async Task DeleteHotelDeals(HotelDealsWhereUniqueInput uniqueId)
+    public async Task DeleteHotelDeal(HotelDealsWhereUniqueInput uniqueId)
     {
         var hotelDeals = await _context.HotelDealsItems.FindAsync(uniqueId.Id);
         if (hotelDeals == null)
@@ -121,7 +121,7 @@ public abstract class HotelDealsServiceBase : IHotelDealsService
     /// <summary>
     /// Update one HotelDeals
     /// </summary>
-    public async Task UpdateHotelDeals(
+    public async Task UpdateHotelDeal(
         HotelDealsWhereUniqueInput uniqueId,
         HotelDealUpdateInput updateDto
     )

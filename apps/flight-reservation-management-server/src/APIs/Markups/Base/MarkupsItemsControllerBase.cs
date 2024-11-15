@@ -21,9 +21,9 @@ public abstract class MarkupsControllerBase : ControllerBase
     /// Create one Markups
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Markups>> CreateMarkups(MarkupCreateInput input)
+    public async Task<ActionResult<Markups>> CreateMarkup(MarkupCreateInput input)
     {
-        var markups = await _service.CreateMarkups(input);
+        var markups = await _service.CreateMarkup(input);
 
         return CreatedAtAction(nameof(Markups), new { id = markups.Id }, markups);
     }
@@ -32,11 +32,11 @@ public abstract class MarkupsControllerBase : ControllerBase
     /// Delete one Markups
     /// </summary>
     [HttpDelete("{Id}")]
-    public async Task<ActionResult> DeleteMarkups([FromRoute()] MarkupsWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteMarkup([FromRoute()] MarkupsWhereUniqueInput uniqueId)
     {
         try
         {
-            await _service.DeleteMarkups(uniqueId);
+            await _service.DeleteMarkup(uniqueId);
         }
         catch (NotFoundException)
         {
@@ -88,14 +88,14 @@ public abstract class MarkupsControllerBase : ControllerBase
     /// Update one Markups
     /// </summary>
     [HttpPatch("{Id}")]
-    public async Task<ActionResult> UpdateMarkups(
+    public async Task<ActionResult> UpdateMarkup(
         [FromRoute()] MarkupsWhereUniqueInput uniqueId,
         [FromQuery()] MarkupUpdateInput markupsUpdateDto
     )
     {
         try
         {
-            await _service.UpdateMarkups(uniqueId, markupsUpdateDto);
+            await _service.UpdateMarkup(uniqueId, markupsUpdateDto);
         }
         catch (NotFoundException)
         {

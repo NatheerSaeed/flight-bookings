@@ -8,14 +8,14 @@ public interface IVisaApplicationsService
     /// <summary>
     /// Create one VisaApplications
     /// </summary>
-    public Task<VisaApplications> CreateVisaApplications(
+    public Task<VisaApplications> CreateVisaApplication(
         VisaApplicationCreateInput visaapplications
     );
 
     /// <summary>
     /// Delete one VisaApplications
     /// </summary>
-    public Task DeleteVisaApplications(VisaApplicationsWhereUniqueInput uniqueId);
+    public Task DeleteVisaApplication(VisaApplicationsWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many VisaApplicationsItems
@@ -37,7 +37,7 @@ public interface IVisaApplicationsService
     /// <summary>
     /// Update one VisaApplications
     /// </summary>
-    public Task UpdateVisaApplications(
+    public Task UpdateVisaApplication(
         VisaApplicationsWhereUniqueInput uniqueId,
         VisaApplicationUpdateInput updateDto
     );

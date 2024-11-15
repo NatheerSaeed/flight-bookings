@@ -8,12 +8,12 @@ public interface IBanksService
     /// <summary>
     /// Create one Banks
     /// </summary>
-    public Task<Banks> CreateBanks(BankCreateInput banks);
+    public Task<Banks> CreateBank(BankCreateInput banks);
 
     /// <summary>
     /// Delete one Banks
     /// </summary>
-    public Task DeleteBanks(BanksWhereUniqueInput uniqueId);
+    public Task DeleteBank(BanksWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many BanksItems
@@ -33,7 +33,7 @@ public interface IBanksService
     /// <summary>
     /// Update one Banks
     /// </summary>
-    public Task UpdateBanks(BanksWhereUniqueInput uniqueId, BankUpdateInput updateDto);
+    public Task UpdateBank(BanksWhereUniqueInput uniqueId, BankUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple BankDetailsItems records to Banks
@@ -62,7 +62,7 @@ public interface IBanksService
     /// <summary>
     /// Update multiple BankDetailsItems records for Banks
     /// </summary>
-    public Task UpdateBankDetailsItems(
+    public Task UpdateBankDetailsItem(
         BanksWhereUniqueInput uniqueId,
         BankDetailsWhereUniqueInput[] bankDetailsId
     );

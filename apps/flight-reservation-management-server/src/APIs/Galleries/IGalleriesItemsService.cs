@@ -8,12 +8,12 @@ public interface IGalleriesService
     /// <summary>
     /// Create one Galleries
     /// </summary>
-    public Task<Galleries> CreateGalleries(GallerieCreateInput galleries);
+    public Task<Galleries> CreateGallerie(GallerieCreateInput galleries);
 
     /// <summary>
     /// Delete one Galleries
     /// </summary>
-    public Task DeleteGalleries(GalleriesWhereUniqueInput uniqueId);
+    public Task DeleteGallerie(GalleriesWhereUniqueInput uniqueId);
 
     /// <summary>
     /// Find many GalleriesItems
@@ -33,7 +33,7 @@ public interface IGalleriesService
     /// <summary>
     /// Update one Galleries
     /// </summary>
-    public Task UpdateGalleries(GalleriesWhereUniqueInput uniqueId, GallerieUpdateInput updateDto);
+    public Task UpdateGallerie(GalleriesWhereUniqueInput uniqueId, GallerieUpdateInput updateDto);
 
     /// <summary>
     /// Get a package_ record for Galleries
