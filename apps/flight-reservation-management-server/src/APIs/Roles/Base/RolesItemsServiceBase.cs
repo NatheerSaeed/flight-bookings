@@ -23,7 +23,7 @@ public abstract class RolesServiceBase : IRolesService
     /// </summary>
     public async Task<Roles> CreateRoles(RoleCreateInput createDto)
     {
-        var roles = new RolesDbModel
+        var roles = new Role
         {
             CreatedAt = createDto.CreatedAt,
             Description = createDto.Description,
@@ -57,7 +57,7 @@ public abstract class RolesServiceBase : IRolesService
 
         if (createDto.Role != null)
         {
-            roles.Role = await _context
+            roles.ContainerRole = await _context
                 .RolesItems.Where(roles => createDto.Role.Id == roles.Id)
                 .FirstOrDefaultAsync();
         }
@@ -74,7 +74,7 @@ public abstract class RolesServiceBase : IRolesService
         _context.RolesItems.Add(roles);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<RolesDbModel>(roles.Id);
+        var result = await _context.FindAsync<Role>(roles.Id);
 
         if (result == null)
         {
@@ -105,7 +105,7 @@ public abstract class RolesServiceBase : IRolesService
     public async Task<List<Roles>> RolesItems(RoleFindManyArgs findManyArgs)
     {
         var rolesItems = await _context
-            .RolesItems.Include(x => x.Role)
+            .RolesItems.Include(x => x.ContainerRole)
             .Include(x => x.HotelsItems)
             .Include(x => x.MarkupsItems)
             .ApplyWhere(findManyArgs.Where)
@@ -170,7 +170,7 @@ public abstract class RolesServiceBase : IRolesService
 
         if (updateDto.Role != null)
         {
-            roles.Role = await _context
+            roles.ContainerRole = await _context
                 .RolesItems.Where(roles => updateDto.Role == roles.Id)
                 .FirstOrDefaultAsync();
         }
@@ -426,13 +426,13 @@ public abstract class RolesServiceBase : IRolesService
     {
         var roles = await _context
             .RolesItems.Where(roles => roles.Id == uniqueId.Id)
-            .Include(roles => roles.Role)
+            .Include(roles => roles.ContainerRole)
             .FirstOrDefaultAsync();
         if (roles == null)
         {
             throw new NotFoundException();
         }
-        return roles.Role.ToDto();
+        return roles.ContainerRole.ToDto();
     }
 
     /// <summary>

@@ -23,7 +23,7 @@ public abstract class PackageBookingsServiceBase : IPackageBookingsService
     /// </summary>
     public async Task<PackageBookings> CreatePackageBookings(PackageBookingCreateInput createDto)
     {
-        var packageBookings = new PackageBookingsDbModel
+        var packageBookings = new PackageBooking
         {
             Adults = createDto.Adults,
             BookingStatus = createDto.BookingStatus,
@@ -63,7 +63,7 @@ public abstract class PackageBookingsServiceBase : IPackageBookingsService
         _context.PackageBookingsItems.Add(packageBookings);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<PackageBookingsDbModel>(packageBookings.Id);
+        var result = await _context.FindAsync<PackageBooking>(packageBookings.Id);
 
         if (result == null)
         {

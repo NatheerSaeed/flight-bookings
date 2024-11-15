@@ -23,7 +23,7 @@ public abstract class SightSeeingsServiceBase : ISightSeeingsService
     /// </summary>
     public async Task<SightSeeings> CreateSightSeeings(SightSeeingCreateInput createDto)
     {
-        var sightSeeings = new SightSeeingsDbModel
+        var sightSeeings = new SightSeeing
         {
             CreatedAt = createDto.CreatedAt,
             Description = createDto.Description,
@@ -52,7 +52,7 @@ public abstract class SightSeeingsServiceBase : ISightSeeingsService
         _context.SightSeeingsItems.Add(sightSeeings);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<SightSeeingsDbModel>(sightSeeings.Id);
+        var result = await _context.FindAsync<SightSeeing>(sightSeeings.Id);
 
         if (result == null)
         {

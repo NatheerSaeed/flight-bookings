@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class FlightDealsItemsExtensions
 {
-    public static FlightDeals ToDto(this FlightDealsDbModel model)
+    public static FlightDeals ToDto(this FlightDeal model)
     {
         return new FlightDeals
         {
@@ -22,12 +22,12 @@ public static class FlightDealsItemsExtensions
         };
     }
 
-    public static FlightDealsDbModel ToModel(
+    public static FlightDeal ToModel(
         this FlightDealUpdateInput updateDto,
         FlightDealsWhereUniqueInput uniqueId
     )
     {
-        var flightDeals = new FlightDealsDbModel
+        var flightDeals = new FlightDeal
         {
             Id = uniqueId.Id,
             Airline = updateDto.Airline,

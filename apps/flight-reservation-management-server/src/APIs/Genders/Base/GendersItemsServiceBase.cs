@@ -23,7 +23,7 @@ public abstract class GendersServiceBase : IGendersService
     /// </summary>
     public async Task<Genders> CreateGenders(GenderCreateInput createDto)
     {
-        var genders = new GendersDbModel
+        var genders = new Gender
         {
             CreatedAt = createDto.CreatedAt,
             UpdatedAt = createDto.UpdatedAt
@@ -45,7 +45,7 @@ public abstract class GendersServiceBase : IGendersService
         _context.GendersItems.Add(genders);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<GendersDbModel>(genders.Id);
+        var result = await _context.FindAsync<Gender>(genders.Id);
 
         if (result == null)
         {

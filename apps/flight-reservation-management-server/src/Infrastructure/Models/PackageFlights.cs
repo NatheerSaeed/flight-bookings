@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("PackageFlights")]
-public class PackageFlightsDbModel
+public class PackageFlight
 {
     [StringLength(1000)]
     public string? Airline { get; set; }
@@ -28,7 +28,7 @@ public class PackageFlightsDbModel
     public string? PackageFieldId { get; set; }
 
     [ForeignKey(nameof(PackageFieldId))]
-    public PackagesDbModel? PackageField { get; set; } = null;
+    public Package? PackageField { get; set; } = null;
 
     [StringLength(1000)]
     public string? ToLocation { get; set; }

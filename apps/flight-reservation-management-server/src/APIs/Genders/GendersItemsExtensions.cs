@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class GendersItemsExtensions
 {
-    public static Genders ToDto(this GendersDbModel model)
+    public static Genders ToDto(this Gender model)
     {
         return new Genders
         {
@@ -16,12 +16,9 @@ public static class GendersItemsExtensions
         };
     }
 
-    public static GendersDbModel ToModel(
-        this GenderUpdateInput updateDto,
-        GendersWhereUniqueInput uniqueId
-    )
+    public static Gender ToModel(this GenderUpdateInput updateDto, GendersWhereUniqueInput uniqueId)
     {
-        var genders = new GendersDbModel { Id = uniqueId.Id };
+        var genders = new Gender { Id = uniqueId.Id };
 
         if (updateDto.CreatedAt != null)
         {

@@ -23,7 +23,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// </summary>
     public async Task<Attractions> CreateAttractions(AttractionCreateInput createDto)
     {
-        var attractions = new AttractionsDbModel
+        var attractions = new Attraction
         {
             Address = createDto.Address,
             City = createDto.City,
@@ -57,7 +57,7 @@ public abstract class AttractionsServiceBase : IAttractionsService
         _context.AttractionsItems.Add(attractions);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<AttractionsDbModel>(attractions.Id);
+        var result = await _context.FindAsync<Attraction>(attractions.Id);
 
         if (result == null)
         {

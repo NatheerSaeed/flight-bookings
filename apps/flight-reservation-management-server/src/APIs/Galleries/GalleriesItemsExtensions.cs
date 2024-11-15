@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class GalleriesItemsExtensions
 {
-    public static Galleries ToDto(this GalleriesDbModel model)
+    public static Galleries ToDto(this Gallerie model)
     {
         return new Galleries
         {
@@ -19,12 +19,12 @@ public static class GalleriesItemsExtensions
         };
     }
 
-    public static GalleriesDbModel ToModel(
+    public static Gallerie ToModel(
         this GallerieUpdateInput updateDto,
         GalleriesWhereUniqueInput uniqueId
     )
     {
-        var galleries = new GalleriesDbModel
+        var galleries = new Gallerie
         {
             Id = uniqueId.Id,
             ImagePath = updateDto.ImagePath,

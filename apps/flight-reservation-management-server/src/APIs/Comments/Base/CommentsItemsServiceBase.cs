@@ -23,7 +23,7 @@ public abstract class CommentsServiceBase : ICommentsService
     /// </summary>
     public async Task<Comments> CreateComments(CommentCreateInput createDto)
     {
-        var comments = new CommentsDbModel
+        var comments = new Comment
         {
             Content = createDto.Content,
             CreatedAt = createDto.CreatedAt,
@@ -41,7 +41,7 @@ public abstract class CommentsServiceBase : ICommentsService
         _context.CommentsItems.Add(comments);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<CommentsDbModel>(comments.Id);
+        var result = await _context.FindAsync<Comment>(comments.Id);
 
         if (result == null)
         {

@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class VouchersItemsExtensions
 {
-    public static Vouchers ToDto(this VouchersDbModel model)
+    public static Vouchers ToDto(this Voucher model)
     {
         return new Vouchers
         {
@@ -20,12 +20,12 @@ public static class VouchersItemsExtensions
         };
     }
 
-    public static VouchersDbModel ToModel(
+    public static Voucher ToModel(
         this VoucherUpdateInput updateDto,
         VouchersWhereUniqueInput uniqueId
     )
     {
-        var vouchers = new VouchersDbModel
+        var vouchers = new Voucher
         {
             Id = uniqueId.Id,
             Amount = updateDto.Amount,

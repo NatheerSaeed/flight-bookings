@@ -23,7 +23,7 @@ public abstract class VatsServiceBase : IVatsService
     /// </summary>
     public async Task<Vats> CreateVats(VatCreateInput createDto)
     {
-        var vats = new VatsDbModel
+        var vats = new Vat
         {
             CarVatType = createDto.CarVatType,
             CarVatValue = createDto.CarVatValue,
@@ -45,7 +45,7 @@ public abstract class VatsServiceBase : IVatsService
         _context.VatsItems.Add(vats);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<VatsDbModel>(vats.Id);
+        var result = await _context.FindAsync<Vat>(vats.Id);
 
         if (result == null)
         {

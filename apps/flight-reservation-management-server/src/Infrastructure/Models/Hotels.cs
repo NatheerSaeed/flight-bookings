@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Hotels")]
-public class HotelsDbModel
+public class Hotel
 {
     [Range(-999999999, 999999999)]
     public int? CarMarkupType { get; set; }
@@ -49,7 +49,7 @@ public class HotelsDbModel
     public string? RoleId { get; set; }
 
     [ForeignKey(nameof(RoleId))]
-    public RolesDbModel? Role { get; set; } = null;
+    public Role? Role { get; set; } = null;
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

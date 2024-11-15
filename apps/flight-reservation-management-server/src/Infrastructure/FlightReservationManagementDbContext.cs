@@ -10,91 +10,91 @@ public class FlightReservationManagementDbContext : DbContext
     )
         : base(options) { }
 
-    public DbSet<RolesDbModel> RolesItems { get; set; }
+    public DbSet<Role> RolesItems { get; set; }
 
-    public DbSet<PasswordResetsDbModel> PasswordResetsItems { get; set; }
+    public DbSet<PasswordReset> PasswordResetsItems { get; set; }
 
-    public DbSet<HotelsDbModel> HotelsItems { get; set; }
+    public DbSet<Hotel> HotelsItems { get; set; }
 
-    public DbSet<HotelBookingsDbModel> HotelBookingsItems { get; set; }
+    public DbSet<HotelBooking> HotelBookingsItems { get; set; }
 
-    public DbSet<AirportsDbModel> AirportsItems { get; set; }
+    public DbSet<Airport> AirportsItems { get; set; }
 
-    public DbSet<CarBookingsDbModel> CarBookingsItems { get; set; }
+    public DbSet<CarBooking> CarBookingsItems { get; set; }
 
-    public DbSet<TravelPackagesDbModel> TravelPackagesItems { get; set; }
+    public DbSet<TravelPackage> TravelPackagesItems { get; set; }
 
-    public DbSet<GoodToKnowsDbModel> GoodToKnowsItems { get; set; }
+    public DbSet<GoodToKnow> GoodToKnowsItems { get; set; }
 
-    public DbSet<GalleriesDbModel> GalleriesItems { get; set; }
+    public DbSet<Gallerie> GalleriesItems { get; set; }
 
-    public DbSet<MarkdownsDbModel> MarkdownsItems { get; set; }
+    public DbSet<Markdown> MarkdownsItems { get; set; }
 
-    public DbSet<BanksDbModel> BanksItems { get; set; }
+    public DbSet<Bank> BanksItems { get; set; }
 
-    public DbSet<AirlinesDbModel> AirlinesItems { get; set; }
+    public DbSet<Airline> AirlinesItems { get; set; }
 
-    public DbSet<PackageTypesDbModel> PackageTypesItems { get; set; }
+    public DbSet<PackageType> PackageTypesItems { get; set; }
 
-    public DbSet<VatsDbModel> VatsItems { get; set; }
+    public DbSet<Vat> VatsItems { get; set; }
 
-    public DbSet<BankPaymentsDbModel> BankPaymentsItems { get; set; }
+    public DbSet<BankPayment> BankPaymentsItems { get; set; }
 
-    public DbSet<GendersDbModel> GendersItems { get; set; }
+    public DbSet<Gender> GendersItems { get; set; }
 
-    public DbSet<BankDetailsDbModel> BankDetailsItems { get; set; }
+    public DbSet<BankDetail> BankDetailsItems { get; set; }
 
-    public DbSet<EmailSubscribersDbModel> EmailSubscribersItems { get; set; }
+    public DbSet<EmailSubscriber> EmailSubscribersItems { get; set; }
 
-    public DbSet<ProfilesDbModel> ProfilesItems { get; set; }
+    public DbSet<Profile> ProfilesItems { get; set; }
 
-    public DbSet<SightSeeingsDbModel> SightSeeingsItems { get; set; }
+    public DbSet<SightSeeing> SightSeeingsItems { get; set; }
 
-    public DbSet<CabinTypesDbModel> CabinTypesItems { get; set; }
+    public DbSet<CabinType> CabinTypesItems { get; set; }
 
-    public DbSet<OnlinePaymentsDbModel> OnlinePaymentsItems { get; set; }
+    public DbSet<OnlinePayment> OnlinePaymentsItems { get; set; }
 
-    public DbSet<PayLatersDbModel> PayLatersItems { get; set; }
+    public DbSet<PayLater> PayLatersItems { get; set; }
 
-    public DbSet<PackageHotelsDbModel> PackageHotelsItems { get; set; }
+    public DbSet<PackageHotel> PackageHotelsItems { get; set; }
 
-    public DbSet<AttractionsDbModel> AttractionsItems { get; set; }
+    public DbSet<Attraction> AttractionsItems { get; set; }
 
-    public DbSet<CommentsDbModel> CommentsItems { get; set; }
+    public DbSet<Comment> CommentsItems { get; set; }
 
-    public DbSet<VisaApplicationsDbModel> VisaApplicationsItems { get; set; }
+    public DbSet<VisaApplication> VisaApplicationsItems { get; set; }
 
-    public DbSet<MarkupsDbModel> MarkupsItems { get; set; }
+    public DbSet<Markup> MarkupsItems { get; set; }
 
-    public DbSet<FlightDealsDbModel> FlightDealsItems { get; set; }
+    public DbSet<FlightDeal> FlightDealsItems { get; set; }
 
-    public DbSet<PackagesDbModel> PackagesItems { get; set; }
+    public DbSet<Package> PackagesItems { get; set; }
 
-    public DbSet<VouchersDbModel> VouchersItems { get; set; }
+    public DbSet<Voucher> VouchersItems { get; set; }
 
-    public DbSet<CooperateCustomerProfilesDbModel> CooperateCustomerProfilesItems { get; set; }
+    public DbSet<CooperateCustomerProfile> CooperateCustomerProfilesItems { get; set; }
 
-    public DbSet<TitlesDbModel> TitlesItems { get; set; }
+    public DbSet<Title> TitlesItems { get; set; }
 
-    public DbSet<HotelDealsDbModel> HotelDealsItems { get; set; }
+    public DbSet<HotelDeal> HotelDealsItems { get; set; }
 
-    public DbSet<WalletsDbModel> WalletsItems { get; set; }
+    public DbSet<Wallet> WalletsItems { get; set; }
 
-    public DbSet<PackageAttractionsDbModel> PackageAttractionsItems { get; set; }
+    public DbSet<PackageAttraction> PackageAttractionsItems { get; set; }
 
-    public DbSet<WalletLogsDbModel> WalletLogsItems { get; set; }
+    public DbSet<WalletLog> WalletLogsItems { get; set; }
 
-    public DbSet<WalletLogTypesDbModel> WalletLogTypesItems { get; set; }
+    public DbSet<WalletLogType> WalletLogTypesItems { get; set; }
 
-    public DbSet<PackageBookingsDbModel> PackageBookingsItems { get; set; }
+    public DbSet<PackageBooking> PackageBookingsItems { get; set; }
 
-    public DbSet<FlightBookingsDbModel> FlightBookingsItems { get; set; }
+    public DbSet<FlightBooking> FlightBookingsItems { get; set; }
 
-    public DbSet<PackageCategoriesDbModel> PackageCategoriesItems { get; set; }
+    public DbSet<PackageCategorie> PackageCategoriesItems { get; set; }
 
-    public DbSet<PackageFlightsDbModel> PackageFlightsItems { get; set; }
+    public DbSet<PackageFlight> PackageFlightsItems { get; set; }
 
-    public DbSet<AgencyProfilesDbModel> AgencyProfilesItems { get; set; }
+    public DbSet<AgencyProfile> AgencyProfilesItems { get; set; }
 
     public DbSet<UserDbModel> Users { get; set; }
 }

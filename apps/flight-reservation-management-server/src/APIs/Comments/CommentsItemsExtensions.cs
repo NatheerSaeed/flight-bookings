@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class CommentsItemsExtensions
 {
-    public static Comments ToDto(this CommentsDbModel model)
+    public static Comments ToDto(this Comment model)
     {
         return new Comments
         {
@@ -19,12 +19,12 @@ public static class CommentsItemsExtensions
         };
     }
 
-    public static CommentsDbModel ToModel(
+    public static Comment ToModel(
         this CommentUpdateInput updateDto,
         CommentsWhereUniqueInput uniqueId
     )
     {
-        var comments = new CommentsDbModel
+        var comments = new Comment
         {
             Id = uniqueId.Id,
             Content = updateDto.Content,

@@ -23,7 +23,7 @@ public abstract class CarBookingsServiceBase : ICarBookingsService
     /// </summary>
     public async Task<CarBookings> CreateCarBookings(CarBookingCreateInput createDto)
     {
-        var carBookings = new CarBookingsDbModel
+        var carBookings = new CarBooking
         {
             Amount = createDto.Amount,
             BookingReference = createDto.BookingReference,
@@ -50,7 +50,7 @@ public abstract class CarBookingsServiceBase : ICarBookingsService
         _context.CarBookingsItems.Add(carBookings);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<CarBookingsDbModel>(carBookings.Id);
+        var result = await _context.FindAsync<CarBooking>(carBookings.Id);
 
         if (result == null)
         {

@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class BankDetailsItemsExtensions
 {
-    public static BankDetails ToDto(this BankDetailsDbModel model)
+    public static BankDetails ToDto(this BankDetail model)
     {
         return new BankDetails
         {
@@ -22,12 +22,12 @@ public static class BankDetailsItemsExtensions
         };
     }
 
-    public static BankDetailsDbModel ToModel(
+    public static BankDetail ToModel(
         this BankDetailUpdateInput updateDto,
         BankDetailsWhereUniqueInput uniqueId
     )
     {
-        var bankDetails = new BankDetailsDbModel
+        var bankDetails = new BankDetail
         {
             Id = uniqueId.Id,
             AccountName = updateDto.AccountName,

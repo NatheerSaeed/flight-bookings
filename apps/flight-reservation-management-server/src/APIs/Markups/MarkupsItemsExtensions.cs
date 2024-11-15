@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class MarkupsItemsExtensions
 {
-    public static Markups ToDto(this MarkupsDbModel model)
+    public static Markups ToDto(this Markup model)
     {
         return new Markups
         {
@@ -24,12 +24,9 @@ public static class MarkupsItemsExtensions
         };
     }
 
-    public static MarkupsDbModel ToModel(
-        this MarkupUpdateInput updateDto,
-        MarkupsWhereUniqueInput uniqueId
-    )
+    public static Markup ToModel(this MarkupUpdateInput updateDto, MarkupsWhereUniqueInput uniqueId)
     {
-        var markups = new MarkupsDbModel
+        var markups = new Markup
         {
             Id = uniqueId.Id,
             CarMarkupType = updateDto.CarMarkupType,

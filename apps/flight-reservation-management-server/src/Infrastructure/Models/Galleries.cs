@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Galleries")]
-public class GalleriesDbModel
+public class Gallerie
 {
     [Required()]
     public DateTime CreatedAt { get; set; }
@@ -22,7 +22,7 @@ public class GalleriesDbModel
     public string? PackageFieldId { get; set; }
 
     [ForeignKey(nameof(PackageFieldId))]
-    public PackagesDbModel? PackageField { get; set; } = null;
+    public Package? PackageField { get; set; } = null;
 
     [StringLength(1000)]
     public string? ParentId { get; set; }

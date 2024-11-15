@@ -25,7 +25,7 @@ public abstract class PackageCategoriesServiceBase : IPackageCategoriesService
         PackageCategorieCreateInput createDto
     )
     {
-        var packageCategories = new PackageCategoriesDbModel
+        var packageCategories = new PackageCategorie
         {
             Category = createDto.Category,
             CreatedAt = createDto.CreatedAt,
@@ -41,7 +41,7 @@ public abstract class PackageCategoriesServiceBase : IPackageCategoriesService
         _context.PackageCategoriesItems.Add(packageCategories);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<PackageCategoriesDbModel>(packageCategories.Id);
+        var result = await _context.FindAsync<PackageCategorie>(packageCategories.Id);
 
         if (result == null)
         {

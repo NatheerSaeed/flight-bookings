@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class CooperateCustomerProfilesItemsExtensions
 {
-    public static CooperateCustomerProfiles ToDto(this CooperateCustomerProfilesDbModel model)
+    public static CooperateCustomerProfiles ToDto(this CooperateCustomerProfile model)
     {
         return new CooperateCustomerProfiles
         {
@@ -24,12 +24,12 @@ public static class CooperateCustomerProfilesItemsExtensions
         };
     }
 
-    public static CooperateCustomerProfilesDbModel ToModel(
+    public static CooperateCustomerProfile ToModel(
         this CooperateCustomerProfileUpdateInput updateDto,
         CooperateCustomerProfilesWhereUniqueInput uniqueId
     )
     {
-        var cooperateCustomerProfiles = new CooperateCustomerProfilesDbModel
+        var cooperateCustomerProfiles = new CooperateCustomerProfile
         {
             Id = uniqueId.Id,
             CompanyAddress = updateDto.CompanyAddress,

@@ -23,7 +23,7 @@ public abstract class EmailSubscribersServiceBase : IEmailSubscribersService
     /// </summary>
     public async Task<EmailSubscribers> CreateEmailSubscribers(EmailSubscriberCreateInput createDto)
     {
-        var emailSubscribers = new EmailSubscribersDbModel
+        var emailSubscribers = new EmailSubscriber
         {
             CreatedAt = createDto.CreatedAt,
             Email = createDto.Email,
@@ -39,7 +39,7 @@ public abstract class EmailSubscribersServiceBase : IEmailSubscribersService
         _context.EmailSubscribersItems.Add(emailSubscribers);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<EmailSubscribersDbModel>(emailSubscribers.Id);
+        var result = await _context.FindAsync<EmailSubscriber>(emailSubscribers.Id);
 
         if (result == null)
         {

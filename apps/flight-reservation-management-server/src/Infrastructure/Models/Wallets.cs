@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Wallets")]
-public class WalletsDbModel
+public class Wallet
 {
     [Range(-999999999, 999999999)]
     public double? Balance { get; set; }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("VisaApplications")]
-public class VisaApplicationsDbModel
+public class VisaApplication
 {
     [Required()]
     public DateTime CreatedAt { get; set; }

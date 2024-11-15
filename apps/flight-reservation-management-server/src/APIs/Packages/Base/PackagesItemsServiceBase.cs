@@ -23,7 +23,7 @@ public abstract class PackagesServiceBase : IPackagesService
     /// </summary>
     public async Task<Packages> CreatePackages(PackageCreateInput createDto)
     {
-        var packages = new PackagesDbModel
+        var packages = new Package
         {
             CreatedAt = createDto.CreatedAt,
             UpdatedAt = createDto.UpdatedAt
@@ -128,7 +128,7 @@ public abstract class PackagesServiceBase : IPackagesService
         _context.PackagesItems.Add(packages);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<PackagesDbModel>(packages.Id);
+        var result = await _context.FindAsync<Package>(packages.Id);
 
         if (result == null)
         {

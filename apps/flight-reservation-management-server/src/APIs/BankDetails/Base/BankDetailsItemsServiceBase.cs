@@ -23,7 +23,7 @@ public abstract class BankDetailsServiceBase : IBankDetailsService
     /// </summary>
     public async Task<BankDetails> CreateBankDetails(BankDetailCreateInput createDto)
     {
-        var bankDetails = new BankDetailsDbModel
+        var bankDetails = new BankDetail
         {
             AccountName = createDto.AccountName,
             AccountNumber = createDto.AccountNumber,
@@ -49,7 +49,7 @@ public abstract class BankDetailsServiceBase : IBankDetailsService
         _context.BankDetailsItems.Add(bankDetails);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<BankDetailsDbModel>(bankDetails.Id);
+        var result = await _context.FindAsync<BankDetail>(bankDetails.Id);
 
         if (result == null)
         {

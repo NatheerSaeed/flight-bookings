@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("PackageHotels")]
-public class PackageHotelsDbModel
+public class PackageHotel
 {
     [StringLength(1000)]
     public string? Address { get; set; }
@@ -34,7 +34,7 @@ public class PackageHotelsDbModel
     public string? PackageFieldId { get; set; }
 
     [ForeignKey(nameof(PackageFieldId))]
-    public PackagesDbModel? PackageField { get; set; } = null;
+    public Package? PackageField { get; set; } = null;
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

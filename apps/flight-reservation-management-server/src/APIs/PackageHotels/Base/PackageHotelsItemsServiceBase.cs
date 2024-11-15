@@ -23,7 +23,7 @@ public abstract class PackageHotelsServiceBase : IPackageHotelsService
     /// </summary>
     public async Task<PackageHotels> CreatePackageHotels(PackageHotelCreateInput createDto)
     {
-        var packageHotels = new PackageHotelsDbModel
+        var packageHotels = new PackageHotel
         {
             Address = createDto.Address,
             CreatedAt = createDto.CreatedAt,
@@ -49,7 +49,7 @@ public abstract class PackageHotelsServiceBase : IPackageHotelsService
         _context.PackageHotelsItems.Add(packageHotels);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<PackageHotelsDbModel>(packageHotels.Id);
+        var result = await _context.FindAsync<PackageHotel>(packageHotels.Id);
 
         if (result == null)
         {

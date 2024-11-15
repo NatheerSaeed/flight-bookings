@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("PasswordResets")]
-public class PasswordResetsDbModel
+public class PasswordReset
 {
     [Required()]
     public DateTime CreatedAt { get; set; }

@@ -4,42 +4,35 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Packages")]
-public class PackagesDbModel
+public class Package
 {
-    public List<AttractionsDbModel>? AttractionsItems { get; set; } =
-        new List<AttractionsDbModel>();
+    public List<Attraction>? AttractionsItems { get; set; } = new List<Attraction>();
 
     [Required()]
     public DateTime CreatedAt { get; set; }
 
-    public List<FlightDealsDbModel>? FlightDealsItems { get; set; } =
-        new List<FlightDealsDbModel>();
+    public List<FlightDeal>? FlightDealsItems { get; set; } = new List<FlightDeal>();
 
-    public List<GalleriesDbModel>? GalleriesItems { get; set; } = new List<GalleriesDbModel>();
+    public List<Gallerie>? GalleriesItems { get; set; } = new List<Gallerie>();
 
-    public List<GoodToKnowsDbModel>? GoodToKnowsItems { get; set; } =
-        new List<GoodToKnowsDbModel>();
+    public List<GoodToKnow>? GoodToKnowsItems { get; set; } = new List<GoodToKnow>();
 
-    public List<HotelDealsDbModel>? HotelDealsItems { get; set; } = new List<HotelDealsDbModel>();
+    public List<HotelDeal>? HotelDealsItems { get; set; } = new List<HotelDeal>();
 
     [Key()]
     [Required()]
     public string Id { get; set; }
 
-    public List<PackageAttractionsDbModel>? PackageAttractionsItems { get; set; } =
-        new List<PackageAttractionsDbModel>();
+    public List<PackageAttraction>? PackageAttractionsItems { get; set; } =
+        new List<PackageAttraction>();
 
-    public List<PackageBookingsDbModel>? PackageBookingsItems { get; set; } =
-        new List<PackageBookingsDbModel>();
+    public List<PackageBooking>? PackageBookingsItems { get; set; } = new List<PackageBooking>();
 
-    public List<PackageFlightsDbModel>? PackageFlightsItems { get; set; } =
-        new List<PackageFlightsDbModel>();
+    public List<PackageFlight>? PackageFlightsItems { get; set; } = new List<PackageFlight>();
 
-    public List<PackageHotelsDbModel>? PackageHotelsItems { get; set; } =
-        new List<PackageHotelsDbModel>();
+    public List<PackageHotel>? PackageHotelsItems { get; set; } = new List<PackageHotel>();
 
-    public List<SightSeeingsDbModel>? SightSeeingsItems { get; set; } =
-        new List<SightSeeingsDbModel>();
+    public List<SightSeeing>? SightSeeingsItems { get; set; } = new List<SightSeeing>();
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

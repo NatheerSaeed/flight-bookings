@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class TravelPackagesItemsExtensions
 {
-    public static TravelPackages ToDto(this TravelPackagesDbModel model)
+    public static TravelPackages ToDto(this TravelPackage model)
     {
         return new TravelPackages
         {
@@ -26,12 +26,12 @@ public static class TravelPackagesItemsExtensions
         };
     }
 
-    public static TravelPackagesDbModel ToModel(
+    public static TravelPackage ToModel(
         this TravelPackageUpdateInput updateDto,
         TravelPackagesWhereUniqueInput uniqueId
     )
     {
-        var travelPackages = new TravelPackagesDbModel
+        var travelPackages = new TravelPackage
         {
             Id = uniqueId.Id,
             AdultPrice = updateDto.AdultPrice,

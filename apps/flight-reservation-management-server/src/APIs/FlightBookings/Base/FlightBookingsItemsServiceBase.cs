@@ -23,7 +23,7 @@ public abstract class FlightBookingsServiceBase : IFlightBookingsService
     /// </summary>
     public async Task<FlightBookings> CreateFlightBookings(FlightBookingCreateInput createDto)
     {
-        var flightBookings = new FlightBookingsDbModel
+        var flightBookings = new FlightBooking
         {
             CancelTicketStatus = createDto.CancelTicketStatus,
             CreatedAt = createDto.CreatedAt,
@@ -64,7 +64,7 @@ public abstract class FlightBookingsServiceBase : IFlightBookingsService
         _context.FlightBookingsItems.Add(flightBookings);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<FlightBookingsDbModel>(flightBookings.Id);
+        var result = await _context.FindAsync<FlightBooking>(flightBookings.Id);
 
         if (result == null)
         {

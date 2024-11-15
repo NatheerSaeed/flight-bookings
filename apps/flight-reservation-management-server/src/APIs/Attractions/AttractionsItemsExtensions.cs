@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class AttractionsItemsExtensions
 {
-    public static Attractions ToDto(this AttractionsDbModel model)
+    public static Attractions ToDto(this Attraction model)
     {
         return new Attractions
         {
@@ -22,12 +22,12 @@ public static class AttractionsItemsExtensions
         };
     }
 
-    public static AttractionsDbModel ToModel(
+    public static Attraction ToModel(
         this AttractionUpdateInput updateDto,
         AttractionsWhereUniqueInput uniqueId
     )
     {
-        var attractions = new AttractionsDbModel
+        var attractions = new Attraction
         {
             Id = uniqueId.Id,
             Address = updateDto.Address,

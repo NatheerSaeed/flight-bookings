@@ -23,7 +23,7 @@ public abstract class FlightDealsServiceBase : IFlightDealsService
     /// </summary>
     public async Task<FlightDeals> CreateFlightDeals(FlightDealCreateInput createDto)
     {
-        var flightDeals = new FlightDealsDbModel
+        var flightDeals = new FlightDeal
         {
             Airline = createDto.Airline,
             Cabin = createDto.Cabin,
@@ -49,7 +49,7 @@ public abstract class FlightDealsServiceBase : IFlightDealsService
         _context.FlightDealsItems.Add(flightDeals);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<FlightDealsDbModel>(flightDeals.Id);
+        var result = await _context.FindAsync<FlightDeal>(flightDeals.Id);
 
         if (result == null)
         {

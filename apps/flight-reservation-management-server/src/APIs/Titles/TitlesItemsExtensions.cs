@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class TitlesItemsExtensions
 {
-    public static Titles ToDto(this TitlesDbModel model)
+    public static Titles ToDto(this Title model)
     {
         return new Titles
         {
@@ -16,12 +16,9 @@ public static class TitlesItemsExtensions
         };
     }
 
-    public static TitlesDbModel ToModel(
-        this TitleUpdateInput updateDto,
-        TitlesWhereUniqueInput uniqueId
-    )
+    public static Title ToModel(this TitleUpdateInput updateDto, TitlesWhereUniqueInput uniqueId)
     {
-        var titles = new TitlesDbModel { Id = uniqueId.Id };
+        var titles = new Title { Id = uniqueId.Id };
 
         if (updateDto.CreatedAt != null)
         {

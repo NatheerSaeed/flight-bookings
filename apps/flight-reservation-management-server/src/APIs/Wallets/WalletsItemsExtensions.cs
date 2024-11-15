@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class WalletsItemsExtensions
 {
-    public static Wallets ToDto(this WalletsDbModel model)
+    public static Wallets ToDto(this Wallet model)
     {
         return new Wallets
         {
@@ -17,12 +17,9 @@ public static class WalletsItemsExtensions
         };
     }
 
-    public static WalletsDbModel ToModel(
-        this WalletUpdateInput updateDto,
-        WalletsWhereUniqueInput uniqueId
-    )
+    public static Wallet ToModel(this WalletUpdateInput updateDto, WalletsWhereUniqueInput uniqueId)
     {
-        var wallets = new WalletsDbModel { Id = uniqueId.Id, Balance = updateDto.Balance };
+        var wallets = new Wallet { Id = uniqueId.Id, Balance = updateDto.Balance };
 
         if (updateDto.CreatedAt != null)
         {

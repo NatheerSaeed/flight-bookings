@@ -23,7 +23,7 @@ public abstract class AirportsServiceBase : IAirportsService
     /// </summary>
     public async Task<Airports> CreateAirports(AirportCreateInput createDto)
     {
-        var airports = new AirportsDbModel
+        var airports = new Airport
         {
             Code = createDto.Code,
             CreatedAt = createDto.CreatedAt,
@@ -39,7 +39,7 @@ public abstract class AirportsServiceBase : IAirportsService
         _context.AirportsItems.Add(airports);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<AirportsDbModel>(airports.Id);
+        var result = await _context.FindAsync<Airport>(airports.Id);
 
         if (result == null)
         {

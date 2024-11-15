@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Attractions")]
-public class AttractionsDbModel
+public class Attraction
 {
     [StringLength(1000)]
     public string? Address { get; set; }
@@ -31,10 +31,9 @@ public class AttractionsDbModel
     public string? PackageFieldId { get; set; }
 
     [ForeignKey(nameof(PackageFieldId))]
-    public PackagesDbModel? PackageField { get; set; } = null;
+    public Package? PackageField { get; set; } = null;
 
-    public List<SightSeeingsDbModel>? SightSeeingsItems { get; set; } =
-        new List<SightSeeingsDbModel>();
+    public List<SightSeeing>? SightSeeingsItems { get; set; } = new List<SightSeeing>();
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

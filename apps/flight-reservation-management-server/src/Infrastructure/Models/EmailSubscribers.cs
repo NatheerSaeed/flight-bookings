@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("EmailSubscribers")]
-public class EmailSubscribersDbModel
+public class EmailSubscriber
 {
     [Required()]
     public DateTime CreatedAt { get; set; }

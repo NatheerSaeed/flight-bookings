@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class VatsItemsExtensions
 {
-    public static Vats ToDto(this VatsDbModel model)
+    public static Vats ToDto(this Vat model)
     {
         return new Vats
         {
@@ -23,9 +23,9 @@ public static class VatsItemsExtensions
         };
     }
 
-    public static VatsDbModel ToModel(this VatUpdateInput updateDto, VatsWhereUniqueInput uniqueId)
+    public static Vat ToModel(this VatUpdateInput updateDto, VatsWhereUniqueInput uniqueId)
     {
-        var vats = new VatsDbModel
+        var vats = new Vat
         {
             Id = uniqueId.Id,
             CarVatType = updateDto.CarVatType,

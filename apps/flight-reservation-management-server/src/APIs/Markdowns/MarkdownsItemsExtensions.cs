@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class MarkdownsItemsExtensions
 {
-    public static Markdowns ToDto(this MarkdownsDbModel model)
+    public static Markdowns ToDto(this Markdown model)
     {
         return new Markdowns
         {
@@ -18,12 +18,12 @@ public static class MarkdownsItemsExtensions
         };
     }
 
-    public static MarkdownsDbModel ToModel(
+    public static Markdown ToModel(
         this MarkdownUpdateInput updateDto,
         MarkdownsWhereUniqueInput uniqueId
     )
     {
-        var markdowns = new MarkdownsDbModel
+        var markdowns = new Markdown
         {
             Id = uniqueId.Id,
             AirlineCode = updateDto.AirlineCode,

@@ -23,7 +23,7 @@ public abstract class CabinTypesServiceBase : ICabinTypesService
     /// </summary>
     public async Task<CabinTypes> CreateCabinTypes(CabinTypeCreateInput createDto)
     {
-        var cabinTypes = new CabinTypesDbModel
+        var cabinTypes = new CabinType
         {
             CabinCode = createDto.CabinCode,
             CabinName = createDto.CabinName,
@@ -39,7 +39,7 @@ public abstract class CabinTypesServiceBase : ICabinTypesService
         _context.CabinTypesItems.Add(cabinTypes);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<CabinTypesDbModel>(cabinTypes.Id);
+        var result = await _context.FindAsync<CabinType>(cabinTypes.Id);
 
         if (result == null)
         {

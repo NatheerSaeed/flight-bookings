@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class PasswordResetsItemsExtensions
 {
-    public static PasswordResets ToDto(this PasswordResetsDbModel model)
+    public static PasswordResets ToDto(this PasswordReset model)
     {
         return new PasswordResets
         {
@@ -17,12 +17,12 @@ public static class PasswordResetsItemsExtensions
         };
     }
 
-    public static PasswordResetsDbModel ToModel(
+    public static PasswordReset ToModel(
         this PasswordResetUpdateInput updateDto,
         PasswordResetsWhereUniqueInput uniqueId
     )
     {
-        var passwordResets = new PasswordResetsDbModel
+        var passwordResets = new PasswordReset
         {
             Id = uniqueId.Id,
             Email = updateDto.Email,

@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class PayLatersItemsExtensions
 {
-    public static PayLaters ToDto(this PayLatersDbModel model)
+    public static PayLaters ToDto(this PayLater model)
     {
         return new PayLaters
         {
@@ -22,12 +22,12 @@ public static class PayLatersItemsExtensions
         };
     }
 
-    public static PayLatersDbModel ToModel(
+    public static PayLater ToModel(
         this PayLaterUpdateInput updateDto,
         PayLatersWhereUniqueInput uniqueId
     )
     {
-        var payLaters = new PayLatersDbModel
+        var payLaters = new PayLater
         {
             Id = uniqueId.Id,
             Amount = updateDto.Amount,

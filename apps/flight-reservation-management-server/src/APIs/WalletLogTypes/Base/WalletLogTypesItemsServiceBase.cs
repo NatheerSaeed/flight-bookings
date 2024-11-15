@@ -23,7 +23,7 @@ public abstract class WalletLogTypesServiceBase : IWalletLogTypesService
     /// </summary>
     public async Task<WalletLogTypes> CreateWalletLogTypes(WalletLogTypeCreateInput createDto)
     {
-        var walletLogTypes = new WalletLogTypesDbModel
+        var walletLogTypes = new WalletLogType
         {
             CreatedAt = createDto.CreatedAt,
             Name = createDto.Name,
@@ -38,7 +38,7 @@ public abstract class WalletLogTypesServiceBase : IWalletLogTypesService
         _context.WalletLogTypesItems.Add(walletLogTypes);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<WalletLogTypesDbModel>(walletLogTypes.Id);
+        var result = await _context.FindAsync<WalletLogType>(walletLogTypes.Id);
 
         if (result == null)
         {

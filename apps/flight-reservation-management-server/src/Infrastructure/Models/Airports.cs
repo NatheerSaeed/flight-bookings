@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Airports")]
-public class AirportsDbModel
+public class Airport
 {
     [StringLength(1000)]
     public string? Code { get; set; }

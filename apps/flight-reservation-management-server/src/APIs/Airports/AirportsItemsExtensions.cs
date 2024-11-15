@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class AirportsItemsExtensions
 {
-    public static Airports ToDto(this AirportsDbModel model)
+    public static Airports ToDto(this Airport model)
     {
         return new Airports
         {
@@ -17,12 +17,12 @@ public static class AirportsItemsExtensions
         };
     }
 
-    public static AirportsDbModel ToModel(
+    public static Airport ToModel(
         this AirportUpdateInput updateDto,
         AirportsWhereUniqueInput uniqueId
     )
     {
-        var airports = new AirportsDbModel
+        var airports = new Airport
         {
             Id = uniqueId.Id,
             Code = updateDto.Code,

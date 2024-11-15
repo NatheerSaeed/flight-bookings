@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("BankDetails")]
-public class BankDetailsDbModel
+public class BankDetail
 {
     [StringLength(1000)]
     public string? AccountName { get; set; }
@@ -15,7 +15,7 @@ public class BankDetailsDbModel
     public string? BankId { get; set; }
 
     [ForeignKey(nameof(BankId))]
-    public BanksDbModel? Bank { get; set; } = null;
+    public Bank? Bank { get; set; } = null;
 
     [StringLength(1000)]
     public string? BankBranch { get; set; }

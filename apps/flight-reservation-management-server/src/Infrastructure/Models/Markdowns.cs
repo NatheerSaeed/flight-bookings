@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Markdowns")]
-public class MarkdownsDbModel
+public class Markdown
 {
     [StringLength(1000)]
     public string? AirlineCode { get; set; }

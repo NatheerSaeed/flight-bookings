@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class CarBookingsItemsExtensions
 {
-    public static CarBookings ToDto(this CarBookingsDbModel model)
+    public static CarBookings ToDto(this CarBooking model)
     {
         return new CarBookings
         {
@@ -23,12 +23,12 @@ public static class CarBookingsItemsExtensions
         };
     }
 
-    public static CarBookingsDbModel ToModel(
+    public static CarBooking ToModel(
         this CarBookingUpdateInput updateDto,
         CarBookingsWhereUniqueInput uniqueId
     )
     {
-        var carBookings = new CarBookingsDbModel
+        var carBookings = new CarBooking
         {
             Id = uniqueId.Id,
             Amount = updateDto.Amount,

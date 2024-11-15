@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("GoodToKnows")]
-public class GoodToKnowsDbModel
+public class GoodToKnow
 {
     [StringLength(1000)]
     public string? CancellationPrepayment { get; set; }
@@ -34,7 +34,7 @@ public class GoodToKnowsDbModel
     public string? PackageFieldId { get; set; }
 
     [ForeignKey(nameof(PackageFieldId))]
-    public PackagesDbModel? PackageField { get; set; } = null;
+    public Package? PackageField { get; set; } = null;
 
     [StringLength(1000)]
     public string? Pets { get; set; }

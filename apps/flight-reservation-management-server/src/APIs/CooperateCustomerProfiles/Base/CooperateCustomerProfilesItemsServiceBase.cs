@@ -25,7 +25,7 @@ public abstract class CooperateCustomerProfilesServiceBase : ICooperateCustomerP
         CooperateCustomerProfileCreateInput createDto
     )
     {
-        var cooperateCustomerProfiles = new CooperateCustomerProfilesDbModel
+        var cooperateCustomerProfiles = new CooperateCustomerProfile
         {
             CompanyAddress = createDto.CompanyAddress,
             CompanyCacRcNumber = createDto.CompanyCacRcNumber,
@@ -53,7 +53,7 @@ public abstract class CooperateCustomerProfilesServiceBase : ICooperateCustomerP
         _context.CooperateCustomerProfilesItems.Add(cooperateCustomerProfiles);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<CooperateCustomerProfilesDbModel>(
+        var result = await _context.FindAsync<CooperateCustomerProfile>(
             cooperateCustomerProfiles.Id
         );
 

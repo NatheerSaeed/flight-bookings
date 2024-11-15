@@ -23,7 +23,7 @@ public abstract class PackageFlightsServiceBase : IPackageFlightsService
     /// </summary>
     public async Task<PackageFlights> CreatePackageFlights(PackageFlightCreateInput createDto)
     {
-        var packageFlights = new PackageFlightsDbModel
+        var packageFlights = new PackageFlight
         {
             Airline = createDto.Airline,
             ArrivalDateTime = createDto.ArrivalDateTime,
@@ -48,7 +48,7 @@ public abstract class PackageFlightsServiceBase : IPackageFlightsService
         _context.PackageFlightsItems.Add(packageFlights);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<PackageFlightsDbModel>(packageFlights.Id);
+        var result = await _context.FindAsync<PackageFlight>(packageFlights.Id);
 
         if (result == null)
         {

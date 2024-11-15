@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class PackageHotelsItemsExtensions
 {
-    public static PackageHotels ToDto(this PackageHotelsDbModel model)
+    public static PackageHotels ToDto(this PackageHotel model)
     {
         return new PackageHotels
         {
@@ -22,12 +22,12 @@ public static class PackageHotelsItemsExtensions
         };
     }
 
-    public static PackageHotelsDbModel ToModel(
+    public static PackageHotel ToModel(
         this PackageHotelUpdateInput updateDto,
         PackageHotelsWhereUniqueInput uniqueId
     )
     {
-        var packageHotels = new PackageHotelsDbModel
+        var packageHotels = new PackageHotel
         {
             Id = uniqueId.Id,
             Address = updateDto.Address,

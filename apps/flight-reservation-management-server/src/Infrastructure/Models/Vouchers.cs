@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Vouchers")]
-public class VouchersDbModel
+public class Voucher
 {
     [Range(-999999999, 999999999)]
     public int? Amount { get; set; }
@@ -15,11 +15,9 @@ public class VouchersDbModel
     [Required()]
     public DateTime CreatedAt { get; set; }
 
-    public List<FlightBookingsDbModel>? FlightBookingsItems { get; set; } =
-        new List<FlightBookingsDbModel>();
+    public List<FlightBooking>? FlightBookingsItems { get; set; } = new List<FlightBooking>();
 
-    public List<HotelBookingsDbModel>? HotelBookingsItems { get; set; } =
-        new List<HotelBookingsDbModel>();
+    public List<HotelBooking>? HotelBookingsItems { get; set; } = new List<HotelBooking>();
 
     [Key()]
     [Required()]

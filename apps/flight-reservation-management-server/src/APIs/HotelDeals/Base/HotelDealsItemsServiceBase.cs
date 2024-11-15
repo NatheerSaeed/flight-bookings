@@ -23,7 +23,7 @@ public abstract class HotelDealsServiceBase : IHotelDealsService
     /// </summary>
     public async Task<HotelDeals> CreateHotelDeals(HotelDealCreateInput createDto)
     {
-        var hotelDeals = new HotelDealsDbModel
+        var hotelDeals = new HotelDeal
         {
             Address = createDto.Address,
             City = createDto.City,
@@ -51,7 +51,7 @@ public abstract class HotelDealsServiceBase : IHotelDealsService
         _context.HotelDealsItems.Add(hotelDeals);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<HotelDealsDbModel>(hotelDeals.Id);
+        var result = await _context.FindAsync<HotelDeal>(hotelDeals.Id);
 
         if (result == null)
         {

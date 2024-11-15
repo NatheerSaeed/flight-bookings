@@ -23,7 +23,7 @@ public abstract class GoodToKnowsServiceBase : IGoodToKnowsService
     /// </summary>
     public async Task<GoodToKnows> CreateGoodToKnows(GoodToKnowCreateInput createDto)
     {
-        var goodToKnows = new GoodToKnowsDbModel
+        var goodToKnows = new GoodToKnow
         {
             CancellationPrepayment = createDto.CancellationPrepayment,
             CheckIn = createDto.CheckIn,
@@ -50,7 +50,7 @@ public abstract class GoodToKnowsServiceBase : IGoodToKnowsService
         _context.GoodToKnowsItems.Add(goodToKnows);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<GoodToKnowsDbModel>(goodToKnows.Id);
+        var result = await _context.FindAsync<GoodToKnow>(goodToKnows.Id);
 
         if (result == null)
         {

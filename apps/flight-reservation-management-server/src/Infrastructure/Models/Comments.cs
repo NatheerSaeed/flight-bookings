@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Comments")]
-public class CommentsDbModel
+public class Comment
 {
     [StringLength(1000)]
     public string? Content { get; set; }

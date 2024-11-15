@@ -23,7 +23,7 @@ public abstract class VouchersServiceBase : IVouchersService
     /// </summary>
     public async Task<Vouchers> CreateVouchers(VoucherCreateInput createDto)
     {
-        var vouchers = new VouchersDbModel
+        var vouchers = new Voucher
         {
             Amount = createDto.Amount,
             Code = createDto.Code,
@@ -57,7 +57,7 @@ public abstract class VouchersServiceBase : IVouchersService
         _context.VouchersItems.Add(vouchers);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<VouchersDbModel>(vouchers.Id);
+        var result = await _context.FindAsync<Voucher>(vouchers.Id);
 
         if (result == null)
         {

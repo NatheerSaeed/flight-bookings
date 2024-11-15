@@ -4,10 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Banks")]
-public class BanksDbModel
+public class Bank
 {
-    public List<BankDetailsDbModel>? BankDetailsItems { get; set; } =
-        new List<BankDetailsDbModel>();
+    public List<BankDetail>? BankDetailsItems { get; set; } = new List<BankDetail>();
 
     [Required()]
     public DateTime CreatedAt { get; set; }

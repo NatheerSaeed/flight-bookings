@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class VisaApplicationsItemsExtensions
 {
-    public static VisaApplications ToDto(this VisaApplicationsDbModel model)
+    public static VisaApplications ToDto(this VisaApplication model)
     {
         return new VisaApplications
         {
@@ -22,12 +22,12 @@ public static class VisaApplicationsItemsExtensions
         };
     }
 
-    public static VisaApplicationsDbModel ToModel(
+    public static VisaApplication ToModel(
         this VisaApplicationUpdateInput updateDto,
         VisaApplicationsWhereUniqueInput uniqueId
     )
     {
-        var visaApplications = new VisaApplicationsDbModel
+        var visaApplications = new VisaApplication
         {
             Id = uniqueId.Id,
             DestinationCountry = updateDto.DestinationCountry,

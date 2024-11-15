@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Profiles")]
-public class ProfilesDbModel
+public class Profile
 {
     [StringLength(1000)]
     public string? Address { get; set; }
@@ -18,7 +18,7 @@ public class ProfilesDbModel
     public string? GenderId { get; set; }
 
     [ForeignKey(nameof(GenderId))]
-    public GendersDbModel? Gender { get; set; } = null;
+    public Gender? Gender { get; set; } = null;
 
     [Key()]
     [Required()]
@@ -39,7 +39,7 @@ public class ProfilesDbModel
     public string? TitleId { get; set; }
 
     [ForeignKey(nameof(TitleId))]
-    public TitlesDbModel? Title { get; set; } = null;
+    public Title? Title { get; set; } = null;
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

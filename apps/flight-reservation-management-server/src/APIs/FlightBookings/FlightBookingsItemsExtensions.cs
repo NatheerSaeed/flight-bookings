@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class FlightBookingsItemsExtensions
 {
-    public static FlightBookings ToDto(this FlightBookingsDbModel model)
+    public static FlightBookings ToDto(this FlightBooking model)
     {
         return new FlightBookings
         {
@@ -31,12 +31,12 @@ public static class FlightBookingsItemsExtensions
         };
     }
 
-    public static FlightBookingsDbModel ToModel(
+    public static FlightBooking ToModel(
         this FlightBookingUpdateInput updateDto,
         FlightBookingsWhereUniqueInput uniqueId
     )
     {
-        var flightBookings = new FlightBookingsDbModel
+        var flightBookings = new FlightBooking
         {
             Id = uniqueId.Id,
             CancelTicketStatus = updateDto.CancelTicketStatus,

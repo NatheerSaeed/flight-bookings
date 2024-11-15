@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("FlightBookings")]
-public class FlightBookingsDbModel
+public class FlightBooking
 {
     [Range(-999999999, 999999999)]
     public int? CancelTicketStatus { get; set; }
@@ -63,7 +63,7 @@ public class FlightBookingsDbModel
     public string? VoucherId { get; set; }
 
     [ForeignKey(nameof(VoucherId))]
-    public VouchersDbModel? Voucher { get; set; } = null;
+    public Voucher? Voucher { get; set; } = null;
 
     [Range(-999999999, 999999999)]
     public double? VoucherAmount { get; set; }

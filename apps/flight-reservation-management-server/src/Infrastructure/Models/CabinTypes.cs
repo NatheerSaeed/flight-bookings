@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("CabinTypes")]
-public class CabinTypesDbModel
+public class CabinType
 {
     [StringLength(1000)]
     public string? CabinCode { get; set; }

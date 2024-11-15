@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class ProfilesItemsExtensions
 {
-    public static Profiles ToDto(this ProfilesDbModel model)
+    public static Profiles ToDto(this Profile model)
     {
         return new Profiles
         {
@@ -24,12 +24,12 @@ public static class ProfilesItemsExtensions
         };
     }
 
-    public static ProfilesDbModel ToModel(
+    public static Profile ToModel(
         this ProfileUpdateInput updateDto,
         ProfilesWhereUniqueInput uniqueId
     )
     {
-        var profiles = new ProfilesDbModel
+        var profiles = new Profile
         {
             Id = uniqueId.Id,
             Address = updateDto.Address,

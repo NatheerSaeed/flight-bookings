@@ -23,7 +23,7 @@ public abstract class GalleriesServiceBase : IGalleriesService
     /// </summary>
     public async Task<Galleries> CreateGalleries(GallerieCreateInput createDto)
     {
-        var galleries = new GalleriesDbModel
+        var galleries = new Gallerie
         {
             CreatedAt = createDto.CreatedAt,
             ImagePath = createDto.ImagePath,
@@ -46,7 +46,7 @@ public abstract class GalleriesServiceBase : IGalleriesService
         _context.GalleriesItems.Add(galleries);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<GalleriesDbModel>(galleries.Id);
+        var result = await _context.FindAsync<Gallerie>(galleries.Id);
 
         if (result == null)
         {

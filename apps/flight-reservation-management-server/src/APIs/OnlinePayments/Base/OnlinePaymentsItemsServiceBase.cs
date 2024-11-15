@@ -23,7 +23,7 @@ public abstract class OnlinePaymentsServiceBase : IOnlinePaymentsService
     /// </summary>
     public async Task<OnlinePayments> CreateOnlinePayments(OnlinePaymentCreateInput createDto)
     {
-        var onlinePayments = new OnlinePaymentsDbModel
+        var onlinePayments = new OnlinePayment
         {
             Amount = createDto.Amount,
             BookingReference = createDto.BookingReference,
@@ -50,7 +50,7 @@ public abstract class OnlinePaymentsServiceBase : IOnlinePaymentsService
         _context.OnlinePaymentsItems.Add(onlinePayments);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<OnlinePaymentsDbModel>(onlinePayments.Id);
+        var result = await _context.FindAsync<OnlinePayment>(onlinePayments.Id);
 
         if (result == null)
         {

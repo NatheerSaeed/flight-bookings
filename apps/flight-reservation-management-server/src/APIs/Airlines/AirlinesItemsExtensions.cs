@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class AirlinesItemsExtensions
 {
-    public static Airlines ToDto(this AirlinesDbModel model)
+    public static Airlines ToDto(this Airline model)
     {
         return new Airlines
         {
@@ -22,12 +22,12 @@ public static class AirlinesItemsExtensions
         };
     }
 
-    public static AirlinesDbModel ToModel(
+    public static Airline ToModel(
         this AirlineUpdateInput updateDto,
         AirlinesWhereUniqueInput uniqueId
     )
     {
-        var airlines = new AirlinesDbModel
+        var airlines = new Airline
         {
             Id = uniqueId.Id,
             Amount = updateDto.Amount,

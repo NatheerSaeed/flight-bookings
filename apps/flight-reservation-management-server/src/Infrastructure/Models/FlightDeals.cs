@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("FlightDeals")]
-public class FlightDealsDbModel
+public class FlightDeal
 {
     [StringLength(1000)]
     public string? Airline { get; set; }
@@ -34,7 +34,7 @@ public class FlightDealsDbModel
     public string? PackageFieldId { get; set; }
 
     [ForeignKey(nameof(PackageFieldId))]
-    public PackagesDbModel? PackageField { get; set; } = null;
+    public Package? PackageField { get; set; } = null;
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

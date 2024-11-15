@@ -25,7 +25,7 @@ public abstract class PackageAttractionsServiceBase : IPackageAttractionsService
         PackageAttractionCreateInput createDto
     )
     {
-        var packageAttractions = new PackageAttractionsDbModel
+        var packageAttractions = new PackageAttraction
         {
             Address = createDto.Address,
             AttractionName = createDto.AttractionName,
@@ -47,7 +47,7 @@ public abstract class PackageAttractionsServiceBase : IPackageAttractionsService
         _context.PackageAttractionsItems.Add(packageAttractions);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<PackageAttractionsDbModel>(packageAttractions.Id);
+        var result = await _context.FindAsync<PackageAttraction>(packageAttractions.Id);
 
         if (result == null)
         {

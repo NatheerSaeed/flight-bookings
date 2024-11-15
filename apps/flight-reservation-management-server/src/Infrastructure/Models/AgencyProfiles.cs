@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("AgencyProfiles")]
-public class AgencyProfilesDbModel
+public class AgencyProfile
 {
     [StringLength(1000)]
     public string? CacRcNumber { get; set; }

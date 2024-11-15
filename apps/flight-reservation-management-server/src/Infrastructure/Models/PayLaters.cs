@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("PayLaters")]
-public class PayLatersDbModel
+public class PayLater
 {
     [Range(-999999999, 999999999)]
     public int? Amount { get; set; }

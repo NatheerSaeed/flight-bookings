@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Genders")]
-public class GendersDbModel
+public class Gender
 {
     [Required()]
     public DateTime CreatedAt { get; set; }
@@ -13,7 +13,7 @@ public class GendersDbModel
     [Required()]
     public string Id { get; set; }
 
-    public List<ProfilesDbModel>? ProfilesItems { get; set; } = new List<ProfilesDbModel>();
+    public List<Profile>? ProfilesItems { get; set; } = new List<Profile>();
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

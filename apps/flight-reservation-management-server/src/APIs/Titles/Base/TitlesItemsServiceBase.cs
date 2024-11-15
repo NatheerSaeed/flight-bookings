@@ -23,11 +23,7 @@ public abstract class TitlesServiceBase : ITitlesService
     /// </summary>
     public async Task<Titles> CreateTitles(TitleCreateInput createDto)
     {
-        var titles = new TitlesDbModel
-        {
-            CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
-        };
+        var titles = new Title { CreatedAt = createDto.CreatedAt, UpdatedAt = createDto.UpdatedAt };
 
         if (createDto.Id != null)
         {
@@ -45,7 +41,7 @@ public abstract class TitlesServiceBase : ITitlesService
         _context.TitlesItems.Add(titles);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<TitlesDbModel>(titles.Id);
+        var result = await _context.FindAsync<Title>(titles.Id);
 
         if (result == null)
         {

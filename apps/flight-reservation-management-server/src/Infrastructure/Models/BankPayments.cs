@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("BankPayments")]
-public class BankPaymentsDbModel
+public class BankPayment
 {
     [Range(-999999999, 999999999)]
     public int? Amount { get; set; }

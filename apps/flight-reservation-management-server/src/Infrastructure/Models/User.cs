@@ -6,22 +6,19 @@ namespace FlightReservationManagement.Infrastructure.Models;
 [Table("Users")]
 public class UserDbModel
 {
-    public List<AgencyProfilesDbModel>? AgencyProfilesItems { get; set; } =
-        new List<AgencyProfilesDbModel>();
+    public List<AgencyProfile>? AgencyProfilesItems { get; set; } = new List<AgencyProfile>();
 
-    public List<AirlinesDbModel>? AirlinesItems { get; set; } = new List<AirlinesDbModel>();
+    public List<Airline>? AirlinesItems { get; set; } = new List<Airline>();
 
     [StringLength(1000)]
     public string? ApiToken { get; set; }
 
-    public List<BankPaymentsDbModel>? BankPaymentsItems { get; set; } =
-        new List<BankPaymentsDbModel>();
+    public List<BankPayment>? BankPaymentsItems { get; set; } = new List<BankPayment>();
 
-    public List<CarBookingsDbModel>? CarBookingsItems { get; set; } =
-        new List<CarBookingsDbModel>();
+    public List<CarBooking>? CarBookingsItems { get; set; } = new List<CarBooking>();
 
-    public List<CooperateCustomerProfilesDbModel>? CooperateCustomerProfilesItems { get; set; } =
-        new List<CooperateCustomerProfilesDbModel>();
+    public List<CooperateCustomerProfile>? CooperateCustomerProfilesItems { get; set; } =
+        new List<CooperateCustomerProfile>();
 
     [Required()]
     public DateTime CreatedAt { get; set; }
@@ -34,11 +31,9 @@ public class UserDbModel
     [StringLength(256)]
     public string? FirstName { get; set; }
 
-    public List<FlightBookingsDbModel>? FlightBookingsItems { get; set; } =
-        new List<FlightBookingsDbModel>();
+    public List<FlightBooking>? FlightBookingsItems { get; set; } = new List<FlightBooking>();
 
-    public List<HotelBookingsDbModel>? HotelBookingsItems { get; set; } =
-        new List<HotelBookingsDbModel>();
+    public List<HotelBooking>? HotelBookingsItems { get; set; } = new List<HotelBooking>();
 
     [Key()]
     [Required()]
@@ -47,21 +42,19 @@ public class UserDbModel
     [StringLength(256)]
     public string? LastName { get; set; }
 
-    public List<OnlinePaymentsDbModel>? OnlinePaymentsItems { get; set; } =
-        new List<OnlinePaymentsDbModel>();
+    public List<OnlinePayment>? OnlinePaymentsItems { get; set; } = new List<OnlinePayment>();
 
-    public List<PackageBookingsDbModel>? PackageBookingsItems { get; set; } =
-        new List<PackageBookingsDbModel>();
+    public List<PackageBooking>? PackageBookingsItems { get; set; } = new List<PackageBooking>();
 
     [Required()]
     public string Password { get; set; }
 
-    public List<PayLatersDbModel>? PayLatersItems { get; set; } = new List<PayLatersDbModel>();
+    public List<PayLater>? PayLatersItems { get; set; } = new List<PayLater>();
 
     [Range(-999999999, 999999999)]
     public int? ProfileCompleteStatus { get; set; }
 
-    public List<ProfilesDbModel>? ProfilesItems { get; set; } = new List<ProfilesDbModel>();
+    public List<Profile>? ProfilesItems { get; set; } = new List<Profile>();
 
     [Required()]
     public string Roles { get; set; }
@@ -72,7 +65,7 @@ public class UserDbModel
     [Required()]
     public string Username { get; set; }
 
-    public List<WalletLogsDbModel>? WalletLogsItems { get; set; } = new List<WalletLogsDbModel>();
+    public List<WalletLog>? WalletLogsItems { get; set; } = new List<WalletLog>();
 
-    public List<WalletsDbModel>? WalletsItems { get; set; } = new List<WalletsDbModel>();
+    public List<Wallet>? WalletsItems { get; set; } = new List<Wallet>();
 }

@@ -23,7 +23,7 @@ public abstract class WalletsServiceBase : IWalletsService
     /// </summary>
     public async Task<Wallets> CreateWallets(WalletCreateInput createDto)
     {
-        var wallets = new WalletsDbModel
+        var wallets = new Wallet
         {
             Balance = createDto.Balance,
             CreatedAt = createDto.CreatedAt,
@@ -44,7 +44,7 @@ public abstract class WalletsServiceBase : IWalletsService
         _context.WalletsItems.Add(wallets);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<WalletsDbModel>(wallets.Id);
+        var result = await _context.FindAsync<Wallet>(wallets.Id);
 
         if (result == null)
         {

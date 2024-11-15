@@ -23,7 +23,7 @@ public abstract class HotelsServiceBase : IHotelsService
     /// </summary>
     public async Task<Hotels> CreateHotels(HotelCreateInput createDto)
     {
-        var hotels = new HotelsDbModel
+        var hotels = new Hotel
         {
             CarMarkupType = createDto.CarMarkupType,
             CarMarkupValue = createDto.CarMarkupValue,
@@ -54,7 +54,7 @@ public abstract class HotelsServiceBase : IHotelsService
         _context.HotelsItems.Add(hotels);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<HotelsDbModel>(hotels.Id);
+        var result = await _context.FindAsync<Hotel>(hotels.Id);
 
         if (result == null)
         {

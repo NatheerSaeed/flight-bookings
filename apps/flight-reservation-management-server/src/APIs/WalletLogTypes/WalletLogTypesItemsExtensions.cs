@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class WalletLogTypesItemsExtensions
 {
-    public static WalletLogTypes ToDto(this WalletLogTypesDbModel model)
+    public static WalletLogTypes ToDto(this WalletLogType model)
     {
         return new WalletLogTypes
         {
@@ -16,12 +16,12 @@ public static class WalletLogTypesItemsExtensions
         };
     }
 
-    public static WalletLogTypesDbModel ToModel(
+    public static WalletLogType ToModel(
         this WalletLogTypeUpdateInput updateDto,
         WalletLogTypesWhereUniqueInput uniqueId
     )
     {
-        var walletLogTypes = new WalletLogTypesDbModel { Id = uniqueId.Id, Name = updateDto.Name };
+        var walletLogTypes = new WalletLogType { Id = uniqueId.Id, Name = updateDto.Name };
 
         if (updateDto.CreatedAt != null)
         {

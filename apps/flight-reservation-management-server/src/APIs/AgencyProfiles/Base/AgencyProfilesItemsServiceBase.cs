@@ -23,7 +23,7 @@ public abstract class AgencyProfilesServiceBase : IAgencyProfilesService
     /// </summary>
     public async Task<AgencyProfiles> CreateAgencyProfiles(AgencyProfileCreateInput createDto)
     {
-        var agencyProfiles = new AgencyProfilesDbModel
+        var agencyProfiles = new AgencyProfile
         {
             CacRcNumber = createDto.CacRcNumber,
             CompanyAddress = createDto.CompanyAddress,
@@ -51,7 +51,7 @@ public abstract class AgencyProfilesServiceBase : IAgencyProfilesService
         _context.AgencyProfilesItems.Add(agencyProfiles);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<AgencyProfilesDbModel>(agencyProfiles.Id);
+        var result = await _context.FindAsync<AgencyProfile>(agencyProfiles.Id);
 
         if (result == null)
         {

@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class RolesItemsExtensions
 {
-    public static Roles ToDto(this RolesDbModel model)
+    public static Roles ToDto(this Role model)
     {
         return new Roles
         {
@@ -23,12 +23,9 @@ public static class RolesItemsExtensions
         };
     }
 
-    public static RolesDbModel ToModel(
-        this RoleUpdateInput updateDto,
-        RolesWhereUniqueInput uniqueId
-    )
+    public static Role ToModel(this RoleUpdateInput updateDto, RolesWhereUniqueInput uniqueId)
     {
-        var roles = new RolesDbModel
+        var roles = new Role
         {
             Id = uniqueId.Id,
             Description = updateDto.Description,

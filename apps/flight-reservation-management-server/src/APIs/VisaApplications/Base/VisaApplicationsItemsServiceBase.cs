@@ -23,7 +23,7 @@ public abstract class VisaApplicationsServiceBase : IVisaApplicationsService
     /// </summary>
     public async Task<VisaApplications> CreateVisaApplications(VisaApplicationCreateInput createDto)
     {
-        var visaApplications = new VisaApplicationsDbModel
+        var visaApplications = new VisaApplication
         {
             CreatedAt = createDto.CreatedAt,
             DestinationCountry = createDto.DestinationCountry,
@@ -44,7 +44,7 @@ public abstract class VisaApplicationsServiceBase : IVisaApplicationsService
         _context.VisaApplicationsItems.Add(visaApplications);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<VisaApplicationsDbModel>(visaApplications.Id);
+        var result = await _context.FindAsync<VisaApplication>(visaApplications.Id);
 
         if (result == null)
         {

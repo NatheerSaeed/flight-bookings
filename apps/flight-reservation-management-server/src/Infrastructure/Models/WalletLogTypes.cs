@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("WalletLogTypes")]
-public class WalletLogTypesDbModel
+public class WalletLogType
 {
     [Required()]
     public DateTime CreatedAt { get; set; }

@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class AgencyProfilesItemsExtensions
 {
-    public static AgencyProfiles ToDto(this AgencyProfilesDbModel model)
+    public static AgencyProfiles ToDto(this AgencyProfile model)
     {
         return new AgencyProfiles
         {
@@ -24,12 +24,12 @@ public static class AgencyProfilesItemsExtensions
         };
     }
 
-    public static AgencyProfilesDbModel ToModel(
+    public static AgencyProfile ToModel(
         this AgencyProfileUpdateInput updateDto,
         AgencyProfilesWhereUniqueInput uniqueId
     )
     {
-        var agencyProfiles = new AgencyProfilesDbModel
+        var agencyProfiles = new AgencyProfile
         {
             Id = uniqueId.Id,
             CacRcNumber = updateDto.CacRcNumber,

@@ -23,7 +23,7 @@ public abstract class PayLatersServiceBase : IPayLatersService
     /// </summary>
     public async Task<PayLaters> CreatePayLaters(PayLaterCreateInput createDto)
     {
-        var payLaters = new PayLatersDbModel
+        var payLaters = new PayLater
         {
             Amount = createDto.Amount,
             BankDetailId = createDto.BankDetailId,
@@ -49,7 +49,7 @@ public abstract class PayLatersServiceBase : IPayLatersService
         _context.PayLatersItems.Add(payLaters);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<PayLatersDbModel>(payLaters.Id);
+        var result = await _context.FindAsync<PayLater>(payLaters.Id);
 
         if (result == null)
         {

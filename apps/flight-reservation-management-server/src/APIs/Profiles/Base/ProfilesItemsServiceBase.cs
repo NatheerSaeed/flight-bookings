@@ -23,7 +23,7 @@ public abstract class ProfilesServiceBase : IProfilesService
     /// </summary>
     public async Task<Profiles> CreateProfiles(ProfileCreateInput createDto)
     {
-        var profiles = new ProfilesDbModel
+        var profiles = new Profile
         {
             Address = createDto.Address,
             CreatedAt = createDto.CreatedAt,
@@ -63,7 +63,7 @@ public abstract class ProfilesServiceBase : IProfilesService
         _context.ProfilesItems.Add(profiles);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<ProfilesDbModel>(profiles.Id);
+        var result = await _context.FindAsync<Profile>(profiles.Id);
 
         if (result == null)
         {

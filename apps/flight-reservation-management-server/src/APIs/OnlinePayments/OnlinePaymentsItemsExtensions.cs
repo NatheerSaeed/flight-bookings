@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class OnlinePaymentsItemsExtensions
 {
-    public static OnlinePayments ToDto(this OnlinePaymentsDbModel model)
+    public static OnlinePayments ToDto(this OnlinePayment model)
     {
         return new OnlinePayments
         {
@@ -23,12 +23,12 @@ public static class OnlinePaymentsItemsExtensions
         };
     }
 
-    public static OnlinePaymentsDbModel ToModel(
+    public static OnlinePayment ToModel(
         this OnlinePaymentUpdateInput updateDto,
         OnlinePaymentsWhereUniqueInput uniqueId
     )
     {
-        var onlinePayments = new OnlinePaymentsDbModel
+        var onlinePayments = new OnlinePayment
         {
             Id = uniqueId.Id,
             Amount = updateDto.Amount,

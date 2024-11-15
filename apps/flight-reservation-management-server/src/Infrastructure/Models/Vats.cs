@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Vats")]
-public class VatsDbModel
+public class Vat
 {
     [Range(-999999999, 999999999)]
     public int? CarVatType { get; set; }

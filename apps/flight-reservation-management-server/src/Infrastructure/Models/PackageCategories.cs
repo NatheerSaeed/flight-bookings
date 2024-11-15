@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("PackageCategories")]
-public class PackageCategoriesDbModel
+public class PackageCategorie
 {
     [StringLength(1000)]
     public string? Category { get; set; }

@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class PackageCategoriesItemsExtensions
 {
-    public static PackageCategories ToDto(this PackageCategoriesDbModel model)
+    public static PackageCategories ToDto(this PackageCategorie model)
     {
         return new PackageCategories
         {
@@ -17,12 +17,12 @@ public static class PackageCategoriesItemsExtensions
         };
     }
 
-    public static PackageCategoriesDbModel ToModel(
+    public static PackageCategorie ToModel(
         this PackageCategorieUpdateInput updateDto,
         PackageCategoriesWhereUniqueInput uniqueId
     )
     {
-        var packageCategories = new PackageCategoriesDbModel
+        var packageCategories = new PackageCategorie
         {
             Id = uniqueId.Id,
             Category = updateDto.Category,

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("HotelDeals")]
-public class HotelDealsDbModel
+public class HotelDeal
 {
     [StringLength(1000)]
     public string? Address { get; set; }
@@ -28,7 +28,7 @@ public class HotelDealsDbModel
     public string? PackageFieldId { get; set; }
 
     [ForeignKey(nameof(PackageFieldId))]
-    public PackagesDbModel? PackageField { get; set; } = null;
+    public Package? PackageField { get; set; } = null;
 
     [Range(-999999999, 999999999)]
     public int? StarRating { get; set; }

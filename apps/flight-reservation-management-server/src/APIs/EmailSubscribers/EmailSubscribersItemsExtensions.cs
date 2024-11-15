@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class EmailSubscribersItemsExtensions
 {
-    public static EmailSubscribers ToDto(this EmailSubscribersDbModel model)
+    public static EmailSubscribers ToDto(this EmailSubscriber model)
     {
         return new EmailSubscribers
         {
@@ -17,12 +17,12 @@ public static class EmailSubscribersItemsExtensions
         };
     }
 
-    public static EmailSubscribersDbModel ToModel(
+    public static EmailSubscriber ToModel(
         this EmailSubscriberUpdateInput updateDto,
         EmailSubscribersWhereUniqueInput uniqueId
     )
     {
-        var emailSubscribers = new EmailSubscribersDbModel
+        var emailSubscribers = new EmailSubscriber
         {
             Id = uniqueId.Id,
             Email = updateDto.Email,

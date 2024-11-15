@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("PackageTypes")]
-public class PackageTypesDbModel
+public class PackageType
 {
     [Required()]
     public DateTime CreatedAt { get; set; }

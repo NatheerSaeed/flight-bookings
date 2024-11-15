@@ -23,7 +23,7 @@ public abstract class MarkdownsServiceBase : IMarkdownsService
     /// </summary>
     public async Task<Markdowns> CreateMarkdowns(MarkdownCreateInput createDto)
     {
-        var markdowns = new MarkdownsDbModel
+        var markdowns = new Markdown
         {
             AirlineCode = createDto.AirlineCode,
             CreatedAt = createDto.CreatedAt,
@@ -40,7 +40,7 @@ public abstract class MarkdownsServiceBase : IMarkdownsService
         _context.MarkdownsItems.Add(markdowns);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<MarkdownsDbModel>(markdowns.Id);
+        var result = await _context.FindAsync<Markdown>(markdowns.Id);
 
         if (result == null)
         {

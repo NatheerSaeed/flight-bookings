@@ -23,7 +23,7 @@ public abstract class BanksServiceBase : IBanksService
     /// </summary>
     public async Task<Banks> CreateBanks(BankCreateInput createDto)
     {
-        var banks = new BanksDbModel
+        var banks = new Bank
         {
             CreatedAt = createDto.CreatedAt,
             Name = createDto.Name,
@@ -46,7 +46,7 @@ public abstract class BanksServiceBase : IBanksService
         _context.BanksItems.Add(banks);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<BanksDbModel>(banks.Id);
+        var result = await _context.FindAsync<Bank>(banks.Id);
 
         if (result == null)
         {

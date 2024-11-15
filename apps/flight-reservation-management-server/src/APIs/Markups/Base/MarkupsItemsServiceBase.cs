@@ -23,7 +23,7 @@ public abstract class MarkupsServiceBase : IMarkupsService
     /// </summary>
     public async Task<Markups> CreateMarkups(MarkupCreateInput createDto)
     {
-        var markups = new MarkupsDbModel
+        var markups = new Markup
         {
             CarMarkupType = createDto.CarMarkupType,
             CarMarkupValue = createDto.CarMarkupValue,
@@ -51,7 +51,7 @@ public abstract class MarkupsServiceBase : IMarkupsService
         _context.MarkupsItems.Add(markups);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<MarkupsDbModel>(markups.Id);
+        var result = await _context.FindAsync<Markup>(markups.Id);
 
         if (result == null)
         {

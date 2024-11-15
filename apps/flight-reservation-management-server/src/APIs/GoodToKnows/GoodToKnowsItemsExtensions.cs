@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class GoodToKnowsItemsExtensions
 {
-    public static GoodToKnows ToDto(this GoodToKnowsDbModel model)
+    public static GoodToKnows ToDto(this GoodToKnow model)
     {
         return new GoodToKnows
         {
@@ -23,12 +23,12 @@ public static class GoodToKnowsItemsExtensions
         };
     }
 
-    public static GoodToKnowsDbModel ToModel(
+    public static GoodToKnow ToModel(
         this GoodToKnowUpdateInput updateDto,
         GoodToKnowsWhereUniqueInput uniqueId
     )
     {
-        var goodToKnows = new GoodToKnowsDbModel
+        var goodToKnows = new GoodToKnow
         {
             Id = uniqueId.Id,
             CancellationPrepayment = updateDto.CancellationPrepayment,

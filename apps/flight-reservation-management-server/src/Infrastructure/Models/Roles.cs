@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("Roles")]
-public class RolesDbModel
+public class Role
 {
     [Required()]
     public DateTime CreatedAt { get; set; }
@@ -15,13 +15,13 @@ public class RolesDbModel
     [StringLength(1000)]
     public string? DisplayName { get; set; }
 
-    public List<HotelsDbModel>? HotelsItems { get; set; } = new List<HotelsDbModel>();
+    public List<Hotel>? HotelsItems { get; set; } = new List<Hotel>();
 
     [Key()]
     [Required()]
     public string Id { get; set; }
 
-    public List<MarkupsDbModel>? MarkupsItems { get; set; } = new List<MarkupsDbModel>();
+    public List<Markup>? MarkupsItems { get; set; } = new List<Markup>();
 
     [StringLength(1000)]
     public string? Name { get; set; }
@@ -32,9 +32,9 @@ public class RolesDbModel
     public string? RoleId { get; set; }
 
     [ForeignKey(nameof(RoleId))]
-    public RolesDbModel? Role { get; set; } = null;
+    public Role? ContainerRole { get; set; } = null;
 
-    public List<RolesDbModel>? RolesItems { get; set; } = new List<RolesDbModel>();
+    public List<Role>? RolesItems { get; set; } = new List<Role>();
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

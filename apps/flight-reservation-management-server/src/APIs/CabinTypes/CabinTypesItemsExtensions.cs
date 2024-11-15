@@ -5,7 +5,7 @@ namespace FlightReservationManagement.APIs.Extensions;
 
 public static class CabinTypesItemsExtensions
 {
-    public static CabinTypes ToDto(this CabinTypesDbModel model)
+    public static CabinTypes ToDto(this CabinType model)
     {
         return new CabinTypes
         {
@@ -17,12 +17,12 @@ public static class CabinTypesItemsExtensions
         };
     }
 
-    public static CabinTypesDbModel ToModel(
+    public static CabinType ToModel(
         this CabinTypeUpdateInput updateDto,
         CabinTypesWhereUniqueInput uniqueId
     )
     {
-        var cabinTypes = new CabinTypesDbModel
+        var cabinTypes = new CabinType
         {
             Id = uniqueId.Id,
             CabinCode = updateDto.CabinCode,

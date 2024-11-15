@@ -23,7 +23,7 @@ public abstract class PasswordResetsServiceBase : IPasswordResetsService
     /// </summary>
     public async Task<PasswordResets> CreatePasswordResets(PasswordResetCreateInput createDto)
     {
-        var passwordResets = new PasswordResetsDbModel
+        var passwordResets = new PasswordReset
         {
             CreatedAt = createDto.CreatedAt,
             Email = createDto.Email,
@@ -39,7 +39,7 @@ public abstract class PasswordResetsServiceBase : IPasswordResetsService
         _context.PasswordResetsItems.Add(passwordResets);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<PasswordResetsDbModel>(passwordResets.Id);
+        var result = await _context.FindAsync<PasswordReset>(passwordResets.Id);
 
         if (result == null)
         {

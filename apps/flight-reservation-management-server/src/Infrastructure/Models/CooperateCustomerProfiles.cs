@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FlightReservationManagement.Infrastructure.Models;
 
 [Table("CooperateCustomerProfiles")]
-public class CooperateCustomerProfilesDbModel
+public class CooperateCustomerProfile
 {
     [StringLength(1000)]
     public string? CompanyAddress { get; set; }
