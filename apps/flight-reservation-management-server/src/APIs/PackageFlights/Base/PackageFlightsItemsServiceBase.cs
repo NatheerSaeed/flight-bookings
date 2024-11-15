@@ -21,27 +21,27 @@ public abstract class PackageFlightsServiceBase : IPackageFlightsService
     /// <summary>
     /// Create one PackageFlights
     /// </summary>
-    public async Task<PackageFlights> CreatePackageFlights(PackageFlightCreateInput createDto)
+    public async Task<PackageFlights> CreatePackageFlights(PackageFlightCreateInput inputDto)
     {
         var packageFlights = new PackageFlight
         {
-            Airline = createDto.Airline,
-            ArrivalDateTime = createDto.ArrivalDateTime,
-            CreatedAt = createDto.CreatedAt,
-            DepartureDateTime = createDto.DepartureDateTime,
-            FromLocation = createDto.FromLocation,
-            ToLocation = createDto.ToLocation,
-            UpdatedAt = createDto.UpdatedAt
+            Airline = inputDto.Airline,
+            ArrivalDateTime = inputDto.ArrivalDateTime,
+            CreatedAt = inputDto.CreatedAt,
+            DepartureDateTime = inputDto.DepartureDateTime,
+            FromLocation = inputDto.FromLocation,
+            ToLocation = inputDto.ToLocation,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            packageFlights.Id = createDto.Id;
+            packageFlights.Id = inputDto.Id;
         }
-        if (createDto.PackageField != null)
+        if (inputDto.PackageField != null)
         {
             packageFlights.PackageField = await _context
-                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .PackagesItems.Where(packages => inputDto.PackageField.Id == packages.Id)
                 .FirstOrDefaultAsync();
         }
 

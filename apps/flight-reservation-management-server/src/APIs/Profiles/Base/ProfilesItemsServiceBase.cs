@@ -21,42 +21,42 @@ public abstract class ProfilesServiceBase : IProfilesService
     /// <summary>
     /// Create one Profiles
     /// </summary>
-    public async Task<Profiles> CreateProfiles(ProfileCreateInput createDto)
+    public async Task<Profiles> CreateProfiles(ProfileCreateInput inputDto)
     {
         var profiles = new Profile
         {
-            Address = createDto.Address,
-            CreatedAt = createDto.CreatedAt,
-            FirstName = createDto.FirstName,
-            OtherName = createDto.OtherName,
-            PhoneNumber = createDto.PhoneNumber,
-            Photo = createDto.Photo,
-            SurName = createDto.SurName,
-            UpdatedAt = createDto.UpdatedAt
+            Address = inputDto.Address,
+            CreatedAt = inputDto.CreatedAt,
+            FirstName = inputDto.FirstName,
+            OtherName = inputDto.OtherName,
+            PhoneNumber = inputDto.PhoneNumber,
+            Photo = inputDto.Photo,
+            SurName = inputDto.SurName,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            profiles.Id = createDto.Id;
+            profiles.Id = inputDto.Id;
         }
-        if (createDto.Gender != null)
+        if (inputDto.Gender != null)
         {
             profiles.Gender = await _context
-                .GendersItems.Where(genders => createDto.Gender.Id == genders.Id)
+                .GendersItems.Where(genders => inputDto.Gender.Id == genders.Id)
                 .FirstOrDefaultAsync();
         }
 
-        if (createDto.Title != null)
+        if (inputDto.Title != null)
         {
             profiles.Title = await _context
-                .TitlesItems.Where(titles => createDto.Title.Id == titles.Id)
+                .TitlesItems.Where(titles => inputDto.Title.Id == titles.Id)
                 .FirstOrDefaultAsync();
         }
 
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             profiles.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

@@ -21,19 +21,19 @@ public abstract class AirportsServiceBase : IAirportsService
     /// <summary>
     /// Create one Airports
     /// </summary>
-    public async Task<Airports> CreateAirports(AirportCreateInput createDto)
+    public async Task<Airports> CreateAirports(AirportCreateInput inputDto)
     {
         var airports = new Airport
         {
-            Code = createDto.Code,
-            CreatedAt = createDto.CreatedAt,
-            Name = createDto.Name,
-            UpdatedAt = createDto.UpdatedAt
+            Code = inputDto.Code,
+            CreatedAt = inputDto.CreatedAt,
+            Name = inputDto.Name,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            airports.Id = createDto.Id;
+            airports.Id = inputDto.Id;
         }
 
         _context.AirportsItems.Add(airports);

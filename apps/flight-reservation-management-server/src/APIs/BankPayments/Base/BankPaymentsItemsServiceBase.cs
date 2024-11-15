@@ -21,28 +21,28 @@ public abstract class BankPaymentsServiceBase : IBankPaymentsService
     /// <summary>
     /// Create one BankPayments
     /// </summary>
-    public async Task<BankPayments> CreateBankPayments(BankPaymentCreateInput createDto)
+    public async Task<BankPayments> CreateBankPayments(BankPaymentCreateInput inputDto)
     {
         var bankPayments = new BankPayment
         {
-            Amount = createDto.Amount,
-            BankDetailId = createDto.BankDetailId,
-            BookingReference = createDto.BookingReference,
-            CreatedAt = createDto.CreatedAt,
-            Reference = createDto.Reference,
-            SlipPhoto = createDto.SlipPhoto,
-            Status = createDto.Status,
-            UpdatedAt = createDto.UpdatedAt
+            Amount = inputDto.Amount,
+            BankDetailId = inputDto.BankDetailId,
+            BookingReference = inputDto.BookingReference,
+            CreatedAt = inputDto.CreatedAt,
+            Reference = inputDto.Reference,
+            SlipPhoto = inputDto.SlipPhoto,
+            Status = inputDto.Status,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            bankPayments.Id = createDto.Id;
+            bankPayments.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             bankPayments.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

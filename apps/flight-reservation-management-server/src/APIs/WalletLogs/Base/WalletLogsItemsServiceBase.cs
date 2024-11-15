@@ -21,25 +21,25 @@ public abstract class WalletLogsServiceBase : IWalletLogsService
     /// <summary>
     /// Create one WalletLogs
     /// </summary>
-    public async Task<WalletLogs> CreateWalletLogs(WalletLogCreateInput createDto)
+    public async Task<WalletLogs> CreateWalletLogs(WalletLogCreateInput inputDto)
     {
         var walletLogs = new WalletLog
         {
-            Amount = createDto.Amount,
-            CreatedAt = createDto.CreatedAt,
-            Status = createDto.Status,
-            TypeId = createDto.TypeId,
-            UpdatedAt = createDto.UpdatedAt
+            Amount = inputDto.Amount,
+            CreatedAt = inputDto.CreatedAt,
+            Status = inputDto.Status,
+            TypeId = inputDto.TypeId,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            walletLogs.Id = createDto.Id;
+            walletLogs.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             walletLogs.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

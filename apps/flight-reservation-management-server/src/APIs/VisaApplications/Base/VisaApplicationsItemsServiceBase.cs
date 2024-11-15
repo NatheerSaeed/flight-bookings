@@ -21,24 +21,24 @@ public abstract class VisaApplicationsServiceBase : IVisaApplicationsService
     /// <summary>
     /// Create one VisaApplications
     /// </summary>
-    public async Task<VisaApplications> CreateVisaApplications(VisaApplicationCreateInput createDto)
+    public async Task<VisaApplications> CreateVisaApplications(VisaApplicationCreateInput inputDto)
     {
         var visaApplications = new VisaApplication
         {
-            CreatedAt = createDto.CreatedAt,
-            DestinationCountry = createDto.DestinationCountry,
-            Email = createDto.Email,
-            GivenName = createDto.GivenName,
-            IpAddress = createDto.IpAddress,
-            Phone = createDto.Phone,
-            ResidenceCountry = createDto.ResidenceCountry,
-            Surname = createDto.Surname,
-            UpdatedAt = createDto.UpdatedAt
+            CreatedAt = inputDto.CreatedAt,
+            DestinationCountry = inputDto.DestinationCountry,
+            Email = inputDto.Email,
+            GivenName = inputDto.GivenName,
+            IpAddress = inputDto.IpAddress,
+            Phone = inputDto.Phone,
+            ResidenceCountry = inputDto.ResidenceCountry,
+            Surname = inputDto.Surname,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            visaApplications.Id = createDto.Id;
+            visaApplications.Id = inputDto.Id;
         }
 
         _context.VisaApplicationsItems.Add(visaApplications);

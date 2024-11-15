@@ -22,20 +22,20 @@ public abstract class PackageCategoriesServiceBase : IPackageCategoriesService
     /// Create one PackageCategories
     /// </summary>
     public async Task<PackageCategories> CreatePackageCategories(
-        PackageCategorieCreateInput createDto
+        PackageCategorieCreateInput inputDto
     )
     {
         var packageCategories = new PackageCategorie
         {
-            Category = createDto.Category,
-            CreatedAt = createDto.CreatedAt,
-            Status = createDto.Status,
-            UpdatedAt = createDto.UpdatedAt
+            Category = inputDto.Category,
+            CreatedAt = inputDto.CreatedAt,
+            Status = inputDto.Status,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            packageCategories.Id = createDto.Id;
+            packageCategories.Id = inputDto.Id;
         }
 
         _context.PackageCategoriesItems.Add(packageCategories);

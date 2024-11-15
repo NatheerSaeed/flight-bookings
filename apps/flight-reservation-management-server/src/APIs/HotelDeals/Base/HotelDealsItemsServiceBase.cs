@@ -21,30 +21,30 @@ public abstract class HotelDealsServiceBase : IHotelDealsService
     /// <summary>
     /// Create one HotelDeals
     /// </summary>
-    public async Task<HotelDeals> CreateHotelDeals(HotelDealCreateInput createDto)
+    public async Task<HotelDeals> CreateHotelDeals(HotelDealCreateInput inputDto)
     {
         var hotelDeals = new HotelDeal
         {
-            Address = createDto.Address,
-            City = createDto.City,
-            CreatedAt = createDto.CreatedAt,
-            Information = createDto.Information,
-            Name = createDto.Name,
-            StarRating = createDto.StarRating,
-            StayDuration = createDto.StayDuration,
-            StayEndDate = createDto.StayEndDate,
-            StayStartDate = createDto.StayStartDate,
-            UpdatedAt = createDto.UpdatedAt
+            Address = inputDto.Address,
+            City = inputDto.City,
+            CreatedAt = inputDto.CreatedAt,
+            Information = inputDto.Information,
+            Name = inputDto.Name,
+            StarRating = inputDto.StarRating,
+            StayDuration = inputDto.StayDuration,
+            StayEndDate = inputDto.StayEndDate,
+            StayStartDate = inputDto.StayStartDate,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            hotelDeals.Id = createDto.Id;
+            hotelDeals.Id = inputDto.Id;
         }
-        if (createDto.PackageField != null)
+        if (inputDto.PackageField != null)
         {
             hotelDeals.PackageField = await _context
-                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .PackagesItems.Where(packages => inputDto.PackageField.Id == packages.Id)
                 .FirstOrDefaultAsync();
         }
 

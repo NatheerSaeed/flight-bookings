@@ -21,28 +21,28 @@ public abstract class FlightDealsServiceBase : IFlightDealsService
     /// <summary>
     /// Create one FlightDeals
     /// </summary>
-    public async Task<FlightDeals> CreateFlightDeals(FlightDealCreateInput createDto)
+    public async Task<FlightDeals> CreateFlightDeals(FlightDealCreateInput inputDto)
     {
         var flightDeals = new FlightDeal
         {
-            Airline = createDto.Airline,
-            Cabin = createDto.Cabin,
-            CreatedAt = createDto.CreatedAt,
-            Date = createDto.Date,
-            Destination = createDto.Destination,
-            Information = createDto.Information,
-            Origin = createDto.Origin,
-            UpdatedAt = createDto.UpdatedAt
+            Airline = inputDto.Airline,
+            Cabin = inputDto.Cabin,
+            CreatedAt = inputDto.CreatedAt,
+            Date = inputDto.Date,
+            Destination = inputDto.Destination,
+            Information = inputDto.Information,
+            Origin = inputDto.Origin,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            flightDeals.Id = createDto.Id;
+            flightDeals.Id = inputDto.Id;
         }
-        if (createDto.PackageField != null)
+        if (inputDto.PackageField != null)
         {
             flightDeals.PackageField = await _context
-                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .PackagesItems.Where(packages => inputDto.PackageField.Id == packages.Id)
                 .FirstOrDefaultAsync();
         }
 

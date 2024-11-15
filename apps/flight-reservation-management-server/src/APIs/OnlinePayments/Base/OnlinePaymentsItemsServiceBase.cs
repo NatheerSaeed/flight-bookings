@@ -21,29 +21,29 @@ public abstract class OnlinePaymentsServiceBase : IOnlinePaymentsService
     /// <summary>
     /// Create one OnlinePayments
     /// </summary>
-    public async Task<OnlinePayments> CreateOnlinePayments(OnlinePaymentCreateInput createDto)
+    public async Task<OnlinePayments> CreateOnlinePayments(OnlinePaymentCreateInput inputDto)
     {
         var onlinePayments = new OnlinePayment
         {
-            Amount = createDto.Amount,
-            BookingReference = createDto.BookingReference,
-            CreatedAt = createDto.CreatedAt,
-            PaymentStatus = createDto.PaymentStatus,
-            Reference = createDto.Reference,
-            ResponseCode = createDto.ResponseCode,
-            ResponseDescription = createDto.ResponseDescription,
-            ResponseFull = createDto.ResponseFull,
-            UpdatedAt = createDto.UpdatedAt
+            Amount = inputDto.Amount,
+            BookingReference = inputDto.BookingReference,
+            CreatedAt = inputDto.CreatedAt,
+            PaymentStatus = inputDto.PaymentStatus,
+            Reference = inputDto.Reference,
+            ResponseCode = inputDto.ResponseCode,
+            ResponseDescription = inputDto.ResponseDescription,
+            ResponseFull = inputDto.ResponseFull,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            onlinePayments.Id = createDto.Id;
+            onlinePayments.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             onlinePayments.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

@@ -21,106 +21,106 @@ public abstract class PackagesServiceBase : IPackagesService
     /// <summary>
     /// Create one Packages
     /// </summary>
-    public async Task<Packages> CreatePackages(PackageCreateInput createDto)
+    public async Task<Packages> CreatePackages(PackageCreateInput inputDto)
     {
         var packages = new Package
         {
-            CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
+            CreatedAt = inputDto.CreatedAt,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            packages.Id = createDto.Id;
+            packages.Id = inputDto.Id;
         }
-        if (createDto.AttractionsItems != null)
+        if (inputDto.AttractionsItems != null)
         {
             packages.AttractionsItems = await _context
                 .AttractionsItems.Where(attractions =>
-                    createDto.AttractionsItems.Select(t => t.Id).Contains(attractions.Id)
+                    inputDto.AttractionsItems.Select(t => t.Id).Contains(attractions.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.FlightDealsItems != null)
+        if (inputDto.FlightDealsItems != null)
         {
             packages.FlightDealsItems = await _context
                 .FlightDealsItems.Where(flightDeals =>
-                    createDto.FlightDealsItems.Select(t => t.Id).Contains(flightDeals.Id)
+                    inputDto.FlightDealsItems.Select(t => t.Id).Contains(flightDeals.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.GalleriesItems != null)
+        if (inputDto.GalleriesItems != null)
         {
             packages.GalleriesItems = await _context
                 .GalleriesItems.Where(galleries =>
-                    createDto.GalleriesItems.Select(t => t.Id).Contains(galleries.Id)
+                    inputDto.GalleriesItems.Select(t => t.Id).Contains(galleries.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.GoodToKnowsItems != null)
+        if (inputDto.GoodToKnowsItems != null)
         {
             packages.GoodToKnowsItems = await _context
                 .GoodToKnowsItems.Where(goodToKnows =>
-                    createDto.GoodToKnowsItems.Select(t => t.Id).Contains(goodToKnows.Id)
+                    inputDto.GoodToKnowsItems.Select(t => t.Id).Contains(goodToKnows.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.HotelDealsItems != null)
+        if (inputDto.HotelDealsItems != null)
         {
             packages.HotelDealsItems = await _context
                 .HotelDealsItems.Where(hotelDeals =>
-                    createDto.HotelDealsItems.Select(t => t.Id).Contains(hotelDeals.Id)
+                    inputDto.HotelDealsItems.Select(t => t.Id).Contains(hotelDeals.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.PackageAttractionsItems != null)
+        if (inputDto.PackageAttractionsItems != null)
         {
             packages.PackageAttractionsItems = await _context
                 .PackageAttractionsItems.Where(packageAttractions =>
-                    createDto
+                    inputDto
                         .PackageAttractionsItems.Select(t => t.Id)
                         .Contains(packageAttractions.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.PackageBookingsItems != null)
+        if (inputDto.PackageBookingsItems != null)
         {
             packages.PackageBookingsItems = await _context
                 .PackageBookingsItems.Where(packageBookings =>
-                    createDto.PackageBookingsItems.Select(t => t.Id).Contains(packageBookings.Id)
+                    inputDto.PackageBookingsItems.Select(t => t.Id).Contains(packageBookings.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.PackageFlightsItems != null)
+        if (inputDto.PackageFlightsItems != null)
         {
             packages.PackageFlightsItems = await _context
                 .PackageFlightsItems.Where(packageFlights =>
-                    createDto.PackageFlightsItems.Select(t => t.Id).Contains(packageFlights.Id)
+                    inputDto.PackageFlightsItems.Select(t => t.Id).Contains(packageFlights.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.PackageHotelsItems != null)
+        if (inputDto.PackageHotelsItems != null)
         {
             packages.PackageHotelsItems = await _context
                 .PackageHotelsItems.Where(packageHotels =>
-                    createDto.PackageHotelsItems.Select(t => t.Id).Contains(packageHotels.Id)
+                    inputDto.PackageHotelsItems.Select(t => t.Id).Contains(packageHotels.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.SightSeeingsItems != null)
+        if (inputDto.SightSeeingsItems != null)
         {
             packages.SightSeeingsItems = await _context
                 .SightSeeingsItems.Where(sightSeeings =>
-                    createDto.SightSeeingsItems.Select(t => t.Id).Contains(sightSeeings.Id)
+                    inputDto.SightSeeingsItems.Select(t => t.Id).Contains(sightSeeings.Id)
                 )
                 .ToListAsync();
         }

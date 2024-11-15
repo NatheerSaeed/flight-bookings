@@ -21,53 +21,51 @@ public abstract class RolesServiceBase : IRolesService
     /// <summary>
     /// Create one Roles
     /// </summary>
-    public async Task<Roles> CreateRoles(RoleCreateInput createDto)
+    public async Task<Roles> CreateRoles(RoleCreateInput inputDto)
     {
         var roles = new Role
         {
-            CreatedAt = createDto.CreatedAt,
-            Description = createDto.Description,
-            DisplayName = createDto.DisplayName,
-            Name = createDto.Name,
-            PermissionId = createDto.PermissionId,
-            UpdatedAt = createDto.UpdatedAt
+            CreatedAt = inputDto.CreatedAt,
+            Description = inputDto.Description,
+            DisplayName = inputDto.DisplayName,
+            Name = inputDto.Name,
+            PermissionId = inputDto.PermissionId,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            roles.Id = createDto.Id;
+            roles.Id = inputDto.Id;
         }
-        if (createDto.HotelsItems != null)
+        if (inputDto.HotelsItems != null)
         {
             roles.HotelsItems = await _context
                 .HotelsItems.Where(hotels =>
-                    createDto.HotelsItems.Select(t => t.Id).Contains(hotels.Id)
+                    inputDto.HotelsItems.Select(t => t.Id).Contains(hotels.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.MarkupsItems != null)
+        if (inputDto.MarkupsItems != null)
         {
             roles.MarkupsItems = await _context
                 .MarkupsItems.Where(markups =>
-                    createDto.MarkupsItems.Select(t => t.Id).Contains(markups.Id)
+                    inputDto.MarkupsItems.Select(t => t.Id).Contains(markups.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.Role != null)
+        if (inputDto.Role != null)
         {
             roles.ContainerRole = await _context
-                .RolesItems.Where(roles => createDto.Role.Id == roles.Id)
+                .RolesItems.Where(roles => inputDto.Role.Id == roles.Id)
                 .FirstOrDefaultAsync();
         }
 
-        if (createDto.RolesItems != null)
+        if (inputDto.RolesItems != null)
         {
             roles.RolesItems = await _context
-                .RolesItems.Where(roles =>
-                    createDto.RolesItems.Select(t => t.Id).Contains(roles.Id)
-                )
+                .RolesItems.Where(roles => inputDto.RolesItems.Select(t => t.Id).Contains(roles.Id))
                 .ToListAsync();
         }
 

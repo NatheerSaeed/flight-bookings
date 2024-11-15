@@ -21,21 +21,21 @@ public abstract class CommentsServiceBase : ICommentsService
     /// <summary>
     /// Create one Comments
     /// </summary>
-    public async Task<Comments> CreateComments(CommentCreateInput createDto)
+    public async Task<Comments> CreateComments(CommentCreateInput inputDto)
     {
         var comments = new Comment
         {
-            Content = createDto.Content,
-            CreatedAt = createDto.CreatedAt,
-            Email = createDto.Email,
-            Ip = createDto.Ip,
-            Name = createDto.Name,
-            UpdatedAt = createDto.UpdatedAt
+            Content = inputDto.Content,
+            CreatedAt = inputDto.CreatedAt,
+            Email = inputDto.Email,
+            Ip = inputDto.Ip,
+            Name = inputDto.Name,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            comments.Id = createDto.Id;
+            comments.Id = inputDto.Id;
         }
 
         _context.CommentsItems.Add(comments);

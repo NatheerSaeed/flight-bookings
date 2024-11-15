@@ -21,25 +21,25 @@ public abstract class GalleriesServiceBase : IGalleriesService
     /// <summary>
     /// Create one Galleries
     /// </summary>
-    public async Task<Galleries> CreateGalleries(GallerieCreateInput createDto)
+    public async Task<Galleries> CreateGalleries(GallerieCreateInput inputDto)
     {
         var galleries = new Gallerie
         {
-            CreatedAt = createDto.CreatedAt,
-            ImagePath = createDto.ImagePath,
-            ImageTypeId = createDto.ImageTypeId,
-            ParentId = createDto.ParentId,
-            UpdatedAt = createDto.UpdatedAt
+            CreatedAt = inputDto.CreatedAt,
+            ImagePath = inputDto.ImagePath,
+            ImageTypeId = inputDto.ImageTypeId,
+            ParentId = inputDto.ParentId,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            galleries.Id = createDto.Id;
+            galleries.Id = inputDto.Id;
         }
-        if (createDto.PackageField != null)
+        if (inputDto.PackageField != null)
         {
             galleries.PackageField = await _context
-                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .PackagesItems.Where(packages => inputDto.PackageField.Id == packages.Id)
                 .FirstOrDefaultAsync();
         }
 

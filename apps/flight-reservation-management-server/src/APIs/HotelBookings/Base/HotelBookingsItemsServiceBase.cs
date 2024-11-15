@@ -21,54 +21,54 @@ public abstract class HotelBookingsServiceBase : IHotelBookingsService
     /// <summary>
     /// Create one HotelBookings
     /// </summary>
-    public async Task<HotelBookings> CreateHotelBookings(HotelBookingCreateInput createDto)
+    public async Task<HotelBookings> CreateHotelBookings(HotelBookingCreateInput inputDto)
     {
         var hotelBookings = new HotelBooking
         {
-            AdultGuest = createDto.AdultGuest,
-            BaseAmount = createDto.BaseAmount,
-            CancellationStatus = createDto.CancellationStatus,
-            CheckInDate = createDto.CheckInDate,
-            CheckOutDate = createDto.CheckOutDate,
-            ChildGuest = createDto.ChildGuest,
-            CreatedAt = createDto.CreatedAt,
-            ExpiryDate = createDto.ExpiryDate,
-            Guarantee = createDto.Guarantee,
-            HotelChainCode = createDto.HotelChainCode,
-            HotelCityCode = createDto.HotelCityCode,
-            HotelCode = createDto.HotelCode,
-            HotelContextCode = createDto.HotelContextCode,
-            HotelName = createDto.HotelName,
-            Markdown = createDto.Markdown,
-            Markup = createDto.Markup,
-            PaymentStatus = createDto.PaymentStatus,
-            Pnr = createDto.Pnr,
-            PnrRequestResponse = createDto.PnrRequestResponse,
-            RatePlanCode = createDto.RatePlanCode,
-            Reference = createDto.Reference,
-            ReservationStatus = createDto.ReservationStatus,
-            RoomBookingCode = createDto.RoomBookingCode,
-            TotalAmount = createDto.TotalAmount,
-            UpdatedAt = createDto.UpdatedAt,
-            Vat = createDto.Vat,
-            VoucherAmount = createDto.VoucherAmount
+            AdultGuest = inputDto.AdultGuest,
+            BaseAmount = inputDto.BaseAmount,
+            CancellationStatus = inputDto.CancellationStatus,
+            CheckInDate = inputDto.CheckInDate,
+            CheckOutDate = inputDto.CheckOutDate,
+            ChildGuest = inputDto.ChildGuest,
+            CreatedAt = inputDto.CreatedAt,
+            ExpiryDate = inputDto.ExpiryDate,
+            Guarantee = inputDto.Guarantee,
+            HotelChainCode = inputDto.HotelChainCode,
+            HotelCityCode = inputDto.HotelCityCode,
+            HotelCode = inputDto.HotelCode,
+            HotelContextCode = inputDto.HotelContextCode,
+            HotelName = inputDto.HotelName,
+            Markdown = inputDto.Markdown,
+            Markup = inputDto.Markup,
+            PaymentStatus = inputDto.PaymentStatus,
+            Pnr = inputDto.Pnr,
+            PnrRequestResponse = inputDto.PnrRequestResponse,
+            RatePlanCode = inputDto.RatePlanCode,
+            Reference = inputDto.Reference,
+            ReservationStatus = inputDto.ReservationStatus,
+            RoomBookingCode = inputDto.RoomBookingCode,
+            TotalAmount = inputDto.TotalAmount,
+            UpdatedAt = inputDto.UpdatedAt,
+            Vat = inputDto.Vat,
+            VoucherAmount = inputDto.VoucherAmount
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            hotelBookings.Id = createDto.Id;
+            hotelBookings.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             hotelBookings.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 
-        if (createDto.Voucher != null)
+        if (inputDto.Voucher != null)
         {
             hotelBookings.Voucher = await _context
-                .VouchersItems.Where(vouchers => createDto.Voucher.Id == vouchers.Id)
+                .VouchersItems.Where(vouchers => inputDto.Voucher.Id == vouchers.Id)
                 .FirstOrDefaultAsync();
         }
 

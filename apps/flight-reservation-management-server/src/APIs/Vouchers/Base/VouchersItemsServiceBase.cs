@@ -21,35 +21,35 @@ public abstract class VouchersServiceBase : IVouchersService
     /// <summary>
     /// Create one Vouchers
     /// </summary>
-    public async Task<Vouchers> CreateVouchers(VoucherCreateInput createDto)
+    public async Task<Vouchers> CreateVouchers(VoucherCreateInput inputDto)
     {
         var vouchers = new Voucher
         {
-            Amount = createDto.Amount,
-            Code = createDto.Code,
-            CreatedAt = createDto.CreatedAt,
-            Status = createDto.Status,
-            UpdatedAt = createDto.UpdatedAt
+            Amount = inputDto.Amount,
+            Code = inputDto.Code,
+            CreatedAt = inputDto.CreatedAt,
+            Status = inputDto.Status,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            vouchers.Id = createDto.Id;
+            vouchers.Id = inputDto.Id;
         }
-        if (createDto.FlightBookingsItems != null)
+        if (inputDto.FlightBookingsItems != null)
         {
             vouchers.FlightBookingsItems = await _context
                 .FlightBookingsItems.Where(flightBookings =>
-                    createDto.FlightBookingsItems.Select(t => t.Id).Contains(flightBookings.Id)
+                    inputDto.FlightBookingsItems.Select(t => t.Id).Contains(flightBookings.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.HotelBookingsItems != null)
+        if (inputDto.HotelBookingsItems != null)
         {
             vouchers.HotelBookingsItems = await _context
                 .HotelBookingsItems.Where(hotelBookings =>
-                    createDto.HotelBookingsItems.Select(t => t.Id).Contains(hotelBookings.Id)
+                    inputDto.HotelBookingsItems.Select(t => t.Id).Contains(hotelBookings.Id)
                 )
                 .ToListAsync();
         }

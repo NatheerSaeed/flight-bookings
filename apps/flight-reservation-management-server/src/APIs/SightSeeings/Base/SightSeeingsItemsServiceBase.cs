@@ -21,31 +21,31 @@ public abstract class SightSeeingsServiceBase : ISightSeeingsService
     /// <summary>
     /// Create one SightSeeings
     /// </summary>
-    public async Task<SightSeeings> CreateSightSeeings(SightSeeingCreateInput createDto)
+    public async Task<SightSeeings> CreateSightSeeings(SightSeeingCreateInput inputDto)
     {
         var sightSeeings = new SightSeeing
         {
-            CreatedAt = createDto.CreatedAt,
-            Description = createDto.Description,
-            Title = createDto.Title,
-            UpdatedAt = createDto.UpdatedAt
+            CreatedAt = inputDto.CreatedAt,
+            Description = inputDto.Description,
+            Title = inputDto.Title,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            sightSeeings.Id = createDto.Id;
+            sightSeeings.Id = inputDto.Id;
         }
-        if (createDto.Attraction != null)
+        if (inputDto.Attraction != null)
         {
             sightSeeings.Attraction = await _context
-                .AttractionsItems.Where(attractions => createDto.Attraction.Id == attractions.Id)
+                .AttractionsItems.Where(attractions => inputDto.Attraction.Id == attractions.Id)
                 .FirstOrDefaultAsync();
         }
 
-        if (createDto.PackageField != null)
+        if (inputDto.PackageField != null)
         {
             sightSeeings.PackageField = await _context
-                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .PackagesItems.Where(packages => inputDto.PackageField.Id == packages.Id)
                 .FirstOrDefaultAsync();
         }
 

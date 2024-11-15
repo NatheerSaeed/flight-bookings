@@ -21,25 +21,25 @@ public abstract class VatsServiceBase : IVatsService
     /// <summary>
     /// Create one Vats
     /// </summary>
-    public async Task<Vats> CreateVats(VatCreateInput createDto)
+    public async Task<Vats> CreateVats(VatCreateInput inputDto)
     {
         var vats = new Vat
         {
-            CarVatType = createDto.CarVatType,
-            CarVatValue = createDto.CarVatValue,
-            CreatedAt = createDto.CreatedAt,
-            FlightVatType = createDto.FlightVatType,
-            FlightVatValue = createDto.FlightVatValue,
-            HotelVatType = createDto.HotelVatType,
-            HotelVatValue = createDto.HotelVatValue,
-            PackageVatType = createDto.PackageVatType,
-            PackageVatValue = createDto.PackageVatValue,
-            UpdatedAt = createDto.UpdatedAt
+            CarVatType = inputDto.CarVatType,
+            CarVatValue = inputDto.CarVatValue,
+            CreatedAt = inputDto.CreatedAt,
+            FlightVatType = inputDto.FlightVatType,
+            FlightVatValue = inputDto.FlightVatValue,
+            HotelVatType = inputDto.HotelVatType,
+            HotelVatValue = inputDto.HotelVatValue,
+            PackageVatType = inputDto.PackageVatType,
+            PackageVatValue = inputDto.PackageVatValue,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            vats.Id = createDto.Id;
+            vats.Id = inputDto.Id;
         }
 
         _context.VatsItems.Add(vats);

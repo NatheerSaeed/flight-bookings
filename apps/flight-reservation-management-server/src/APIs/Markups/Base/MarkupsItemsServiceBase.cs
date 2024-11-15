@@ -21,30 +21,30 @@ public abstract class MarkupsServiceBase : IMarkupsService
     /// <summary>
     /// Create one Markups
     /// </summary>
-    public async Task<Markups> CreateMarkups(MarkupCreateInput createDto)
+    public async Task<Markups> CreateMarkups(MarkupCreateInput inputDto)
     {
         var markups = new Markup
         {
-            CarMarkupType = createDto.CarMarkupType,
-            CarMarkupValue = createDto.CarMarkupValue,
-            CreatedAt = createDto.CreatedAt,
-            FlightMarkupType = createDto.FlightMarkupType,
-            FlightMarkupValue = createDto.FlightMarkupValue,
-            HotelMarkupType = createDto.HotelMarkupType,
-            HotelMarkupValue = createDto.HotelMarkupValue,
-            PackageMarkupType = createDto.PackageMarkupType,
-            PackageMarkupValue = createDto.PackageMarkupValue,
-            UpdatedAt = createDto.UpdatedAt
+            CarMarkupType = inputDto.CarMarkupType,
+            CarMarkupValue = inputDto.CarMarkupValue,
+            CreatedAt = inputDto.CreatedAt,
+            FlightMarkupType = inputDto.FlightMarkupType,
+            FlightMarkupValue = inputDto.FlightMarkupValue,
+            HotelMarkupType = inputDto.HotelMarkupType,
+            HotelMarkupValue = inputDto.HotelMarkupValue,
+            PackageMarkupType = inputDto.PackageMarkupType,
+            PackageMarkupValue = inputDto.PackageMarkupValue,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            markups.Id = createDto.Id;
+            markups.Id = inputDto.Id;
         }
-        if (createDto.Role != null)
+        if (inputDto.Role != null)
         {
             markups.Role = await _context
-                .RolesItems.Where(roles => createDto.Role.Id == roles.Id)
+                .RolesItems.Where(roles => inputDto.Role.Id == roles.Id)
                 .FirstOrDefaultAsync();
         }
 

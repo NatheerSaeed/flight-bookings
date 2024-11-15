@@ -21,28 +21,28 @@ public abstract class PayLatersServiceBase : IPayLatersService
     /// <summary>
     /// Create one PayLaters
     /// </summary>
-    public async Task<PayLaters> CreatePayLaters(PayLaterCreateInput createDto)
+    public async Task<PayLaters> CreatePayLaters(PayLaterCreateInput inputDto)
     {
         var payLaters = new PayLater
         {
-            Amount = createDto.Amount,
-            BankDetailId = createDto.BankDetailId,
-            BookingReference = createDto.BookingReference,
-            CreatedAt = createDto.CreatedAt,
-            Reference = createDto.Reference,
-            SlipPhoto = createDto.SlipPhoto,
-            Status = createDto.Status,
-            UpdatedAt = createDto.UpdatedAt
+            Amount = inputDto.Amount,
+            BankDetailId = inputDto.BankDetailId,
+            BookingReference = inputDto.BookingReference,
+            CreatedAt = inputDto.CreatedAt,
+            Reference = inputDto.Reference,
+            SlipPhoto = inputDto.SlipPhoto,
+            Status = inputDto.Status,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            payLaters.Id = createDto.Id;
+            payLaters.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             payLaters.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

@@ -21,19 +21,19 @@ public abstract class CabinTypesServiceBase : ICabinTypesService
     /// <summary>
     /// Create one CabinTypes
     /// </summary>
-    public async Task<CabinTypes> CreateCabinTypes(CabinTypeCreateInput createDto)
+    public async Task<CabinTypes> CreateCabinTypes(CabinTypeCreateInput inputDto)
     {
         var cabinTypes = new CabinType
         {
-            CabinCode = createDto.CabinCode,
-            CabinName = createDto.CabinName,
-            CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
+            CabinCode = inputDto.CabinCode,
+            CabinName = inputDto.CabinName,
+            CreatedAt = inputDto.CreatedAt,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            cabinTypes.Id = createDto.Id;
+            cabinTypes.Id = inputDto.Id;
         }
 
         _context.CabinTypesItems.Add(cabinTypes);

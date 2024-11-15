@@ -21,19 +21,19 @@ public abstract class PackageTypesServiceBase : IPackageTypesService
     /// <summary>
     /// Create one PackageTypes
     /// </summary>
-    public async Task<PackageTypes> CreatePackageTypes(PackageTypeCreateInput createDto)
+    public async Task<PackageTypes> CreatePackageTypes(PackageTypeCreateInput inputDto)
     {
         var packageTypes = new PackageType
         {
-            CreatedAt = createDto.CreatedAt,
-            Status = createDto.Status,
-            TypeField = createDto.TypeField,
-            UpdatedAt = createDto.UpdatedAt
+            CreatedAt = inputDto.CreatedAt,
+            Status = inputDto.Status,
+            TypeField = inputDto.TypeField,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            packageTypes.Id = createDto.Id;
+            packageTypes.Id = inputDto.Id;
         }
 
         _context.PackageTypesItems.Add(packageTypes);

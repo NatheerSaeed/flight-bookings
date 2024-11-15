@@ -21,28 +21,28 @@ public abstract class BankDetailsServiceBase : IBankDetailsService
     /// <summary>
     /// Create one BankDetails
     /// </summary>
-    public async Task<BankDetails> CreateBankDetails(BankDetailCreateInput createDto)
+    public async Task<BankDetails> CreateBankDetails(BankDetailCreateInput inputDto)
     {
         var bankDetails = new BankDetail
         {
-            AccountName = createDto.AccountName,
-            AccountNumber = createDto.AccountNumber,
-            BankBranch = createDto.BankBranch,
-            CreatedAt = createDto.CreatedAt,
-            IfscCode = createDto.IfscCode,
-            Pan = createDto.Pan,
-            Status = createDto.Status,
-            UpdatedAt = createDto.UpdatedAt
+            AccountName = inputDto.AccountName,
+            AccountNumber = inputDto.AccountNumber,
+            BankBranch = inputDto.BankBranch,
+            CreatedAt = inputDto.CreatedAt,
+            IfscCode = inputDto.IfscCode,
+            Pan = inputDto.Pan,
+            Status = inputDto.Status,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            bankDetails.Id = createDto.Id;
+            bankDetails.Id = inputDto.Id;
         }
-        if (createDto.Bank != null)
+        if (inputDto.Bank != null)
         {
             bankDetails.Bank = await _context
-                .BanksItems.Where(banks => createDto.Bank.Id == banks.Id)
+                .BanksItems.Where(banks => inputDto.Bank.Id == banks.Id)
                 .FirstOrDefaultAsync();
         }
 

@@ -21,24 +21,24 @@ public abstract class BanksServiceBase : IBanksService
     /// <summary>
     /// Create one Banks
     /// </summary>
-    public async Task<Banks> CreateBanks(BankCreateInput createDto)
+    public async Task<Banks> CreateBanks(BankCreateInput inputDto)
     {
         var banks = new Bank
         {
-            CreatedAt = createDto.CreatedAt,
-            Name = createDto.Name,
-            UpdatedAt = createDto.UpdatedAt
+            CreatedAt = inputDto.CreatedAt,
+            Name = inputDto.Name,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            banks.Id = createDto.Id;
+            banks.Id = inputDto.Id;
         }
-        if (createDto.BankDetailsItems != null)
+        if (inputDto.BankDetailsItems != null)
         {
             banks.BankDetailsItems = await _context
                 .BankDetailsItems.Where(bankDetails =>
-                    createDto.BankDetailsItems.Select(t => t.Id).Contains(bankDetails.Id)
+                    inputDto.BankDetailsItems.Select(t => t.Id).Contains(bankDetails.Id)
                 )
                 .ToListAsync();
         }

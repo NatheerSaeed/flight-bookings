@@ -21,23 +21,23 @@ public abstract class WalletsServiceBase : IWalletsService
     /// <summary>
     /// Create one Wallets
     /// </summary>
-    public async Task<Wallets> CreateWallets(WalletCreateInput createDto)
+    public async Task<Wallets> CreateWallets(WalletCreateInput inputDto)
     {
         var wallets = new Wallet
         {
-            Balance = createDto.Balance,
-            CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
+            Balance = inputDto.Balance,
+            CreatedAt = inputDto.CreatedAt,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            wallets.Id = createDto.Id;
+            wallets.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             wallets.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

@@ -21,20 +21,20 @@ public abstract class MarkdownsServiceBase : IMarkdownsService
     /// <summary>
     /// Create one Markdowns
     /// </summary>
-    public async Task<Markdowns> CreateMarkdowns(MarkdownCreateInput createDto)
+    public async Task<Markdowns> CreateMarkdowns(MarkdownCreateInput inputDto)
     {
         var markdowns = new Markdown
         {
-            AirlineCode = createDto.AirlineCode,
-            CreatedAt = createDto.CreatedAt,
-            TypeField = createDto.TypeField,
-            UpdatedAt = createDto.UpdatedAt,
-            Value = createDto.Value
+            AirlineCode = inputDto.AirlineCode,
+            CreatedAt = inputDto.CreatedAt,
+            TypeField = inputDto.TypeField,
+            UpdatedAt = inputDto.UpdatedAt,
+            Value = inputDto.Value
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            markdowns.Id = createDto.Id;
+            markdowns.Id = inputDto.Id;
         }
 
         _context.MarkdownsItems.Add(markdowns);

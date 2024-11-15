@@ -22,31 +22,31 @@ public abstract class CooperateCustomerProfilesServiceBase : ICooperateCustomerP
     /// Create one CooperateCustomerProfiles
     /// </summary>
     public async Task<CooperateCustomerProfiles> CreateCooperateCustomerProfiles(
-        CooperateCustomerProfileCreateInput createDto
+        CooperateCustomerProfileCreateInput inputDto
     )
     {
         var cooperateCustomerProfiles = new CooperateCustomerProfile
         {
-            CompanyAddress = createDto.CompanyAddress,
-            CompanyCacRcNumber = createDto.CompanyCacRcNumber,
-            CompanyContactPersonAddress = createDto.CompanyContactPersonAddress,
-            CompanyContactPersonEmail = createDto.CompanyContactPersonEmail,
-            CompanyContactPersonPhoneNumber = createDto.CompanyContactPersonPhoneNumber,
-            CompanyEmail = createDto.CompanyEmail,
-            CompanyName = createDto.CompanyName,
-            CompanyPhoneNumber = createDto.CompanyPhoneNumber,
-            CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
+            CompanyAddress = inputDto.CompanyAddress,
+            CompanyCacRcNumber = inputDto.CompanyCacRcNumber,
+            CompanyContactPersonAddress = inputDto.CompanyContactPersonAddress,
+            CompanyContactPersonEmail = inputDto.CompanyContactPersonEmail,
+            CompanyContactPersonPhoneNumber = inputDto.CompanyContactPersonPhoneNumber,
+            CompanyEmail = inputDto.CompanyEmail,
+            CompanyName = inputDto.CompanyName,
+            CompanyPhoneNumber = inputDto.CompanyPhoneNumber,
+            CreatedAt = inputDto.CreatedAt,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            cooperateCustomerProfiles.Id = createDto.Id;
+            cooperateCustomerProfiles.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             cooperateCustomerProfiles.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

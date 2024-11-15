@@ -21,19 +21,19 @@ public abstract class TitlesServiceBase : ITitlesService
     /// <summary>
     /// Create one Titles
     /// </summary>
-    public async Task<Titles> CreateTitles(TitleCreateInput createDto)
+    public async Task<Titles> CreateTitles(TitleCreateInput inputDto)
     {
-        var titles = new Title { CreatedAt = createDto.CreatedAt, UpdatedAt = createDto.UpdatedAt };
+        var titles = new Title { CreatedAt = inputDto.CreatedAt, UpdatedAt = inputDto.UpdatedAt };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            titles.Id = createDto.Id;
+            titles.Id = inputDto.Id;
         }
-        if (createDto.ProfilesItems != null)
+        if (inputDto.ProfilesItems != null)
         {
             titles.ProfilesItems = await _context
                 .ProfilesItems.Where(profiles =>
-                    createDto.ProfilesItems.Select(t => t.Id).Contains(profiles.Id)
+                    inputDto.ProfilesItems.Select(t => t.Id).Contains(profiles.Id)
                 )
                 .ToListAsync();
         }

@@ -21,28 +21,28 @@ public abstract class AirlinesServiceBase : IAirlinesService
     /// <summary>
     /// Create one Airlines
     /// </summary>
-    public async Task<Airlines> CreateAirlines(AirlineCreateInput createDto)
+    public async Task<Airlines> CreateAirlines(AirlineCreateInput inputDto)
     {
         var airlines = new Airline
         {
-            Amount = createDto.Amount,
-            CreatedAt = createDto.CreatedAt,
-            PaymentStatus = createDto.PaymentStatus,
-            Reference = createDto.Reference,
-            ResponseCode = createDto.ResponseCode,
-            ResponseDescription = createDto.ResponseDescription,
-            ResponseFull = createDto.ResponseFull,
-            UpdatedAt = createDto.UpdatedAt
+            Amount = inputDto.Amount,
+            CreatedAt = inputDto.CreatedAt,
+            PaymentStatus = inputDto.PaymentStatus,
+            Reference = inputDto.Reference,
+            ResponseCode = inputDto.ResponseCode,
+            ResponseDescription = inputDto.ResponseDescription,
+            ResponseFull = inputDto.ResponseFull,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            airlines.Id = createDto.Id;
+            airlines.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             airlines.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

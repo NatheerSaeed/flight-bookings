@@ -25,7 +25,7 @@ public abstract class UsersControllerBase : ControllerBase
     {
         var user = await _service.CreateUser(input);
 
-        return CreatedAtAction(nameof(User), new { id = user.Id }, user);
+        return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public abstract class UsersControllerBase : ControllerBase
     /// Get one User
     /// </summary>
     [HttpGet("{Id}")]
-    public async Task<ActionResult<User>> User([FromRoute()] UserWhereUniqueInput uniqueId)
+    public async Task<ActionResult<User>> GetUser([FromRoute()] UserWhereUniqueInput uniqueId)
     {
         try
         {

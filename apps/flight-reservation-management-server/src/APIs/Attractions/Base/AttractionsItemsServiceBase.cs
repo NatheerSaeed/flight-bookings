@@ -21,35 +21,35 @@ public abstract class AttractionsServiceBase : IAttractionsService
     /// <summary>
     /// Create one Attractions
     /// </summary>
-    public async Task<Attractions> CreateAttractions(AttractionCreateInput createDto)
+    public async Task<Attractions> CreateAttractions(AttractionCreateInput inputDto)
     {
         var attractions = new Attraction
         {
-            Address = createDto.Address,
-            City = createDto.City,
-            CreatedAt = createDto.CreatedAt,
-            Date = createDto.Date,
-            Information = createDto.Information,
-            Name = createDto.Name,
-            UpdatedAt = createDto.UpdatedAt
+            Address = inputDto.Address,
+            City = inputDto.City,
+            CreatedAt = inputDto.CreatedAt,
+            Date = inputDto.Date,
+            Information = inputDto.Information,
+            Name = inputDto.Name,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            attractions.Id = createDto.Id;
+            attractions.Id = inputDto.Id;
         }
-        if (createDto.PackageField != null)
+        if (inputDto.PackageField != null)
         {
             attractions.PackageField = await _context
-                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .PackagesItems.Where(packages => inputDto.PackageField.Id == packages.Id)
                 .FirstOrDefaultAsync();
         }
 
-        if (createDto.SightSeeingsItems != null)
+        if (inputDto.SightSeeingsItems != null)
         {
             attractions.SightSeeingsItems = await _context
                 .SightSeeingsItems.Where(sightSeeings =>
-                    createDto.SightSeeingsItems.Select(t => t.Id).Contains(sightSeeings.Id)
+                    inputDto.SightSeeingsItems.Select(t => t.Id).Contains(sightSeeings.Id)
                 )
                 .ToListAsync();
         }

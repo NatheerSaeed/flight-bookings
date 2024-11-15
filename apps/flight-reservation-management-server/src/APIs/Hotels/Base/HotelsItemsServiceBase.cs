@@ -21,33 +21,33 @@ public abstract class HotelsServiceBase : IHotelsService
     /// <summary>
     /// Create one Hotels
     /// </summary>
-    public async Task<Hotels> CreateHotels(HotelCreateInput createDto)
+    public async Task<Hotels> CreateHotels(HotelCreateInput inputDto)
     {
         var hotels = new Hotel
         {
-            CarMarkupType = createDto.CarMarkupType,
-            CarMarkupValue = createDto.CarMarkupValue,
-            Code = createDto.Code,
-            CreatedAt = createDto.CreatedAt,
-            FlightMarkupType = createDto.FlightMarkupType,
-            FlightMarkupValue = createDto.FlightMarkupValue,
-            HotelMarkupType = createDto.HotelMarkupType,
-            HotelMarkupValue = createDto.HotelMarkupValue,
-            IcaoCode = createDto.IcaoCode,
-            Name = createDto.Name,
-            PackageMarkupType = createDto.PackageMarkupType,
-            PackageMarkupValue = createDto.PackageMarkupValue,
-            UpdatedAt = createDto.UpdatedAt
+            CarMarkupType = inputDto.CarMarkupType,
+            CarMarkupValue = inputDto.CarMarkupValue,
+            Code = inputDto.Code,
+            CreatedAt = inputDto.CreatedAt,
+            FlightMarkupType = inputDto.FlightMarkupType,
+            FlightMarkupValue = inputDto.FlightMarkupValue,
+            HotelMarkupType = inputDto.HotelMarkupType,
+            HotelMarkupValue = inputDto.HotelMarkupValue,
+            IcaoCode = inputDto.IcaoCode,
+            Name = inputDto.Name,
+            PackageMarkupType = inputDto.PackageMarkupType,
+            PackageMarkupValue = inputDto.PackageMarkupValue,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            hotels.Id = createDto.Id;
+            hotels.Id = inputDto.Id;
         }
-        if (createDto.Role != null)
+        if (inputDto.Role != null)
         {
             hotels.Role = await _context
-                .RolesItems.Where(roles => createDto.Role.Id == roles.Id)
+                .RolesItems.Where(roles => inputDto.Role.Id == roles.Id)
                 .FirstOrDefaultAsync();
         }
 

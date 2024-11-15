@@ -21,42 +21,42 @@ public abstract class PackageBookingsServiceBase : IPackageBookingsService
     /// <summary>
     /// Create one PackageBookings
     /// </summary>
-    public async Task<PackageBookings> CreatePackageBookings(PackageBookingCreateInput createDto)
+    public async Task<PackageBookings> CreatePackageBookings(PackageBookingCreateInput inputDto)
     {
         var packageBookings = new PackageBooking
         {
-            Adults = createDto.Adults,
-            BookingStatus = createDto.BookingStatus,
-            Children = createDto.Children,
-            CreatedAt = createDto.CreatedAt,
-            CustomerEmail = createDto.CustomerEmail,
-            CustomerFirstName = createDto.CustomerFirstName,
-            CustomerOtherName = createDto.CustomerOtherName,
-            CustomerPhone = createDto.CustomerPhone,
-            CustomerSurName = createDto.CustomerSurName,
-            CustomerTitleId = createDto.CustomerTitleId,
-            Infants = createDto.Infants,
-            PaymentStatus = createDto.PaymentStatus,
-            Reference = createDto.Reference,
-            TotalAmount = createDto.TotalAmount,
-            UpdatedAt = createDto.UpdatedAt
+            Adults = inputDto.Adults,
+            BookingStatus = inputDto.BookingStatus,
+            Children = inputDto.Children,
+            CreatedAt = inputDto.CreatedAt,
+            CustomerEmail = inputDto.CustomerEmail,
+            CustomerFirstName = inputDto.CustomerFirstName,
+            CustomerOtherName = inputDto.CustomerOtherName,
+            CustomerPhone = inputDto.CustomerPhone,
+            CustomerSurName = inputDto.CustomerSurName,
+            CustomerTitleId = inputDto.CustomerTitleId,
+            Infants = inputDto.Infants,
+            PaymentStatus = inputDto.PaymentStatus,
+            Reference = inputDto.Reference,
+            TotalAmount = inputDto.TotalAmount,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            packageBookings.Id = createDto.Id;
+            packageBookings.Id = inputDto.Id;
         }
-        if (createDto.PackageField != null)
+        if (inputDto.PackageField != null)
         {
             packageBookings.PackageField = await _context
-                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .PackagesItems.Where(packages => inputDto.PackageField.Id == packages.Id)
                 .FirstOrDefaultAsync();
         }
 
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             packageBookings.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

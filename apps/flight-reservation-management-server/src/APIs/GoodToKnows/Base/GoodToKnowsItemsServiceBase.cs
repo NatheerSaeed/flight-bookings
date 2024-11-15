@@ -21,29 +21,29 @@ public abstract class GoodToKnowsServiceBase : IGoodToKnowsService
     /// <summary>
     /// Create one GoodToKnows
     /// </summary>
-    public async Task<GoodToKnows> CreateGoodToKnows(GoodToKnowCreateInput createDto)
+    public async Task<GoodToKnows> CreateGoodToKnows(GoodToKnowCreateInput inputDto)
     {
         var goodToKnows = new GoodToKnow
         {
-            CancellationPrepayment = createDto.CancellationPrepayment,
-            CheckIn = createDto.CheckIn,
-            CheckOut = createDto.CheckOut,
-            ChildrenBeds = createDto.ChildrenBeds,
-            CreatedAt = createDto.CreatedAt,
-            Groups = createDto.Groups,
-            Internet = createDto.Internet,
-            Pets = createDto.Pets,
-            UpdatedAt = createDto.UpdatedAt
+            CancellationPrepayment = inputDto.CancellationPrepayment,
+            CheckIn = inputDto.CheckIn,
+            CheckOut = inputDto.CheckOut,
+            ChildrenBeds = inputDto.ChildrenBeds,
+            CreatedAt = inputDto.CreatedAt,
+            Groups = inputDto.Groups,
+            Internet = inputDto.Internet,
+            Pets = inputDto.Pets,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            goodToKnows.Id = createDto.Id;
+            goodToKnows.Id = inputDto.Id;
         }
-        if (createDto.PackageField != null)
+        if (inputDto.PackageField != null)
         {
             goodToKnows.PackageField = await _context
-                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .PackagesItems.Where(packages => inputDto.PackageField.Id == packages.Id)
                 .FirstOrDefaultAsync();
         }
 

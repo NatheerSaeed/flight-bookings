@@ -21,19 +21,19 @@ public abstract class PasswordResetsServiceBase : IPasswordResetsService
     /// <summary>
     /// Create one PasswordResets
     /// </summary>
-    public async Task<PasswordResets> CreatePasswordResets(PasswordResetCreateInput createDto)
+    public async Task<PasswordResets> CreatePasswordResets(PasswordResetCreateInput inputDto)
     {
         var passwordResets = new PasswordReset
         {
-            CreatedAt = createDto.CreatedAt,
-            Email = createDto.Email,
-            Token = createDto.Token,
-            UpdatedAt = createDto.UpdatedAt
+            CreatedAt = inputDto.CreatedAt,
+            Email = inputDto.Email,
+            Token = inputDto.Token,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            passwordResets.Id = createDto.Id;
+            passwordResets.Id = inputDto.Id;
         }
 
         _context.PasswordResetsItems.Add(passwordResets);

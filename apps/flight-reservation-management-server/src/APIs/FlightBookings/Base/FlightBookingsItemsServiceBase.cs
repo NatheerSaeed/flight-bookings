@@ -21,43 +21,43 @@ public abstract class FlightBookingsServiceBase : IFlightBookingsService
     /// <summary>
     /// Create one FlightBookings
     /// </summary>
-    public async Task<FlightBookings> CreateFlightBookings(FlightBookingCreateInput createDto)
+    public async Task<FlightBookings> CreateFlightBookings(FlightBookingCreateInput inputDto)
     {
         var flightBookings = new FlightBooking
         {
-            CancelTicketStatus = createDto.CancelTicketStatus,
-            CreatedAt = createDto.CreatedAt,
-            IssueTicketStatus = createDto.IssueTicketStatus,
-            ItineraryAmount = createDto.ItineraryAmount,
-            Markdown = createDto.Markdown,
-            Markup = createDto.Markup,
-            PaymentStatus = createDto.PaymentStatus,
-            Pnr = createDto.Pnr,
-            PnrRequestResponse = createDto.PnrRequestResponse,
-            Reference = createDto.Reference,
-            TicketTimeLimit = createDto.TicketTimeLimit,
-            TotalAmount = createDto.TotalAmount,
-            UpdatedAt = createDto.UpdatedAt,
-            Vat = createDto.Vat,
-            VoidTicketStatus = createDto.VoidTicketStatus,
-            VoucherAmount = createDto.VoucherAmount
+            CancelTicketStatus = inputDto.CancelTicketStatus,
+            CreatedAt = inputDto.CreatedAt,
+            IssueTicketStatus = inputDto.IssueTicketStatus,
+            ItineraryAmount = inputDto.ItineraryAmount,
+            Markdown = inputDto.Markdown,
+            Markup = inputDto.Markup,
+            PaymentStatus = inputDto.PaymentStatus,
+            Pnr = inputDto.Pnr,
+            PnrRequestResponse = inputDto.PnrRequestResponse,
+            Reference = inputDto.Reference,
+            TicketTimeLimit = inputDto.TicketTimeLimit,
+            TotalAmount = inputDto.TotalAmount,
+            UpdatedAt = inputDto.UpdatedAt,
+            Vat = inputDto.Vat,
+            VoidTicketStatus = inputDto.VoidTicketStatus,
+            VoucherAmount = inputDto.VoucherAmount
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            flightBookings.Id = createDto.Id;
+            flightBookings.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             flightBookings.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 
-        if (createDto.Voucher != null)
+        if (inputDto.Voucher != null)
         {
             flightBookings.Voucher = await _context
-                .VouchersItems.Where(vouchers => createDto.Voucher.Id == vouchers.Id)
+                .VouchersItems.Where(vouchers => inputDto.Voucher.Id == vouchers.Id)
                 .FirstOrDefaultAsync();
         }
 

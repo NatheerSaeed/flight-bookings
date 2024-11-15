@@ -22,25 +22,25 @@ public abstract class PackageAttractionsServiceBase : IPackageAttractionsService
     /// Create one PackageAttractions
     /// </summary>
     public async Task<PackageAttractions> CreatePackageAttractions(
-        PackageAttractionCreateInput createDto
+        PackageAttractionCreateInput inputDto
     )
     {
         var packageAttractions = new PackageAttraction
         {
-            Address = createDto.Address,
-            AttractionName = createDto.AttractionName,
-            CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
+            Address = inputDto.Address,
+            AttractionName = inputDto.AttractionName,
+            CreatedAt = inputDto.CreatedAt,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            packageAttractions.Id = createDto.Id;
+            packageAttractions.Id = inputDto.Id;
         }
-        if (createDto.PackageField != null)
+        if (inputDto.PackageField != null)
         {
             packageAttractions.PackageField = await _context
-                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .PackagesItems.Where(packages => inputDto.PackageField.Id == packages.Id)
                 .FirstOrDefaultAsync();
         }
 

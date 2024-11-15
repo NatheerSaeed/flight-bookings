@@ -21,19 +21,19 @@ public abstract class EmailSubscribersServiceBase : IEmailSubscribersService
     /// <summary>
     /// Create one EmailSubscribers
     /// </summary>
-    public async Task<EmailSubscribers> CreateEmailSubscribers(EmailSubscriberCreateInput createDto)
+    public async Task<EmailSubscribers> CreateEmailSubscribers(EmailSubscriberCreateInput inputDto)
     {
         var emailSubscribers = new EmailSubscriber
         {
-            CreatedAt = createDto.CreatedAt,
-            Email = createDto.Email,
-            IpAddress = createDto.IpAddress,
-            UpdatedAt = createDto.UpdatedAt
+            CreatedAt = inputDto.CreatedAt,
+            Email = inputDto.Email,
+            IpAddress = inputDto.IpAddress,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            emailSubscribers.Id = createDto.Id;
+            emailSubscribers.Id = inputDto.Id;
         }
 
         _context.EmailSubscribersItems.Add(emailSubscribers);

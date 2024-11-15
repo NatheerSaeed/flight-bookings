@@ -21,18 +21,18 @@ public abstract class WalletLogTypesServiceBase : IWalletLogTypesService
     /// <summary>
     /// Create one WalletLogTypes
     /// </summary>
-    public async Task<WalletLogTypes> CreateWalletLogTypes(WalletLogTypeCreateInput createDto)
+    public async Task<WalletLogTypes> CreateWalletLogTypes(WalletLogTypeCreateInput inputDto)
     {
         var walletLogTypes = new WalletLogType
         {
-            CreatedAt = createDto.CreatedAt,
-            Name = createDto.Name,
-            UpdatedAt = createDto.UpdatedAt
+            CreatedAt = inputDto.CreatedAt,
+            Name = inputDto.Name,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            walletLogTypes.Id = createDto.Id;
+            walletLogTypes.Id = inputDto.Id;
         }
 
         _context.WalletLogTypesItems.Add(walletLogTypes);

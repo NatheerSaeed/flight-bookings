@@ -21,142 +21,142 @@ public abstract class UsersServiceBase : IUsersService
     /// <summary>
     /// Create one User
     /// </summary>
-    public async Task<User> CreateUser(UserCreateInput createDto)
+    public async Task<User> CreateUser(UserCreateInput inputDto)
     {
         var user = new UserDbModel
         {
-            ApiToken = createDto.ApiToken,
-            CreatedAt = createDto.CreatedAt,
-            DeleteStatus = createDto.DeleteStatus,
-            Email = createDto.Email,
-            FirstName = createDto.FirstName,
-            LastName = createDto.LastName,
-            Password = createDto.Password,
-            ProfileCompleteStatus = createDto.ProfileCompleteStatus,
-            Roles = createDto.Roles,
-            UpdatedAt = createDto.UpdatedAt,
-            Username = createDto.Username
+            ApiToken = inputDto.ApiToken,
+            CreatedAt = inputDto.CreatedAt,
+            DeleteStatus = inputDto.DeleteStatus,
+            Email = inputDto.Email,
+            FirstName = inputDto.FirstName,
+            LastName = inputDto.LastName,
+            Password = inputDto.Password,
+            ProfileCompleteStatus = inputDto.ProfileCompleteStatus,
+            Roles = inputDto.Roles,
+            UpdatedAt = inputDto.UpdatedAt,
+            Username = inputDto.Username
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            user.Id = createDto.Id;
+            user.Id = inputDto.Id;
         }
-        if (createDto.AgencyProfilesItems != null)
+        if (inputDto.AgencyProfilesItems != null)
         {
             user.AgencyProfilesItems = await _context
                 .AgencyProfilesItems.Where(agencyProfiles =>
-                    createDto.AgencyProfilesItems.Select(t => t.Id).Contains(agencyProfiles.Id)
+                    inputDto.AgencyProfilesItems.Select(t => t.Id).Contains(agencyProfiles.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.AirlinesItems != null)
+        if (inputDto.AirlinesItems != null)
         {
             user.AirlinesItems = await _context
                 .AirlinesItems.Where(airlines =>
-                    createDto.AirlinesItems.Select(t => t.Id).Contains(airlines.Id)
+                    inputDto.AirlinesItems.Select(t => t.Id).Contains(airlines.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.BankPaymentsItems != null)
+        if (inputDto.BankPaymentsItems != null)
         {
             user.BankPaymentsItems = await _context
                 .BankPaymentsItems.Where(bankPayments =>
-                    createDto.BankPaymentsItems.Select(t => t.Id).Contains(bankPayments.Id)
+                    inputDto.BankPaymentsItems.Select(t => t.Id).Contains(bankPayments.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.CarBookingsItems != null)
+        if (inputDto.CarBookingsItems != null)
         {
             user.CarBookingsItems = await _context
                 .CarBookingsItems.Where(carBookings =>
-                    createDto.CarBookingsItems.Select(t => t.Id).Contains(carBookings.Id)
+                    inputDto.CarBookingsItems.Select(t => t.Id).Contains(carBookings.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.CooperateCustomerProfilesItems != null)
+        if (inputDto.CooperateCustomerProfilesItems != null)
         {
             user.CooperateCustomerProfilesItems = await _context
                 .CooperateCustomerProfilesItems.Where(cooperateCustomerProfiles =>
-                    createDto
+                    inputDto
                         .CooperateCustomerProfilesItems.Select(t => t.Id)
                         .Contains(cooperateCustomerProfiles.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.FlightBookingsItems != null)
+        if (inputDto.FlightBookingsItems != null)
         {
             user.FlightBookingsItems = await _context
                 .FlightBookingsItems.Where(flightBookings =>
-                    createDto.FlightBookingsItems.Select(t => t.Id).Contains(flightBookings.Id)
+                    inputDto.FlightBookingsItems.Select(t => t.Id).Contains(flightBookings.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.HotelBookingsItems != null)
+        if (inputDto.HotelBookingsItems != null)
         {
             user.HotelBookingsItems = await _context
                 .HotelBookingsItems.Where(hotelBookings =>
-                    createDto.HotelBookingsItems.Select(t => t.Id).Contains(hotelBookings.Id)
+                    inputDto.HotelBookingsItems.Select(t => t.Id).Contains(hotelBookings.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.OnlinePaymentsItems != null)
+        if (inputDto.OnlinePaymentsItems != null)
         {
             user.OnlinePaymentsItems = await _context
                 .OnlinePaymentsItems.Where(onlinePayments =>
-                    createDto.OnlinePaymentsItems.Select(t => t.Id).Contains(onlinePayments.Id)
+                    inputDto.OnlinePaymentsItems.Select(t => t.Id).Contains(onlinePayments.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.PackageBookingsItems != null)
+        if (inputDto.PackageBookingsItems != null)
         {
             user.PackageBookingsItems = await _context
                 .PackageBookingsItems.Where(packageBookings =>
-                    createDto.PackageBookingsItems.Select(t => t.Id).Contains(packageBookings.Id)
+                    inputDto.PackageBookingsItems.Select(t => t.Id).Contains(packageBookings.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.PayLatersItems != null)
+        if (inputDto.PayLatersItems != null)
         {
             user.PayLatersItems = await _context
                 .PayLatersItems.Where(payLaters =>
-                    createDto.PayLatersItems.Select(t => t.Id).Contains(payLaters.Id)
+                    inputDto.PayLatersItems.Select(t => t.Id).Contains(payLaters.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.ProfilesItems != null)
+        if (inputDto.ProfilesItems != null)
         {
             user.ProfilesItems = await _context
                 .ProfilesItems.Where(profiles =>
-                    createDto.ProfilesItems.Select(t => t.Id).Contains(profiles.Id)
+                    inputDto.ProfilesItems.Select(t => t.Id).Contains(profiles.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.WalletLogsItems != null)
+        if (inputDto.WalletLogsItems != null)
         {
             user.WalletLogsItems = await _context
                 .WalletLogsItems.Where(walletLogs =>
-                    createDto.WalletLogsItems.Select(t => t.Id).Contains(walletLogs.Id)
+                    inputDto.WalletLogsItems.Select(t => t.Id).Contains(walletLogs.Id)
                 )
                 .ToListAsync();
         }
 
-        if (createDto.WalletsItems != null)
+        if (inputDto.WalletsItems != null)
         {
             user.WalletsItems = await _context
                 .WalletsItems.Where(wallets =>
-                    createDto.WalletsItems.Select(t => t.Id).Contains(wallets.Id)
+                    inputDto.WalletsItems.Select(t => t.Id).Contains(wallets.Id)
                 )
                 .ToListAsync();
         }

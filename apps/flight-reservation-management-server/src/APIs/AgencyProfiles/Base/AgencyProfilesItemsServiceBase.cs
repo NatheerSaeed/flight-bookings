@@ -21,30 +21,30 @@ public abstract class AgencyProfilesServiceBase : IAgencyProfilesService
     /// <summary>
     /// Create one AgencyProfiles
     /// </summary>
-    public async Task<AgencyProfiles> CreateAgencyProfiles(AgencyProfileCreateInput createDto)
+    public async Task<AgencyProfiles> CreateAgencyProfiles(AgencyProfileCreateInput inputDto)
     {
         var agencyProfiles = new AgencyProfile
         {
-            CacRcNumber = createDto.CacRcNumber,
-            CompanyAddress = createDto.CompanyAddress,
-            CompanyContactPersonAddress = createDto.CompanyContactPersonAddress,
-            CompanyContactPersonEmail = createDto.CompanyContactPersonEmail,
-            CompanyContactPersonPhoneNumber = createDto.CompanyContactPersonPhoneNumber,
-            CompanyEmail = createDto.CompanyEmail,
-            CompanyName = createDto.CompanyName,
-            CompanyPhoneNumber = createDto.CompanyPhoneNumber,
-            CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
+            CacRcNumber = inputDto.CacRcNumber,
+            CompanyAddress = inputDto.CompanyAddress,
+            CompanyContactPersonAddress = inputDto.CompanyContactPersonAddress,
+            CompanyContactPersonEmail = inputDto.CompanyContactPersonEmail,
+            CompanyContactPersonPhoneNumber = inputDto.CompanyContactPersonPhoneNumber,
+            CompanyEmail = inputDto.CompanyEmail,
+            CompanyName = inputDto.CompanyName,
+            CompanyPhoneNumber = inputDto.CompanyPhoneNumber,
+            CreatedAt = inputDto.CreatedAt,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            agencyProfiles.Id = createDto.Id;
+            agencyProfiles.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             agencyProfiles.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

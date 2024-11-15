@@ -21,28 +21,28 @@ public abstract class TravelPackagesServiceBase : ITravelPackagesService
     /// <summary>
     /// Create one TravelPackages
     /// </summary>
-    public async Task<TravelPackages> CreateTravelPackages(TravelPackageCreateInput createDto)
+    public async Task<TravelPackages> CreateTravelPackages(TravelPackageCreateInput inputDto)
     {
         var travelPackages = new TravelPackage
         {
-            AdultPrice = createDto.AdultPrice,
-            Attraction = createDto.Attraction,
-            CategoryId = createDto.CategoryId,
-            ChildPrice = createDto.ChildPrice,
-            CreatedAt = createDto.CreatedAt,
-            Flight = createDto.Flight,
-            Hotel = createDto.Hotel,
-            InfantPrice = createDto.InfantPrice,
-            Information = createDto.Information,
-            Name = createDto.Name,
-            PhoneNumber = createDto.PhoneNumber,
-            Status = createDto.Status,
-            UpdatedAt = createDto.UpdatedAt
+            AdultPrice = inputDto.AdultPrice,
+            Attraction = inputDto.Attraction,
+            CategoryId = inputDto.CategoryId,
+            ChildPrice = inputDto.ChildPrice,
+            CreatedAt = inputDto.CreatedAt,
+            Flight = inputDto.Flight,
+            Hotel = inputDto.Hotel,
+            InfantPrice = inputDto.InfantPrice,
+            Information = inputDto.Information,
+            Name = inputDto.Name,
+            PhoneNumber = inputDto.PhoneNumber,
+            Status = inputDto.Status,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            travelPackages.Id = createDto.Id;
+            travelPackages.Id = inputDto.Id;
         }
 
         _context.TravelPackagesItems.Add(travelPackages);

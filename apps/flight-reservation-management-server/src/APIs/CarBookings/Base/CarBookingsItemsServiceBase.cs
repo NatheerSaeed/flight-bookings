@@ -21,29 +21,29 @@ public abstract class CarBookingsServiceBase : ICarBookingsService
     /// <summary>
     /// Create one CarBookings
     /// </summary>
-    public async Task<CarBookings> CreateCarBookings(CarBookingCreateInput createDto)
+    public async Task<CarBookings> CreateCarBookings(CarBookingCreateInput inputDto)
     {
         var carBookings = new CarBooking
         {
-            Amount = createDto.Amount,
-            BookingReference = createDto.BookingReference,
-            CreatedAt = createDto.CreatedAt,
-            DropoffDate = createDto.DropoffDate,
-            DropoffLocation = createDto.DropoffLocation,
-            PickupDate = createDto.PickupDate,
-            PickupLocation = createDto.PickupLocation,
-            UpdatedAt = createDto.UpdatedAt,
-            VehicleId = createDto.VehicleId
+            Amount = inputDto.Amount,
+            BookingReference = inputDto.BookingReference,
+            CreatedAt = inputDto.CreatedAt,
+            DropoffDate = inputDto.DropoffDate,
+            DropoffLocation = inputDto.DropoffLocation,
+            PickupDate = inputDto.PickupDate,
+            PickupLocation = inputDto.PickupLocation,
+            UpdatedAt = inputDto.UpdatedAt,
+            VehicleId = inputDto.VehicleId
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            carBookings.Id = createDto.Id;
+            carBookings.Id = inputDto.Id;
         }
-        if (createDto.User != null)
+        if (inputDto.User != null)
         {
             carBookings.User = await _context
-                .Users.Where(user => createDto.User.Id == user.Id)
+                .Users.Where(user => inputDto.User.Id == user.Id)
                 .FirstOrDefaultAsync();
         }
 

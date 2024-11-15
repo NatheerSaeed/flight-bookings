@@ -21,23 +21,19 @@ public abstract class GendersServiceBase : IGendersService
     /// <summary>
     /// Create one Genders
     /// </summary>
-    public async Task<Genders> CreateGenders(GenderCreateInput createDto)
+    public async Task<Genders> CreateGenders(GenderCreateInput inputDto)
     {
-        var genders = new Gender
-        {
-            CreatedAt = createDto.CreatedAt,
-            UpdatedAt = createDto.UpdatedAt
-        };
+        var genders = new Gender { CreatedAt = inputDto.CreatedAt, UpdatedAt = inputDto.UpdatedAt };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            genders.Id = createDto.Id;
+            genders.Id = inputDto.Id;
         }
-        if (createDto.ProfilesItems != null)
+        if (inputDto.ProfilesItems != null)
         {
             genders.ProfilesItems = await _context
                 .ProfilesItems.Where(profiles =>
-                    createDto.ProfilesItems.Select(t => t.Id).Contains(profiles.Id)
+                    inputDto.ProfilesItems.Select(t => t.Id).Contains(profiles.Id)
                 )
                 .ToListAsync();
         }

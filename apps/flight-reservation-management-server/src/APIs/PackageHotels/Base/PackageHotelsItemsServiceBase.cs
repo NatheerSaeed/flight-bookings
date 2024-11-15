@@ -21,28 +21,28 @@ public abstract class PackageHotelsServiceBase : IPackageHotelsService
     /// <summary>
     /// Create one PackageHotels
     /// </summary>
-    public async Task<PackageHotels> CreatePackageHotels(PackageHotelCreateInput createDto)
+    public async Task<PackageHotels> CreatePackageHotels(PackageHotelCreateInput inputDto)
     {
         var packageHotels = new PackageHotel
         {
-            Address = createDto.Address,
-            CreatedAt = createDto.CreatedAt,
-            GalleryId = createDto.GalleryId,
-            HotelInfo = createDto.HotelInfo,
-            HotelLocation = createDto.HotelLocation,
-            HotelName = createDto.HotelName,
-            HotelStarRating = createDto.HotelStarRating,
-            UpdatedAt = createDto.UpdatedAt
+            Address = inputDto.Address,
+            CreatedAt = inputDto.CreatedAt,
+            GalleryId = inputDto.GalleryId,
+            HotelInfo = inputDto.HotelInfo,
+            HotelLocation = inputDto.HotelLocation,
+            HotelName = inputDto.HotelName,
+            HotelStarRating = inputDto.HotelStarRating,
+            UpdatedAt = inputDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
+        if (inputDto.Id != null)
         {
-            packageHotels.Id = createDto.Id;
+            packageHotels.Id = inputDto.Id;
         }
-        if (createDto.PackageField != null)
+        if (inputDto.PackageField != null)
         {
             packageHotels.PackageField = await _context
-                .PackagesItems.Where(packages => createDto.PackageField.Id == packages.Id)
+                .PackagesItems.Where(packages => inputDto.PackageField.Id == packages.Id)
                 .FirstOrDefaultAsync();
         }
 
