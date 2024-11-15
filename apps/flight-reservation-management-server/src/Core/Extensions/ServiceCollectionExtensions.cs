@@ -19,7 +19,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ICabinTypesItemsService, CabinTypesItemsService>();
         services.AddScoped<ICarBookingsItemsService, CarBookingsItemsService>();
         services.AddScoped<ICommentsItemsService, CommentsItemsService>();
-        services.AddScoped<ICooperateCustomerProfilesItemsService, CooperateCustomerProfilesItemsService>();
         services.AddScoped<IEmailSubscribersItemsService, EmailSubscribersItemsService>();
         services.AddScoped<IFlightBookingsItemsService, FlightBookingsItemsService>();
         services.AddScoped<IFlightDealsItemsService, FlightDealsItemsService>();
@@ -53,5 +52,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IWalletLogsItemsService, WalletLogsItemsService>();
         services.AddScoped<IWalletLogTypesItemsService, WalletLogTypesItemsService>();
         services.AddScoped<IWalletsItemsService, WalletsItemsService>();
+        services.AddScoped<ICooperateCustomerProfilesItemsService, CooperateCustomerProfilesItemsService>();
     }
 }
