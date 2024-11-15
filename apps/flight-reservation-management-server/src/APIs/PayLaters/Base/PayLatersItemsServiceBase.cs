@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class PayLatersItemsServiceBase : IPayLatersItemsService
+public abstract class PayLatersServiceBase : IPayLatersService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public PayLatersItemsServiceBase(FlightReservationManagementDbContext context)
+    public PayLatersServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class PayLatersItemsServiceBase : IPayLatersItemsService
     /// <summary>
     /// Create one PayLaters
     /// </summary>
-    public async Task<PayLaters> CreatePayLaters(PayLatersCreateInput createDto)
+    public async Task<PayLaters> CreatePayLaters(PayLaterCreateInput createDto)
     {
         var payLaters = new PayLatersDbModel
         {
@@ -77,7 +77,7 @@ public abstract class PayLatersItemsServiceBase : IPayLatersItemsService
     /// <summary>
     /// Find many PayLatersItems
     /// </summary>
-    public async Task<List<PayLaters>> PayLatersItems(PayLatersFindManyArgs findManyArgs)
+    public async Task<List<PayLaters>> PayLatersItems(PayLaterFindManyArgs findManyArgs)
     {
         var payLatersItems = await _context
             .PayLatersItems.Include(x => x.User)
@@ -92,7 +92,7 @@ public abstract class PayLatersItemsServiceBase : IPayLatersItemsService
     /// <summary>
     /// Meta data about PayLaters records
     /// </summary>
-    public async Task<MetadataDto> PayLatersItemsMeta(PayLatersFindManyArgs findManyArgs)
+    public async Task<MetadataDto> PayLatersItemsMeta(PayLaterFindManyArgs findManyArgs)
     {
         var count = await _context.PayLatersItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -105,7 +105,7 @@ public abstract class PayLatersItemsServiceBase : IPayLatersItemsService
     public async Task<PayLaters> PayLaters(PayLatersWhereUniqueInput uniqueId)
     {
         var payLatersItems = await this.PayLatersItems(
-            new PayLatersFindManyArgs { Where = new PayLatersWhereInput { Id = uniqueId.Id } }
+            new PayLaterFindManyArgs { Where = new PayLaterWhereInput { Id = uniqueId.Id } }
         );
         var payLaters = payLatersItems.FirstOrDefault();
         if (payLaters == null)
@@ -121,7 +121,7 @@ public abstract class PayLatersItemsServiceBase : IPayLatersItemsService
     /// </summary>
     public async Task UpdatePayLaters(
         PayLatersWhereUniqueInput uniqueId,
-        PayLatersUpdateInput updateDto
+        PayLaterUpdateInput updateDto
     )
     {
         var payLaters = updateDto.ToModel(uniqueId);

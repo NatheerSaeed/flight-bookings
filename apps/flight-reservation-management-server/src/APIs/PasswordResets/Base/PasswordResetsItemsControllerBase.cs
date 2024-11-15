@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class PasswordResetsItemsControllerBase : ControllerBase
+public abstract class PasswordResetsControllerBase : ControllerBase
 {
-    protected readonly IPasswordResetsItemsService _service;
+    protected readonly IPasswordResetsService _service;
 
-    public PasswordResetsItemsControllerBase(IPasswordResetsItemsService service)
+    public PasswordResetsControllerBase(IPasswordResetsService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class PasswordResetsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<PasswordResets>> CreatePasswordResets(
-        PasswordResetsCreateInput input
+        PasswordResetCreateInput input
     )
     {
         var passwordResets = await _service.CreatePasswordResets(input);
@@ -59,7 +59,7 @@ public abstract class PasswordResetsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<PasswordResets>>> PasswordResetsItems(
-        [FromQuery()] PasswordResetsFindManyArgs filter
+        [FromQuery()] PasswordResetFindManyArgs filter
     )
     {
         return Ok(await _service.PasswordResetsItems(filter));
@@ -70,7 +70,7 @@ public abstract class PasswordResetsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> PasswordResetsItemsMeta(
-        [FromQuery()] PasswordResetsFindManyArgs filter
+        [FromQuery()] PasswordResetFindManyArgs filter
     )
     {
         return Ok(await _service.PasswordResetsItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class PasswordResetsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdatePasswordResets(
         [FromRoute()] PasswordResetsWhereUniqueInput uniqueId,
-        [FromQuery()] PasswordResetsUpdateInput passwordResetsUpdateDto
+        [FromQuery()] PasswordResetUpdateInput passwordResetsUpdateDto
     )
     {
         try

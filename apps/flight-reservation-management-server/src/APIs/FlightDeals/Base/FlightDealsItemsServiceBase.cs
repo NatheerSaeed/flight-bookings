@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class FlightDealsItemsServiceBase : IFlightDealsItemsService
+public abstract class FlightDealsServiceBase : IFlightDealsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public FlightDealsItemsServiceBase(FlightReservationManagementDbContext context)
+    public FlightDealsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class FlightDealsItemsServiceBase : IFlightDealsItemsService
     /// <summary>
     /// Create one FlightDeals
     /// </summary>
-    public async Task<FlightDeals> CreateFlightDeals(FlightDealsCreateInput createDto)
+    public async Task<FlightDeals> CreateFlightDeals(FlightDealCreateInput createDto)
     {
         var flightDeals = new FlightDealsDbModel
         {
@@ -77,7 +77,7 @@ public abstract class FlightDealsItemsServiceBase : IFlightDealsItemsService
     /// <summary>
     /// Find many FlightDealsItems
     /// </summary>
-    public async Task<List<FlightDeals>> FlightDealsItems(FlightDealsFindManyArgs findManyArgs)
+    public async Task<List<FlightDeals>> FlightDealsItems(FlightDealFindManyArgs findManyArgs)
     {
         var flightDealsItems = await _context
             .FlightDealsItems.Include(x => x.PackageField)
@@ -92,7 +92,7 @@ public abstract class FlightDealsItemsServiceBase : IFlightDealsItemsService
     /// <summary>
     /// Meta data about FlightDeals records
     /// </summary>
-    public async Task<MetadataDto> FlightDealsItemsMeta(FlightDealsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> FlightDealsItemsMeta(FlightDealFindManyArgs findManyArgs)
     {
         var count = await _context.FlightDealsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -105,7 +105,7 @@ public abstract class FlightDealsItemsServiceBase : IFlightDealsItemsService
     public async Task<FlightDeals> FlightDeals(FlightDealsWhereUniqueInput uniqueId)
     {
         var flightDealsItems = await this.FlightDealsItems(
-            new FlightDealsFindManyArgs { Where = new FlightDealsWhereInput { Id = uniqueId.Id } }
+            new FlightDealFindManyArgs { Where = new FlightDealWhereInput { Id = uniqueId.Id } }
         );
         var flightDeals = flightDealsItems.FirstOrDefault();
         if (flightDeals == null)
@@ -121,7 +121,7 @@ public abstract class FlightDealsItemsServiceBase : IFlightDealsItemsService
     /// </summary>
     public async Task UpdateFlightDeals(
         FlightDealsWhereUniqueInput uniqueId,
-        FlightDealsUpdateInput updateDto
+        FlightDealUpdateInput updateDto
     )
     {
         var flightDeals = updateDto.ToModel(uniqueId);

@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class TravelPackagesCreateInput
+public class TravelPackageCreateInput
 {
     public double? AdultPrice { get; set; }
 

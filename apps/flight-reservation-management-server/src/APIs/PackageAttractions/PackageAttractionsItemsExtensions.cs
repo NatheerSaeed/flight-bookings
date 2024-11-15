@@ -19,7 +19,7 @@ public static class PackageAttractionsItemsExtensions
     }
 
     public static PackageAttractionsDbModel ToModel(
-        this PackageAttractionsUpdateInput updateDto,
+        this PackageAttractionUpdateInput updateDto,
         PackageAttractionsWhereUniqueInput uniqueId
     )
     {

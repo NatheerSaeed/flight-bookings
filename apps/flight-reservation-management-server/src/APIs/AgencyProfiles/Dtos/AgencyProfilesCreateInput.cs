@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class AgencyProfilesCreateInput
+public class AgencyProfileCreateInput
 {
     public string? CacRcNumber { get; set; }
 

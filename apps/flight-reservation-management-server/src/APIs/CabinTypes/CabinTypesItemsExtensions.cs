@@ -18,7 +18,7 @@ public static class CabinTypesItemsExtensions
     }
 
     public static CabinTypesDbModel ToModel(
-        this CabinTypesUpdateInput updateDto,
+        this CabinTypeUpdateInput updateDto,
         CabinTypesWhereUniqueInput uniqueId
     )
     {

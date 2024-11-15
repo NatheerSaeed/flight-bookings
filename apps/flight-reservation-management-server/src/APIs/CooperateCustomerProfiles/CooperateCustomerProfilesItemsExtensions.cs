@@ -25,7 +25,7 @@ public static class CooperateCustomerProfilesItemsExtensions
     }
 
     public static CooperateCustomerProfilesDbModel ToModel(
-        this CooperateCustomerProfilesUpdateInput updateDto,
+        this CooperateCustomerProfileUpdateInput updateDto,
         CooperateCustomerProfilesWhereUniqueInput uniqueId
     )
     {

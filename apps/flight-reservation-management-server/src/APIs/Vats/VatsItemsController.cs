@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs;
 
 [ApiController()]
-public class VatsItemsController : VatsItemsControllerBase
+public class VatsController : VatsControllerBase
 {
-    public VatsItemsController(IVatsItemsService service)
+    public VatsController(IVatsService service)
         : base(service) { }
 }

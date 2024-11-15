@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IOnlinePaymentsItemsService
+public interface IOnlinePaymentsService
 {
     /// <summary>
     /// Create one OnlinePayments
     /// </summary>
-    public Task<OnlinePayments> CreateOnlinePayments(OnlinePaymentsCreateInput onlinepayments);
+    public Task<OnlinePayments> CreateOnlinePayments(OnlinePaymentCreateInput onlinepayments);
 
     /// <summary>
     /// Delete one OnlinePayments
@@ -18,12 +18,12 @@ public interface IOnlinePaymentsItemsService
     /// <summary>
     /// Find many OnlinePaymentsItems
     /// </summary>
-    public Task<List<OnlinePayments>> OnlinePaymentsItems(OnlinePaymentsFindManyArgs findManyArgs);
+    public Task<List<OnlinePayments>> OnlinePaymentsItems(OnlinePaymentFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about OnlinePayments records
     /// </summary>
-    public Task<MetadataDto> OnlinePaymentsItemsMeta(OnlinePaymentsFindManyArgs findManyArgs);
+    public Task<MetadataDto> OnlinePaymentsItemsMeta(OnlinePaymentFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one OnlinePayments
@@ -35,7 +35,7 @@ public interface IOnlinePaymentsItemsService
     /// </summary>
     public Task UpdateOnlinePayments(
         OnlinePaymentsWhereUniqueInput uniqueId,
-        OnlinePaymentsUpdateInput updateDto
+        OnlinePaymentUpdateInput updateDto
     );
 
     /// <summary>

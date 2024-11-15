@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsItemsService
+public abstract class PackageAttractionsServiceBase : IPackageAttractionsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public PackageAttractionsItemsServiceBase(FlightReservationManagementDbContext context)
+    public PackageAttractionsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -22,7 +22,7 @@ public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsIt
     /// Create one PackageAttractions
     /// </summary>
     public async Task<PackageAttractions> CreatePackageAttractions(
-        PackageAttractionsCreateInput createDto
+        PackageAttractionCreateInput createDto
     )
     {
         var packageAttractions = new PackageAttractionsDbModel
@@ -76,7 +76,7 @@ public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsIt
     /// Find many PackageAttractionsItems
     /// </summary>
     public async Task<List<PackageAttractions>> PackageAttractionsItems(
-        PackageAttractionsFindManyArgs findManyArgs
+        PackageAttractionFindManyArgs findManyArgs
     )
     {
         var packageAttractionsItems = await _context
@@ -93,7 +93,7 @@ public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsIt
     /// Meta data about PackageAttractions records
     /// </summary>
     public async Task<MetadataDto> PackageAttractionsItemsMeta(
-        PackageAttractionsFindManyArgs findManyArgs
+        PackageAttractionFindManyArgs findManyArgs
     )
     {
         var count = await _context
@@ -111,9 +111,9 @@ public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsIt
     )
     {
         var packageAttractionsItems = await this.PackageAttractionsItems(
-            new PackageAttractionsFindManyArgs
+            new PackageAttractionFindManyArgs
             {
-                Where = new PackageAttractionsWhereInput { Id = uniqueId.Id }
+                Where = new PackageAttractionWhereInput { Id = uniqueId.Id }
             }
         );
         var packageAttractions = packageAttractionsItems.FirstOrDefault();
@@ -130,7 +130,7 @@ public abstract class PackageAttractionsItemsServiceBase : IPackageAttractionsIt
     /// </summary>
     public async Task UpdatePackageAttractions(
         PackageAttractionsWhereUniqueInput uniqueId,
-        PackageAttractionsUpdateInput updateDto
+        PackageAttractionUpdateInput updateDto
     )
     {
         var packageAttractions = updateDto.ToModel(uniqueId);

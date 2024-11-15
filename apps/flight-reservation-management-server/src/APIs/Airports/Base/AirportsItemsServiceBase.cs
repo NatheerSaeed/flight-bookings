@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class AirportsItemsServiceBase : IAirportsItemsService
+public abstract class AirportsServiceBase : IAirportsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public AirportsItemsServiceBase(FlightReservationManagementDbContext context)
+    public AirportsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class AirportsItemsServiceBase : IAirportsItemsService
     /// <summary>
     /// Create one Airports
     /// </summary>
-    public async Task<Airports> CreateAirports(AirportsCreateInput createDto)
+    public async Task<Airports> CreateAirports(AirportCreateInput createDto)
     {
         var airports = new AirportsDbModel
         {
@@ -67,7 +67,7 @@ public abstract class AirportsItemsServiceBase : IAirportsItemsService
     /// <summary>
     /// Find many AirportsItems
     /// </summary>
-    public async Task<List<Airports>> AirportsItems(AirportsFindManyArgs findManyArgs)
+    public async Task<List<Airports>> AirportsItems(AirportFindManyArgs findManyArgs)
     {
         var airportsItems = await _context
             .AirportsItems.ApplyWhere(findManyArgs.Where)
@@ -81,7 +81,7 @@ public abstract class AirportsItemsServiceBase : IAirportsItemsService
     /// <summary>
     /// Meta data about Airports records
     /// </summary>
-    public async Task<MetadataDto> AirportsItemsMeta(AirportsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> AirportsItemsMeta(AirportFindManyArgs findManyArgs)
     {
         var count = await _context.AirportsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -94,7 +94,7 @@ public abstract class AirportsItemsServiceBase : IAirportsItemsService
     public async Task<Airports> Airports(AirportsWhereUniqueInput uniqueId)
     {
         var airportsItems = await this.AirportsItems(
-            new AirportsFindManyArgs { Where = new AirportsWhereInput { Id = uniqueId.Id } }
+            new AirportFindManyArgs { Where = new AirportWhereInput { Id = uniqueId.Id } }
         );
         var airports = airportsItems.FirstOrDefault();
         if (airports == null)
@@ -110,7 +110,7 @@ public abstract class AirportsItemsServiceBase : IAirportsItemsService
     /// </summary>
     public async Task UpdateAirports(
         AirportsWhereUniqueInput uniqueId,
-        AirportsUpdateInput updateDto
+        AirportUpdateInput updateDto
     )
     {
         var airports = updateDto.ToModel(uniqueId);

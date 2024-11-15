@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IVatsItemsService
+public interface IVatsService
 {
     /// <summary>
     /// Create one Vats
     /// </summary>
-    public Task<Vats> CreateVats(VatsCreateInput vats);
+    public Task<Vats> CreateVats(VatCreateInput vats);
 
     /// <summary>
     /// Delete one Vats
@@ -18,12 +18,12 @@ public interface IVatsItemsService
     /// <summary>
     /// Find many VatsItems
     /// </summary>
-    public Task<List<Vats>> VatsItems(VatsFindManyArgs findManyArgs);
+    public Task<List<Vats>> VatsItems(VatFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Vats records
     /// </summary>
-    public Task<MetadataDto> VatsItemsMeta(VatsFindManyArgs findManyArgs);
+    public Task<MetadataDto> VatsItemsMeta(VatFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Vats
@@ -33,5 +33,5 @@ public interface IVatsItemsService
     /// <summary>
     /// Update one Vats
     /// </summary>
-    public Task UpdateVats(VatsWhereUniqueInput uniqueId, VatsUpdateInput updateDto);
+    public Task UpdateVats(VatsWhereUniqueInput uniqueId, VatUpdateInput updateDto);
 }

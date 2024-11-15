@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class PackageHotelsCreateInput
+public class PackageHotelCreateInput
 {
     public string? Address { get; set; }
 

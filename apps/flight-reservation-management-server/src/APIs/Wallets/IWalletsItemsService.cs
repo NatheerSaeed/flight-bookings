@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IWalletsItemsService
+public interface IWalletsService
 {
     /// <summary>
     /// Create one Wallets
     /// </summary>
-    public Task<Wallets> CreateWallets(WalletsCreateInput wallets);
+    public Task<Wallets> CreateWallets(WalletCreateInput wallets);
 
     /// <summary>
     /// Delete one Wallets
@@ -18,12 +18,12 @@ public interface IWalletsItemsService
     /// <summary>
     /// Find many WalletsItems
     /// </summary>
-    public Task<List<Wallets>> WalletsItems(WalletsFindManyArgs findManyArgs);
+    public Task<List<Wallets>> WalletsItems(WalletFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Wallets records
     /// </summary>
-    public Task<MetadataDto> WalletsItemsMeta(WalletsFindManyArgs findManyArgs);
+    public Task<MetadataDto> WalletsItemsMeta(WalletFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Wallets
@@ -33,7 +33,7 @@ public interface IWalletsItemsService
     /// <summary>
     /// Update one Wallets
     /// </summary>
-    public Task UpdateWallets(WalletsWhereUniqueInput uniqueId, WalletsUpdateInput updateDto);
+    public Task UpdateWallets(WalletsWhereUniqueInput uniqueId, WalletUpdateInput updateDto);
 
     /// <summary>
     /// Get a user_ record for Wallets

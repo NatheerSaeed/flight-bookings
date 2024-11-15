@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class GendersUpdateInput
+public class GenderUpdateInput
 {
     public DateTime? CreatedAt { get; set; }
 

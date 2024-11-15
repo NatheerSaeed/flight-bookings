@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class MarkdownsWhereInput
+public class MarkdownWhereInput
 {
     public string? AirlineCode { get; set; }
 

@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class AttractionsCreateInput
+public class AttractionCreateInput
 {
     public string? Address { get; set; }
 

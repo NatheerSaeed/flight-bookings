@@ -23,7 +23,7 @@ public static class VisaApplicationsItemsExtensions
     }
 
     public static VisaApplicationsDbModel ToModel(
-        this VisaApplicationsUpdateInput updateDto,
+        this VisaApplicationUpdateInput updateDto,
         VisaApplicationsWhereUniqueInput uniqueId
     )
     {

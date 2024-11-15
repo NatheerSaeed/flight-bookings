@@ -5,4 +5,4 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
-public class GoodToKnowsFindManyArgs : FindManyInput<GoodToKnows, GoodToKnowsWhereInput> { }
+public class GoodToKnowFindManyArgs : FindManyInput<GoodToKnows, GoodToKnowWhereInput> { }

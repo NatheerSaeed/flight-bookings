@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class PackageHotelsItemsServiceBase : IPackageHotelsItemsService
+public abstract class PackageHotelsServiceBase : IPackageHotelsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public PackageHotelsItemsServiceBase(FlightReservationManagementDbContext context)
+    public PackageHotelsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class PackageHotelsItemsServiceBase : IPackageHotelsItemsService
     /// <summary>
     /// Create one PackageHotels
     /// </summary>
-    public async Task<PackageHotels> CreatePackageHotels(PackageHotelsCreateInput createDto)
+    public async Task<PackageHotels> CreatePackageHotels(PackageHotelCreateInput createDto)
     {
         var packageHotels = new PackageHotelsDbModel
         {
@@ -77,9 +77,7 @@ public abstract class PackageHotelsItemsServiceBase : IPackageHotelsItemsService
     /// <summary>
     /// Find many PackageHotelsItems
     /// </summary>
-    public async Task<List<PackageHotels>> PackageHotelsItems(
-        PackageHotelsFindManyArgs findManyArgs
-    )
+    public async Task<List<PackageHotels>> PackageHotelsItems(PackageHotelFindManyArgs findManyArgs)
     {
         var packageHotelsItems = await _context
             .PackageHotelsItems.Include(x => x.PackageField)
@@ -94,7 +92,7 @@ public abstract class PackageHotelsItemsServiceBase : IPackageHotelsItemsService
     /// <summary>
     /// Meta data about PackageHotels records
     /// </summary>
-    public async Task<MetadataDto> PackageHotelsItemsMeta(PackageHotelsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> PackageHotelsItemsMeta(PackageHotelFindManyArgs findManyArgs)
     {
         var count = await _context.PackageHotelsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -107,10 +105,7 @@ public abstract class PackageHotelsItemsServiceBase : IPackageHotelsItemsService
     public async Task<PackageHotels> PackageHotels(PackageHotelsWhereUniqueInput uniqueId)
     {
         var packageHotelsItems = await this.PackageHotelsItems(
-            new PackageHotelsFindManyArgs
-            {
-                Where = new PackageHotelsWhereInput { Id = uniqueId.Id }
-            }
+            new PackageHotelFindManyArgs { Where = new PackageHotelWhereInput { Id = uniqueId.Id } }
         );
         var packageHotels = packageHotelsItems.FirstOrDefault();
         if (packageHotels == null)
@@ -126,7 +121,7 @@ public abstract class PackageHotelsItemsServiceBase : IPackageHotelsItemsService
     /// </summary>
     public async Task UpdatePackageHotels(
         PackageHotelsWhereUniqueInput uniqueId,
-        PackageHotelsUpdateInput updateDto
+        PackageHotelUpdateInput updateDto
     )
     {
         var packageHotels = updateDto.ToModel(uniqueId);

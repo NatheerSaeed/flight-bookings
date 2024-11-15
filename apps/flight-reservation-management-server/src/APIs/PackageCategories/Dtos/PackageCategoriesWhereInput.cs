@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class PackageCategoriesWhereInput
+public class PackageCategorieWhereInput
 {
     public string? Category { get; set; }
 

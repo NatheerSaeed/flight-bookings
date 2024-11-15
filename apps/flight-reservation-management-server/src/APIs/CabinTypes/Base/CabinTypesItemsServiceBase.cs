@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class CabinTypesItemsServiceBase : ICabinTypesItemsService
+public abstract class CabinTypesServiceBase : ICabinTypesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public CabinTypesItemsServiceBase(FlightReservationManagementDbContext context)
+    public CabinTypesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class CabinTypesItemsServiceBase : ICabinTypesItemsService
     /// <summary>
     /// Create one CabinTypes
     /// </summary>
-    public async Task<CabinTypes> CreateCabinTypes(CabinTypesCreateInput createDto)
+    public async Task<CabinTypes> CreateCabinTypes(CabinTypeCreateInput createDto)
     {
         var cabinTypes = new CabinTypesDbModel
         {
@@ -67,7 +67,7 @@ public abstract class CabinTypesItemsServiceBase : ICabinTypesItemsService
     /// <summary>
     /// Find many CabinTypesItems
     /// </summary>
-    public async Task<List<CabinTypes>> CabinTypesItems(CabinTypesFindManyArgs findManyArgs)
+    public async Task<List<CabinTypes>> CabinTypesItems(CabinTypeFindManyArgs findManyArgs)
     {
         var cabinTypesItems = await _context
             .CabinTypesItems.ApplyWhere(findManyArgs.Where)
@@ -81,7 +81,7 @@ public abstract class CabinTypesItemsServiceBase : ICabinTypesItemsService
     /// <summary>
     /// Meta data about CabinTypes records
     /// </summary>
-    public async Task<MetadataDto> CabinTypesItemsMeta(CabinTypesFindManyArgs findManyArgs)
+    public async Task<MetadataDto> CabinTypesItemsMeta(CabinTypeFindManyArgs findManyArgs)
     {
         var count = await _context.CabinTypesItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -94,7 +94,7 @@ public abstract class CabinTypesItemsServiceBase : ICabinTypesItemsService
     public async Task<CabinTypes> CabinTypes(CabinTypesWhereUniqueInput uniqueId)
     {
         var cabinTypesItems = await this.CabinTypesItems(
-            new CabinTypesFindManyArgs { Where = new CabinTypesWhereInput { Id = uniqueId.Id } }
+            new CabinTypeFindManyArgs { Where = new CabinTypeWhereInput { Id = uniqueId.Id } }
         );
         var cabinTypes = cabinTypesItems.FirstOrDefault();
         if (cabinTypes == null)
@@ -110,7 +110,7 @@ public abstract class CabinTypesItemsServiceBase : ICabinTypesItemsService
     /// </summary>
     public async Task UpdateCabinTypes(
         CabinTypesWhereUniqueInput uniqueId,
-        CabinTypesUpdateInput updateDto
+        CabinTypeUpdateInput updateDto
     )
     {
         var cabinTypes = updateDto.ToModel(uniqueId);

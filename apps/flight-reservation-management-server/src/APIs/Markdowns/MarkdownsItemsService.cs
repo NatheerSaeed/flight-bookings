@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class MarkdownsItemsService : MarkdownsItemsServiceBase
+public class MarkdownsService : MarkdownsServiceBase
 {
-    public MarkdownsItemsService(FlightReservationManagementDbContext context)
+    public MarkdownsService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

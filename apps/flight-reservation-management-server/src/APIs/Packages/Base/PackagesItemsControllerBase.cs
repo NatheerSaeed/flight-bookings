@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class PackagesItemsControllerBase : ControllerBase
+public abstract class PackagesControllerBase : ControllerBase
 {
-    protected readonly IPackagesItemsService _service;
+    protected readonly IPackagesService _service;
 
-    public PackagesItemsControllerBase(IPackagesItemsService service)
+    public PackagesControllerBase(IPackagesService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     /// Create one Packages
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Packages>> CreatePackages(PackagesCreateInput input)
+    public async Task<ActionResult<Packages>> CreatePackages(PackageCreateInput input)
     {
         var packages = await _service.CreatePackages(input);
 
@@ -51,7 +51,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Packages>>> PackagesItems(
-        [FromQuery()] PackagesFindManyArgs filter
+        [FromQuery()] PackageFindManyArgs filter
     )
     {
         return Ok(await _service.PackagesItems(filter));
@@ -62,7 +62,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> PackagesItemsMeta(
-        [FromQuery()] PackagesFindManyArgs filter
+        [FromQuery()] PackageFindManyArgs filter
     )
     {
         return Ok(await _service.PackagesItemsMeta(filter));
@@ -92,7 +92,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdatePackages(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] PackagesUpdateInput packagesUpdateDto
+        [FromQuery()] PackageUpdateInput packagesUpdateDto
     )
     {
         try
@@ -155,7 +155,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/attractionsItems")]
     public async Task<ActionResult<List<Attractions>>> FindAttractionsItems(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] AttractionsFindManyArgs filter
+        [FromQuery()] AttractionFindManyArgs filter
     )
     {
         try
@@ -237,7 +237,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/flightDealsItems")]
     public async Task<ActionResult<List<FlightDeals>>> FindFlightDealsItems(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] FlightDealsFindManyArgs filter
+        [FromQuery()] FlightDealFindManyArgs filter
     )
     {
         try
@@ -319,7 +319,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/galleriesItems")]
     public async Task<ActionResult<List<Galleries>>> FindGalleriesItems(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] GalleriesFindManyArgs filter
+        [FromQuery()] GallerieFindManyArgs filter
     )
     {
         try
@@ -401,7 +401,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/goodToKnowsItems")]
     public async Task<ActionResult<List<GoodToKnows>>> FindGoodToKnowsItems(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] GoodToKnowsFindManyArgs filter
+        [FromQuery()] GoodToKnowFindManyArgs filter
     )
     {
         try
@@ -483,7 +483,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/hotelDealsItems")]
     public async Task<ActionResult<List<HotelDeals>>> FindHotelDealsItems(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] HotelDealsFindManyArgs filter
+        [FromQuery()] HotelDealFindManyArgs filter
     )
     {
         try
@@ -565,7 +565,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/packageAttractionsItems")]
     public async Task<ActionResult<List<PackageAttractions>>> FindPackageAttractionsItems(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] PackageAttractionsFindManyArgs filter
+        [FromQuery()] PackageAttractionFindManyArgs filter
     )
     {
         try
@@ -647,7 +647,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/packageBookingsItems")]
     public async Task<ActionResult<List<PackageBookings>>> FindPackageBookingsItems(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] PackageBookingsFindManyArgs filter
+        [FromQuery()] PackageBookingFindManyArgs filter
     )
     {
         try
@@ -729,7 +729,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/packageFlightsItems")]
     public async Task<ActionResult<List<PackageFlights>>> FindPackageFlightsItems(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] PackageFlightsFindManyArgs filter
+        [FromQuery()] PackageFlightFindManyArgs filter
     )
     {
         try
@@ -811,7 +811,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/packageHotelsItems")]
     public async Task<ActionResult<List<PackageHotels>>> FindPackageHotelsItems(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] PackageHotelsFindManyArgs filter
+        [FromQuery()] PackageHotelFindManyArgs filter
     )
     {
         try
@@ -893,7 +893,7 @@ public abstract class PackagesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/sightSeeingsItems")]
     public async Task<ActionResult<List<SightSeeings>>> FindSightSeeingsItems(
         [FromRoute()] PackagesWhereUniqueInput uniqueId,
-        [FromQuery()] SightSeeingsFindManyArgs filter
+        [FromQuery()] SightSeeingFindManyArgs filter
     )
     {
         try

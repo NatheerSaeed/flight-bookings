@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class GendersItemsControllerBase : ControllerBase
+public abstract class GendersControllerBase : ControllerBase
 {
-    protected readonly IGendersItemsService _service;
+    protected readonly IGendersService _service;
 
-    public GendersItemsControllerBase(IGendersItemsService service)
+    public GendersControllerBase(IGendersService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class GendersItemsControllerBase : ControllerBase
     /// Create one Genders
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Genders>> CreateGenders(GendersCreateInput input)
+    public async Task<ActionResult<Genders>> CreateGenders(GenderCreateInput input)
     {
         var genders = await _service.CreateGenders(input);
 
@@ -51,7 +51,7 @@ public abstract class GendersItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Genders>>> GendersItems(
-        [FromQuery()] GendersFindManyArgs filter
+        [FromQuery()] GenderFindManyArgs filter
     )
     {
         return Ok(await _service.GendersItems(filter));
@@ -62,7 +62,7 @@ public abstract class GendersItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> GendersItemsMeta(
-        [FromQuery()] GendersFindManyArgs filter
+        [FromQuery()] GenderFindManyArgs filter
     )
     {
         return Ok(await _service.GendersItemsMeta(filter));
@@ -90,7 +90,7 @@ public abstract class GendersItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateGenders(
         [FromRoute()] GendersWhereUniqueInput uniqueId,
-        [FromQuery()] GendersUpdateInput gendersUpdateDto
+        [FromQuery()] GenderUpdateInput gendersUpdateDto
     )
     {
         try
@@ -153,7 +153,7 @@ public abstract class GendersItemsControllerBase : ControllerBase
     [HttpGet("{Id}/profilesItems")]
     public async Task<ActionResult<List<Profiles>>> FindProfilesItems(
         [FromRoute()] GendersWhereUniqueInput uniqueId,
-        [FromQuery()] ProfilesFindManyArgs filter
+        [FromQuery()] ProfileFindManyArgs filter
     )
     {
         try

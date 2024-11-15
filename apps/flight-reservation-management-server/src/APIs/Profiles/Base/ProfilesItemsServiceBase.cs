@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class ProfilesItemsServiceBase : IProfilesItemsService
+public abstract class ProfilesServiceBase : IProfilesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public ProfilesItemsServiceBase(FlightReservationManagementDbContext context)
+    public ProfilesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class ProfilesItemsServiceBase : IProfilesItemsService
     /// <summary>
     /// Create one Profiles
     /// </summary>
-    public async Task<Profiles> CreateProfiles(ProfilesCreateInput createDto)
+    public async Task<Profiles> CreateProfiles(ProfileCreateInput createDto)
     {
         var profiles = new ProfilesDbModel
         {
@@ -91,7 +91,7 @@ public abstract class ProfilesItemsServiceBase : IProfilesItemsService
     /// <summary>
     /// Find many ProfilesItems
     /// </summary>
-    public async Task<List<Profiles>> ProfilesItems(ProfilesFindManyArgs findManyArgs)
+    public async Task<List<Profiles>> ProfilesItems(ProfileFindManyArgs findManyArgs)
     {
         var profilesItems = await _context
             .ProfilesItems.Include(x => x.Gender)
@@ -108,7 +108,7 @@ public abstract class ProfilesItemsServiceBase : IProfilesItemsService
     /// <summary>
     /// Meta data about Profiles records
     /// </summary>
-    public async Task<MetadataDto> ProfilesItemsMeta(ProfilesFindManyArgs findManyArgs)
+    public async Task<MetadataDto> ProfilesItemsMeta(ProfileFindManyArgs findManyArgs)
     {
         var count = await _context.ProfilesItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -121,7 +121,7 @@ public abstract class ProfilesItemsServiceBase : IProfilesItemsService
     public async Task<Profiles> Profiles(ProfilesWhereUniqueInput uniqueId)
     {
         var profilesItems = await this.ProfilesItems(
-            new ProfilesFindManyArgs { Where = new ProfilesWhereInput { Id = uniqueId.Id } }
+            new ProfileFindManyArgs { Where = new ProfileWhereInput { Id = uniqueId.Id } }
         );
         var profiles = profilesItems.FirstOrDefault();
         if (profiles == null)
@@ -137,7 +137,7 @@ public abstract class ProfilesItemsServiceBase : IProfilesItemsService
     /// </summary>
     public async Task UpdateProfiles(
         ProfilesWhereUniqueInput uniqueId,
-        ProfilesUpdateInput updateDto
+        ProfileUpdateInput updateDto
     )
     {
         var profiles = updateDto.ToModel(uniqueId);

@@ -43,7 +43,7 @@ public static class HotelBookingsItemsExtensions
     }
 
     public static HotelBookingsDbModel ToModel(
-        this HotelBookingsUpdateInput updateDto,
+        this HotelBookingUpdateInput updateDto,
         HotelBookingsWhereUniqueInput uniqueId
     )
     {

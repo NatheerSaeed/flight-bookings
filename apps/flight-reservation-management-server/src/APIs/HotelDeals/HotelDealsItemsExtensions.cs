@@ -25,7 +25,7 @@ public static class HotelDealsItemsExtensions
     }
 
     public static HotelDealsDbModel ToModel(
-        this HotelDealsUpdateInput updateDto,
+        this HotelDealUpdateInput updateDto,
         HotelDealsWhereUniqueInput uniqueId
     )
     {

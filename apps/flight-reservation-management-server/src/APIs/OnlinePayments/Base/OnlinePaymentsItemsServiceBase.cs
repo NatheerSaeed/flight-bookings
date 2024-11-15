@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class OnlinePaymentsItemsServiceBase : IOnlinePaymentsItemsService
+public abstract class OnlinePaymentsServiceBase : IOnlinePaymentsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public OnlinePaymentsItemsServiceBase(FlightReservationManagementDbContext context)
+    public OnlinePaymentsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class OnlinePaymentsItemsServiceBase : IOnlinePaymentsItemsServi
     /// <summary>
     /// Create one OnlinePayments
     /// </summary>
-    public async Task<OnlinePayments> CreateOnlinePayments(OnlinePaymentsCreateInput createDto)
+    public async Task<OnlinePayments> CreateOnlinePayments(OnlinePaymentCreateInput createDto)
     {
         var onlinePayments = new OnlinePaymentsDbModel
         {
@@ -79,7 +79,7 @@ public abstract class OnlinePaymentsItemsServiceBase : IOnlinePaymentsItemsServi
     /// Find many OnlinePaymentsItems
     /// </summary>
     public async Task<List<OnlinePayments>> OnlinePaymentsItems(
-        OnlinePaymentsFindManyArgs findManyArgs
+        OnlinePaymentFindManyArgs findManyArgs
     )
     {
         var onlinePaymentsItems = await _context
@@ -95,7 +95,7 @@ public abstract class OnlinePaymentsItemsServiceBase : IOnlinePaymentsItemsServi
     /// <summary>
     /// Meta data about OnlinePayments records
     /// </summary>
-    public async Task<MetadataDto> OnlinePaymentsItemsMeta(OnlinePaymentsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> OnlinePaymentsItemsMeta(OnlinePaymentFindManyArgs findManyArgs)
     {
         var count = await _context.OnlinePaymentsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -108,9 +108,9 @@ public abstract class OnlinePaymentsItemsServiceBase : IOnlinePaymentsItemsServi
     public async Task<OnlinePayments> OnlinePayments(OnlinePaymentsWhereUniqueInput uniqueId)
     {
         var onlinePaymentsItems = await this.OnlinePaymentsItems(
-            new OnlinePaymentsFindManyArgs
+            new OnlinePaymentFindManyArgs
             {
-                Where = new OnlinePaymentsWhereInput { Id = uniqueId.Id }
+                Where = new OnlinePaymentWhereInput { Id = uniqueId.Id }
             }
         );
         var onlinePayments = onlinePaymentsItems.FirstOrDefault();
@@ -127,7 +127,7 @@ public abstract class OnlinePaymentsItemsServiceBase : IOnlinePaymentsItemsServi
     /// </summary>
     public async Task UpdateOnlinePayments(
         OnlinePaymentsWhereUniqueInput uniqueId,
-        OnlinePaymentsUpdateInput updateDto
+        OnlinePaymentUpdateInput updateDto
     )
     {
         var onlinePayments = updateDto.ToModel(uniqueId);

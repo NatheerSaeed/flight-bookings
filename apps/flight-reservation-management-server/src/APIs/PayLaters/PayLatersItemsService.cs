@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class PayLatersItemsService : PayLatersItemsServiceBase
+public class PayLatersService : PayLatersServiceBase
 {
-    public PayLatersItemsService(FlightReservationManagementDbContext context)
+    public PayLatersService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

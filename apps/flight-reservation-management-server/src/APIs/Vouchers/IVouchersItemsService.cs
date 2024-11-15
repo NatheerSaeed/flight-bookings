@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IVouchersItemsService
+public interface IVouchersService
 {
     /// <summary>
     /// Create one Vouchers
     /// </summary>
-    public Task<Vouchers> CreateVouchers(VouchersCreateInput vouchers);
+    public Task<Vouchers> CreateVouchers(VoucherCreateInput vouchers);
 
     /// <summary>
     /// Delete one Vouchers
@@ -18,12 +18,12 @@ public interface IVouchersItemsService
     /// <summary>
     /// Find many VouchersItems
     /// </summary>
-    public Task<List<Vouchers>> VouchersItems(VouchersFindManyArgs findManyArgs);
+    public Task<List<Vouchers>> VouchersItems(VoucherFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Vouchers records
     /// </summary>
-    public Task<MetadataDto> VouchersItemsMeta(VouchersFindManyArgs findManyArgs);
+    public Task<MetadataDto> VouchersItemsMeta(VoucherFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Vouchers
@@ -33,7 +33,7 @@ public interface IVouchersItemsService
     /// <summary>
     /// Update one Vouchers
     /// </summary>
-    public Task UpdateVouchers(VouchersWhereUniqueInput uniqueId, VouchersUpdateInput updateDto);
+    public Task UpdateVouchers(VouchersWhereUniqueInput uniqueId, VoucherUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple FlightBookingsItems records to Vouchers
@@ -56,7 +56,7 @@ public interface IVouchersItemsService
     /// </summary>
     public Task<List<FlightBookings>> FindFlightBookingsItems(
         VouchersWhereUniqueInput uniqueId,
-        FlightBookingsFindManyArgs FlightBookingsFindManyArgs
+        FlightBookingFindManyArgs FlightBookingFindManyArgs
     );
 
     /// <summary>
@@ -88,7 +88,7 @@ public interface IVouchersItemsService
     /// </summary>
     public Task<List<HotelBookings>> FindHotelBookingsItems(
         VouchersWhereUniqueInput uniqueId,
-        HotelBookingsFindManyArgs HotelBookingsFindManyArgs
+        HotelBookingFindManyArgs HotelBookingFindManyArgs
     );
 
     /// <summary>

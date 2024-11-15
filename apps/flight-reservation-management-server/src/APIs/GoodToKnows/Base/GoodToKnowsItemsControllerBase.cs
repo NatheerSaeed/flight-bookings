@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class GoodToKnowsItemsControllerBase : ControllerBase
+public abstract class GoodToKnowsControllerBase : ControllerBase
 {
-    protected readonly IGoodToKnowsItemsService _service;
+    protected readonly IGoodToKnowsService _service;
 
-    public GoodToKnowsItemsControllerBase(IGoodToKnowsItemsService service)
+    public GoodToKnowsControllerBase(IGoodToKnowsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class GoodToKnowsItemsControllerBase : ControllerBase
     /// Create one GoodToKnows
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<GoodToKnows>> CreateGoodToKnows(GoodToKnowsCreateInput input)
+    public async Task<ActionResult<GoodToKnows>> CreateGoodToKnows(GoodToKnowCreateInput input)
     {
         var goodToKnows = await _service.CreateGoodToKnows(input);
 
@@ -53,7 +53,7 @@ public abstract class GoodToKnowsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<GoodToKnows>>> GoodToKnowsItems(
-        [FromQuery()] GoodToKnowsFindManyArgs filter
+        [FromQuery()] GoodToKnowFindManyArgs filter
     )
     {
         return Ok(await _service.GoodToKnowsItems(filter));
@@ -64,7 +64,7 @@ public abstract class GoodToKnowsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> GoodToKnowsItemsMeta(
-        [FromQuery()] GoodToKnowsFindManyArgs filter
+        [FromQuery()] GoodToKnowFindManyArgs filter
     )
     {
         return Ok(await _service.GoodToKnowsItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class GoodToKnowsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateGoodToKnows(
         [FromRoute()] GoodToKnowsWhereUniqueInput uniqueId,
-        [FromQuery()] GoodToKnowsUpdateInput goodToKnowsUpdateDto
+        [FromQuery()] GoodToKnowUpdateInput goodToKnowsUpdateDto
     )
     {
         try

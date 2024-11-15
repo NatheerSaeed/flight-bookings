@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IPackagesItemsService
+public interface IPackagesService
 {
     /// <summary>
     /// Create one Packages
     /// </summary>
-    public Task<Packages> CreatePackages(PackagesCreateInput packages);
+    public Task<Packages> CreatePackages(PackageCreateInput packages);
 
     /// <summary>
     /// Delete one Packages
@@ -18,12 +18,12 @@ public interface IPackagesItemsService
     /// <summary>
     /// Find many PackagesItems
     /// </summary>
-    public Task<List<Packages>> PackagesItems(PackagesFindManyArgs findManyArgs);
+    public Task<List<Packages>> PackagesItems(PackageFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Packages records
     /// </summary>
-    public Task<MetadataDto> PackagesItemsMeta(PackagesFindManyArgs findManyArgs);
+    public Task<MetadataDto> PackagesItemsMeta(PackageFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Packages
@@ -33,7 +33,7 @@ public interface IPackagesItemsService
     /// <summary>
     /// Update one Packages
     /// </summary>
-    public Task UpdatePackages(PackagesWhereUniqueInput uniqueId, PackagesUpdateInput updateDto);
+    public Task UpdatePackages(PackagesWhereUniqueInput uniqueId, PackageUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple AttractionsItems records to Packages
@@ -56,7 +56,7 @@ public interface IPackagesItemsService
     /// </summary>
     public Task<List<Attractions>> FindAttractionsItems(
         PackagesWhereUniqueInput uniqueId,
-        AttractionsFindManyArgs AttractionsFindManyArgs
+        AttractionFindManyArgs AttractionFindManyArgs
     );
 
     /// <summary>
@@ -88,7 +88,7 @@ public interface IPackagesItemsService
     /// </summary>
     public Task<List<FlightDeals>> FindFlightDealsItems(
         PackagesWhereUniqueInput uniqueId,
-        FlightDealsFindManyArgs FlightDealsFindManyArgs
+        FlightDealFindManyArgs FlightDealFindManyArgs
     );
 
     /// <summary>
@@ -120,7 +120,7 @@ public interface IPackagesItemsService
     /// </summary>
     public Task<List<Galleries>> FindGalleriesItems(
         PackagesWhereUniqueInput uniqueId,
-        GalleriesFindManyArgs GalleriesFindManyArgs
+        GallerieFindManyArgs GallerieFindManyArgs
     );
 
     /// <summary>
@@ -152,7 +152,7 @@ public interface IPackagesItemsService
     /// </summary>
     public Task<List<GoodToKnows>> FindGoodToKnowsItems(
         PackagesWhereUniqueInput uniqueId,
-        GoodToKnowsFindManyArgs GoodToKnowsFindManyArgs
+        GoodToKnowFindManyArgs GoodToKnowFindManyArgs
     );
 
     /// <summary>
@@ -184,7 +184,7 @@ public interface IPackagesItemsService
     /// </summary>
     public Task<List<HotelDeals>> FindHotelDealsItems(
         PackagesWhereUniqueInput uniqueId,
-        HotelDealsFindManyArgs HotelDealsFindManyArgs
+        HotelDealFindManyArgs HotelDealFindManyArgs
     );
 
     /// <summary>
@@ -216,7 +216,7 @@ public interface IPackagesItemsService
     /// </summary>
     public Task<List<PackageAttractions>> FindPackageAttractionsItems(
         PackagesWhereUniqueInput uniqueId,
-        PackageAttractionsFindManyArgs PackageAttractionsFindManyArgs
+        PackageAttractionFindManyArgs PackageAttractionFindManyArgs
     );
 
     /// <summary>
@@ -248,7 +248,7 @@ public interface IPackagesItemsService
     /// </summary>
     public Task<List<PackageBookings>> FindPackageBookingsItems(
         PackagesWhereUniqueInput uniqueId,
-        PackageBookingsFindManyArgs PackageBookingsFindManyArgs
+        PackageBookingFindManyArgs PackageBookingFindManyArgs
     );
 
     /// <summary>
@@ -280,7 +280,7 @@ public interface IPackagesItemsService
     /// </summary>
     public Task<List<PackageFlights>> FindPackageFlightsItems(
         PackagesWhereUniqueInput uniqueId,
-        PackageFlightsFindManyArgs PackageFlightsFindManyArgs
+        PackageFlightFindManyArgs PackageFlightFindManyArgs
     );
 
     /// <summary>
@@ -312,7 +312,7 @@ public interface IPackagesItemsService
     /// </summary>
     public Task<List<PackageHotels>> FindPackageHotelsItems(
         PackagesWhereUniqueInput uniqueId,
-        PackageHotelsFindManyArgs PackageHotelsFindManyArgs
+        PackageHotelFindManyArgs PackageHotelFindManyArgs
     );
 
     /// <summary>
@@ -344,7 +344,7 @@ public interface IPackagesItemsService
     /// </summary>
     public Task<List<SightSeeings>> FindSightSeeingsItems(
         PackagesWhereUniqueInput uniqueId,
-        SightSeeingsFindManyArgs SightSeeingsFindManyArgs
+        SightSeeingFindManyArgs SightSeeingFindManyArgs
     );
 
     /// <summary>

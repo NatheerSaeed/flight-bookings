@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class CooperateCustomerProfilesItemsService : CooperateCustomerProfilesItemsServiceBase
+public class CooperateCustomerProfilesService : CooperateCustomerProfilesServiceBase
 {
-    public CooperateCustomerProfilesItemsService(FlightReservationManagementDbContext context)
+    public CooperateCustomerProfilesService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

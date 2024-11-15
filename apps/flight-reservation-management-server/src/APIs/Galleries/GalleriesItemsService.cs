@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class GalleriesItemsService : GalleriesItemsServiceBase
+public class GalleriesService : GalleriesServiceBase
 {
-    public GalleriesItemsService(FlightReservationManagementDbContext context)
+    public GalleriesService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

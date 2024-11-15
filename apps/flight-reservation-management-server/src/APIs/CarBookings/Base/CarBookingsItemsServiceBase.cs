@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class CarBookingsItemsServiceBase : ICarBookingsItemsService
+public abstract class CarBookingsServiceBase : ICarBookingsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public CarBookingsItemsServiceBase(FlightReservationManagementDbContext context)
+    public CarBookingsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class CarBookingsItemsServiceBase : ICarBookingsItemsService
     /// <summary>
     /// Create one CarBookings
     /// </summary>
-    public async Task<CarBookings> CreateCarBookings(CarBookingsCreateInput createDto)
+    public async Task<CarBookings> CreateCarBookings(CarBookingCreateInput createDto)
     {
         var carBookings = new CarBookingsDbModel
         {
@@ -78,7 +78,7 @@ public abstract class CarBookingsItemsServiceBase : ICarBookingsItemsService
     /// <summary>
     /// Find many CarBookingsItems
     /// </summary>
-    public async Task<List<CarBookings>> CarBookingsItems(CarBookingsFindManyArgs findManyArgs)
+    public async Task<List<CarBookings>> CarBookingsItems(CarBookingFindManyArgs findManyArgs)
     {
         var carBookingsItems = await _context
             .CarBookingsItems.Include(x => x.User)
@@ -93,7 +93,7 @@ public abstract class CarBookingsItemsServiceBase : ICarBookingsItemsService
     /// <summary>
     /// Meta data about CarBookings records
     /// </summary>
-    public async Task<MetadataDto> CarBookingsItemsMeta(CarBookingsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> CarBookingsItemsMeta(CarBookingFindManyArgs findManyArgs)
     {
         var count = await _context.CarBookingsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -106,7 +106,7 @@ public abstract class CarBookingsItemsServiceBase : ICarBookingsItemsService
     public async Task<CarBookings> CarBookings(CarBookingsWhereUniqueInput uniqueId)
     {
         var carBookingsItems = await this.CarBookingsItems(
-            new CarBookingsFindManyArgs { Where = new CarBookingsWhereInput { Id = uniqueId.Id } }
+            new CarBookingFindManyArgs { Where = new CarBookingWhereInput { Id = uniqueId.Id } }
         );
         var carBookings = carBookingsItems.FirstOrDefault();
         if (carBookings == null)
@@ -122,7 +122,7 @@ public abstract class CarBookingsItemsServiceBase : ICarBookingsItemsService
     /// </summary>
     public async Task UpdateCarBookings(
         CarBookingsWhereUniqueInput uniqueId,
-        CarBookingsUpdateInput updateDto
+        CarBookingUpdateInput updateDto
     )
     {
         var carBookings = updateDto.ToModel(uniqueId);

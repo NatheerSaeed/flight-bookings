@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class HotelsItemsServiceBase : IHotelsItemsService
+public abstract class HotelsServiceBase : IHotelsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public HotelsItemsServiceBase(FlightReservationManagementDbContext context)
+    public HotelsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class HotelsItemsServiceBase : IHotelsItemsService
     /// <summary>
     /// Create one Hotels
     /// </summary>
-    public async Task<Hotels> CreateHotels(HotelsCreateInput createDto)
+    public async Task<Hotels> CreateHotels(HotelCreateInput createDto)
     {
         var hotels = new HotelsDbModel
         {
@@ -82,7 +82,7 @@ public abstract class HotelsItemsServiceBase : IHotelsItemsService
     /// <summary>
     /// Find many HotelsItems
     /// </summary>
-    public async Task<List<Hotels>> HotelsItems(HotelsFindManyArgs findManyArgs)
+    public async Task<List<Hotels>> HotelsItems(HotelFindManyArgs findManyArgs)
     {
         var hotelsItems = await _context
             .HotelsItems.Include(x => x.Role)
@@ -97,7 +97,7 @@ public abstract class HotelsItemsServiceBase : IHotelsItemsService
     /// <summary>
     /// Meta data about Hotels records
     /// </summary>
-    public async Task<MetadataDto> HotelsItemsMeta(HotelsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> HotelsItemsMeta(HotelFindManyArgs findManyArgs)
     {
         var count = await _context.HotelsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -110,7 +110,7 @@ public abstract class HotelsItemsServiceBase : IHotelsItemsService
     public async Task<Hotels> Hotels(HotelsWhereUniqueInput uniqueId)
     {
         var hotelsItems = await this.HotelsItems(
-            new HotelsFindManyArgs { Where = new HotelsWhereInput { Id = uniqueId.Id } }
+            new HotelFindManyArgs { Where = new HotelWhereInput { Id = uniqueId.Id } }
         );
         var hotels = hotelsItems.FirstOrDefault();
         if (hotels == null)
@@ -124,7 +124,7 @@ public abstract class HotelsItemsServiceBase : IHotelsItemsService
     /// <summary>
     /// Update one Hotels
     /// </summary>
-    public async Task UpdateHotels(HotelsWhereUniqueInput uniqueId, HotelsUpdateInput updateDto)
+    public async Task UpdateHotels(HotelsWhereUniqueInput uniqueId, HotelUpdateInput updateDto)
     {
         var hotels = updateDto.ToModel(uniqueId);
 

@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IProfilesItemsService
+public interface IProfilesService
 {
     /// <summary>
     /// Create one Profiles
     /// </summary>
-    public Task<Profiles> CreateProfiles(ProfilesCreateInput profiles);
+    public Task<Profiles> CreateProfiles(ProfileCreateInput profiles);
 
     /// <summary>
     /// Delete one Profiles
@@ -18,12 +18,12 @@ public interface IProfilesItemsService
     /// <summary>
     /// Find many ProfilesItems
     /// </summary>
-    public Task<List<Profiles>> ProfilesItems(ProfilesFindManyArgs findManyArgs);
+    public Task<List<Profiles>> ProfilesItems(ProfileFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Profiles records
     /// </summary>
-    public Task<MetadataDto> ProfilesItemsMeta(ProfilesFindManyArgs findManyArgs);
+    public Task<MetadataDto> ProfilesItemsMeta(ProfileFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Profiles
@@ -33,7 +33,7 @@ public interface IProfilesItemsService
     /// <summary>
     /// Update one Profiles
     /// </summary>
-    public Task UpdateProfiles(ProfilesWhereUniqueInput uniqueId, ProfilesUpdateInput updateDto);
+    public Task UpdateProfiles(ProfilesWhereUniqueInput uniqueId, ProfileUpdateInput updateDto);
 
     /// <summary>
     /// Get a gender_ record for Profiles

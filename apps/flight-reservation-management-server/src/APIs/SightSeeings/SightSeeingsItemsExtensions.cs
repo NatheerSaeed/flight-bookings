@@ -20,7 +20,7 @@ public static class SightSeeingsItemsExtensions
     }
 
     public static SightSeeingsDbModel ToModel(
-        this SightSeeingsUpdateInput updateDto,
+        this SightSeeingUpdateInput updateDto,
         SightSeeingsWhereUniqueInput uniqueId
     )
     {

@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class HotelDealsUpdateInput
+public class HotelDealUpdateInput
 {
     public string? Address { get; set; }
 

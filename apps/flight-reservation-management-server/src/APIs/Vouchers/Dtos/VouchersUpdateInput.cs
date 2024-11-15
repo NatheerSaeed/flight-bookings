@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class VouchersUpdateInput
+public class VoucherUpdateInput
 {
     public int? Amount { get; set; }
 

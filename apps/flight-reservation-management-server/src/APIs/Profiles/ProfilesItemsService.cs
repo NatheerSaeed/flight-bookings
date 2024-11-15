@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class ProfilesItemsService : ProfilesItemsServiceBase
+public class ProfilesService : ProfilesServiceBase
 {
-    public ProfilesItemsService(FlightReservationManagementDbContext context)
+    public ProfilesService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

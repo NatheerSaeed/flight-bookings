@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class PackagesUpdateInput
+public class PackageUpdateInput
 {
     public List<string>? AttractionsItems { get; set; }
 

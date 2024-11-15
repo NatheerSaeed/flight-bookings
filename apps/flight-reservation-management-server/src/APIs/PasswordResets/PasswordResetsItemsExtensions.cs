@@ -18,7 +18,7 @@ public static class PasswordResetsItemsExtensions
     }
 
     public static PasswordResetsDbModel ToModel(
-        this PasswordResetsUpdateInput updateDto,
+        this PasswordResetUpdateInput updateDto,
         PasswordResetsWhereUniqueInput uniqueId
     )
     {

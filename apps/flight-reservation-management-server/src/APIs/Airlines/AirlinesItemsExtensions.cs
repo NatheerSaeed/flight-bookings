@@ -23,7 +23,7 @@ public static class AirlinesItemsExtensions
     }
 
     public static AirlinesDbModel ToModel(
-        this AirlinesUpdateInput updateDto,
+        this AirlineUpdateInput updateDto,
         AirlinesWhereUniqueInput uniqueId
     )
     {

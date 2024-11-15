@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class FlightBookingsItemsControllerBase : ControllerBase
+public abstract class FlightBookingsControllerBase : ControllerBase
 {
-    protected readonly IFlightBookingsItemsService _service;
+    protected readonly IFlightBookingsService _service;
 
-    public FlightBookingsItemsControllerBase(IFlightBookingsItemsService service)
+    public FlightBookingsControllerBase(IFlightBookingsService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class FlightBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<FlightBookings>> CreateFlightBookings(
-        FlightBookingsCreateInput input
+        FlightBookingCreateInput input
     )
     {
         var flightBookings = await _service.CreateFlightBookings(input);
@@ -59,7 +59,7 @@ public abstract class FlightBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<FlightBookings>>> FlightBookingsItems(
-        [FromQuery()] FlightBookingsFindManyArgs filter
+        [FromQuery()] FlightBookingFindManyArgs filter
     )
     {
         return Ok(await _service.FlightBookingsItems(filter));
@@ -70,7 +70,7 @@ public abstract class FlightBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> FlightBookingsItemsMeta(
-        [FromQuery()] FlightBookingsFindManyArgs filter
+        [FromQuery()] FlightBookingFindManyArgs filter
     )
     {
         return Ok(await _service.FlightBookingsItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class FlightBookingsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateFlightBookings(
         [FromRoute()] FlightBookingsWhereUniqueInput uniqueId,
-        [FromQuery()] FlightBookingsUpdateInput flightBookingsUpdateDto
+        [FromQuery()] FlightBookingUpdateInput flightBookingsUpdateDto
     )
     {
         try

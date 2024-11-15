@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class VisaApplicationsItemsService : VisaApplicationsItemsServiceBase
+public class VisaApplicationsService : VisaApplicationsServiceBase
 {
-    public VisaApplicationsItemsService(FlightReservationManagementDbContext context)
+    public VisaApplicationsService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

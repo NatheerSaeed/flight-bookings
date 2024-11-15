@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class TravelPackagesItemsControllerBase : ControllerBase
+public abstract class TravelPackagesControllerBase : ControllerBase
 {
-    protected readonly ITravelPackagesItemsService _service;
+    protected readonly ITravelPackagesService _service;
 
-    public TravelPackagesItemsControllerBase(ITravelPackagesItemsService service)
+    public TravelPackagesControllerBase(ITravelPackagesService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class TravelPackagesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<TravelPackages>> CreateTravelPackages(
-        TravelPackagesCreateInput input
+        TravelPackageCreateInput input
     )
     {
         var travelPackages = await _service.CreateTravelPackages(input);
@@ -59,7 +59,7 @@ public abstract class TravelPackagesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<TravelPackages>>> TravelPackagesItems(
-        [FromQuery()] TravelPackagesFindManyArgs filter
+        [FromQuery()] TravelPackageFindManyArgs filter
     )
     {
         return Ok(await _service.TravelPackagesItems(filter));
@@ -70,7 +70,7 @@ public abstract class TravelPackagesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> TravelPackagesItemsMeta(
-        [FromQuery()] TravelPackagesFindManyArgs filter
+        [FromQuery()] TravelPackageFindManyArgs filter
     )
     {
         return Ok(await _service.TravelPackagesItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class TravelPackagesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateTravelPackages(
         [FromRoute()] TravelPackagesWhereUniqueInput uniqueId,
-        [FromQuery()] TravelPackagesUpdateInput travelPackagesUpdateDto
+        [FromQuery()] TravelPackageUpdateInput travelPackagesUpdateDto
     )
     {
         try

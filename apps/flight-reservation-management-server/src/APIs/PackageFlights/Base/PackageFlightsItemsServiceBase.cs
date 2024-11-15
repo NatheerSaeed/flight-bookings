@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class PackageFlightsItemsServiceBase : IPackageFlightsItemsService
+public abstract class PackageFlightsServiceBase : IPackageFlightsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public PackageFlightsItemsServiceBase(FlightReservationManagementDbContext context)
+    public PackageFlightsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class PackageFlightsItemsServiceBase : IPackageFlightsItemsServi
     /// <summary>
     /// Create one PackageFlights
     /// </summary>
-    public async Task<PackageFlights> CreatePackageFlights(PackageFlightsCreateInput createDto)
+    public async Task<PackageFlights> CreatePackageFlights(PackageFlightCreateInput createDto)
     {
         var packageFlights = new PackageFlightsDbModel
         {
@@ -77,7 +77,7 @@ public abstract class PackageFlightsItemsServiceBase : IPackageFlightsItemsServi
     /// Find many PackageFlightsItems
     /// </summary>
     public async Task<List<PackageFlights>> PackageFlightsItems(
-        PackageFlightsFindManyArgs findManyArgs
+        PackageFlightFindManyArgs findManyArgs
     )
     {
         var packageFlightsItems = await _context
@@ -93,7 +93,7 @@ public abstract class PackageFlightsItemsServiceBase : IPackageFlightsItemsServi
     /// <summary>
     /// Meta data about PackageFlights records
     /// </summary>
-    public async Task<MetadataDto> PackageFlightsItemsMeta(PackageFlightsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> PackageFlightsItemsMeta(PackageFlightFindManyArgs findManyArgs)
     {
         var count = await _context.PackageFlightsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -106,9 +106,9 @@ public abstract class PackageFlightsItemsServiceBase : IPackageFlightsItemsServi
     public async Task<PackageFlights> PackageFlights(PackageFlightsWhereUniqueInput uniqueId)
     {
         var packageFlightsItems = await this.PackageFlightsItems(
-            new PackageFlightsFindManyArgs
+            new PackageFlightFindManyArgs
             {
-                Where = new PackageFlightsWhereInput { Id = uniqueId.Id }
+                Where = new PackageFlightWhereInput { Id = uniqueId.Id }
             }
         );
         var packageFlights = packageFlightsItems.FirstOrDefault();
@@ -125,7 +125,7 @@ public abstract class PackageFlightsItemsServiceBase : IPackageFlightsItemsServi
     /// </summary>
     public async Task UpdatePackageFlights(
         PackageFlightsWhereUniqueInput uniqueId,
-        PackageFlightsUpdateInput updateDto
+        PackageFlightUpdateInput updateDto
     )
     {
         var packageFlights = updateDto.ToModel(uniqueId);

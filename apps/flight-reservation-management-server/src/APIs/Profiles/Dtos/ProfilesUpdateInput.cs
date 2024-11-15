@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class ProfilesUpdateInput
+public class ProfileUpdateInput
 {
     public string? Address { get; set; }
 

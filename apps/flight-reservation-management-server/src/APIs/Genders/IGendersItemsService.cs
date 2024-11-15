@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IGendersItemsService
+public interface IGendersService
 {
     /// <summary>
     /// Create one Genders
     /// </summary>
-    public Task<Genders> CreateGenders(GendersCreateInput genders);
+    public Task<Genders> CreateGenders(GenderCreateInput genders);
 
     /// <summary>
     /// Delete one Genders
@@ -18,12 +18,12 @@ public interface IGendersItemsService
     /// <summary>
     /// Find many GendersItems
     /// </summary>
-    public Task<List<Genders>> GendersItems(GendersFindManyArgs findManyArgs);
+    public Task<List<Genders>> GendersItems(GenderFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Genders records
     /// </summary>
-    public Task<MetadataDto> GendersItemsMeta(GendersFindManyArgs findManyArgs);
+    public Task<MetadataDto> GendersItemsMeta(GenderFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Genders
@@ -33,7 +33,7 @@ public interface IGendersItemsService
     /// <summary>
     /// Update one Genders
     /// </summary>
-    public Task UpdateGenders(GendersWhereUniqueInput uniqueId, GendersUpdateInput updateDto);
+    public Task UpdateGenders(GendersWhereUniqueInput uniqueId, GenderUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple ProfilesItems records to Genders
@@ -56,7 +56,7 @@ public interface IGendersItemsService
     /// </summary>
     public Task<List<Profiles>> FindProfilesItems(
         GendersWhereUniqueInput uniqueId,
-        ProfilesFindManyArgs ProfilesFindManyArgs
+        ProfileFindManyArgs ProfileFindManyArgs
     );
 
     /// <summary>

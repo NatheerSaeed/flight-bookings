@@ -5,4 +5,4 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
-public class RolesFindManyArgs : FindManyInput<Roles, RolesWhereInput> { }
+public class RoleFindManyArgs : FindManyInput<Roles, RoleWhereInput> { }

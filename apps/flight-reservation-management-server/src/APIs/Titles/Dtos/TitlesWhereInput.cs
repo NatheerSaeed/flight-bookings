@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class TitlesWhereInput
+public class TitleWhereInput
 {
     public DateTime? CreatedAt { get; set; }
 

@@ -8,13 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class CooperateCustomerProfilesItemsControllerBase : ControllerBase
+public abstract class CooperateCustomerProfilesControllerBase : ControllerBase
 {
-    protected readonly ICooperateCustomerProfilesItemsService _service;
+    protected readonly ICooperateCustomerProfilesService _service;
 
-    public CooperateCustomerProfilesItemsControllerBase(
-        ICooperateCustomerProfilesItemsService service
-    )
+    public CooperateCustomerProfilesControllerBase(ICooperateCustomerProfilesService service)
     {
         _service = service;
     }
@@ -24,7 +22,7 @@ public abstract class CooperateCustomerProfilesItemsControllerBase : ControllerB
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<CooperateCustomerProfiles>> CreateCooperateCustomerProfiles(
-        CooperateCustomerProfilesCreateInput input
+        CooperateCustomerProfileCreateInput input
     )
     {
         var cooperateCustomerProfiles = await _service.CreateCooperateCustomerProfiles(input);
@@ -61,7 +59,7 @@ public abstract class CooperateCustomerProfilesItemsControllerBase : ControllerB
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<CooperateCustomerProfiles>>> CooperateCustomerProfilesItems(
-        [FromQuery()] CooperateCustomerProfilesFindManyArgs filter
+        [FromQuery()] CooperateCustomerProfileFindManyArgs filter
     )
     {
         return Ok(await _service.CooperateCustomerProfilesItems(filter));
@@ -72,7 +70,7 @@ public abstract class CooperateCustomerProfilesItemsControllerBase : ControllerB
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CooperateCustomerProfilesItemsMeta(
-        [FromQuery()] CooperateCustomerProfilesFindManyArgs filter
+        [FromQuery()] CooperateCustomerProfileFindManyArgs filter
     )
     {
         return Ok(await _service.CooperateCustomerProfilesItemsMeta(filter));
@@ -102,7 +100,7 @@ public abstract class CooperateCustomerProfilesItemsControllerBase : ControllerB
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateCooperateCustomerProfiles(
         [FromRoute()] CooperateCustomerProfilesWhereUniqueInput uniqueId,
-        [FromQuery()] CooperateCustomerProfilesUpdateInput cooperateCustomerProfilesUpdateDto
+        [FromQuery()] CooperateCustomerProfileUpdateInput cooperateCustomerProfilesUpdateDto
     )
     {
         try

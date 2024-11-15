@@ -56,7 +56,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<AgencyProfiles>> FindAgencyProfilesItems(
         UserWhereUniqueInput uniqueId,
-        AgencyProfilesFindManyArgs AgencyProfilesFindManyArgs
+        AgencyProfileFindManyArgs AgencyProfileFindManyArgs
     );
 
     /// <summary>
@@ -88,7 +88,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<Airlines>> FindAirlinesItems(
         UserWhereUniqueInput uniqueId,
-        AirlinesFindManyArgs AirlinesFindManyArgs
+        AirlineFindManyArgs AirlineFindManyArgs
     );
 
     /// <summary>
@@ -120,7 +120,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<BankPayments>> FindBankPaymentsItems(
         UserWhereUniqueInput uniqueId,
-        BankPaymentsFindManyArgs BankPaymentsFindManyArgs
+        BankPaymentFindManyArgs BankPaymentFindManyArgs
     );
 
     /// <summary>
@@ -152,7 +152,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<CarBookings>> FindCarBookingsItems(
         UserWhereUniqueInput uniqueId,
-        CarBookingsFindManyArgs CarBookingsFindManyArgs
+        CarBookingFindManyArgs CarBookingFindManyArgs
     );
 
     /// <summary>
@@ -184,7 +184,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<CooperateCustomerProfiles>> FindCooperateCustomerProfilesItems(
         UserWhereUniqueInput uniqueId,
-        CooperateCustomerProfilesFindManyArgs CooperateCustomerProfilesFindManyArgs
+        CooperateCustomerProfileFindManyArgs CooperateCustomerProfileFindManyArgs
     );
 
     /// <summary>
@@ -216,7 +216,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<FlightBookings>> FindFlightBookingsItems(
         UserWhereUniqueInput uniqueId,
-        FlightBookingsFindManyArgs FlightBookingsFindManyArgs
+        FlightBookingFindManyArgs FlightBookingFindManyArgs
     );
 
     /// <summary>
@@ -248,7 +248,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<HotelBookings>> FindHotelBookingsItems(
         UserWhereUniqueInput uniqueId,
-        HotelBookingsFindManyArgs HotelBookingsFindManyArgs
+        HotelBookingFindManyArgs HotelBookingFindManyArgs
     );
 
     /// <summary>
@@ -280,7 +280,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<OnlinePayments>> FindOnlinePaymentsItems(
         UserWhereUniqueInput uniqueId,
-        OnlinePaymentsFindManyArgs OnlinePaymentsFindManyArgs
+        OnlinePaymentFindManyArgs OnlinePaymentFindManyArgs
     );
 
     /// <summary>
@@ -312,7 +312,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<PackageBookings>> FindPackageBookingsItems(
         UserWhereUniqueInput uniqueId,
-        PackageBookingsFindManyArgs PackageBookingsFindManyArgs
+        PackageBookingFindManyArgs PackageBookingFindManyArgs
     );
 
     /// <summary>
@@ -344,7 +344,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<PayLaters>> FindPayLatersItems(
         UserWhereUniqueInput uniqueId,
-        PayLatersFindManyArgs PayLatersFindManyArgs
+        PayLaterFindManyArgs PayLaterFindManyArgs
     );
 
     /// <summary>
@@ -376,7 +376,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<Profiles>> FindProfilesItems(
         UserWhereUniqueInput uniqueId,
-        ProfilesFindManyArgs ProfilesFindManyArgs
+        ProfileFindManyArgs ProfileFindManyArgs
     );
 
     /// <summary>
@@ -408,7 +408,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<WalletLogs>> FindWalletLogsItems(
         UserWhereUniqueInput uniqueId,
-        WalletLogsFindManyArgs WalletLogsFindManyArgs
+        WalletLogFindManyArgs WalletLogFindManyArgs
     );
 
     /// <summary>
@@ -440,7 +440,7 @@ public interface IUsersService
     /// </summary>
     public Task<List<Wallets>> FindWalletsItems(
         UserWhereUniqueInput uniqueId,
-        WalletsFindManyArgs WalletsFindManyArgs
+        WalletFindManyArgs WalletFindManyArgs
     );
 
     /// <summary>

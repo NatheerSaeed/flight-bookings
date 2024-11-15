@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class BankDetailsItemsServiceBase : IBankDetailsItemsService
+public abstract class BankDetailsServiceBase : IBankDetailsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public BankDetailsItemsServiceBase(FlightReservationManagementDbContext context)
+    public BankDetailsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class BankDetailsItemsServiceBase : IBankDetailsItemsService
     /// <summary>
     /// Create one BankDetails
     /// </summary>
-    public async Task<BankDetails> CreateBankDetails(BankDetailsCreateInput createDto)
+    public async Task<BankDetails> CreateBankDetails(BankDetailCreateInput createDto)
     {
         var bankDetails = new BankDetailsDbModel
         {
@@ -77,7 +77,7 @@ public abstract class BankDetailsItemsServiceBase : IBankDetailsItemsService
     /// <summary>
     /// Find many BankDetailsItems
     /// </summary>
-    public async Task<List<BankDetails>> BankDetailsItems(BankDetailsFindManyArgs findManyArgs)
+    public async Task<List<BankDetails>> BankDetailsItems(BankDetailFindManyArgs findManyArgs)
     {
         var bankDetailsItems = await _context
             .BankDetailsItems.Include(x => x.Bank)
@@ -92,7 +92,7 @@ public abstract class BankDetailsItemsServiceBase : IBankDetailsItemsService
     /// <summary>
     /// Meta data about BankDetails records
     /// </summary>
-    public async Task<MetadataDto> BankDetailsItemsMeta(BankDetailsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> BankDetailsItemsMeta(BankDetailFindManyArgs findManyArgs)
     {
         var count = await _context.BankDetailsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -105,7 +105,7 @@ public abstract class BankDetailsItemsServiceBase : IBankDetailsItemsService
     public async Task<BankDetails> BankDetails(BankDetailsWhereUniqueInput uniqueId)
     {
         var bankDetailsItems = await this.BankDetailsItems(
-            new BankDetailsFindManyArgs { Where = new BankDetailsWhereInput { Id = uniqueId.Id } }
+            new BankDetailFindManyArgs { Where = new BankDetailWhereInput { Id = uniqueId.Id } }
         );
         var bankDetails = bankDetailsItems.FirstOrDefault();
         if (bankDetails == null)
@@ -121,7 +121,7 @@ public abstract class BankDetailsItemsServiceBase : IBankDetailsItemsService
     /// </summary>
     public async Task UpdateBankDetails(
         BankDetailsWhereUniqueInput uniqueId,
-        BankDetailsUpdateInput updateDto
+        BankDetailUpdateInput updateDto
     )
     {
         var bankDetails = updateDto.ToModel(uniqueId);

@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class VatsItemsService : VatsItemsServiceBase
+public class VatsService : VatsServiceBase
 {
-    public VatsItemsService(FlightReservationManagementDbContext context)
+    public VatsService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class FlightBookingsWhereInput
+public class FlightBookingWhereInput
 {
     public int? CancelTicketStatus { get; set; }
 

@@ -5,4 +5,4 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
-public class MarkupsFindManyArgs : FindManyInput<Markups, MarkupsWhereInput> { }
+public class MarkupFindManyArgs : FindManyInput<Markups, MarkupWhereInput> { }

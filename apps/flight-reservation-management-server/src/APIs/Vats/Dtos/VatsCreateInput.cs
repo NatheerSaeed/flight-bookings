@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class VatsCreateInput
+public class VatCreateInput
 {
     public int? CarVatType { get; set; }
 

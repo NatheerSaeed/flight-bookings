@@ -23,7 +23,7 @@ public static class AttractionsItemsExtensions
     }
 
     public static AttractionsDbModel ToModel(
-        this AttractionsUpdateInput updateDto,
+        this AttractionUpdateInput updateDto,
         AttractionsWhereUniqueInput uniqueId
     )
     {

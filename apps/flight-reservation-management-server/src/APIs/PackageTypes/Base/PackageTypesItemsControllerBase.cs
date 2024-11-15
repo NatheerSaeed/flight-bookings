@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class PackageTypesItemsControllerBase : ControllerBase
+public abstract class PackageTypesControllerBase : ControllerBase
 {
-    protected readonly IPackageTypesItemsService _service;
+    protected readonly IPackageTypesService _service;
 
-    public PackageTypesItemsControllerBase(IPackageTypesItemsService service)
+    public PackageTypesControllerBase(IPackageTypesService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class PackageTypesItemsControllerBase : ControllerBase
     /// Create one PackageTypes
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<PackageTypes>> CreatePackageTypes(PackageTypesCreateInput input)
+    public async Task<ActionResult<PackageTypes>> CreatePackageTypes(PackageTypeCreateInput input)
     {
         var packageTypes = await _service.CreatePackageTypes(input);
 
@@ -53,7 +53,7 @@ public abstract class PackageTypesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<PackageTypes>>> PackageTypesItems(
-        [FromQuery()] PackageTypesFindManyArgs filter
+        [FromQuery()] PackageTypeFindManyArgs filter
     )
     {
         return Ok(await _service.PackageTypesItems(filter));
@@ -64,7 +64,7 @@ public abstract class PackageTypesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> PackageTypesItemsMeta(
-        [FromQuery()] PackageTypesFindManyArgs filter
+        [FromQuery()] PackageTypeFindManyArgs filter
     )
     {
         return Ok(await _service.PackageTypesItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class PackageTypesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdatePackageTypes(
         [FromRoute()] PackageTypesWhereUniqueInput uniqueId,
-        [FromQuery()] PackageTypesUpdateInput packageTypesUpdateDto
+        [FromQuery()] PackageTypeUpdateInput packageTypesUpdateDto
     )
     {
         try

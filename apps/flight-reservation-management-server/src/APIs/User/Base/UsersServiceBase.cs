@@ -454,7 +454,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<AgencyProfiles>> FindAgencyProfilesItems(
         UserWhereUniqueInput uniqueId,
-        AgencyProfilesFindManyArgs userFindManyArgs
+        AgencyProfileFindManyArgs userFindManyArgs
     )
     {
         var agencyProfilesItems = await _context
@@ -563,7 +563,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<Airlines>> FindAirlinesItems(
         UserWhereUniqueInput uniqueId,
-        AirlinesFindManyArgs userFindManyArgs
+        AirlineFindManyArgs userFindManyArgs
     )
     {
         var airlinesItems = await _context
@@ -672,7 +672,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<BankPayments>> FindBankPaymentsItems(
         UserWhereUniqueInput uniqueId,
-        BankPaymentsFindManyArgs userFindManyArgs
+        BankPaymentFindManyArgs userFindManyArgs
     )
     {
         var bankPaymentsItems = await _context
@@ -781,7 +781,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<CarBookings>> FindCarBookingsItems(
         UserWhereUniqueInput uniqueId,
-        CarBookingsFindManyArgs userFindManyArgs
+        CarBookingFindManyArgs userFindManyArgs
     )
     {
         var carBookingsItems = await _context
@@ -890,7 +890,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<CooperateCustomerProfiles>> FindCooperateCustomerProfilesItems(
         UserWhereUniqueInput uniqueId,
-        CooperateCustomerProfilesFindManyArgs userFindManyArgs
+        CooperateCustomerProfileFindManyArgs userFindManyArgs
     )
     {
         var cooperateCustomerProfilesItems = await _context
@@ -999,7 +999,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<FlightBookings>> FindFlightBookingsItems(
         UserWhereUniqueInput uniqueId,
-        FlightBookingsFindManyArgs userFindManyArgs
+        FlightBookingFindManyArgs userFindManyArgs
     )
     {
         var flightBookingsItems = await _context
@@ -1108,7 +1108,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<HotelBookings>> FindHotelBookingsItems(
         UserWhereUniqueInput uniqueId,
-        HotelBookingsFindManyArgs userFindManyArgs
+        HotelBookingFindManyArgs userFindManyArgs
     )
     {
         var hotelBookingsItems = await _context
@@ -1217,7 +1217,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<OnlinePayments>> FindOnlinePaymentsItems(
         UserWhereUniqueInput uniqueId,
-        OnlinePaymentsFindManyArgs userFindManyArgs
+        OnlinePaymentFindManyArgs userFindManyArgs
     )
     {
         var onlinePaymentsItems = await _context
@@ -1326,7 +1326,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<PackageBookings>> FindPackageBookingsItems(
         UserWhereUniqueInput uniqueId,
-        PackageBookingsFindManyArgs userFindManyArgs
+        PackageBookingFindManyArgs userFindManyArgs
     )
     {
         var packageBookingsItems = await _context
@@ -1435,7 +1435,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<PayLaters>> FindPayLatersItems(
         UserWhereUniqueInput uniqueId,
-        PayLatersFindManyArgs userFindManyArgs
+        PayLaterFindManyArgs userFindManyArgs
     )
     {
         var payLatersItems = await _context
@@ -1544,7 +1544,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<Profiles>> FindProfilesItems(
         UserWhereUniqueInput uniqueId,
-        ProfilesFindManyArgs userFindManyArgs
+        ProfileFindManyArgs userFindManyArgs
     )
     {
         var profilesItems = await _context
@@ -1653,7 +1653,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<WalletLogs>> FindWalletLogsItems(
         UserWhereUniqueInput uniqueId,
-        WalletLogsFindManyArgs userFindManyArgs
+        WalletLogFindManyArgs userFindManyArgs
     )
     {
         var walletLogsItems = await _context
@@ -1762,7 +1762,7 @@ public abstract class UsersServiceBase : IUsersService
     /// </summary>
     public async Task<List<Wallets>> FindWalletsItems(
         UserWhereUniqueInput uniqueId,
-        WalletsFindManyArgs userFindManyArgs
+        WalletFindManyArgs userFindManyArgs
     )
     {
         var walletsItems = await _context

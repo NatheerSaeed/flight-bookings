@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class GoodToKnowsWhereInput
+public class GoodToKnowWhereInput
 {
     public string? CancellationPrepayment { get; set; }
 

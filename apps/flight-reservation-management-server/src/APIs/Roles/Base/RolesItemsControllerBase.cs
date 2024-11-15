@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class RolesItemsControllerBase : ControllerBase
+public abstract class RolesControllerBase : ControllerBase
 {
-    protected readonly IRolesItemsService _service;
+    protected readonly IRolesService _service;
 
-    public RolesItemsControllerBase(IRolesItemsService service)
+    public RolesControllerBase(IRolesService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class RolesItemsControllerBase : ControllerBase
     /// Create one Roles
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Roles>> CreateRoles(RolesCreateInput input)
+    public async Task<ActionResult<Roles>> CreateRoles(RoleCreateInput input)
     {
         var roles = await _service.CreateRoles(input);
 
@@ -50,7 +50,7 @@ public abstract class RolesItemsControllerBase : ControllerBase
     /// Find many RolesItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Roles>>> RolesItems([FromQuery()] RolesFindManyArgs filter)
+    public async Task<ActionResult<List<Roles>>> RolesItems([FromQuery()] RoleFindManyArgs filter)
     {
         return Ok(await _service.RolesItems(filter));
     }
@@ -60,7 +60,7 @@ public abstract class RolesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> RolesItemsMeta(
-        [FromQuery()] RolesFindManyArgs filter
+        [FromQuery()] RoleFindManyArgs filter
     )
     {
         return Ok(await _service.RolesItemsMeta(filter));
@@ -88,7 +88,7 @@ public abstract class RolesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateRoles(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
-        [FromQuery()] RolesUpdateInput rolesUpdateDto
+        [FromQuery()] RoleUpdateInput rolesUpdateDto
     )
     {
         try
@@ -151,7 +151,7 @@ public abstract class RolesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/hotelsItems")]
     public async Task<ActionResult<List<Hotels>>> FindHotelsItems(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
-        [FromQuery()] HotelsFindManyArgs filter
+        [FromQuery()] HotelFindManyArgs filter
     )
     {
         try
@@ -233,7 +233,7 @@ public abstract class RolesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/markupsItems")]
     public async Task<ActionResult<List<Markups>>> FindMarkupsItems(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
-        [FromQuery()] MarkupsFindManyArgs filter
+        [FromQuery()] MarkupFindManyArgs filter
     )
     {
         try
@@ -327,7 +327,7 @@ public abstract class RolesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/rolesItems")]
     public async Task<ActionResult<List<Roles>>> FindRolesItems(
         [FromRoute()] RolesWhereUniqueInput uniqueId,
-        [FromQuery()] RolesFindManyArgs filter
+        [FromQuery()] RoleFindManyArgs filter
     )
     {
         try

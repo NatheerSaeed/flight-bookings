@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs;
 
 [ApiController()]
-public class CommentsItemsController : CommentsItemsControllerBase
+public class CommentsController : CommentsControllerBase
 {
-    public CommentsItemsController(ICommentsItemsService service)
+    public CommentsController(ICommentsService service)
         : base(service) { }
 }

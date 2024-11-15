@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class PackageAttractionsItemsControllerBase : ControllerBase
+public abstract class PackageAttractionsControllerBase : ControllerBase
 {
-    protected readonly IPackageAttractionsItemsService _service;
+    protected readonly IPackageAttractionsService _service;
 
-    public PackageAttractionsItemsControllerBase(IPackageAttractionsItemsService service)
+    public PackageAttractionsControllerBase(IPackageAttractionsService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class PackageAttractionsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<PackageAttractions>> CreatePackageAttractions(
-        PackageAttractionsCreateInput input
+        PackageAttractionCreateInput input
     )
     {
         var packageAttractions = await _service.CreatePackageAttractions(input);
@@ -59,7 +59,7 @@ public abstract class PackageAttractionsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<PackageAttractions>>> PackageAttractionsItems(
-        [FromQuery()] PackageAttractionsFindManyArgs filter
+        [FromQuery()] PackageAttractionFindManyArgs filter
     )
     {
         return Ok(await _service.PackageAttractionsItems(filter));
@@ -70,7 +70,7 @@ public abstract class PackageAttractionsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> PackageAttractionsItemsMeta(
-        [FromQuery()] PackageAttractionsFindManyArgs filter
+        [FromQuery()] PackageAttractionFindManyArgs filter
     )
     {
         return Ok(await _service.PackageAttractionsItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class PackageAttractionsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdatePackageAttractions(
         [FromRoute()] PackageAttractionsWhereUniqueInput uniqueId,
-        [FromQuery()] PackageAttractionsUpdateInput packageAttractionsUpdateDto
+        [FromQuery()] PackageAttractionUpdateInput packageAttractionsUpdateDto
     )
     {
         try

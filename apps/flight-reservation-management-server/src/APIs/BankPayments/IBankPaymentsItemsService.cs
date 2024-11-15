@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IBankPaymentsItemsService
+public interface IBankPaymentsService
 {
     /// <summary>
     /// Create one BankPayments
     /// </summary>
-    public Task<BankPayments> CreateBankPayments(BankPaymentsCreateInput bankpayments);
+    public Task<BankPayments> CreateBankPayments(BankPaymentCreateInput bankpayments);
 
     /// <summary>
     /// Delete one BankPayments
@@ -18,12 +18,12 @@ public interface IBankPaymentsItemsService
     /// <summary>
     /// Find many BankPaymentsItems
     /// </summary>
-    public Task<List<BankPayments>> BankPaymentsItems(BankPaymentsFindManyArgs findManyArgs);
+    public Task<List<BankPayments>> BankPaymentsItems(BankPaymentFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about BankPayments records
     /// </summary>
-    public Task<MetadataDto> BankPaymentsItemsMeta(BankPaymentsFindManyArgs findManyArgs);
+    public Task<MetadataDto> BankPaymentsItemsMeta(BankPaymentFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one BankPayments
@@ -35,7 +35,7 @@ public interface IBankPaymentsItemsService
     /// </summary>
     public Task UpdateBankPayments(
         BankPaymentsWhereUniqueInput uniqueId,
-        BankPaymentsUpdateInput updateDto
+        BankPaymentUpdateInput updateDto
     );
 
     /// <summary>

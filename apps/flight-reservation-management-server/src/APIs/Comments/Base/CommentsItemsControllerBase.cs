@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class CommentsItemsControllerBase : ControllerBase
+public abstract class CommentsControllerBase : ControllerBase
 {
-    protected readonly ICommentsItemsService _service;
+    protected readonly ICommentsService _service;
 
-    public CommentsItemsControllerBase(ICommentsItemsService service)
+    public CommentsControllerBase(ICommentsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class CommentsItemsControllerBase : ControllerBase
     /// Create one Comments
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Comments>> CreateComments(CommentsCreateInput input)
+    public async Task<ActionResult<Comments>> CreateComments(CommentCreateInput input)
     {
         var comments = await _service.CreateComments(input);
 
@@ -51,7 +51,7 @@ public abstract class CommentsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Comments>>> CommentsItems(
-        [FromQuery()] CommentsFindManyArgs filter
+        [FromQuery()] CommentFindManyArgs filter
     )
     {
         return Ok(await _service.CommentsItems(filter));
@@ -62,7 +62,7 @@ public abstract class CommentsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CommentsItemsMeta(
-        [FromQuery()] CommentsFindManyArgs filter
+        [FromQuery()] CommentFindManyArgs filter
     )
     {
         return Ok(await _service.CommentsItemsMeta(filter));
@@ -92,7 +92,7 @@ public abstract class CommentsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateComments(
         [FromRoute()] CommentsWhereUniqueInput uniqueId,
-        [FromQuery()] CommentsUpdateInput commentsUpdateDto
+        [FromQuery()] CommentUpdateInput commentsUpdateDto
     )
     {
         try

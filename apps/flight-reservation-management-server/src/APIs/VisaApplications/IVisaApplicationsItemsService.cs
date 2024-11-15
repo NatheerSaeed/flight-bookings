@@ -3,13 +3,13 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IVisaApplicationsItemsService
+public interface IVisaApplicationsService
 {
     /// <summary>
     /// Create one VisaApplications
     /// </summary>
     public Task<VisaApplications> CreateVisaApplications(
-        VisaApplicationsCreateInput visaapplications
+        VisaApplicationCreateInput visaapplications
     );
 
     /// <summary>
@@ -21,13 +21,13 @@ public interface IVisaApplicationsItemsService
     /// Find many VisaApplicationsItems
     /// </summary>
     public Task<List<VisaApplications>> VisaApplicationsItems(
-        VisaApplicationsFindManyArgs findManyArgs
+        VisaApplicationFindManyArgs findManyArgs
     );
 
     /// <summary>
     /// Meta data about VisaApplications records
     /// </summary>
-    public Task<MetadataDto> VisaApplicationsItemsMeta(VisaApplicationsFindManyArgs findManyArgs);
+    public Task<MetadataDto> VisaApplicationsItemsMeta(VisaApplicationFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one VisaApplications
@@ -39,6 +39,6 @@ public interface IVisaApplicationsItemsService
     /// </summary>
     public Task UpdateVisaApplications(
         VisaApplicationsWhereUniqueInput uniqueId,
-        VisaApplicationsUpdateInput updateDto
+        VisaApplicationUpdateInput updateDto
     );
 }

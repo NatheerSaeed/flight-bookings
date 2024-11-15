@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IPackageTypesItemsService
+public interface IPackageTypesService
 {
     /// <summary>
     /// Create one PackageTypes
     /// </summary>
-    public Task<PackageTypes> CreatePackageTypes(PackageTypesCreateInput packagetypes);
+    public Task<PackageTypes> CreatePackageTypes(PackageTypeCreateInput packagetypes);
 
     /// <summary>
     /// Delete one PackageTypes
@@ -18,12 +18,12 @@ public interface IPackageTypesItemsService
     /// <summary>
     /// Find many PackageTypesItems
     /// </summary>
-    public Task<List<PackageTypes>> PackageTypesItems(PackageTypesFindManyArgs findManyArgs);
+    public Task<List<PackageTypes>> PackageTypesItems(PackageTypeFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about PackageTypes records
     /// </summary>
-    public Task<MetadataDto> PackageTypesItemsMeta(PackageTypesFindManyArgs findManyArgs);
+    public Task<MetadataDto> PackageTypesItemsMeta(PackageTypeFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one PackageTypes
@@ -35,6 +35,6 @@ public interface IPackageTypesItemsService
     /// </summary>
     public Task UpdatePackageTypes(
         PackageTypesWhereUniqueInput uniqueId,
-        PackageTypesUpdateInput updateDto
+        PackageTypeUpdateInput updateDto
     );
 }

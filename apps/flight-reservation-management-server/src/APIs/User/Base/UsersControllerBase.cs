@@ -149,7 +149,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/agencyProfilesItems")]
     public async Task<ActionResult<List<AgencyProfiles>>> FindAgencyProfilesItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] AgencyProfilesFindManyArgs filter
+        [FromQuery()] AgencyProfileFindManyArgs filter
     )
     {
         try
@@ -231,7 +231,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/airlinesItems")]
     public async Task<ActionResult<List<Airlines>>> FindAirlinesItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] AirlinesFindManyArgs filter
+        [FromQuery()] AirlineFindManyArgs filter
     )
     {
         try
@@ -313,7 +313,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/bankPaymentsItems")]
     public async Task<ActionResult<List<BankPayments>>> FindBankPaymentsItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] BankPaymentsFindManyArgs filter
+        [FromQuery()] BankPaymentFindManyArgs filter
     )
     {
         try
@@ -395,7 +395,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/carBookingsItems")]
     public async Task<ActionResult<List<CarBookings>>> FindCarBookingsItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] CarBookingsFindManyArgs filter
+        [FromQuery()] CarBookingFindManyArgs filter
     )
     {
         try
@@ -485,7 +485,7 @@ public abstract class UsersControllerBase : ControllerBase
         ActionResult<List<CooperateCustomerProfiles>>
     > FindCooperateCustomerProfilesItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] CooperateCustomerProfilesFindManyArgs filter
+        [FromQuery()] CooperateCustomerProfileFindManyArgs filter
     )
     {
         try
@@ -570,7 +570,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/flightBookingsItems")]
     public async Task<ActionResult<List<FlightBookings>>> FindFlightBookingsItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] FlightBookingsFindManyArgs filter
+        [FromQuery()] FlightBookingFindManyArgs filter
     )
     {
         try
@@ -652,7 +652,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/hotelBookingsItems")]
     public async Task<ActionResult<List<HotelBookings>>> FindHotelBookingsItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] HotelBookingsFindManyArgs filter
+        [FromQuery()] HotelBookingFindManyArgs filter
     )
     {
         try
@@ -734,7 +734,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/onlinePaymentsItems")]
     public async Task<ActionResult<List<OnlinePayments>>> FindOnlinePaymentsItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] OnlinePaymentsFindManyArgs filter
+        [FromQuery()] OnlinePaymentFindManyArgs filter
     )
     {
         try
@@ -816,7 +816,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/packageBookingsItems")]
     public async Task<ActionResult<List<PackageBookings>>> FindPackageBookingsItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] PackageBookingsFindManyArgs filter
+        [FromQuery()] PackageBookingFindManyArgs filter
     )
     {
         try
@@ -898,7 +898,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/payLatersItems")]
     public async Task<ActionResult<List<PayLaters>>> FindPayLatersItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] PayLatersFindManyArgs filter
+        [FromQuery()] PayLaterFindManyArgs filter
     )
     {
         try
@@ -980,7 +980,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/profilesItems")]
     public async Task<ActionResult<List<Profiles>>> FindProfilesItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] ProfilesFindManyArgs filter
+        [FromQuery()] ProfileFindManyArgs filter
     )
     {
         try
@@ -1062,7 +1062,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/walletLogsItems")]
     public async Task<ActionResult<List<WalletLogs>>> FindWalletLogsItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] WalletLogsFindManyArgs filter
+        [FromQuery()] WalletLogFindManyArgs filter
     )
     {
         try
@@ -1144,7 +1144,7 @@ public abstract class UsersControllerBase : ControllerBase
     [HttpGet("{Id}/walletsItems")]
     public async Task<ActionResult<List<Wallets>>> FindWalletsItems(
         [FromRoute()] UserWhereUniqueInput uniqueId,
-        [FromQuery()] WalletsFindManyArgs filter
+        [FromQuery()] WalletFindManyArgs filter
     )
     {
         try

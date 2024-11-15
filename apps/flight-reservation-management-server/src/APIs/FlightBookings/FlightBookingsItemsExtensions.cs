@@ -32,7 +32,7 @@ public static class FlightBookingsItemsExtensions
     }
 
     public static FlightBookingsDbModel ToModel(
-        this FlightBookingsUpdateInput updateDto,
+        this FlightBookingUpdateInput updateDto,
         FlightBookingsWhereUniqueInput uniqueId
     )
     {

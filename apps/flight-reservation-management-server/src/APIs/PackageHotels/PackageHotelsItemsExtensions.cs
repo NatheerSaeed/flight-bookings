@@ -23,7 +23,7 @@ public static class PackageHotelsItemsExtensions
     }
 
     public static PackageHotelsDbModel ToModel(
-        this PackageHotelsUpdateInput updateDto,
+        this PackageHotelUpdateInput updateDto,
         PackageHotelsWhereUniqueInput uniqueId
     )
     {

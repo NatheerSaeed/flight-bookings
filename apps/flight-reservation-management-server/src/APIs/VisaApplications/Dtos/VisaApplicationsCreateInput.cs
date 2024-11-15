@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class VisaApplicationsCreateInput
+public class VisaApplicationCreateInput
 {
     public DateTime CreatedAt { get; set; }
 

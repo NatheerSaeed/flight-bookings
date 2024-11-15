@@ -23,7 +23,7 @@ public static class PayLatersItemsExtensions
     }
 
     public static PayLatersDbModel ToModel(
-        this PayLatersUpdateInput updateDto,
+        this PayLaterUpdateInput updateDto,
         PayLatersWhereUniqueInput uniqueId
     )
     {

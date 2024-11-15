@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class MarkdownsUpdateInput
+public class MarkdownUpdateInput
 {
     public string? AirlineCode { get; set; }
 

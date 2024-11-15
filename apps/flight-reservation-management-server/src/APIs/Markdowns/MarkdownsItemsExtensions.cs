@@ -19,7 +19,7 @@ public static class MarkdownsItemsExtensions
     }
 
     public static MarkdownsDbModel ToModel(
-        this MarkdownsUpdateInput updateDto,
+        this MarkdownUpdateInput updateDto,
         MarkdownsWhereUniqueInput uniqueId
     )
     {

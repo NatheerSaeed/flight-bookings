@@ -31,7 +31,7 @@ public static class PackageBookingsItemsExtensions
     }
 
     public static PackageBookingsDbModel ToModel(
-        this PackageBookingsUpdateInput updateDto,
+        this PackageBookingUpdateInput updateDto,
         PackageBookingsWhereUniqueInput uniqueId
     )
     {

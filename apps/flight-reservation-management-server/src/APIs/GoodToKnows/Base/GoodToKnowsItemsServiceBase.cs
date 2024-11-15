@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class GoodToKnowsItemsServiceBase : IGoodToKnowsItemsService
+public abstract class GoodToKnowsServiceBase : IGoodToKnowsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public GoodToKnowsItemsServiceBase(FlightReservationManagementDbContext context)
+    public GoodToKnowsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class GoodToKnowsItemsServiceBase : IGoodToKnowsItemsService
     /// <summary>
     /// Create one GoodToKnows
     /// </summary>
-    public async Task<GoodToKnows> CreateGoodToKnows(GoodToKnowsCreateInput createDto)
+    public async Task<GoodToKnows> CreateGoodToKnows(GoodToKnowCreateInput createDto)
     {
         var goodToKnows = new GoodToKnowsDbModel
         {
@@ -78,7 +78,7 @@ public abstract class GoodToKnowsItemsServiceBase : IGoodToKnowsItemsService
     /// <summary>
     /// Find many GoodToKnowsItems
     /// </summary>
-    public async Task<List<GoodToKnows>> GoodToKnowsItems(GoodToKnowsFindManyArgs findManyArgs)
+    public async Task<List<GoodToKnows>> GoodToKnowsItems(GoodToKnowFindManyArgs findManyArgs)
     {
         var goodToKnowsItems = await _context
             .GoodToKnowsItems.Include(x => x.PackageField)
@@ -93,7 +93,7 @@ public abstract class GoodToKnowsItemsServiceBase : IGoodToKnowsItemsService
     /// <summary>
     /// Meta data about GoodToKnows records
     /// </summary>
-    public async Task<MetadataDto> GoodToKnowsItemsMeta(GoodToKnowsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> GoodToKnowsItemsMeta(GoodToKnowFindManyArgs findManyArgs)
     {
         var count = await _context.GoodToKnowsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -106,7 +106,7 @@ public abstract class GoodToKnowsItemsServiceBase : IGoodToKnowsItemsService
     public async Task<GoodToKnows> GoodToKnows(GoodToKnowsWhereUniqueInput uniqueId)
     {
         var goodToKnowsItems = await this.GoodToKnowsItems(
-            new GoodToKnowsFindManyArgs { Where = new GoodToKnowsWhereInput { Id = uniqueId.Id } }
+            new GoodToKnowFindManyArgs { Where = new GoodToKnowWhereInput { Id = uniqueId.Id } }
         );
         var goodToKnows = goodToKnowsItems.FirstOrDefault();
         if (goodToKnows == null)
@@ -122,7 +122,7 @@ public abstract class GoodToKnowsItemsServiceBase : IGoodToKnowsItemsService
     /// </summary>
     public async Task UpdateGoodToKnows(
         GoodToKnowsWhereUniqueInput uniqueId,
-        GoodToKnowsUpdateInput updateDto
+        GoodToKnowUpdateInput updateDto
     )
     {
         var goodToKnows = updateDto.ToModel(uniqueId);

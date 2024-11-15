@@ -22,7 +22,7 @@ public static class PackageFlightsItemsExtensions
     }
 
     public static PackageFlightsDbModel ToModel(
-        this PackageFlightsUpdateInput updateDto,
+        this PackageFlightUpdateInput updateDto,
         PackageFlightsWhereUniqueInput uniqueId
     )
     {

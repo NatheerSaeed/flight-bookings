@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs;
 
 [ApiController()]
-public class ProfilesItemsController : ProfilesItemsControllerBase
+public class ProfilesController : ProfilesControllerBase
 {
-    public ProfilesItemsController(IProfilesItemsService service)
+    public ProfilesController(IProfilesService service)
         : base(service) { }
 }

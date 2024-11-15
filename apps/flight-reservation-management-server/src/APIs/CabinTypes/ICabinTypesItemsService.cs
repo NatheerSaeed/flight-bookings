@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface ICabinTypesItemsService
+public interface ICabinTypesService
 {
     /// <summary>
     /// Create one CabinTypes
     /// </summary>
-    public Task<CabinTypes> CreateCabinTypes(CabinTypesCreateInput cabintypes);
+    public Task<CabinTypes> CreateCabinTypes(CabinTypeCreateInput cabintypes);
 
     /// <summary>
     /// Delete one CabinTypes
@@ -18,12 +18,12 @@ public interface ICabinTypesItemsService
     /// <summary>
     /// Find many CabinTypesItems
     /// </summary>
-    public Task<List<CabinTypes>> CabinTypesItems(CabinTypesFindManyArgs findManyArgs);
+    public Task<List<CabinTypes>> CabinTypesItems(CabinTypeFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about CabinTypes records
     /// </summary>
-    public Task<MetadataDto> CabinTypesItemsMeta(CabinTypesFindManyArgs findManyArgs);
+    public Task<MetadataDto> CabinTypesItemsMeta(CabinTypeFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one CabinTypes
@@ -35,6 +35,6 @@ public interface ICabinTypesItemsService
     /// </summary>
     public Task UpdateCabinTypes(
         CabinTypesWhereUniqueInput uniqueId,
-        CabinTypesUpdateInput updateDto
+        CabinTypeUpdateInput updateDto
     );
 }

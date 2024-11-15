@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class PackageFlightsItemsControllerBase : ControllerBase
+public abstract class PackageFlightsControllerBase : ControllerBase
 {
-    protected readonly IPackageFlightsItemsService _service;
+    protected readonly IPackageFlightsService _service;
 
-    public PackageFlightsItemsControllerBase(IPackageFlightsItemsService service)
+    public PackageFlightsControllerBase(IPackageFlightsService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class PackageFlightsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<PackageFlights>> CreatePackageFlights(
-        PackageFlightsCreateInput input
+        PackageFlightCreateInput input
     )
     {
         var packageFlights = await _service.CreatePackageFlights(input);
@@ -59,7 +59,7 @@ public abstract class PackageFlightsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<PackageFlights>>> PackageFlightsItems(
-        [FromQuery()] PackageFlightsFindManyArgs filter
+        [FromQuery()] PackageFlightFindManyArgs filter
     )
     {
         return Ok(await _service.PackageFlightsItems(filter));
@@ -70,7 +70,7 @@ public abstract class PackageFlightsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> PackageFlightsItemsMeta(
-        [FromQuery()] PackageFlightsFindManyArgs filter
+        [FromQuery()] PackageFlightFindManyArgs filter
     )
     {
         return Ok(await _service.PackageFlightsItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class PackageFlightsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdatePackageFlights(
         [FromRoute()] PackageFlightsWhereUniqueInput uniqueId,
-        [FromQuery()] PackageFlightsUpdateInput packageFlightsUpdateDto
+        [FromQuery()] PackageFlightUpdateInput packageFlightsUpdateDto
     )
     {
         try

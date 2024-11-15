@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class MarkupsItemsServiceBase : IMarkupsItemsService
+public abstract class MarkupsServiceBase : IMarkupsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public MarkupsItemsServiceBase(FlightReservationManagementDbContext context)
+    public MarkupsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class MarkupsItemsServiceBase : IMarkupsItemsService
     /// <summary>
     /// Create one Markups
     /// </summary>
-    public async Task<Markups> CreateMarkups(MarkupsCreateInput createDto)
+    public async Task<Markups> CreateMarkups(MarkupCreateInput createDto)
     {
         var markups = new MarkupsDbModel
         {
@@ -79,7 +79,7 @@ public abstract class MarkupsItemsServiceBase : IMarkupsItemsService
     /// <summary>
     /// Find many MarkupsItems
     /// </summary>
-    public async Task<List<Markups>> MarkupsItems(MarkupsFindManyArgs findManyArgs)
+    public async Task<List<Markups>> MarkupsItems(MarkupFindManyArgs findManyArgs)
     {
         var markupsItems = await _context
             .MarkupsItems.Include(x => x.Role)
@@ -94,7 +94,7 @@ public abstract class MarkupsItemsServiceBase : IMarkupsItemsService
     /// <summary>
     /// Meta data about Markups records
     /// </summary>
-    public async Task<MetadataDto> MarkupsItemsMeta(MarkupsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> MarkupsItemsMeta(MarkupFindManyArgs findManyArgs)
     {
         var count = await _context.MarkupsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -107,7 +107,7 @@ public abstract class MarkupsItemsServiceBase : IMarkupsItemsService
     public async Task<Markups> Markups(MarkupsWhereUniqueInput uniqueId)
     {
         var markupsItems = await this.MarkupsItems(
-            new MarkupsFindManyArgs { Where = new MarkupsWhereInput { Id = uniqueId.Id } }
+            new MarkupFindManyArgs { Where = new MarkupWhereInput { Id = uniqueId.Id } }
         );
         var markups = markupsItems.FirstOrDefault();
         if (markups == null)
@@ -121,7 +121,7 @@ public abstract class MarkupsItemsServiceBase : IMarkupsItemsService
     /// <summary>
     /// Update one Markups
     /// </summary>
-    public async Task UpdateMarkups(MarkupsWhereUniqueInput uniqueId, MarkupsUpdateInput updateDto)
+    public async Task UpdateMarkups(MarkupsWhereUniqueInput uniqueId, MarkupUpdateInput updateDto)
     {
         var markups = updateDto.ToModel(uniqueId);
 

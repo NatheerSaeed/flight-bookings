@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class PackagesItemsServiceBase : IPackagesItemsService
+public abstract class PackagesServiceBase : IPackagesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public PackagesItemsServiceBase(FlightReservationManagementDbContext context)
+    public PackagesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// <summary>
     /// Create one Packages
     /// </summary>
-    public async Task<Packages> CreatePackages(PackagesCreateInput createDto)
+    public async Task<Packages> CreatePackages(PackageCreateInput createDto)
     {
         var packages = new PackagesDbModel
         {
@@ -156,7 +156,7 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// <summary>
     /// Find many PackagesItems
     /// </summary>
-    public async Task<List<Packages>> PackagesItems(PackagesFindManyArgs findManyArgs)
+    public async Task<List<Packages>> PackagesItems(PackageFindManyArgs findManyArgs)
     {
         var packagesItems = await _context
             .PackagesItems.Include(x => x.GoodToKnowsItems)
@@ -180,7 +180,7 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// <summary>
     /// Meta data about Packages records
     /// </summary>
-    public async Task<MetadataDto> PackagesItemsMeta(PackagesFindManyArgs findManyArgs)
+    public async Task<MetadataDto> PackagesItemsMeta(PackageFindManyArgs findManyArgs)
     {
         var count = await _context.PackagesItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -193,7 +193,7 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     public async Task<Packages> Packages(PackagesWhereUniqueInput uniqueId)
     {
         var packagesItems = await this.PackagesItems(
-            new PackagesFindManyArgs { Where = new PackagesWhereInput { Id = uniqueId.Id } }
+            new PackageFindManyArgs { Where = new PackageWhereInput { Id = uniqueId.Id } }
         );
         var packages = packagesItems.FirstOrDefault();
         if (packages == null)
@@ -209,7 +209,7 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task UpdatePackages(
         PackagesWhereUniqueInput uniqueId,
-        PackagesUpdateInput updateDto
+        PackageUpdateInput updateDto
     )
     {
         var packages = updateDto.ToModel(uniqueId);
@@ -389,15 +389,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task<List<Attractions>> FindAttractionsItems(
         PackagesWhereUniqueInput uniqueId,
-        AttractionsFindManyArgs packagesFindManyArgs
+        AttractionFindManyArgs packageFindManyArgs
     )
     {
         var attractionsItems = await _context
             .AttractionsItems.Where(m => m.PackageFieldId == uniqueId.Id)
-            .ApplyWhere(packagesFindManyArgs.Where)
-            .ApplySkip(packagesFindManyArgs.Skip)
-            .ApplyTake(packagesFindManyArgs.Take)
-            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ApplyWhere(packageFindManyArgs.Where)
+            .ApplySkip(packageFindManyArgs.Skip)
+            .ApplyTake(packageFindManyArgs.Take)
+            .ApplyOrderBy(packageFindManyArgs.SortBy)
             .ToListAsync();
 
         return attractionsItems.Select(x => x.ToDto()).ToList();
@@ -498,15 +498,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task<List<FlightDeals>> FindFlightDealsItems(
         PackagesWhereUniqueInput uniqueId,
-        FlightDealsFindManyArgs packagesFindManyArgs
+        FlightDealFindManyArgs packageFindManyArgs
     )
     {
         var flightDealsItems = await _context
             .FlightDealsItems.Where(m => m.PackageFieldId == uniqueId.Id)
-            .ApplyWhere(packagesFindManyArgs.Where)
-            .ApplySkip(packagesFindManyArgs.Skip)
-            .ApplyTake(packagesFindManyArgs.Take)
-            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ApplyWhere(packageFindManyArgs.Where)
+            .ApplySkip(packageFindManyArgs.Skip)
+            .ApplyTake(packageFindManyArgs.Take)
+            .ApplyOrderBy(packageFindManyArgs.SortBy)
             .ToListAsync();
 
         return flightDealsItems.Select(x => x.ToDto()).ToList();
@@ -607,15 +607,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task<List<Galleries>> FindGalleriesItems(
         PackagesWhereUniqueInput uniqueId,
-        GalleriesFindManyArgs packagesFindManyArgs
+        GallerieFindManyArgs packageFindManyArgs
     )
     {
         var galleriesItems = await _context
             .GalleriesItems.Where(m => m.PackageFieldId == uniqueId.Id)
-            .ApplyWhere(packagesFindManyArgs.Where)
-            .ApplySkip(packagesFindManyArgs.Skip)
-            .ApplyTake(packagesFindManyArgs.Take)
-            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ApplyWhere(packageFindManyArgs.Where)
+            .ApplySkip(packageFindManyArgs.Skip)
+            .ApplyTake(packageFindManyArgs.Take)
+            .ApplyOrderBy(packageFindManyArgs.SortBy)
             .ToListAsync();
 
         return galleriesItems.Select(x => x.ToDto()).ToList();
@@ -716,15 +716,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task<List<GoodToKnows>> FindGoodToKnowsItems(
         PackagesWhereUniqueInput uniqueId,
-        GoodToKnowsFindManyArgs packagesFindManyArgs
+        GoodToKnowFindManyArgs packageFindManyArgs
     )
     {
         var goodToKnowsItems = await _context
             .GoodToKnowsItems.Where(m => m.PackageFieldId == uniqueId.Id)
-            .ApplyWhere(packagesFindManyArgs.Where)
-            .ApplySkip(packagesFindManyArgs.Skip)
-            .ApplyTake(packagesFindManyArgs.Take)
-            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ApplyWhere(packageFindManyArgs.Where)
+            .ApplySkip(packageFindManyArgs.Skip)
+            .ApplyTake(packageFindManyArgs.Take)
+            .ApplyOrderBy(packageFindManyArgs.SortBy)
             .ToListAsync();
 
         return goodToKnowsItems.Select(x => x.ToDto()).ToList();
@@ -825,15 +825,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task<List<HotelDeals>> FindHotelDealsItems(
         PackagesWhereUniqueInput uniqueId,
-        HotelDealsFindManyArgs packagesFindManyArgs
+        HotelDealFindManyArgs packageFindManyArgs
     )
     {
         var hotelDealsItems = await _context
             .HotelDealsItems.Where(m => m.PackageFieldId == uniqueId.Id)
-            .ApplyWhere(packagesFindManyArgs.Where)
-            .ApplySkip(packagesFindManyArgs.Skip)
-            .ApplyTake(packagesFindManyArgs.Take)
-            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ApplyWhere(packageFindManyArgs.Where)
+            .ApplySkip(packageFindManyArgs.Skip)
+            .ApplyTake(packageFindManyArgs.Take)
+            .ApplyOrderBy(packageFindManyArgs.SortBy)
             .ToListAsync();
 
         return hotelDealsItems.Select(x => x.ToDto()).ToList();
@@ -934,15 +934,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task<List<PackageAttractions>> FindPackageAttractionsItems(
         PackagesWhereUniqueInput uniqueId,
-        PackageAttractionsFindManyArgs packagesFindManyArgs
+        PackageAttractionFindManyArgs packageFindManyArgs
     )
     {
         var packageAttractionsItems = await _context
             .PackageAttractionsItems.Where(m => m.PackageFieldId == uniqueId.Id)
-            .ApplyWhere(packagesFindManyArgs.Where)
-            .ApplySkip(packagesFindManyArgs.Skip)
-            .ApplyTake(packagesFindManyArgs.Take)
-            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ApplyWhere(packageFindManyArgs.Where)
+            .ApplySkip(packageFindManyArgs.Skip)
+            .ApplyTake(packageFindManyArgs.Take)
+            .ApplyOrderBy(packageFindManyArgs.SortBy)
             .ToListAsync();
 
         return packageAttractionsItems.Select(x => x.ToDto()).ToList();
@@ -1043,15 +1043,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task<List<PackageBookings>> FindPackageBookingsItems(
         PackagesWhereUniqueInput uniqueId,
-        PackageBookingsFindManyArgs packagesFindManyArgs
+        PackageBookingFindManyArgs packageFindManyArgs
     )
     {
         var packageBookingsItems = await _context
             .PackageBookingsItems.Where(m => m.PackageFieldId == uniqueId.Id)
-            .ApplyWhere(packagesFindManyArgs.Where)
-            .ApplySkip(packagesFindManyArgs.Skip)
-            .ApplyTake(packagesFindManyArgs.Take)
-            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ApplyWhere(packageFindManyArgs.Where)
+            .ApplySkip(packageFindManyArgs.Skip)
+            .ApplyTake(packageFindManyArgs.Take)
+            .ApplyOrderBy(packageFindManyArgs.SortBy)
             .ToListAsync();
 
         return packageBookingsItems.Select(x => x.ToDto()).ToList();
@@ -1152,15 +1152,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task<List<PackageFlights>> FindPackageFlightsItems(
         PackagesWhereUniqueInput uniqueId,
-        PackageFlightsFindManyArgs packagesFindManyArgs
+        PackageFlightFindManyArgs packageFindManyArgs
     )
     {
         var packageFlightsItems = await _context
             .PackageFlightsItems.Where(m => m.PackageFieldId == uniqueId.Id)
-            .ApplyWhere(packagesFindManyArgs.Where)
-            .ApplySkip(packagesFindManyArgs.Skip)
-            .ApplyTake(packagesFindManyArgs.Take)
-            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ApplyWhere(packageFindManyArgs.Where)
+            .ApplySkip(packageFindManyArgs.Skip)
+            .ApplyTake(packageFindManyArgs.Take)
+            .ApplyOrderBy(packageFindManyArgs.SortBy)
             .ToListAsync();
 
         return packageFlightsItems.Select(x => x.ToDto()).ToList();
@@ -1261,15 +1261,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task<List<PackageHotels>> FindPackageHotelsItems(
         PackagesWhereUniqueInput uniqueId,
-        PackageHotelsFindManyArgs packagesFindManyArgs
+        PackageHotelFindManyArgs packageFindManyArgs
     )
     {
         var packageHotelsItems = await _context
             .PackageHotelsItems.Where(m => m.PackageFieldId == uniqueId.Id)
-            .ApplyWhere(packagesFindManyArgs.Where)
-            .ApplySkip(packagesFindManyArgs.Skip)
-            .ApplyTake(packagesFindManyArgs.Take)
-            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ApplyWhere(packageFindManyArgs.Where)
+            .ApplySkip(packageFindManyArgs.Skip)
+            .ApplyTake(packageFindManyArgs.Take)
+            .ApplyOrderBy(packageFindManyArgs.SortBy)
             .ToListAsync();
 
         return packageHotelsItems.Select(x => x.ToDto()).ToList();
@@ -1370,15 +1370,15 @@ public abstract class PackagesItemsServiceBase : IPackagesItemsService
     /// </summary>
     public async Task<List<SightSeeings>> FindSightSeeingsItems(
         PackagesWhereUniqueInput uniqueId,
-        SightSeeingsFindManyArgs packagesFindManyArgs
+        SightSeeingFindManyArgs packageFindManyArgs
     )
     {
         var sightSeeingsItems = await _context
             .SightSeeingsItems.Where(m => m.PackageFieldId == uniqueId.Id)
-            .ApplyWhere(packagesFindManyArgs.Where)
-            .ApplySkip(packagesFindManyArgs.Skip)
-            .ApplyTake(packagesFindManyArgs.Take)
-            .ApplyOrderBy(packagesFindManyArgs.SortBy)
+            .ApplyWhere(packageFindManyArgs.Where)
+            .ApplySkip(packageFindManyArgs.Skip)
+            .ApplyTake(packageFindManyArgs.Take)
+            .ApplyOrderBy(packageFindManyArgs.SortBy)
             .ToListAsync();
 
         return sightSeeingsItems.Select(x => x.ToDto()).ToList();

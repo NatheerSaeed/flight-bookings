@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class VatsItemsServiceBase : IVatsItemsService
+public abstract class VatsServiceBase : IVatsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public VatsItemsServiceBase(FlightReservationManagementDbContext context)
+    public VatsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class VatsItemsServiceBase : IVatsItemsService
     /// <summary>
     /// Create one Vats
     /// </summary>
-    public async Task<Vats> CreateVats(VatsCreateInput createDto)
+    public async Task<Vats> CreateVats(VatCreateInput createDto)
     {
         var vats = new VatsDbModel
         {
@@ -73,7 +73,7 @@ public abstract class VatsItemsServiceBase : IVatsItemsService
     /// <summary>
     /// Find many VatsItems
     /// </summary>
-    public async Task<List<Vats>> VatsItems(VatsFindManyArgs findManyArgs)
+    public async Task<List<Vats>> VatsItems(VatFindManyArgs findManyArgs)
     {
         var vatsItems = await _context
             .VatsItems.ApplyWhere(findManyArgs.Where)
@@ -87,7 +87,7 @@ public abstract class VatsItemsServiceBase : IVatsItemsService
     /// <summary>
     /// Meta data about Vats records
     /// </summary>
-    public async Task<MetadataDto> VatsItemsMeta(VatsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> VatsItemsMeta(VatFindManyArgs findManyArgs)
     {
         var count = await _context.VatsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -100,7 +100,7 @@ public abstract class VatsItemsServiceBase : IVatsItemsService
     public async Task<Vats> Vats(VatsWhereUniqueInput uniqueId)
     {
         var vatsItems = await this.VatsItems(
-            new VatsFindManyArgs { Where = new VatsWhereInput { Id = uniqueId.Id } }
+            new VatFindManyArgs { Where = new VatWhereInput { Id = uniqueId.Id } }
         );
         var vats = vatsItems.FirstOrDefault();
         if (vats == null)
@@ -114,7 +114,7 @@ public abstract class VatsItemsServiceBase : IVatsItemsService
     /// <summary>
     /// Update one Vats
     /// </summary>
-    public async Task UpdateVats(VatsWhereUniqueInput uniqueId, VatsUpdateInput updateDto)
+    public async Task UpdateVats(VatsWhereUniqueInput uniqueId, VatUpdateInput updateDto)
     {
         var vats = updateDto.ToModel(uniqueId);
 

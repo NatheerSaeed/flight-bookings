@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class GalleriesItemsControllerBase : ControllerBase
+public abstract class GalleriesControllerBase : ControllerBase
 {
-    protected readonly IGalleriesItemsService _service;
+    protected readonly IGalleriesService _service;
 
-    public GalleriesItemsControllerBase(IGalleriesItemsService service)
+    public GalleriesControllerBase(IGalleriesService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class GalleriesItemsControllerBase : ControllerBase
     /// Create one Galleries
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Galleries>> CreateGalleries(GalleriesCreateInput input)
+    public async Task<ActionResult<Galleries>> CreateGalleries(GallerieCreateInput input)
     {
         var galleries = await _service.CreateGalleries(input);
 
@@ -53,7 +53,7 @@ public abstract class GalleriesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Galleries>>> GalleriesItems(
-        [FromQuery()] GalleriesFindManyArgs filter
+        [FromQuery()] GallerieFindManyArgs filter
     )
     {
         return Ok(await _service.GalleriesItems(filter));
@@ -64,7 +64,7 @@ public abstract class GalleriesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> GalleriesItemsMeta(
-        [FromQuery()] GalleriesFindManyArgs filter
+        [FromQuery()] GallerieFindManyArgs filter
     )
     {
         return Ok(await _service.GalleriesItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class GalleriesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateGalleries(
         [FromRoute()] GalleriesWhereUniqueInput uniqueId,
-        [FromQuery()] GalleriesUpdateInput galleriesUpdateDto
+        [FromQuery()] GallerieUpdateInput galleriesUpdateDto
     )
     {
         try

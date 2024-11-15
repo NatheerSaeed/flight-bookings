@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class PayLatersItemsControllerBase : ControllerBase
+public abstract class PayLatersControllerBase : ControllerBase
 {
-    protected readonly IPayLatersItemsService _service;
+    protected readonly IPayLatersService _service;
 
-    public PayLatersItemsControllerBase(IPayLatersItemsService service)
+    public PayLatersControllerBase(IPayLatersService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class PayLatersItemsControllerBase : ControllerBase
     /// Create one PayLaters
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<PayLaters>> CreatePayLaters(PayLatersCreateInput input)
+    public async Task<ActionResult<PayLaters>> CreatePayLaters(PayLaterCreateInput input)
     {
         var payLaters = await _service.CreatePayLaters(input);
 
@@ -53,7 +53,7 @@ public abstract class PayLatersItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<PayLaters>>> PayLatersItems(
-        [FromQuery()] PayLatersFindManyArgs filter
+        [FromQuery()] PayLaterFindManyArgs filter
     )
     {
         return Ok(await _service.PayLatersItems(filter));
@@ -64,7 +64,7 @@ public abstract class PayLatersItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> PayLatersItemsMeta(
-        [FromQuery()] PayLatersFindManyArgs filter
+        [FromQuery()] PayLaterFindManyArgs filter
     )
     {
         return Ok(await _service.PayLatersItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class PayLatersItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdatePayLaters(
         [FromRoute()] PayLatersWhereUniqueInput uniqueId,
-        [FromQuery()] PayLatersUpdateInput payLatersUpdateDto
+        [FromQuery()] PayLaterUpdateInput payLatersUpdateDto
     )
     {
         try

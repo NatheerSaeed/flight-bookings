@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class AttractionsWhereInput
+public class AttractionWhereInput
 {
     public string? Address { get; set; }
 

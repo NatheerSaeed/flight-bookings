@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class PackageTypesUpdateInput
+public class PackageTypeUpdateInput
 {
     public DateTime? CreatedAt { get; set; }
 

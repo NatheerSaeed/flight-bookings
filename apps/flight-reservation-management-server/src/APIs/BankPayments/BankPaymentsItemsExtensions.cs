@@ -23,7 +23,7 @@ public static class BankPaymentsItemsExtensions
     }
 
     public static BankPaymentsDbModel ToModel(
-        this BankPaymentsUpdateInput updateDto,
+        this BankPaymentUpdateInput updateDto,
         BankPaymentsWhereUniqueInput uniqueId
     )
     {

@@ -23,7 +23,7 @@ public static class BankDetailsItemsExtensions
     }
 
     public static BankDetailsDbModel ToModel(
-        this BankDetailsUpdateInput updateDto,
+        this BankDetailUpdateInput updateDto,
         BankDetailsWhereUniqueInput uniqueId
     )
     {

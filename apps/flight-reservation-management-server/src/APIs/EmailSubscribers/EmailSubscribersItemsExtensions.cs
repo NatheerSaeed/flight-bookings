@@ -18,7 +18,7 @@ public static class EmailSubscribersItemsExtensions
     }
 
     public static EmailSubscribersDbModel ToModel(
-        this EmailSubscribersUpdateInput updateDto,
+        this EmailSubscriberUpdateInput updateDto,
         EmailSubscribersWhereUniqueInput uniqueId
     )
     {

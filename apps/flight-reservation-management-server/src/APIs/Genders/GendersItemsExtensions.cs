@@ -17,7 +17,7 @@ public static class GendersItemsExtensions
     }
 
     public static GendersDbModel ToModel(
-        this GendersUpdateInput updateDto,
+        this GenderUpdateInput updateDto,
         GendersWhereUniqueInput uniqueId
     )
     {

@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class HotelBookingsItemsServiceBase : IHotelBookingsItemsService
+public abstract class HotelBookingsServiceBase : IHotelBookingsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public HotelBookingsItemsServiceBase(FlightReservationManagementDbContext context)
+    public HotelBookingsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class HotelBookingsItemsServiceBase : IHotelBookingsItemsService
     /// <summary>
     /// Create one HotelBookings
     /// </summary>
-    public async Task<HotelBookings> CreateHotelBookings(HotelBookingsCreateInput createDto)
+    public async Task<HotelBookings> CreateHotelBookings(HotelBookingCreateInput createDto)
     {
         var hotelBookings = new HotelBookingsDbModel
         {
@@ -103,9 +103,7 @@ public abstract class HotelBookingsItemsServiceBase : IHotelBookingsItemsService
     /// <summary>
     /// Find many HotelBookingsItems
     /// </summary>
-    public async Task<List<HotelBookings>> HotelBookingsItems(
-        HotelBookingsFindManyArgs findManyArgs
-    )
+    public async Task<List<HotelBookings>> HotelBookingsItems(HotelBookingFindManyArgs findManyArgs)
     {
         var hotelBookingsItems = await _context
             .HotelBookingsItems.Include(x => x.Voucher)
@@ -121,7 +119,7 @@ public abstract class HotelBookingsItemsServiceBase : IHotelBookingsItemsService
     /// <summary>
     /// Meta data about HotelBookings records
     /// </summary>
-    public async Task<MetadataDto> HotelBookingsItemsMeta(HotelBookingsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> HotelBookingsItemsMeta(HotelBookingFindManyArgs findManyArgs)
     {
         var count = await _context.HotelBookingsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -134,10 +132,7 @@ public abstract class HotelBookingsItemsServiceBase : IHotelBookingsItemsService
     public async Task<HotelBookings> HotelBookings(HotelBookingsWhereUniqueInput uniqueId)
     {
         var hotelBookingsItems = await this.HotelBookingsItems(
-            new HotelBookingsFindManyArgs
-            {
-                Where = new HotelBookingsWhereInput { Id = uniqueId.Id }
-            }
+            new HotelBookingFindManyArgs { Where = new HotelBookingWhereInput { Id = uniqueId.Id } }
         );
         var hotelBookings = hotelBookingsItems.FirstOrDefault();
         if (hotelBookings == null)
@@ -153,7 +148,7 @@ public abstract class HotelBookingsItemsServiceBase : IHotelBookingsItemsService
     /// </summary>
     public async Task UpdateHotelBookings(
         HotelBookingsWhereUniqueInput uniqueId,
-        HotelBookingsUpdateInput updateDto
+        HotelBookingUpdateInput updateDto
     )
     {
         var hotelBookings = updateDto.ToModel(uniqueId);

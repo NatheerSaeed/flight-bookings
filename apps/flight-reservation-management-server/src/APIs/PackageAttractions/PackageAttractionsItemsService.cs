@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class PackageAttractionsItemsService : PackageAttractionsItemsServiceBase
+public class PackageAttractionsService : PackageAttractionsServiceBase
 {
-    public PackageAttractionsItemsService(FlightReservationManagementDbContext context)
+    public PackageAttractionsService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

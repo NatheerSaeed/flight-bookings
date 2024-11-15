@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class AttractionsItemsControllerBase : ControllerBase
+public abstract class AttractionsControllerBase : ControllerBase
 {
-    protected readonly IAttractionsItemsService _service;
+    protected readonly IAttractionsService _service;
 
-    public AttractionsItemsControllerBase(IAttractionsItemsService service)
+    public AttractionsControllerBase(IAttractionsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class AttractionsItemsControllerBase : ControllerBase
     /// Create one Attractions
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Attractions>> CreateAttractions(AttractionsCreateInput input)
+    public async Task<ActionResult<Attractions>> CreateAttractions(AttractionCreateInput input)
     {
         var attractions = await _service.CreateAttractions(input);
 
@@ -53,7 +53,7 @@ public abstract class AttractionsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Attractions>>> AttractionsItems(
-        [FromQuery()] AttractionsFindManyArgs filter
+        [FromQuery()] AttractionFindManyArgs filter
     )
     {
         return Ok(await _service.AttractionsItems(filter));
@@ -64,7 +64,7 @@ public abstract class AttractionsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> AttractionsItemsMeta(
-        [FromQuery()] AttractionsFindManyArgs filter
+        [FromQuery()] AttractionFindManyArgs filter
     )
     {
         return Ok(await _service.AttractionsItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class AttractionsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateAttractions(
         [FromRoute()] AttractionsWhereUniqueInput uniqueId,
-        [FromQuery()] AttractionsUpdateInput attractionsUpdateDto
+        [FromQuery()] AttractionUpdateInput attractionsUpdateDto
     )
     {
         try
@@ -169,7 +169,7 @@ public abstract class AttractionsItemsControllerBase : ControllerBase
     [HttpGet("{Id}/sightSeeingsItems")]
     public async Task<ActionResult<List<SightSeeings>>> FindSightSeeingsItems(
         [FromRoute()] AttractionsWhereUniqueInput uniqueId,
-        [FromQuery()] SightSeeingsFindManyArgs filter
+        [FromQuery()] SightSeeingFindManyArgs filter
     )
     {
         try

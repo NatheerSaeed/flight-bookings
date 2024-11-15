@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class AirportsItemsControllerBase : ControllerBase
+public abstract class AirportsControllerBase : ControllerBase
 {
-    protected readonly IAirportsItemsService _service;
+    protected readonly IAirportsService _service;
 
-    public AirportsItemsControllerBase(IAirportsItemsService service)
+    public AirportsControllerBase(IAirportsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class AirportsItemsControllerBase : ControllerBase
     /// Create one Airports
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Airports>> CreateAirports(AirportsCreateInput input)
+    public async Task<ActionResult<Airports>> CreateAirports(AirportCreateInput input)
     {
         var airports = await _service.CreateAirports(input);
 
@@ -51,7 +51,7 @@ public abstract class AirportsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Airports>>> AirportsItems(
-        [FromQuery()] AirportsFindManyArgs filter
+        [FromQuery()] AirportFindManyArgs filter
     )
     {
         return Ok(await _service.AirportsItems(filter));
@@ -62,7 +62,7 @@ public abstract class AirportsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> AirportsItemsMeta(
-        [FromQuery()] AirportsFindManyArgs filter
+        [FromQuery()] AirportFindManyArgs filter
     )
     {
         return Ok(await _service.AirportsItemsMeta(filter));
@@ -92,7 +92,7 @@ public abstract class AirportsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateAirports(
         [FromRoute()] AirportsWhereUniqueInput uniqueId,
-        [FromQuery()] AirportsUpdateInput airportsUpdateDto
+        [FromQuery()] AirportUpdateInput airportsUpdateDto
     )
     {
         try

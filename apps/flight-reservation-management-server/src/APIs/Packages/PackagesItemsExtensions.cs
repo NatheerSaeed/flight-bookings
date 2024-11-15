@@ -26,7 +26,7 @@ public static class PackagesItemsExtensions
     }
 
     public static PackagesDbModel ToModel(
-        this PackagesUpdateInput updateDto,
+        this PackageUpdateInput updateDto,
         PackagesWhereUniqueInput uniqueId
     )
     {

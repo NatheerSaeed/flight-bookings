@@ -24,7 +24,7 @@ public static class RolesItemsExtensions
     }
 
     public static RolesDbModel ToModel(
-        this RolesUpdateInput updateDto,
+        this RoleUpdateInput updateDto,
         RolesWhereUniqueInput uniqueId
     )
     {

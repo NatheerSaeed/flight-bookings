@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class PackageCategoriesItemsServiceBase : IPackageCategoriesItemsService
+public abstract class PackageCategoriesServiceBase : IPackageCategoriesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public PackageCategoriesItemsServiceBase(FlightReservationManagementDbContext context)
+    public PackageCategoriesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -22,7 +22,7 @@ public abstract class PackageCategoriesItemsServiceBase : IPackageCategoriesItem
     /// Create one PackageCategories
     /// </summary>
     public async Task<PackageCategories> CreatePackageCategories(
-        PackageCategoriesCreateInput createDto
+        PackageCategorieCreateInput createDto
     )
     {
         var packageCategories = new PackageCategoriesDbModel
@@ -70,7 +70,7 @@ public abstract class PackageCategoriesItemsServiceBase : IPackageCategoriesItem
     /// Find many PackageCategoriesItems
     /// </summary>
     public async Task<List<PackageCategories>> PackageCategoriesItems(
-        PackageCategoriesFindManyArgs findManyArgs
+        PackageCategorieFindManyArgs findManyArgs
     )
     {
         var packageCategoriesItems = await _context
@@ -86,7 +86,7 @@ public abstract class PackageCategoriesItemsServiceBase : IPackageCategoriesItem
     /// Meta data about PackageCategories records
     /// </summary>
     public async Task<MetadataDto> PackageCategoriesItemsMeta(
-        PackageCategoriesFindManyArgs findManyArgs
+        PackageCategorieFindManyArgs findManyArgs
     )
     {
         var count = await _context
@@ -104,9 +104,9 @@ public abstract class PackageCategoriesItemsServiceBase : IPackageCategoriesItem
     )
     {
         var packageCategoriesItems = await this.PackageCategoriesItems(
-            new PackageCategoriesFindManyArgs
+            new PackageCategorieFindManyArgs
             {
-                Where = new PackageCategoriesWhereInput { Id = uniqueId.Id }
+                Where = new PackageCategorieWhereInput { Id = uniqueId.Id }
             }
         );
         var packageCategories = packageCategoriesItems.FirstOrDefault();
@@ -123,7 +123,7 @@ public abstract class PackageCategoriesItemsServiceBase : IPackageCategoriesItem
     /// </summary>
     public async Task UpdatePackageCategories(
         PackageCategoriesWhereUniqueInput uniqueId,
-        PackageCategoriesUpdateInput updateDto
+        PackageCategorieUpdateInput updateDto
     )
     {
         var packageCategories = updateDto.ToModel(uniqueId);

@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface ITitlesItemsService
+public interface ITitlesService
 {
     /// <summary>
     /// Create one Titles
     /// </summary>
-    public Task<Titles> CreateTitles(TitlesCreateInput titles);
+    public Task<Titles> CreateTitles(TitleCreateInput titles);
 
     /// <summary>
     /// Delete one Titles
@@ -18,12 +18,12 @@ public interface ITitlesItemsService
     /// <summary>
     /// Find many TitlesItems
     /// </summary>
-    public Task<List<Titles>> TitlesItems(TitlesFindManyArgs findManyArgs);
+    public Task<List<Titles>> TitlesItems(TitleFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Titles records
     /// </summary>
-    public Task<MetadataDto> TitlesItemsMeta(TitlesFindManyArgs findManyArgs);
+    public Task<MetadataDto> TitlesItemsMeta(TitleFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Titles
@@ -33,7 +33,7 @@ public interface ITitlesItemsService
     /// <summary>
     /// Update one Titles
     /// </summary>
-    public Task UpdateTitles(TitlesWhereUniqueInput uniqueId, TitlesUpdateInput updateDto);
+    public Task UpdateTitles(TitlesWhereUniqueInput uniqueId, TitleUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple ProfilesItems records to Titles
@@ -56,7 +56,7 @@ public interface ITitlesItemsService
     /// </summary>
     public Task<List<Profiles>> FindProfilesItems(
         TitlesWhereUniqueInput uniqueId,
-        ProfilesFindManyArgs ProfilesFindManyArgs
+        ProfileFindManyArgs ProfileFindManyArgs
     );
 
     /// <summary>

@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class VouchersItemsControllerBase : ControllerBase
+public abstract class VouchersControllerBase : ControllerBase
 {
-    protected readonly IVouchersItemsService _service;
+    protected readonly IVouchersService _service;
 
-    public VouchersItemsControllerBase(IVouchersItemsService service)
+    public VouchersControllerBase(IVouchersService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class VouchersItemsControllerBase : ControllerBase
     /// Create one Vouchers
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Vouchers>> CreateVouchers(VouchersCreateInput input)
+    public async Task<ActionResult<Vouchers>> CreateVouchers(VoucherCreateInput input)
     {
         var vouchers = await _service.CreateVouchers(input);
 
@@ -51,7 +51,7 @@ public abstract class VouchersItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Vouchers>>> VouchersItems(
-        [FromQuery()] VouchersFindManyArgs filter
+        [FromQuery()] VoucherFindManyArgs filter
     )
     {
         return Ok(await _service.VouchersItems(filter));
@@ -62,7 +62,7 @@ public abstract class VouchersItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> VouchersItemsMeta(
-        [FromQuery()] VouchersFindManyArgs filter
+        [FromQuery()] VoucherFindManyArgs filter
     )
     {
         return Ok(await _service.VouchersItemsMeta(filter));
@@ -92,7 +92,7 @@ public abstract class VouchersItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateVouchers(
         [FromRoute()] VouchersWhereUniqueInput uniqueId,
-        [FromQuery()] VouchersUpdateInput vouchersUpdateDto
+        [FromQuery()] VoucherUpdateInput vouchersUpdateDto
     )
     {
         try
@@ -155,7 +155,7 @@ public abstract class VouchersItemsControllerBase : ControllerBase
     [HttpGet("{Id}/flightBookingsItems")]
     public async Task<ActionResult<List<FlightBookings>>> FindFlightBookingsItems(
         [FromRoute()] VouchersWhereUniqueInput uniqueId,
-        [FromQuery()] FlightBookingsFindManyArgs filter
+        [FromQuery()] FlightBookingFindManyArgs filter
     )
     {
         try
@@ -237,7 +237,7 @@ public abstract class VouchersItemsControllerBase : ControllerBase
     [HttpGet("{Id}/hotelBookingsItems")]
     public async Task<ActionResult<List<HotelBookings>>> FindHotelBookingsItems(
         [FromRoute()] VouchersWhereUniqueInput uniqueId,
-        [FromQuery()] HotelBookingsFindManyArgs filter
+        [FromQuery()] HotelBookingFindManyArgs filter
     )
     {
         try

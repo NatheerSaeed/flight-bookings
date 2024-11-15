@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class WalletLogTypesItemsServiceBase : IWalletLogTypesItemsService
+public abstract class WalletLogTypesServiceBase : IWalletLogTypesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public WalletLogTypesItemsServiceBase(FlightReservationManagementDbContext context)
+    public WalletLogTypesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class WalletLogTypesItemsServiceBase : IWalletLogTypesItemsServi
     /// <summary>
     /// Create one WalletLogTypes
     /// </summary>
-    public async Task<WalletLogTypes> CreateWalletLogTypes(WalletLogTypesCreateInput createDto)
+    public async Task<WalletLogTypes> CreateWalletLogTypes(WalletLogTypeCreateInput createDto)
     {
         var walletLogTypes = new WalletLogTypesDbModel
         {
@@ -67,7 +67,7 @@ public abstract class WalletLogTypesItemsServiceBase : IWalletLogTypesItemsServi
     /// Find many WalletLogTypesItems
     /// </summary>
     public async Task<List<WalletLogTypes>> WalletLogTypesItems(
-        WalletLogTypesFindManyArgs findManyArgs
+        WalletLogTypeFindManyArgs findManyArgs
     )
     {
         var walletLogTypesItems = await _context
@@ -82,7 +82,7 @@ public abstract class WalletLogTypesItemsServiceBase : IWalletLogTypesItemsServi
     /// <summary>
     /// Meta data about WalletLogTypes records
     /// </summary>
-    public async Task<MetadataDto> WalletLogTypesItemsMeta(WalletLogTypesFindManyArgs findManyArgs)
+    public async Task<MetadataDto> WalletLogTypesItemsMeta(WalletLogTypeFindManyArgs findManyArgs)
     {
         var count = await _context.WalletLogTypesItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -95,9 +95,9 @@ public abstract class WalletLogTypesItemsServiceBase : IWalletLogTypesItemsServi
     public async Task<WalletLogTypes> WalletLogTypes(WalletLogTypesWhereUniqueInput uniqueId)
     {
         var walletLogTypesItems = await this.WalletLogTypesItems(
-            new WalletLogTypesFindManyArgs
+            new WalletLogTypeFindManyArgs
             {
-                Where = new WalletLogTypesWhereInput { Id = uniqueId.Id }
+                Where = new WalletLogTypeWhereInput { Id = uniqueId.Id }
             }
         );
         var walletLogTypes = walletLogTypesItems.FirstOrDefault();
@@ -114,7 +114,7 @@ public abstract class WalletLogTypesItemsServiceBase : IWalletLogTypesItemsServi
     /// </summary>
     public async Task UpdateWalletLogTypes(
         WalletLogTypesWhereUniqueInput uniqueId,
-        WalletLogTypesUpdateInput updateDto
+        WalletLogTypeUpdateInput updateDto
     )
     {
         var walletLogTypes = updateDto.ToModel(uniqueId);

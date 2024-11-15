@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class PasswordResetsItemsServiceBase : IPasswordResetsItemsService
+public abstract class PasswordResetsServiceBase : IPasswordResetsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public PasswordResetsItemsServiceBase(FlightReservationManagementDbContext context)
+    public PasswordResetsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class PasswordResetsItemsServiceBase : IPasswordResetsItemsServi
     /// <summary>
     /// Create one PasswordResets
     /// </summary>
-    public async Task<PasswordResets> CreatePasswordResets(PasswordResetsCreateInput createDto)
+    public async Task<PasswordResets> CreatePasswordResets(PasswordResetCreateInput createDto)
     {
         var passwordResets = new PasswordResetsDbModel
         {
@@ -68,7 +68,7 @@ public abstract class PasswordResetsItemsServiceBase : IPasswordResetsItemsServi
     /// Find many PasswordResetsItems
     /// </summary>
     public async Task<List<PasswordResets>> PasswordResetsItems(
-        PasswordResetsFindManyArgs findManyArgs
+        PasswordResetFindManyArgs findManyArgs
     )
     {
         var passwordResetsItems = await _context
@@ -83,7 +83,7 @@ public abstract class PasswordResetsItemsServiceBase : IPasswordResetsItemsServi
     /// <summary>
     /// Meta data about PasswordResets records
     /// </summary>
-    public async Task<MetadataDto> PasswordResetsItemsMeta(PasswordResetsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> PasswordResetsItemsMeta(PasswordResetFindManyArgs findManyArgs)
     {
         var count = await _context.PasswordResetsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -96,9 +96,9 @@ public abstract class PasswordResetsItemsServiceBase : IPasswordResetsItemsServi
     public async Task<PasswordResets> PasswordResets(PasswordResetsWhereUniqueInput uniqueId)
     {
         var passwordResetsItems = await this.PasswordResetsItems(
-            new PasswordResetsFindManyArgs
+            new PasswordResetFindManyArgs
             {
-                Where = new PasswordResetsWhereInput { Id = uniqueId.Id }
+                Where = new PasswordResetWhereInput { Id = uniqueId.Id }
             }
         );
         var passwordResets = passwordResetsItems.FirstOrDefault();
@@ -115,7 +115,7 @@ public abstract class PasswordResetsItemsServiceBase : IPasswordResetsItemsServi
     /// </summary>
     public async Task UpdatePasswordResets(
         PasswordResetsWhereUniqueInput uniqueId,
-        PasswordResetsUpdateInput updateDto
+        PasswordResetUpdateInput updateDto
     )
     {
         var passwordResets = updateDto.ToModel(uniqueId);

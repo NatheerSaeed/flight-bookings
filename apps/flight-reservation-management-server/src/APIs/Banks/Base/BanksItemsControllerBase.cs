@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class BanksItemsControllerBase : ControllerBase
+public abstract class BanksControllerBase : ControllerBase
 {
-    protected readonly IBanksItemsService _service;
+    protected readonly IBanksService _service;
 
-    public BanksItemsControllerBase(IBanksItemsService service)
+    public BanksControllerBase(IBanksService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class BanksItemsControllerBase : ControllerBase
     /// Create one Banks
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Banks>> CreateBanks(BanksCreateInput input)
+    public async Task<ActionResult<Banks>> CreateBanks(BankCreateInput input)
     {
         var banks = await _service.CreateBanks(input);
 
@@ -50,7 +50,7 @@ public abstract class BanksItemsControllerBase : ControllerBase
     /// Find many BanksItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Banks>>> BanksItems([FromQuery()] BanksFindManyArgs filter)
+    public async Task<ActionResult<List<Banks>>> BanksItems([FromQuery()] BankFindManyArgs filter)
     {
         return Ok(await _service.BanksItems(filter));
     }
@@ -60,7 +60,7 @@ public abstract class BanksItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> BanksItemsMeta(
-        [FromQuery()] BanksFindManyArgs filter
+        [FromQuery()] BankFindManyArgs filter
     )
     {
         return Ok(await _service.BanksItemsMeta(filter));
@@ -88,7 +88,7 @@ public abstract class BanksItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateBanks(
         [FromRoute()] BanksWhereUniqueInput uniqueId,
-        [FromQuery()] BanksUpdateInput banksUpdateDto
+        [FromQuery()] BankUpdateInput banksUpdateDto
     )
     {
         try
@@ -151,7 +151,7 @@ public abstract class BanksItemsControllerBase : ControllerBase
     [HttpGet("{Id}/bankDetailsItems")]
     public async Task<ActionResult<List<BankDetails>>> FindBankDetailsItems(
         [FromRoute()] BanksWhereUniqueInput uniqueId,
-        [FromQuery()] BankDetailsFindManyArgs filter
+        [FromQuery()] BankDetailFindManyArgs filter
     )
     {
         try

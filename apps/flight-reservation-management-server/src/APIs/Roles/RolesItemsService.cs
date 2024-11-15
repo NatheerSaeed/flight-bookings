@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class RolesItemsService : RolesItemsServiceBase
+public class RolesService : RolesServiceBase
 {
-    public RolesItemsService(FlightReservationManagementDbContext context)
+    public RolesService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

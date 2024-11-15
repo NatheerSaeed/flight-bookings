@@ -27,7 +27,7 @@ public static class TravelPackagesItemsExtensions
     }
 
     public static TravelPackagesDbModel ToModel(
-        this TravelPackagesUpdateInput updateDto,
+        this TravelPackageUpdateInput updateDto,
         TravelPackagesWhereUniqueInput uniqueId
     )
     {

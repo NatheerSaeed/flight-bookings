@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class AgencyProfilesItemsControllerBase : ControllerBase
+public abstract class AgencyProfilesControllerBase : ControllerBase
 {
-    protected readonly IAgencyProfilesItemsService _service;
+    protected readonly IAgencyProfilesService _service;
 
-    public AgencyProfilesItemsControllerBase(IAgencyProfilesItemsService service)
+    public AgencyProfilesControllerBase(IAgencyProfilesService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class AgencyProfilesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<AgencyProfiles>> CreateAgencyProfiles(
-        AgencyProfilesCreateInput input
+        AgencyProfileCreateInput input
     )
     {
         var agencyProfiles = await _service.CreateAgencyProfiles(input);
@@ -59,7 +59,7 @@ public abstract class AgencyProfilesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<AgencyProfiles>>> AgencyProfilesItems(
-        [FromQuery()] AgencyProfilesFindManyArgs filter
+        [FromQuery()] AgencyProfileFindManyArgs filter
     )
     {
         return Ok(await _service.AgencyProfilesItems(filter));
@@ -70,7 +70,7 @@ public abstract class AgencyProfilesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> AgencyProfilesItemsMeta(
-        [FromQuery()] AgencyProfilesFindManyArgs filter
+        [FromQuery()] AgencyProfileFindManyArgs filter
     )
     {
         return Ok(await _service.AgencyProfilesItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class AgencyProfilesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateAgencyProfiles(
         [FromRoute()] AgencyProfilesWhereUniqueInput uniqueId,
-        [FromQuery()] AgencyProfilesUpdateInput agencyProfilesUpdateDto
+        [FromQuery()] AgencyProfileUpdateInput agencyProfilesUpdateDto
     )
     {
         try

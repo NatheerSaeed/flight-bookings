@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class GalleriesCreateInput
+public class GallerieCreateInput
 {
     public DateTime CreatedAt { get; set; }
 

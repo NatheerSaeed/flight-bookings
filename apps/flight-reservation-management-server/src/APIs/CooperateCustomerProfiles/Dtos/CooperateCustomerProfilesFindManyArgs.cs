@@ -5,5 +5,5 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
-public class CooperateCustomerProfilesFindManyArgs
-    : FindManyInput<CooperateCustomerProfiles, CooperateCustomerProfilesWhereInput> { }
+public class CooperateCustomerProfileFindManyArgs
+    : FindManyInput<CooperateCustomerProfiles, CooperateCustomerProfileWhereInput> { }

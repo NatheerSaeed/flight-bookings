@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class PasswordResetsItemsService : PasswordResetsItemsServiceBase
+public class PasswordResetsService : PasswordResetsServiceBase
 {
-    public PasswordResetsItemsService(FlightReservationManagementDbContext context)
+    public PasswordResetsService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

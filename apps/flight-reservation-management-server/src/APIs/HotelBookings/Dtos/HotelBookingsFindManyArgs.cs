@@ -5,4 +5,4 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
-public class HotelBookingsFindManyArgs : FindManyInput<HotelBookings, HotelBookingsWhereInput> { }
+public class HotelBookingFindManyArgs : FindManyInput<HotelBookings, HotelBookingWhereInput> { }

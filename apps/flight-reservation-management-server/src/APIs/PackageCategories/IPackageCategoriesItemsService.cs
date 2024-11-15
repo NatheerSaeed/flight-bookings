@@ -3,13 +3,13 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IPackageCategoriesItemsService
+public interface IPackageCategoriesService
 {
     /// <summary>
     /// Create one PackageCategories
     /// </summary>
     public Task<PackageCategories> CreatePackageCategories(
-        PackageCategoriesCreateInput packagecategories
+        PackageCategorieCreateInput packagecategories
     );
 
     /// <summary>
@@ -21,13 +21,13 @@ public interface IPackageCategoriesItemsService
     /// Find many PackageCategoriesItems
     /// </summary>
     public Task<List<PackageCategories>> PackageCategoriesItems(
-        PackageCategoriesFindManyArgs findManyArgs
+        PackageCategorieFindManyArgs findManyArgs
     );
 
     /// <summary>
     /// Meta data about PackageCategories records
     /// </summary>
-    public Task<MetadataDto> PackageCategoriesItemsMeta(PackageCategoriesFindManyArgs findManyArgs);
+    public Task<MetadataDto> PackageCategoriesItemsMeta(PackageCategorieFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one PackageCategories
@@ -39,6 +39,6 @@ public interface IPackageCategoriesItemsService
     /// </summary>
     public Task UpdatePackageCategories(
         PackageCategoriesWhereUniqueInput uniqueId,
-        PackageCategoriesUpdateInput updateDto
+        PackageCategorieUpdateInput updateDto
     );
 }

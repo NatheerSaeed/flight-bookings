@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class VisaApplicationsItemsServiceBase : IVisaApplicationsItemsService
+public abstract class VisaApplicationsServiceBase : IVisaApplicationsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public VisaApplicationsItemsServiceBase(FlightReservationManagementDbContext context)
+    public VisaApplicationsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,9 +21,7 @@ public abstract class VisaApplicationsItemsServiceBase : IVisaApplicationsItemsS
     /// <summary>
     /// Create one VisaApplications
     /// </summary>
-    public async Task<VisaApplications> CreateVisaApplications(
-        VisaApplicationsCreateInput createDto
-    )
+    public async Task<VisaApplications> CreateVisaApplications(VisaApplicationCreateInput createDto)
     {
         var visaApplications = new VisaApplicationsDbModel
         {
@@ -75,7 +73,7 @@ public abstract class VisaApplicationsItemsServiceBase : IVisaApplicationsItemsS
     /// Find many VisaApplicationsItems
     /// </summary>
     public async Task<List<VisaApplications>> VisaApplicationsItems(
-        VisaApplicationsFindManyArgs findManyArgs
+        VisaApplicationFindManyArgs findManyArgs
     )
     {
         var visaApplicationsItems = await _context
@@ -91,7 +89,7 @@ public abstract class VisaApplicationsItemsServiceBase : IVisaApplicationsItemsS
     /// Meta data about VisaApplications records
     /// </summary>
     public async Task<MetadataDto> VisaApplicationsItemsMeta(
-        VisaApplicationsFindManyArgs findManyArgs
+        VisaApplicationFindManyArgs findManyArgs
     )
     {
         var count = await _context
@@ -107,9 +105,9 @@ public abstract class VisaApplicationsItemsServiceBase : IVisaApplicationsItemsS
     public async Task<VisaApplications> VisaApplications(VisaApplicationsWhereUniqueInput uniqueId)
     {
         var visaApplicationsItems = await this.VisaApplicationsItems(
-            new VisaApplicationsFindManyArgs
+            new VisaApplicationFindManyArgs
             {
-                Where = new VisaApplicationsWhereInput { Id = uniqueId.Id }
+                Where = new VisaApplicationWhereInput { Id = uniqueId.Id }
             }
         );
         var visaApplications = visaApplicationsItems.FirstOrDefault();
@@ -126,7 +124,7 @@ public abstract class VisaApplicationsItemsServiceBase : IVisaApplicationsItemsS
     /// </summary>
     public async Task UpdateVisaApplications(
         VisaApplicationsWhereUniqueInput uniqueId,
-        VisaApplicationsUpdateInput updateDto
+        VisaApplicationUpdateInput updateDto
     )
     {
         var visaApplications = updateDto.ToModel(uniqueId);

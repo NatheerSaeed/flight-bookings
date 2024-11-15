@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IWalletLogsItemsService
+public interface IWalletLogsService
 {
     /// <summary>
     /// Create one WalletLogs
     /// </summary>
-    public Task<WalletLogs> CreateWalletLogs(WalletLogsCreateInput walletlogs);
+    public Task<WalletLogs> CreateWalletLogs(WalletLogCreateInput walletlogs);
 
     /// <summary>
     /// Delete one WalletLogs
@@ -18,12 +18,12 @@ public interface IWalletLogsItemsService
     /// <summary>
     /// Find many WalletLogsItems
     /// </summary>
-    public Task<List<WalletLogs>> WalletLogsItems(WalletLogsFindManyArgs findManyArgs);
+    public Task<List<WalletLogs>> WalletLogsItems(WalletLogFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about WalletLogs records
     /// </summary>
-    public Task<MetadataDto> WalletLogsItemsMeta(WalletLogsFindManyArgs findManyArgs);
+    public Task<MetadataDto> WalletLogsItemsMeta(WalletLogFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one WalletLogs
@@ -35,7 +35,7 @@ public interface IWalletLogsItemsService
     /// </summary>
     public Task UpdateWalletLogs(
         WalletLogsWhereUniqueInput uniqueId,
-        WalletLogsUpdateInput updateDto
+        WalletLogUpdateInput updateDto
     );
 
     /// <summary>

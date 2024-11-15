@@ -9,12 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class CooperateCustomerProfilesItemsServiceBase
-    : ICooperateCustomerProfilesItemsService
+public abstract class CooperateCustomerProfilesServiceBase : ICooperateCustomerProfilesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public CooperateCustomerProfilesItemsServiceBase(FlightReservationManagementDbContext context)
+    public CooperateCustomerProfilesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -23,7 +22,7 @@ public abstract class CooperateCustomerProfilesItemsServiceBase
     /// Create one CooperateCustomerProfiles
     /// </summary>
     public async Task<CooperateCustomerProfiles> CreateCooperateCustomerProfiles(
-        CooperateCustomerProfilesCreateInput createDto
+        CooperateCustomerProfileCreateInput createDto
     )
     {
         var cooperateCustomerProfiles = new CooperateCustomerProfilesDbModel
@@ -89,7 +88,7 @@ public abstract class CooperateCustomerProfilesItemsServiceBase
     /// Find many CooperateCustomerProfilesItems
     /// </summary>
     public async Task<List<CooperateCustomerProfiles>> CooperateCustomerProfilesItems(
-        CooperateCustomerProfilesFindManyArgs findManyArgs
+        CooperateCustomerProfileFindManyArgs findManyArgs
     )
     {
         var cooperateCustomerProfilesItems = await _context
@@ -108,7 +107,7 @@ public abstract class CooperateCustomerProfilesItemsServiceBase
     /// Meta data about CooperateCustomerProfiles records
     /// </summary>
     public async Task<MetadataDto> CooperateCustomerProfilesItemsMeta(
-        CooperateCustomerProfilesFindManyArgs findManyArgs
+        CooperateCustomerProfileFindManyArgs findManyArgs
     )
     {
         var count = await _context
@@ -126,9 +125,9 @@ public abstract class CooperateCustomerProfilesItemsServiceBase
     )
     {
         var cooperateCustomerProfilesItems = await this.CooperateCustomerProfilesItems(
-            new CooperateCustomerProfilesFindManyArgs
+            new CooperateCustomerProfileFindManyArgs
             {
-                Where = new CooperateCustomerProfilesWhereInput { Id = uniqueId.Id }
+                Where = new CooperateCustomerProfileWhereInput { Id = uniqueId.Id }
             }
         );
         var cooperateCustomerProfiles = cooperateCustomerProfilesItems.FirstOrDefault();
@@ -145,7 +144,7 @@ public abstract class CooperateCustomerProfilesItemsServiceBase
     /// </summary>
     public async Task UpdateCooperateCustomerProfiles(
         CooperateCustomerProfilesWhereUniqueInput uniqueId,
-        CooperateCustomerProfilesUpdateInput updateDto
+        CooperateCustomerProfileUpdateInput updateDto
     )
     {
         var cooperateCustomerProfiles = updateDto.ToModel(uniqueId);

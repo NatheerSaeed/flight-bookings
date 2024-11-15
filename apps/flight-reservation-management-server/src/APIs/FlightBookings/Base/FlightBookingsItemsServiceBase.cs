@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class FlightBookingsItemsServiceBase : IFlightBookingsItemsService
+public abstract class FlightBookingsServiceBase : IFlightBookingsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public FlightBookingsItemsServiceBase(FlightReservationManagementDbContext context)
+    public FlightBookingsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class FlightBookingsItemsServiceBase : IFlightBookingsItemsServi
     /// <summary>
     /// Create one FlightBookings
     /// </summary>
-    public async Task<FlightBookings> CreateFlightBookings(FlightBookingsCreateInput createDto)
+    public async Task<FlightBookings> CreateFlightBookings(FlightBookingCreateInput createDto)
     {
         var flightBookings = new FlightBookingsDbModel
         {
@@ -93,7 +93,7 @@ public abstract class FlightBookingsItemsServiceBase : IFlightBookingsItemsServi
     /// Find many FlightBookingsItems
     /// </summary>
     public async Task<List<FlightBookings>> FlightBookingsItems(
-        FlightBookingsFindManyArgs findManyArgs
+        FlightBookingFindManyArgs findManyArgs
     )
     {
         var flightBookingsItems = await _context
@@ -110,7 +110,7 @@ public abstract class FlightBookingsItemsServiceBase : IFlightBookingsItemsServi
     /// <summary>
     /// Meta data about FlightBookings records
     /// </summary>
-    public async Task<MetadataDto> FlightBookingsItemsMeta(FlightBookingsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> FlightBookingsItemsMeta(FlightBookingFindManyArgs findManyArgs)
     {
         var count = await _context.FlightBookingsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -123,9 +123,9 @@ public abstract class FlightBookingsItemsServiceBase : IFlightBookingsItemsServi
     public async Task<FlightBookings> FlightBookings(FlightBookingsWhereUniqueInput uniqueId)
     {
         var flightBookingsItems = await this.FlightBookingsItems(
-            new FlightBookingsFindManyArgs
+            new FlightBookingFindManyArgs
             {
-                Where = new FlightBookingsWhereInput { Id = uniqueId.Id }
+                Where = new FlightBookingWhereInput { Id = uniqueId.Id }
             }
         );
         var flightBookings = flightBookingsItems.FirstOrDefault();
@@ -142,7 +142,7 @@ public abstract class FlightBookingsItemsServiceBase : IFlightBookingsItemsServi
     /// </summary>
     public async Task UpdateFlightBookings(
         FlightBookingsWhereUniqueInput uniqueId,
-        FlightBookingsUpdateInput updateDto
+        FlightBookingUpdateInput updateDto
     )
     {
         var flightBookings = updateDto.ToModel(uniqueId);

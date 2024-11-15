@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class GendersItemsServiceBase : IGendersItemsService
+public abstract class GendersServiceBase : IGendersService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public GendersItemsServiceBase(FlightReservationManagementDbContext context)
+    public GendersServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class GendersItemsServiceBase : IGendersItemsService
     /// <summary>
     /// Create one Genders
     /// </summary>
-    public async Task<Genders> CreateGenders(GendersCreateInput createDto)
+    public async Task<Genders> CreateGenders(GenderCreateInput createDto)
     {
         var genders = new GendersDbModel
         {
@@ -73,7 +73,7 @@ public abstract class GendersItemsServiceBase : IGendersItemsService
     /// <summary>
     /// Find many GendersItems
     /// </summary>
-    public async Task<List<Genders>> GendersItems(GendersFindManyArgs findManyArgs)
+    public async Task<List<Genders>> GendersItems(GenderFindManyArgs findManyArgs)
     {
         var gendersItems = await _context
             .GendersItems.Include(x => x.ProfilesItems)
@@ -88,7 +88,7 @@ public abstract class GendersItemsServiceBase : IGendersItemsService
     /// <summary>
     /// Meta data about Genders records
     /// </summary>
-    public async Task<MetadataDto> GendersItemsMeta(GendersFindManyArgs findManyArgs)
+    public async Task<MetadataDto> GendersItemsMeta(GenderFindManyArgs findManyArgs)
     {
         var count = await _context.GendersItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -101,7 +101,7 @@ public abstract class GendersItemsServiceBase : IGendersItemsService
     public async Task<Genders> Genders(GendersWhereUniqueInput uniqueId)
     {
         var gendersItems = await this.GendersItems(
-            new GendersFindManyArgs { Where = new GendersWhereInput { Id = uniqueId.Id } }
+            new GenderFindManyArgs { Where = new GenderWhereInput { Id = uniqueId.Id } }
         );
         var genders = gendersItems.FirstOrDefault();
         if (genders == null)
@@ -115,7 +115,7 @@ public abstract class GendersItemsServiceBase : IGendersItemsService
     /// <summary>
     /// Update one Genders
     /// </summary>
-    public async Task UpdateGenders(GendersWhereUniqueInput uniqueId, GendersUpdateInput updateDto)
+    public async Task UpdateGenders(GendersWhereUniqueInput uniqueId, GenderUpdateInput updateDto)
     {
         var genders = updateDto.ToModel(uniqueId);
 
@@ -213,15 +213,15 @@ public abstract class GendersItemsServiceBase : IGendersItemsService
     /// </summary>
     public async Task<List<Profiles>> FindProfilesItems(
         GendersWhereUniqueInput uniqueId,
-        ProfilesFindManyArgs gendersFindManyArgs
+        ProfileFindManyArgs genderFindManyArgs
     )
     {
         var profilesItems = await _context
             .ProfilesItems.Where(m => m.GenderId == uniqueId.Id)
-            .ApplyWhere(gendersFindManyArgs.Where)
-            .ApplySkip(gendersFindManyArgs.Skip)
-            .ApplyTake(gendersFindManyArgs.Take)
-            .ApplyOrderBy(gendersFindManyArgs.SortBy)
+            .ApplyWhere(genderFindManyArgs.Where)
+            .ApplySkip(genderFindManyArgs.Skip)
+            .ApplyTake(genderFindManyArgs.Take)
+            .ApplyOrderBy(genderFindManyArgs.SortBy)
             .ToListAsync();
 
         return profilesItems.Select(x => x.ToDto()).ToList();

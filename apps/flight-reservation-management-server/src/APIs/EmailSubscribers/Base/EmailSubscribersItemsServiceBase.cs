@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class EmailSubscribersItemsServiceBase : IEmailSubscribersItemsService
+public abstract class EmailSubscribersServiceBase : IEmailSubscribersService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public EmailSubscribersItemsServiceBase(FlightReservationManagementDbContext context)
+    public EmailSubscribersServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,9 +21,7 @@ public abstract class EmailSubscribersItemsServiceBase : IEmailSubscribersItemsS
     /// <summary>
     /// Create one EmailSubscribers
     /// </summary>
-    public async Task<EmailSubscribers> CreateEmailSubscribers(
-        EmailSubscribersCreateInput createDto
-    )
+    public async Task<EmailSubscribers> CreateEmailSubscribers(EmailSubscriberCreateInput createDto)
     {
         var emailSubscribers = new EmailSubscribersDbModel
         {
@@ -70,7 +68,7 @@ public abstract class EmailSubscribersItemsServiceBase : IEmailSubscribersItemsS
     /// Find many EmailSubscribersItems
     /// </summary>
     public async Task<List<EmailSubscribers>> EmailSubscribersItems(
-        EmailSubscribersFindManyArgs findManyArgs
+        EmailSubscriberFindManyArgs findManyArgs
     )
     {
         var emailSubscribersItems = await _context
@@ -86,7 +84,7 @@ public abstract class EmailSubscribersItemsServiceBase : IEmailSubscribersItemsS
     /// Meta data about EmailSubscribers records
     /// </summary>
     public async Task<MetadataDto> EmailSubscribersItemsMeta(
-        EmailSubscribersFindManyArgs findManyArgs
+        EmailSubscriberFindManyArgs findManyArgs
     )
     {
         var count = await _context
@@ -102,9 +100,9 @@ public abstract class EmailSubscribersItemsServiceBase : IEmailSubscribersItemsS
     public async Task<EmailSubscribers> EmailSubscribers(EmailSubscribersWhereUniqueInput uniqueId)
     {
         var emailSubscribersItems = await this.EmailSubscribersItems(
-            new EmailSubscribersFindManyArgs
+            new EmailSubscriberFindManyArgs
             {
-                Where = new EmailSubscribersWhereInput { Id = uniqueId.Id }
+                Where = new EmailSubscriberWhereInput { Id = uniqueId.Id }
             }
         );
         var emailSubscribers = emailSubscribersItems.FirstOrDefault();
@@ -121,7 +119,7 @@ public abstract class EmailSubscribersItemsServiceBase : IEmailSubscribersItemsS
     /// </summary>
     public async Task UpdateEmailSubscribers(
         EmailSubscribersWhereUniqueInput uniqueId,
-        EmailSubscribersUpdateInput updateDto
+        EmailSubscriberUpdateInput updateDto
     )
     {
         var emailSubscribers = updateDto.ToModel(uniqueId);

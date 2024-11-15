@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class PackageCategoriesUpdateInput
+public class PackageCategorieUpdateInput
 {
     public string? Category { get; set; }
 

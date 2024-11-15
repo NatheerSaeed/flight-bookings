@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class OnlinePaymentsItemsControllerBase : ControllerBase
+public abstract class OnlinePaymentsControllerBase : ControllerBase
 {
-    protected readonly IOnlinePaymentsItemsService _service;
+    protected readonly IOnlinePaymentsService _service;
 
-    public OnlinePaymentsItemsControllerBase(IOnlinePaymentsItemsService service)
+    public OnlinePaymentsControllerBase(IOnlinePaymentsService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class OnlinePaymentsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<OnlinePayments>> CreateOnlinePayments(
-        OnlinePaymentsCreateInput input
+        OnlinePaymentCreateInput input
     )
     {
         var onlinePayments = await _service.CreateOnlinePayments(input);
@@ -59,7 +59,7 @@ public abstract class OnlinePaymentsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<OnlinePayments>>> OnlinePaymentsItems(
-        [FromQuery()] OnlinePaymentsFindManyArgs filter
+        [FromQuery()] OnlinePaymentFindManyArgs filter
     )
     {
         return Ok(await _service.OnlinePaymentsItems(filter));
@@ -70,7 +70,7 @@ public abstract class OnlinePaymentsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> OnlinePaymentsItemsMeta(
-        [FromQuery()] OnlinePaymentsFindManyArgs filter
+        [FromQuery()] OnlinePaymentFindManyArgs filter
     )
     {
         return Ok(await _service.OnlinePaymentsItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class OnlinePaymentsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateOnlinePayments(
         [FromRoute()] OnlinePaymentsWhereUniqueInput uniqueId,
-        [FromQuery()] OnlinePaymentsUpdateInput onlinePaymentsUpdateDto
+        [FromQuery()] OnlinePaymentUpdateInput onlinePaymentsUpdateDto
     )
     {
         try

@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class MarkdownsItemsControllerBase : ControllerBase
+public abstract class MarkdownsControllerBase : ControllerBase
 {
-    protected readonly IMarkdownsItemsService _service;
+    protected readonly IMarkdownsService _service;
 
-    public MarkdownsItemsControllerBase(IMarkdownsItemsService service)
+    public MarkdownsControllerBase(IMarkdownsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class MarkdownsItemsControllerBase : ControllerBase
     /// Create one Markdowns
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Markdowns>> CreateMarkdowns(MarkdownsCreateInput input)
+    public async Task<ActionResult<Markdowns>> CreateMarkdowns(MarkdownCreateInput input)
     {
         var markdowns = await _service.CreateMarkdowns(input);
 
@@ -53,7 +53,7 @@ public abstract class MarkdownsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Markdowns>>> MarkdownsItems(
-        [FromQuery()] MarkdownsFindManyArgs filter
+        [FromQuery()] MarkdownFindManyArgs filter
     )
     {
         return Ok(await _service.MarkdownsItems(filter));
@@ -64,7 +64,7 @@ public abstract class MarkdownsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> MarkdownsItemsMeta(
-        [FromQuery()] MarkdownsFindManyArgs filter
+        [FromQuery()] MarkdownFindManyArgs filter
     )
     {
         return Ok(await _service.MarkdownsItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class MarkdownsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateMarkdowns(
         [FromRoute()] MarkdownsWhereUniqueInput uniqueId,
-        [FromQuery()] MarkdownsUpdateInput markdownsUpdateDto
+        [FromQuery()] MarkdownUpdateInput markdownsUpdateDto
     )
     {
         try

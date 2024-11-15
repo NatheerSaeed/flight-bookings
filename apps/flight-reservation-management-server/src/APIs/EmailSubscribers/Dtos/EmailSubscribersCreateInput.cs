@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class EmailSubscribersCreateInput
+public class EmailSubscriberCreateInput
 {
     public DateTime CreatedAt { get; set; }
 

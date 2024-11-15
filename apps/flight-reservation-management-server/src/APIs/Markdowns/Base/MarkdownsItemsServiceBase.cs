@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class MarkdownsItemsServiceBase : IMarkdownsItemsService
+public abstract class MarkdownsServiceBase : IMarkdownsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public MarkdownsItemsServiceBase(FlightReservationManagementDbContext context)
+    public MarkdownsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class MarkdownsItemsServiceBase : IMarkdownsItemsService
     /// <summary>
     /// Create one Markdowns
     /// </summary>
-    public async Task<Markdowns> CreateMarkdowns(MarkdownsCreateInput createDto)
+    public async Task<Markdowns> CreateMarkdowns(MarkdownCreateInput createDto)
     {
         var markdowns = new MarkdownsDbModel
         {
@@ -68,7 +68,7 @@ public abstract class MarkdownsItemsServiceBase : IMarkdownsItemsService
     /// <summary>
     /// Find many MarkdownsItems
     /// </summary>
-    public async Task<List<Markdowns>> MarkdownsItems(MarkdownsFindManyArgs findManyArgs)
+    public async Task<List<Markdowns>> MarkdownsItems(MarkdownFindManyArgs findManyArgs)
     {
         var markdownsItems = await _context
             .MarkdownsItems.ApplyWhere(findManyArgs.Where)
@@ -82,7 +82,7 @@ public abstract class MarkdownsItemsServiceBase : IMarkdownsItemsService
     /// <summary>
     /// Meta data about Markdowns records
     /// </summary>
-    public async Task<MetadataDto> MarkdownsItemsMeta(MarkdownsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> MarkdownsItemsMeta(MarkdownFindManyArgs findManyArgs)
     {
         var count = await _context.MarkdownsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -95,7 +95,7 @@ public abstract class MarkdownsItemsServiceBase : IMarkdownsItemsService
     public async Task<Markdowns> Markdowns(MarkdownsWhereUniqueInput uniqueId)
     {
         var markdownsItems = await this.MarkdownsItems(
-            new MarkdownsFindManyArgs { Where = new MarkdownsWhereInput { Id = uniqueId.Id } }
+            new MarkdownFindManyArgs { Where = new MarkdownWhereInput { Id = uniqueId.Id } }
         );
         var markdowns = markdownsItems.FirstOrDefault();
         if (markdowns == null)
@@ -111,7 +111,7 @@ public abstract class MarkdownsItemsServiceBase : IMarkdownsItemsService
     /// </summary>
     public async Task UpdateMarkdowns(
         MarkdownsWhereUniqueInput uniqueId,
-        MarkdownsUpdateInput updateDto
+        MarkdownUpdateInput updateDto
     )
     {
         var markdowns = updateDto.ToModel(uniqueId);

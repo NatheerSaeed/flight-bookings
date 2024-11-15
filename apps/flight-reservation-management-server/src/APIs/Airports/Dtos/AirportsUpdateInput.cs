@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class AirportsUpdateInput
+public class AirportUpdateInput
 {
     public string? Code { get; set; }
 

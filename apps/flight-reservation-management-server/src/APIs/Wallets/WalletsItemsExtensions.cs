@@ -18,7 +18,7 @@ public static class WalletsItemsExtensions
     }
 
     public static WalletsDbModel ToModel(
-        this WalletsUpdateInput updateDto,
+        this WalletUpdateInput updateDto,
         WalletsWhereUniqueInput uniqueId
     )
     {

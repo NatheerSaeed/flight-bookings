@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs;
 
 [ApiController()]
-public class WalletLogsItemsController : WalletLogsItemsControllerBase
+public class WalletLogsController : WalletLogsControllerBase
 {
-    public WalletLogsItemsController(IWalletLogsItemsService service)
+    public WalletLogsController(IWalletLogsService service)
         : base(service) { }
 }

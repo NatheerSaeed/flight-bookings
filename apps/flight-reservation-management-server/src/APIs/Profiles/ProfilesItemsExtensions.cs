@@ -25,7 +25,7 @@ public static class ProfilesItemsExtensions
     }
 
     public static ProfilesDbModel ToModel(
-        this ProfilesUpdateInput updateDto,
+        this ProfileUpdateInput updateDto,
         ProfilesWhereUniqueInput uniqueId
     )
     {

@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IAirlinesItemsService
+public interface IAirlinesService
 {
     /// <summary>
     /// Create one Airlines
     /// </summary>
-    public Task<Airlines> CreateAirlines(AirlinesCreateInput airlines);
+    public Task<Airlines> CreateAirlines(AirlineCreateInput airlines);
 
     /// <summary>
     /// Delete one Airlines
@@ -18,12 +18,12 @@ public interface IAirlinesItemsService
     /// <summary>
     /// Find many AirlinesItems
     /// </summary>
-    public Task<List<Airlines>> AirlinesItems(AirlinesFindManyArgs findManyArgs);
+    public Task<List<Airlines>> AirlinesItems(AirlineFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Airlines records
     /// </summary>
-    public Task<MetadataDto> AirlinesItemsMeta(AirlinesFindManyArgs findManyArgs);
+    public Task<MetadataDto> AirlinesItemsMeta(AirlineFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Airlines
@@ -33,7 +33,7 @@ public interface IAirlinesItemsService
     /// <summary>
     /// Update one Airlines
     /// </summary>
-    public Task UpdateAirlines(AirlinesWhereUniqueInput uniqueId, AirlinesUpdateInput updateDto);
+    public Task UpdateAirlines(AirlinesWhereUniqueInput uniqueId, AirlineUpdateInput updateDto);
 
     /// <summary>
     /// Get a user_ record for Airlines

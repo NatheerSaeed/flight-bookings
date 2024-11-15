@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class PackageHotelsItemsControllerBase : ControllerBase
+public abstract class PackageHotelsControllerBase : ControllerBase
 {
-    protected readonly IPackageHotelsItemsService _service;
+    protected readonly IPackageHotelsService _service;
 
-    public PackageHotelsItemsControllerBase(IPackageHotelsItemsService service)
+    public PackageHotelsControllerBase(IPackageHotelsService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class PackageHotelsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<PackageHotels>> CreatePackageHotels(
-        PackageHotelsCreateInput input
+        PackageHotelCreateInput input
     )
     {
         var packageHotels = await _service.CreatePackageHotels(input);
@@ -55,7 +55,7 @@ public abstract class PackageHotelsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<PackageHotels>>> PackageHotelsItems(
-        [FromQuery()] PackageHotelsFindManyArgs filter
+        [FromQuery()] PackageHotelFindManyArgs filter
     )
     {
         return Ok(await _service.PackageHotelsItems(filter));
@@ -66,7 +66,7 @@ public abstract class PackageHotelsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> PackageHotelsItemsMeta(
-        [FromQuery()] PackageHotelsFindManyArgs filter
+        [FromQuery()] PackageHotelFindManyArgs filter
     )
     {
         return Ok(await _service.PackageHotelsItemsMeta(filter));
@@ -96,7 +96,7 @@ public abstract class PackageHotelsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdatePackageHotels(
         [FromRoute()] PackageHotelsWhereUniqueInput uniqueId,
-        [FromQuery()] PackageHotelsUpdateInput packageHotelsUpdateDto
+        [FromQuery()] PackageHotelUpdateInput packageHotelsUpdateDto
     )
     {
         try

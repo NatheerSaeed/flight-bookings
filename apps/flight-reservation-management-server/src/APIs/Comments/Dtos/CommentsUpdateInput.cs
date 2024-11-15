@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class CommentsUpdateInput
+public class CommentUpdateInput
 {
     public string? Content { get; set; }
 

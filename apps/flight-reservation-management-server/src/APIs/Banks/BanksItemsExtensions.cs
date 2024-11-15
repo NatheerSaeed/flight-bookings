@@ -18,7 +18,7 @@ public static class BanksItemsExtensions
     }
 
     public static BanksDbModel ToModel(
-        this BanksUpdateInput updateDto,
+        this BankUpdateInput updateDto,
         BanksWhereUniqueInput uniqueId
     )
     {

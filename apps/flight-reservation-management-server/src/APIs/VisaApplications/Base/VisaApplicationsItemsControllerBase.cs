@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class VisaApplicationsItemsControllerBase : ControllerBase
+public abstract class VisaApplicationsControllerBase : ControllerBase
 {
-    protected readonly IVisaApplicationsItemsService _service;
+    protected readonly IVisaApplicationsService _service;
 
-    public VisaApplicationsItemsControllerBase(IVisaApplicationsItemsService service)
+    public VisaApplicationsControllerBase(IVisaApplicationsService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class VisaApplicationsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<VisaApplications>> CreateVisaApplications(
-        VisaApplicationsCreateInput input
+        VisaApplicationCreateInput input
     )
     {
         var visaApplications = await _service.CreateVisaApplications(input);
@@ -59,7 +59,7 @@ public abstract class VisaApplicationsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<VisaApplications>>> VisaApplicationsItems(
-        [FromQuery()] VisaApplicationsFindManyArgs filter
+        [FromQuery()] VisaApplicationFindManyArgs filter
     )
     {
         return Ok(await _service.VisaApplicationsItems(filter));
@@ -70,7 +70,7 @@ public abstract class VisaApplicationsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> VisaApplicationsItemsMeta(
-        [FromQuery()] VisaApplicationsFindManyArgs filter
+        [FromQuery()] VisaApplicationFindManyArgs filter
     )
     {
         return Ok(await _service.VisaApplicationsItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class VisaApplicationsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateVisaApplications(
         [FromRoute()] VisaApplicationsWhereUniqueInput uniqueId,
-        [FromQuery()] VisaApplicationsUpdateInput visaApplicationsUpdateDto
+        [FromQuery()] VisaApplicationUpdateInput visaApplicationsUpdateDto
     )
     {
         try

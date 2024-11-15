@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class VouchersItemsService : VouchersItemsServiceBase
+public class VouchersService : VouchersServiceBase
 {
-    public VouchersItemsService(FlightReservationManagementDbContext context)
+    public VouchersService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

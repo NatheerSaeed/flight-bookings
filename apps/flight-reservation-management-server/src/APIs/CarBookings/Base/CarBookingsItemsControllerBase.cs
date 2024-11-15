@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class CarBookingsItemsControllerBase : ControllerBase
+public abstract class CarBookingsControllerBase : ControllerBase
 {
-    protected readonly ICarBookingsItemsService _service;
+    protected readonly ICarBookingsService _service;
 
-    public CarBookingsItemsControllerBase(ICarBookingsItemsService service)
+    public CarBookingsControllerBase(ICarBookingsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class CarBookingsItemsControllerBase : ControllerBase
     /// Create one CarBookings
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<CarBookings>> CreateCarBookings(CarBookingsCreateInput input)
+    public async Task<ActionResult<CarBookings>> CreateCarBookings(CarBookingCreateInput input)
     {
         var carBookings = await _service.CreateCarBookings(input);
 
@@ -53,7 +53,7 @@ public abstract class CarBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<CarBookings>>> CarBookingsItems(
-        [FromQuery()] CarBookingsFindManyArgs filter
+        [FromQuery()] CarBookingFindManyArgs filter
     )
     {
         return Ok(await _service.CarBookingsItems(filter));
@@ -64,7 +64,7 @@ public abstract class CarBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CarBookingsItemsMeta(
-        [FromQuery()] CarBookingsFindManyArgs filter
+        [FromQuery()] CarBookingFindManyArgs filter
     )
     {
         return Ok(await _service.CarBookingsItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class CarBookingsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateCarBookings(
         [FromRoute()] CarBookingsWhereUniqueInput uniqueId,
-        [FromQuery()] CarBookingsUpdateInput carBookingsUpdateDto
+        [FromQuery()] CarBookingUpdateInput carBookingsUpdateDto
     )
     {
         try

@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class PasswordResetsCreateInput
+public class PasswordResetCreateInput
 {
     public DateTime CreatedAt { get; set; }
 

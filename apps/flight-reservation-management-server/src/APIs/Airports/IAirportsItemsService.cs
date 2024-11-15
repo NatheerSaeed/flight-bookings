@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IAirportsItemsService
+public interface IAirportsService
 {
     /// <summary>
     /// Create one Airports
     /// </summary>
-    public Task<Airports> CreateAirports(AirportsCreateInput airports);
+    public Task<Airports> CreateAirports(AirportCreateInput airports);
 
     /// <summary>
     /// Delete one Airports
@@ -18,12 +18,12 @@ public interface IAirportsItemsService
     /// <summary>
     /// Find many AirportsItems
     /// </summary>
-    public Task<List<Airports>> AirportsItems(AirportsFindManyArgs findManyArgs);
+    public Task<List<Airports>> AirportsItems(AirportFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Airports records
     /// </summary>
-    public Task<MetadataDto> AirportsItemsMeta(AirportsFindManyArgs findManyArgs);
+    public Task<MetadataDto> AirportsItemsMeta(AirportFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Airports
@@ -33,5 +33,5 @@ public interface IAirportsItemsService
     /// <summary>
     /// Update one Airports
     /// </summary>
-    public Task UpdateAirports(AirportsWhereUniqueInput uniqueId, AirportsUpdateInput updateDto);
+    public Task UpdateAirports(AirportsWhereUniqueInput uniqueId, AirportUpdateInput updateDto);
 }

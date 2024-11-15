@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class PackageBookingsItemsServiceBase : IPackageBookingsItemsService
+public abstract class PackageBookingsServiceBase : IPackageBookingsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public PackageBookingsItemsServiceBase(FlightReservationManagementDbContext context)
+    public PackageBookingsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class PackageBookingsItemsServiceBase : IPackageBookingsItemsSer
     /// <summary>
     /// Create one PackageBookings
     /// </summary>
-    public async Task<PackageBookings> CreatePackageBookings(PackageBookingsCreateInput createDto)
+    public async Task<PackageBookings> CreatePackageBookings(PackageBookingCreateInput createDto)
     {
         var packageBookings = new PackageBookingsDbModel
         {
@@ -92,7 +92,7 @@ public abstract class PackageBookingsItemsServiceBase : IPackageBookingsItemsSer
     /// Find many PackageBookingsItems
     /// </summary>
     public async Task<List<PackageBookings>> PackageBookingsItems(
-        PackageBookingsFindManyArgs findManyArgs
+        PackageBookingFindManyArgs findManyArgs
     )
     {
         var packageBookingsItems = await _context
@@ -109,9 +109,7 @@ public abstract class PackageBookingsItemsServiceBase : IPackageBookingsItemsSer
     /// <summary>
     /// Meta data about PackageBookings records
     /// </summary>
-    public async Task<MetadataDto> PackageBookingsItemsMeta(
-        PackageBookingsFindManyArgs findManyArgs
-    )
+    public async Task<MetadataDto> PackageBookingsItemsMeta(PackageBookingFindManyArgs findManyArgs)
     {
         var count = await _context.PackageBookingsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -124,9 +122,9 @@ public abstract class PackageBookingsItemsServiceBase : IPackageBookingsItemsSer
     public async Task<PackageBookings> PackageBookings(PackageBookingsWhereUniqueInput uniqueId)
     {
         var packageBookingsItems = await this.PackageBookingsItems(
-            new PackageBookingsFindManyArgs
+            new PackageBookingFindManyArgs
             {
-                Where = new PackageBookingsWhereInput { Id = uniqueId.Id }
+                Where = new PackageBookingWhereInput { Id = uniqueId.Id }
             }
         );
         var packageBookings = packageBookingsItems.FirstOrDefault();
@@ -143,7 +141,7 @@ public abstract class PackageBookingsItemsServiceBase : IPackageBookingsItemsSer
     /// </summary>
     public async Task UpdatePackageBookings(
         PackageBookingsWhereUniqueInput uniqueId,
-        PackageBookingsUpdateInput updateDto
+        PackageBookingUpdateInput updateDto
     )
     {
         var packageBookings = updateDto.ToModel(uniqueId);

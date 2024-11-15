@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class PayLatersWhereInput
+public class PayLaterWhereInput
 {
     public int? Amount { get; set; }
 

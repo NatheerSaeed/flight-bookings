@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class GoodToKnowsUpdateInput
+public class GoodToKnowUpdateInput
 {
     public string? CancellationPrepayment { get; set; }
 

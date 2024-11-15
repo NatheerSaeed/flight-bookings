@@ -20,7 +20,7 @@ public static class WalletLogsItemsExtensions
     }
 
     public static WalletLogsDbModel ToModel(
-        this WalletLogsUpdateInput updateDto,
+        this WalletLogUpdateInput updateDto,
         WalletLogsWhereUniqueInput uniqueId
     )
     {

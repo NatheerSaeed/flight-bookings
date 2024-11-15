@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IAttractionsItemsService
+public interface IAttractionsService
 {
     /// <summary>
     /// Create one Attractions
     /// </summary>
-    public Task<Attractions> CreateAttractions(AttractionsCreateInput attractions);
+    public Task<Attractions> CreateAttractions(AttractionCreateInput attractions);
 
     /// <summary>
     /// Delete one Attractions
@@ -18,12 +18,12 @@ public interface IAttractionsItemsService
     /// <summary>
     /// Find many AttractionsItems
     /// </summary>
-    public Task<List<Attractions>> AttractionsItems(AttractionsFindManyArgs findManyArgs);
+    public Task<List<Attractions>> AttractionsItems(AttractionFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Attractions records
     /// </summary>
-    public Task<MetadataDto> AttractionsItemsMeta(AttractionsFindManyArgs findManyArgs);
+    public Task<MetadataDto> AttractionsItemsMeta(AttractionFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Attractions
@@ -35,7 +35,7 @@ public interface IAttractionsItemsService
     /// </summary>
     public Task UpdateAttractions(
         AttractionsWhereUniqueInput uniqueId,
-        AttractionsUpdateInput updateDto
+        AttractionUpdateInput updateDto
     );
 
     /// <summary>
@@ -64,7 +64,7 @@ public interface IAttractionsItemsService
     /// </summary>
     public Task<List<SightSeeings>> FindSightSeeingsItems(
         AttractionsWhereUniqueInput uniqueId,
-        SightSeeingsFindManyArgs SightSeeingsFindManyArgs
+        SightSeeingFindManyArgs SightSeeingFindManyArgs
     );
 
     /// <summary>

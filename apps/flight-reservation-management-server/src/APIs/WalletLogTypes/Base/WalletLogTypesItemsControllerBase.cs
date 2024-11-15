@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class WalletLogTypesItemsControllerBase : ControllerBase
+public abstract class WalletLogTypesControllerBase : ControllerBase
 {
-    protected readonly IWalletLogTypesItemsService _service;
+    protected readonly IWalletLogTypesService _service;
 
-    public WalletLogTypesItemsControllerBase(IWalletLogTypesItemsService service)
+    public WalletLogTypesControllerBase(IWalletLogTypesService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class WalletLogTypesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<WalletLogTypes>> CreateWalletLogTypes(
-        WalletLogTypesCreateInput input
+        WalletLogTypeCreateInput input
     )
     {
         var walletLogTypes = await _service.CreateWalletLogTypes(input);
@@ -59,7 +59,7 @@ public abstract class WalletLogTypesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<WalletLogTypes>>> WalletLogTypesItems(
-        [FromQuery()] WalletLogTypesFindManyArgs filter
+        [FromQuery()] WalletLogTypeFindManyArgs filter
     )
     {
         return Ok(await _service.WalletLogTypesItems(filter));
@@ -70,7 +70,7 @@ public abstract class WalletLogTypesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> WalletLogTypesItemsMeta(
-        [FromQuery()] WalletLogTypesFindManyArgs filter
+        [FromQuery()] WalletLogTypeFindManyArgs filter
     )
     {
         return Ok(await _service.WalletLogTypesItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class WalletLogTypesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateWalletLogTypes(
         [FromRoute()] WalletLogTypesWhereUniqueInput uniqueId,
-        [FromQuery()] WalletLogTypesUpdateInput walletLogTypesUpdateDto
+        [FromQuery()] WalletLogTypeUpdateInput walletLogTypesUpdateDto
     )
     {
         try

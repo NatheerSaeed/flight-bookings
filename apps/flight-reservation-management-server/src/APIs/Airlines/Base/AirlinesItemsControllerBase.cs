@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class AirlinesItemsControllerBase : ControllerBase
+public abstract class AirlinesControllerBase : ControllerBase
 {
-    protected readonly IAirlinesItemsService _service;
+    protected readonly IAirlinesService _service;
 
-    public AirlinesItemsControllerBase(IAirlinesItemsService service)
+    public AirlinesControllerBase(IAirlinesService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class AirlinesItemsControllerBase : ControllerBase
     /// Create one Airlines
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Airlines>> CreateAirlines(AirlinesCreateInput input)
+    public async Task<ActionResult<Airlines>> CreateAirlines(AirlineCreateInput input)
     {
         var airlines = await _service.CreateAirlines(input);
 
@@ -51,7 +51,7 @@ public abstract class AirlinesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Airlines>>> AirlinesItems(
-        [FromQuery()] AirlinesFindManyArgs filter
+        [FromQuery()] AirlineFindManyArgs filter
     )
     {
         return Ok(await _service.AirlinesItems(filter));
@@ -62,7 +62,7 @@ public abstract class AirlinesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> AirlinesItemsMeta(
-        [FromQuery()] AirlinesFindManyArgs filter
+        [FromQuery()] AirlineFindManyArgs filter
     )
     {
         return Ok(await _service.AirlinesItemsMeta(filter));
@@ -92,7 +92,7 @@ public abstract class AirlinesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateAirlines(
         [FromRoute()] AirlinesWhereUniqueInput uniqueId,
-        [FromQuery()] AirlinesUpdateInput airlinesUpdateDto
+        [FromQuery()] AirlineUpdateInput airlinesUpdateDto
     )
     {
         try

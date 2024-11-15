@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class RolesItemsServiceBase : IRolesItemsService
+public abstract class RolesServiceBase : IRolesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public RolesItemsServiceBase(FlightReservationManagementDbContext context)
+    public RolesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
     /// <summary>
     /// Create one Roles
     /// </summary>
-    public async Task<Roles> CreateRoles(RolesCreateInput createDto)
+    public async Task<Roles> CreateRoles(RoleCreateInput createDto)
     {
         var roles = new RolesDbModel
         {
@@ -102,7 +102,7 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
     /// <summary>
     /// Find many RolesItems
     /// </summary>
-    public async Task<List<Roles>> RolesItems(RolesFindManyArgs findManyArgs)
+    public async Task<List<Roles>> RolesItems(RoleFindManyArgs findManyArgs)
     {
         var rolesItems = await _context
             .RolesItems.Include(x => x.Role)
@@ -119,7 +119,7 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
     /// <summary>
     /// Meta data about Roles records
     /// </summary>
-    public async Task<MetadataDto> RolesItemsMeta(RolesFindManyArgs findManyArgs)
+    public async Task<MetadataDto> RolesItemsMeta(RoleFindManyArgs findManyArgs)
     {
         var count = await _context.RolesItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -132,7 +132,7 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
     public async Task<Roles> Roles(RolesWhereUniqueInput uniqueId)
     {
         var rolesItems = await this.RolesItems(
-            new RolesFindManyArgs { Where = new RolesWhereInput { Id = uniqueId.Id } }
+            new RoleFindManyArgs { Where = new RoleWhereInput { Id = uniqueId.Id } }
         );
         var roles = rolesItems.FirstOrDefault();
         if (roles == null)
@@ -146,7 +146,7 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
     /// <summary>
     /// Update one Roles
     /// </summary>
-    public async Task UpdateRoles(RolesWhereUniqueInput uniqueId, RolesUpdateInput updateDto)
+    public async Task UpdateRoles(RolesWhereUniqueInput uniqueId, RoleUpdateInput updateDto)
     {
         var roles = updateDto.ToModel(uniqueId);
 
@@ -267,15 +267,15 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
     /// </summary>
     public async Task<List<Hotels>> FindHotelsItems(
         RolesWhereUniqueInput uniqueId,
-        HotelsFindManyArgs rolesFindManyArgs
+        HotelFindManyArgs roleFindManyArgs
     )
     {
         var hotelsItems = await _context
             .HotelsItems.Where(m => m.RoleId == uniqueId.Id)
-            .ApplyWhere(rolesFindManyArgs.Where)
-            .ApplySkip(rolesFindManyArgs.Skip)
-            .ApplyTake(rolesFindManyArgs.Take)
-            .ApplyOrderBy(rolesFindManyArgs.SortBy)
+            .ApplyWhere(roleFindManyArgs.Where)
+            .ApplySkip(roleFindManyArgs.Skip)
+            .ApplyTake(roleFindManyArgs.Take)
+            .ApplyOrderBy(roleFindManyArgs.SortBy)
             .ToListAsync();
 
         return hotelsItems.Select(x => x.ToDto()).ToList();
@@ -376,15 +376,15 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
     /// </summary>
     public async Task<List<Markups>> FindMarkupsItems(
         RolesWhereUniqueInput uniqueId,
-        MarkupsFindManyArgs rolesFindManyArgs
+        MarkupFindManyArgs roleFindManyArgs
     )
     {
         var markupsItems = await _context
             .MarkupsItems.Where(m => m.RoleId == uniqueId.Id)
-            .ApplyWhere(rolesFindManyArgs.Where)
-            .ApplySkip(rolesFindManyArgs.Skip)
-            .ApplyTake(rolesFindManyArgs.Take)
-            .ApplyOrderBy(rolesFindManyArgs.SortBy)
+            .ApplyWhere(roleFindManyArgs.Where)
+            .ApplySkip(roleFindManyArgs.Skip)
+            .ApplyTake(roleFindManyArgs.Take)
+            .ApplyOrderBy(roleFindManyArgs.SortBy)
             .ToListAsync();
 
         return markupsItems.Select(x => x.ToDto()).ToList();
@@ -501,15 +501,15 @@ public abstract class RolesItemsServiceBase : IRolesItemsService
     /// </summary>
     public async Task<List<Roles>> FindRolesItems(
         RolesWhereUniqueInput uniqueId,
-        RolesFindManyArgs rolesFindManyArgs
+        RoleFindManyArgs roleFindManyArgs
     )
     {
         var rolesItems = await _context
             .RolesItems.Where(m => m.RoleId == uniqueId.Id)
-            .ApplyWhere(rolesFindManyArgs.Where)
-            .ApplySkip(rolesFindManyArgs.Skip)
-            .ApplyTake(rolesFindManyArgs.Take)
-            .ApplyOrderBy(rolesFindManyArgs.SortBy)
+            .ApplyWhere(roleFindManyArgs.Where)
+            .ApplySkip(roleFindManyArgs.Skip)
+            .ApplyTake(roleFindManyArgs.Take)
+            .ApplyOrderBy(roleFindManyArgs.SortBy)
             .ToListAsync();
 
         return rolesItems.Select(x => x.ToDto()).ToList();

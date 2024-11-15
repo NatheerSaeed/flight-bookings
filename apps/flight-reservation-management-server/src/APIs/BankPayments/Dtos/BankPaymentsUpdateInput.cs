@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class BankPaymentsUpdateInput
+public class BankPaymentUpdateInput
 {
     public int? Amount { get; set; }
 

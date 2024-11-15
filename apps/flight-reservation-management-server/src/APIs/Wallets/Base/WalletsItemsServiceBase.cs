@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class WalletsItemsServiceBase : IWalletsItemsService
+public abstract class WalletsServiceBase : IWalletsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public WalletsItemsServiceBase(FlightReservationManagementDbContext context)
+    public WalletsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class WalletsItemsServiceBase : IWalletsItemsService
     /// <summary>
     /// Create one Wallets
     /// </summary>
-    public async Task<Wallets> CreateWallets(WalletsCreateInput createDto)
+    public async Task<Wallets> CreateWallets(WalletCreateInput createDto)
     {
         var wallets = new WalletsDbModel
         {
@@ -72,7 +72,7 @@ public abstract class WalletsItemsServiceBase : IWalletsItemsService
     /// <summary>
     /// Find many WalletsItems
     /// </summary>
-    public async Task<List<Wallets>> WalletsItems(WalletsFindManyArgs findManyArgs)
+    public async Task<List<Wallets>> WalletsItems(WalletFindManyArgs findManyArgs)
     {
         var walletsItems = await _context
             .WalletsItems.Include(x => x.User)
@@ -87,7 +87,7 @@ public abstract class WalletsItemsServiceBase : IWalletsItemsService
     /// <summary>
     /// Meta data about Wallets records
     /// </summary>
-    public async Task<MetadataDto> WalletsItemsMeta(WalletsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> WalletsItemsMeta(WalletFindManyArgs findManyArgs)
     {
         var count = await _context.WalletsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -100,7 +100,7 @@ public abstract class WalletsItemsServiceBase : IWalletsItemsService
     public async Task<Wallets> Wallets(WalletsWhereUniqueInput uniqueId)
     {
         var walletsItems = await this.WalletsItems(
-            new WalletsFindManyArgs { Where = new WalletsWhereInput { Id = uniqueId.Id } }
+            new WalletFindManyArgs { Where = new WalletWhereInput { Id = uniqueId.Id } }
         );
         var wallets = walletsItems.FirstOrDefault();
         if (wallets == null)
@@ -114,7 +114,7 @@ public abstract class WalletsItemsServiceBase : IWalletsItemsService
     /// <summary>
     /// Update one Wallets
     /// </summary>
-    public async Task UpdateWallets(WalletsWhereUniqueInput uniqueId, WalletsUpdateInput updateDto)
+    public async Task UpdateWallets(WalletsWhereUniqueInput uniqueId, WalletUpdateInput updateDto)
     {
         var wallets = updateDto.ToModel(uniqueId);
 

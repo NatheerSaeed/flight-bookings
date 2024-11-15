@@ -20,7 +20,7 @@ public static class CommentsItemsExtensions
     }
 
     public static CommentsDbModel ToModel(
-        this CommentsUpdateInput updateDto,
+        this CommentUpdateInput updateDto,
         CommentsWhereUniqueInput uniqueId
     )
     {

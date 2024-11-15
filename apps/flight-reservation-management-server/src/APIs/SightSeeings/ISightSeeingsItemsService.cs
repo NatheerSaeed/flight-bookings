@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface ISightSeeingsItemsService
+public interface ISightSeeingsService
 {
     /// <summary>
     /// Create one SightSeeings
     /// </summary>
-    public Task<SightSeeings> CreateSightSeeings(SightSeeingsCreateInput sightseeings);
+    public Task<SightSeeings> CreateSightSeeings(SightSeeingCreateInput sightseeings);
 
     /// <summary>
     /// Delete one SightSeeings
@@ -18,12 +18,12 @@ public interface ISightSeeingsItemsService
     /// <summary>
     /// Find many SightSeeingsItems
     /// </summary>
-    public Task<List<SightSeeings>> SightSeeingsItems(SightSeeingsFindManyArgs findManyArgs);
+    public Task<List<SightSeeings>> SightSeeingsItems(SightSeeingFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about SightSeeings records
     /// </summary>
-    public Task<MetadataDto> SightSeeingsItemsMeta(SightSeeingsFindManyArgs findManyArgs);
+    public Task<MetadataDto> SightSeeingsItemsMeta(SightSeeingFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one SightSeeings
@@ -35,7 +35,7 @@ public interface ISightSeeingsItemsService
     /// </summary>
     public Task UpdateSightSeeings(
         SightSeeingsWhereUniqueInput uniqueId,
-        SightSeeingsUpdateInput updateDto
+        SightSeeingUpdateInput updateDto
     );
 
     /// <summary>

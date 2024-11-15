@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class SightSeeingsItemsControllerBase : ControllerBase
+public abstract class SightSeeingsControllerBase : ControllerBase
 {
-    protected readonly ISightSeeingsItemsService _service;
+    protected readonly ISightSeeingsService _service;
 
-    public SightSeeingsItemsControllerBase(ISightSeeingsItemsService service)
+    public SightSeeingsControllerBase(ISightSeeingsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class SightSeeingsItemsControllerBase : ControllerBase
     /// Create one SightSeeings
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<SightSeeings>> CreateSightSeeings(SightSeeingsCreateInput input)
+    public async Task<ActionResult<SightSeeings>> CreateSightSeeings(SightSeeingCreateInput input)
     {
         var sightSeeings = await _service.CreateSightSeeings(input);
 
@@ -53,7 +53,7 @@ public abstract class SightSeeingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<SightSeeings>>> SightSeeingsItems(
-        [FromQuery()] SightSeeingsFindManyArgs filter
+        [FromQuery()] SightSeeingFindManyArgs filter
     )
     {
         return Ok(await _service.SightSeeingsItems(filter));
@@ -64,7 +64,7 @@ public abstract class SightSeeingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> SightSeeingsItemsMeta(
-        [FromQuery()] SightSeeingsFindManyArgs filter
+        [FromQuery()] SightSeeingFindManyArgs filter
     )
     {
         return Ok(await _service.SightSeeingsItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class SightSeeingsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateSightSeeings(
         [FromRoute()] SightSeeingsWhereUniqueInput uniqueId,
-        [FromQuery()] SightSeeingsUpdateInput sightSeeingsUpdateDto
+        [FromQuery()] SightSeeingUpdateInput sightSeeingsUpdateDto
     )
     {
         try

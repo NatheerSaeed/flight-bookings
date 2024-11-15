@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class EmailSubscribersItemsControllerBase : ControllerBase
+public abstract class EmailSubscribersControllerBase : ControllerBase
 {
-    protected readonly IEmailSubscribersItemsService _service;
+    protected readonly IEmailSubscribersService _service;
 
-    public EmailSubscribersItemsControllerBase(IEmailSubscribersItemsService service)
+    public EmailSubscribersControllerBase(IEmailSubscribersService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class EmailSubscribersItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<EmailSubscribers>> CreateEmailSubscribers(
-        EmailSubscribersCreateInput input
+        EmailSubscriberCreateInput input
     )
     {
         var emailSubscribers = await _service.CreateEmailSubscribers(input);
@@ -59,7 +59,7 @@ public abstract class EmailSubscribersItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<EmailSubscribers>>> EmailSubscribersItems(
-        [FromQuery()] EmailSubscribersFindManyArgs filter
+        [FromQuery()] EmailSubscriberFindManyArgs filter
     )
     {
         return Ok(await _service.EmailSubscribersItems(filter));
@@ -70,7 +70,7 @@ public abstract class EmailSubscribersItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> EmailSubscribersItemsMeta(
-        [FromQuery()] EmailSubscribersFindManyArgs filter
+        [FromQuery()] EmailSubscriberFindManyArgs filter
     )
     {
         return Ok(await _service.EmailSubscribersItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class EmailSubscribersItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateEmailSubscribers(
         [FromRoute()] EmailSubscribersWhereUniqueInput uniqueId,
-        [FromQuery()] EmailSubscribersUpdateInput emailSubscribersUpdateDto
+        [FromQuery()] EmailSubscriberUpdateInput emailSubscribersUpdateDto
     )
     {
         try

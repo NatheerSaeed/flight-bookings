@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class TitlesItemsServiceBase : ITitlesItemsService
+public abstract class TitlesServiceBase : ITitlesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public TitlesItemsServiceBase(FlightReservationManagementDbContext context)
+    public TitlesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class TitlesItemsServiceBase : ITitlesItemsService
     /// <summary>
     /// Create one Titles
     /// </summary>
-    public async Task<Titles> CreateTitles(TitlesCreateInput createDto)
+    public async Task<Titles> CreateTitles(TitleCreateInput createDto)
     {
         var titles = new TitlesDbModel
         {
@@ -73,7 +73,7 @@ public abstract class TitlesItemsServiceBase : ITitlesItemsService
     /// <summary>
     /// Find many TitlesItems
     /// </summary>
-    public async Task<List<Titles>> TitlesItems(TitlesFindManyArgs findManyArgs)
+    public async Task<List<Titles>> TitlesItems(TitleFindManyArgs findManyArgs)
     {
         var titlesItems = await _context
             .TitlesItems.Include(x => x.ProfilesItems)
@@ -88,7 +88,7 @@ public abstract class TitlesItemsServiceBase : ITitlesItemsService
     /// <summary>
     /// Meta data about Titles records
     /// </summary>
-    public async Task<MetadataDto> TitlesItemsMeta(TitlesFindManyArgs findManyArgs)
+    public async Task<MetadataDto> TitlesItemsMeta(TitleFindManyArgs findManyArgs)
     {
         var count = await _context.TitlesItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -101,7 +101,7 @@ public abstract class TitlesItemsServiceBase : ITitlesItemsService
     public async Task<Titles> Titles(TitlesWhereUniqueInput uniqueId)
     {
         var titlesItems = await this.TitlesItems(
-            new TitlesFindManyArgs { Where = new TitlesWhereInput { Id = uniqueId.Id } }
+            new TitleFindManyArgs { Where = new TitleWhereInput { Id = uniqueId.Id } }
         );
         var titles = titlesItems.FirstOrDefault();
         if (titles == null)
@@ -115,7 +115,7 @@ public abstract class TitlesItemsServiceBase : ITitlesItemsService
     /// <summary>
     /// Update one Titles
     /// </summary>
-    public async Task UpdateTitles(TitlesWhereUniqueInput uniqueId, TitlesUpdateInput updateDto)
+    public async Task UpdateTitles(TitlesWhereUniqueInput uniqueId, TitleUpdateInput updateDto)
     {
         var titles = updateDto.ToModel(uniqueId);
 
@@ -213,15 +213,15 @@ public abstract class TitlesItemsServiceBase : ITitlesItemsService
     /// </summary>
     public async Task<List<Profiles>> FindProfilesItems(
         TitlesWhereUniqueInput uniqueId,
-        ProfilesFindManyArgs titlesFindManyArgs
+        ProfileFindManyArgs titleFindManyArgs
     )
     {
         var profilesItems = await _context
             .ProfilesItems.Where(m => m.TitleId == uniqueId.Id)
-            .ApplyWhere(titlesFindManyArgs.Where)
-            .ApplySkip(titlesFindManyArgs.Skip)
-            .ApplyTake(titlesFindManyArgs.Take)
-            .ApplyOrderBy(titlesFindManyArgs.SortBy)
+            .ApplyWhere(titleFindManyArgs.Where)
+            .ApplySkip(titleFindManyArgs.Skip)
+            .ApplyTake(titleFindManyArgs.Take)
+            .ApplyOrderBy(titleFindManyArgs.SortBy)
             .ToListAsync();
 
         return profilesItems.Select(x => x.ToDto()).ToList();

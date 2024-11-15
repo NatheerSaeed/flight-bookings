@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class HotelsItemsControllerBase : ControllerBase
+public abstract class HotelsControllerBase : ControllerBase
 {
-    protected readonly IHotelsItemsService _service;
+    protected readonly IHotelsService _service;
 
-    public HotelsItemsControllerBase(IHotelsItemsService service)
+    public HotelsControllerBase(IHotelsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class HotelsItemsControllerBase : ControllerBase
     /// Create one Hotels
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Hotels>> CreateHotels(HotelsCreateInput input)
+    public async Task<ActionResult<Hotels>> CreateHotels(HotelCreateInput input)
     {
         var hotels = await _service.CreateHotels(input);
 
@@ -51,7 +51,7 @@ public abstract class HotelsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Hotels>>> HotelsItems(
-        [FromQuery()] HotelsFindManyArgs filter
+        [FromQuery()] HotelFindManyArgs filter
     )
     {
         return Ok(await _service.HotelsItems(filter));
@@ -62,7 +62,7 @@ public abstract class HotelsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> HotelsItemsMeta(
-        [FromQuery()] HotelsFindManyArgs filter
+        [FromQuery()] HotelFindManyArgs filter
     )
     {
         return Ok(await _service.HotelsItemsMeta(filter));
@@ -90,7 +90,7 @@ public abstract class HotelsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateHotels(
         [FromRoute()] HotelsWhereUniqueInput uniqueId,
-        [FromQuery()] HotelsUpdateInput hotelsUpdateDto
+        [FromQuery()] HotelUpdateInput hotelsUpdateDto
     )
     {
         try

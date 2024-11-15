@@ -17,7 +17,7 @@ public static class WalletLogTypesItemsExtensions
     }
 
     public static WalletLogTypesDbModel ToModel(
-        this WalletLogTypesUpdateInput updateDto,
+        this WalletLogTypeUpdateInput updateDto,
         WalletLogTypesWhereUniqueInput uniqueId
     )
     {

@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class CabinTypesItemsControllerBase : ControllerBase
+public abstract class CabinTypesControllerBase : ControllerBase
 {
-    protected readonly ICabinTypesItemsService _service;
+    protected readonly ICabinTypesService _service;
 
-    public CabinTypesItemsControllerBase(ICabinTypesItemsService service)
+    public CabinTypesControllerBase(ICabinTypesService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class CabinTypesItemsControllerBase : ControllerBase
     /// Create one CabinTypes
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<CabinTypes>> CreateCabinTypes(CabinTypesCreateInput input)
+    public async Task<ActionResult<CabinTypes>> CreateCabinTypes(CabinTypeCreateInput input)
     {
         var cabinTypes = await _service.CreateCabinTypes(input);
 
@@ -53,7 +53,7 @@ public abstract class CabinTypesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<CabinTypes>>> CabinTypesItems(
-        [FromQuery()] CabinTypesFindManyArgs filter
+        [FromQuery()] CabinTypeFindManyArgs filter
     )
     {
         return Ok(await _service.CabinTypesItems(filter));
@@ -64,7 +64,7 @@ public abstract class CabinTypesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CabinTypesItemsMeta(
-        [FromQuery()] CabinTypesFindManyArgs filter
+        [FromQuery()] CabinTypeFindManyArgs filter
     )
     {
         return Ok(await _service.CabinTypesItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class CabinTypesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateCabinTypes(
         [FromRoute()] CabinTypesWhereUniqueInput uniqueId,
-        [FromQuery()] CabinTypesUpdateInput cabinTypesUpdateDto
+        [FromQuery()] CabinTypeUpdateInput cabinTypesUpdateDto
     )
     {
         try

@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IPasswordResetsItemsService
+public interface IPasswordResetsService
 {
     /// <summary>
     /// Create one PasswordResets
     /// </summary>
-    public Task<PasswordResets> CreatePasswordResets(PasswordResetsCreateInput passwordresets);
+    public Task<PasswordResets> CreatePasswordResets(PasswordResetCreateInput passwordresets);
 
     /// <summary>
     /// Delete one PasswordResets
@@ -18,12 +18,12 @@ public interface IPasswordResetsItemsService
     /// <summary>
     /// Find many PasswordResetsItems
     /// </summary>
-    public Task<List<PasswordResets>> PasswordResetsItems(PasswordResetsFindManyArgs findManyArgs);
+    public Task<List<PasswordResets>> PasswordResetsItems(PasswordResetFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about PasswordResets records
     /// </summary>
-    public Task<MetadataDto> PasswordResetsItemsMeta(PasswordResetsFindManyArgs findManyArgs);
+    public Task<MetadataDto> PasswordResetsItemsMeta(PasswordResetFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one PasswordResets
@@ -35,6 +35,6 @@ public interface IPasswordResetsItemsService
     /// </summary>
     public Task UpdatePasswordResets(
         PasswordResetsWhereUniqueInput uniqueId,
-        PasswordResetsUpdateInput updateDto
+        PasswordResetUpdateInput updateDto
     );
 }

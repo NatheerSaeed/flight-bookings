@@ -18,7 +18,7 @@ public static class AirportsItemsExtensions
     }
 
     public static AirportsDbModel ToModel(
-        this AirportsUpdateInput updateDto,
+        this AirportUpdateInput updateDto,
         AirportsWhereUniqueInput uniqueId
     )
     {

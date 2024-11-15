@@ -3,13 +3,13 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface ICooperateCustomerProfilesItemsService
+public interface ICooperateCustomerProfilesService
 {
     /// <summary>
     /// Create one CooperateCustomerProfiles
     /// </summary>
     public Task<CooperateCustomerProfiles> CreateCooperateCustomerProfiles(
-        CooperateCustomerProfilesCreateInput cooperatecustomerprofiles
+        CooperateCustomerProfileCreateInput cooperatecustomerprofiles
     );
 
     /// <summary>
@@ -21,14 +21,14 @@ public interface ICooperateCustomerProfilesItemsService
     /// Find many CooperateCustomerProfilesItems
     /// </summary>
     public Task<List<CooperateCustomerProfiles>> CooperateCustomerProfilesItems(
-        CooperateCustomerProfilesFindManyArgs findManyArgs
+        CooperateCustomerProfileFindManyArgs findManyArgs
     );
 
     /// <summary>
     /// Meta data about CooperateCustomerProfiles records
     /// </summary>
     public Task<MetadataDto> CooperateCustomerProfilesItemsMeta(
-        CooperateCustomerProfilesFindManyArgs findManyArgs
+        CooperateCustomerProfileFindManyArgs findManyArgs
     );
 
     /// <summary>
@@ -43,7 +43,7 @@ public interface ICooperateCustomerProfilesItemsService
     /// </summary>
     public Task UpdateCooperateCustomerProfiles(
         CooperateCustomerProfilesWhereUniqueInput uniqueId,
-        CooperateCustomerProfilesUpdateInput updateDto
+        CooperateCustomerProfileUpdateInput updateDto
     );
 
     /// <summary>

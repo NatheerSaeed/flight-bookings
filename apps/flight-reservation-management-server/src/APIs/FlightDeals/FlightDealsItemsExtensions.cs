@@ -23,7 +23,7 @@ public static class FlightDealsItemsExtensions
     }
 
     public static FlightDealsDbModel ToModel(
-        this FlightDealsUpdateInput updateDto,
+        this FlightDealUpdateInput updateDto,
         FlightDealsWhereUniqueInput uniqueId
     )
     {

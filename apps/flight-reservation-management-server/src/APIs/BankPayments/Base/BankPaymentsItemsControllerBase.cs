@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class BankPaymentsItemsControllerBase : ControllerBase
+public abstract class BankPaymentsControllerBase : ControllerBase
 {
-    protected readonly IBankPaymentsItemsService _service;
+    protected readonly IBankPaymentsService _service;
 
-    public BankPaymentsItemsControllerBase(IBankPaymentsItemsService service)
+    public BankPaymentsControllerBase(IBankPaymentsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class BankPaymentsItemsControllerBase : ControllerBase
     /// Create one BankPayments
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<BankPayments>> CreateBankPayments(BankPaymentsCreateInput input)
+    public async Task<ActionResult<BankPayments>> CreateBankPayments(BankPaymentCreateInput input)
     {
         var bankPayments = await _service.CreateBankPayments(input);
 
@@ -53,7 +53,7 @@ public abstract class BankPaymentsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<BankPayments>>> BankPaymentsItems(
-        [FromQuery()] BankPaymentsFindManyArgs filter
+        [FromQuery()] BankPaymentFindManyArgs filter
     )
     {
         return Ok(await _service.BankPaymentsItems(filter));
@@ -64,7 +64,7 @@ public abstract class BankPaymentsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> BankPaymentsItemsMeta(
-        [FromQuery()] BankPaymentsFindManyArgs filter
+        [FromQuery()] BankPaymentFindManyArgs filter
     )
     {
         return Ok(await _service.BankPaymentsItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class BankPaymentsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateBankPayments(
         [FromRoute()] BankPaymentsWhereUniqueInput uniqueId,
-        [FromQuery()] BankPaymentsUpdateInput bankPaymentsUpdateDto
+        [FromQuery()] BankPaymentUpdateInput bankPaymentsUpdateDto
     )
     {
         try

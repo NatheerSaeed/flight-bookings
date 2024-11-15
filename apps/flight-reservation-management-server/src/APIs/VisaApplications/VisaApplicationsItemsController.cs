@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs;
 
 [ApiController()]
-public class VisaApplicationsItemsController : VisaApplicationsItemsControllerBase
+public class VisaApplicationsController : VisaApplicationsControllerBase
 {
-    public VisaApplicationsItemsController(IVisaApplicationsItemsService service)
+    public VisaApplicationsController(IVisaApplicationsService service)
         : base(service) { }
 }

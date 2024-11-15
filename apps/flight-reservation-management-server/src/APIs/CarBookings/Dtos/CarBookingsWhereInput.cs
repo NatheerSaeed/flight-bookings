@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class CarBookingsWhereInput
+public class CarBookingWhereInput
 {
     public double? Amount { get; set; }
 

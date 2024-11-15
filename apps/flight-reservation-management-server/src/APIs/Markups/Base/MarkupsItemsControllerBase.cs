@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class MarkupsItemsControllerBase : ControllerBase
+public abstract class MarkupsControllerBase : ControllerBase
 {
-    protected readonly IMarkupsItemsService _service;
+    protected readonly IMarkupsService _service;
 
-    public MarkupsItemsControllerBase(IMarkupsItemsService service)
+    public MarkupsControllerBase(IMarkupsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class MarkupsItemsControllerBase : ControllerBase
     /// Create one Markups
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Markups>> CreateMarkups(MarkupsCreateInput input)
+    public async Task<ActionResult<Markups>> CreateMarkups(MarkupCreateInput input)
     {
         var markups = await _service.CreateMarkups(input);
 
@@ -51,7 +51,7 @@ public abstract class MarkupsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Markups>>> MarkupsItems(
-        [FromQuery()] MarkupsFindManyArgs filter
+        [FromQuery()] MarkupFindManyArgs filter
     )
     {
         return Ok(await _service.MarkupsItems(filter));
@@ -62,7 +62,7 @@ public abstract class MarkupsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> MarkupsItemsMeta(
-        [FromQuery()] MarkupsFindManyArgs filter
+        [FromQuery()] MarkupFindManyArgs filter
     )
     {
         return Ok(await _service.MarkupsItemsMeta(filter));
@@ -90,7 +90,7 @@ public abstract class MarkupsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateMarkups(
         [FromRoute()] MarkupsWhereUniqueInput uniqueId,
-        [FromQuery()] MarkupsUpdateInput markupsUpdateDto
+        [FromQuery()] MarkupUpdateInput markupsUpdateDto
     )
     {
         try

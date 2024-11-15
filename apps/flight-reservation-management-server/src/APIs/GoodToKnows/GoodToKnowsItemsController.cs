@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs;
 
 [ApiController()]
-public class GoodToKnowsItemsController : GoodToKnowsItemsControllerBase
+public class GoodToKnowsController : GoodToKnowsControllerBase
 {
-    public GoodToKnowsItemsController(IGoodToKnowsItemsService service)
+    public GoodToKnowsController(IGoodToKnowsService service)
         : base(service) { }
 }

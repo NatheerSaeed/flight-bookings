@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class WalletsItemsControllerBase : ControllerBase
+public abstract class WalletsControllerBase : ControllerBase
 {
-    protected readonly IWalletsItemsService _service;
+    protected readonly IWalletsService _service;
 
-    public WalletsItemsControllerBase(IWalletsItemsService service)
+    public WalletsControllerBase(IWalletsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class WalletsItemsControllerBase : ControllerBase
     /// Create one Wallets
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Wallets>> CreateWallets(WalletsCreateInput input)
+    public async Task<ActionResult<Wallets>> CreateWallets(WalletCreateInput input)
     {
         var wallets = await _service.CreateWallets(input);
 
@@ -51,7 +51,7 @@ public abstract class WalletsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Wallets>>> WalletsItems(
-        [FromQuery()] WalletsFindManyArgs filter
+        [FromQuery()] WalletFindManyArgs filter
     )
     {
         return Ok(await _service.WalletsItems(filter));
@@ -62,7 +62,7 @@ public abstract class WalletsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> WalletsItemsMeta(
-        [FromQuery()] WalletsFindManyArgs filter
+        [FromQuery()] WalletFindManyArgs filter
     )
     {
         return Ok(await _service.WalletsItemsMeta(filter));
@@ -90,7 +90,7 @@ public abstract class WalletsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateWallets(
         [FromRoute()] WalletsWhereUniqueInput uniqueId,
-        [FromQuery()] WalletsUpdateInput walletsUpdateDto
+        [FromQuery()] WalletUpdateInput walletsUpdateDto
     )
     {
         try

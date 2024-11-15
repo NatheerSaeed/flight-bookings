@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IBanksItemsService
+public interface IBanksService
 {
     /// <summary>
     /// Create one Banks
     /// </summary>
-    public Task<Banks> CreateBanks(BanksCreateInput banks);
+    public Task<Banks> CreateBanks(BankCreateInput banks);
 
     /// <summary>
     /// Delete one Banks
@@ -18,12 +18,12 @@ public interface IBanksItemsService
     /// <summary>
     /// Find many BanksItems
     /// </summary>
-    public Task<List<Banks>> BanksItems(BanksFindManyArgs findManyArgs);
+    public Task<List<Banks>> BanksItems(BankFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Banks records
     /// </summary>
-    public Task<MetadataDto> BanksItemsMeta(BanksFindManyArgs findManyArgs);
+    public Task<MetadataDto> BanksItemsMeta(BankFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Banks
@@ -33,7 +33,7 @@ public interface IBanksItemsService
     /// <summary>
     /// Update one Banks
     /// </summary>
-    public Task UpdateBanks(BanksWhereUniqueInput uniqueId, BanksUpdateInput updateDto);
+    public Task UpdateBanks(BanksWhereUniqueInput uniqueId, BankUpdateInput updateDto);
 
     /// <summary>
     /// Connect multiple BankDetailsItems records to Banks
@@ -56,7 +56,7 @@ public interface IBanksItemsService
     /// </summary>
     public Task<List<BankDetails>> FindBankDetailsItems(
         BanksWhereUniqueInput uniqueId,
-        BankDetailsFindManyArgs BankDetailsFindManyArgs
+        BankDetailFindManyArgs BankDetailFindManyArgs
     );
 
     /// <summary>

@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class CommentsWhereInput
+public class CommentWhereInput
 {
     public string? Content { get; set; }
 

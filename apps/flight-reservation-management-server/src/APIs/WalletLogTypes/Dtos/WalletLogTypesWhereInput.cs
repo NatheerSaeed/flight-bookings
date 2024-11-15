@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class WalletLogTypesWhereInput
+public class WalletLogTypeWhereInput
 {
     public DateTime? CreatedAt { get; set; }
 

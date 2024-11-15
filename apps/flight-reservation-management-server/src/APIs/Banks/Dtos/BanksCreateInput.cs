@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class BanksCreateInput
+public class BankCreateInput
 {
     public List<BankDetails>? BankDetailsItems { get; set; }
 

@@ -17,7 +17,7 @@ public static class TitlesItemsExtensions
     }
 
     public static TitlesDbModel ToModel(
-        this TitlesUpdateInput updateDto,
+        this TitleUpdateInput updateDto,
         TitlesWhereUniqueInput uniqueId
     )
     {

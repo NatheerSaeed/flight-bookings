@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class EmailSubscribersItemsService : EmailSubscribersItemsServiceBase
+public class EmailSubscribersService : EmailSubscribersServiceBase
 {
-    public EmailSubscribersItemsService(FlightReservationManagementDbContext context)
+    public EmailSubscribersService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

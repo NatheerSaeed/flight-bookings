@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class PayLatersUpdateInput
+public class PayLaterUpdateInput
 {
     public int? Amount { get; set; }
 

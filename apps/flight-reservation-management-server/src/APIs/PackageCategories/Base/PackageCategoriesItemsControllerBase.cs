@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class PackageCategoriesItemsControllerBase : ControllerBase
+public abstract class PackageCategoriesControllerBase : ControllerBase
 {
-    protected readonly IPackageCategoriesItemsService _service;
+    protected readonly IPackageCategoriesService _service;
 
-    public PackageCategoriesItemsControllerBase(IPackageCategoriesItemsService service)
+    public PackageCategoriesControllerBase(IPackageCategoriesService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class PackageCategoriesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<PackageCategories>> CreatePackageCategories(
-        PackageCategoriesCreateInput input
+        PackageCategorieCreateInput input
     )
     {
         var packageCategories = await _service.CreatePackageCategories(input);
@@ -59,7 +59,7 @@ public abstract class PackageCategoriesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<PackageCategories>>> PackageCategoriesItems(
-        [FromQuery()] PackageCategoriesFindManyArgs filter
+        [FromQuery()] PackageCategorieFindManyArgs filter
     )
     {
         return Ok(await _service.PackageCategoriesItems(filter));
@@ -70,7 +70,7 @@ public abstract class PackageCategoriesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> PackageCategoriesItemsMeta(
-        [FromQuery()] PackageCategoriesFindManyArgs filter
+        [FromQuery()] PackageCategorieFindManyArgs filter
     )
     {
         return Ok(await _service.PackageCategoriesItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class PackageCategoriesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdatePackageCategories(
         [FromRoute()] PackageCategoriesWhereUniqueInput uniqueId,
-        [FromQuery()] PackageCategoriesUpdateInput packageCategoriesUpdateDto
+        [FromQuery()] PackageCategorieUpdateInput packageCategoriesUpdateDto
     )
     {
         try

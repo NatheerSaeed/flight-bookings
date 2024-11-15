@@ -20,7 +20,7 @@ public static class GalleriesItemsExtensions
     }
 
     public static GalleriesDbModel ToModel(
-        this GalleriesUpdateInput updateDto,
+        this GallerieUpdateInput updateDto,
         GalleriesWhereUniqueInput uniqueId
     )
     {

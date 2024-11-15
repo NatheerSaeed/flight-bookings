@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class HotelDealsItemsControllerBase : ControllerBase
+public abstract class HotelDealsControllerBase : ControllerBase
 {
-    protected readonly IHotelDealsItemsService _service;
+    protected readonly IHotelDealsService _service;
 
-    public HotelDealsItemsControllerBase(IHotelDealsItemsService service)
+    public HotelDealsControllerBase(IHotelDealsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class HotelDealsItemsControllerBase : ControllerBase
     /// Create one HotelDeals
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<HotelDeals>> CreateHotelDeals(HotelDealsCreateInput input)
+    public async Task<ActionResult<HotelDeals>> CreateHotelDeals(HotelDealCreateInput input)
     {
         var hotelDeals = await _service.CreateHotelDeals(input);
 
@@ -53,7 +53,7 @@ public abstract class HotelDealsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<HotelDeals>>> HotelDealsItems(
-        [FromQuery()] HotelDealsFindManyArgs filter
+        [FromQuery()] HotelDealFindManyArgs filter
     )
     {
         return Ok(await _service.HotelDealsItems(filter));
@@ -64,7 +64,7 @@ public abstract class HotelDealsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> HotelDealsItemsMeta(
-        [FromQuery()] HotelDealsFindManyArgs filter
+        [FromQuery()] HotelDealFindManyArgs filter
     )
     {
         return Ok(await _service.HotelDealsItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class HotelDealsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateHotelDeals(
         [FromRoute()] HotelDealsWhereUniqueInput uniqueId,
-        [FromQuery()] HotelDealsUpdateInput hotelDealsUpdateDto
+        [FromQuery()] HotelDealUpdateInput hotelDealsUpdateDto
     )
     {
         try

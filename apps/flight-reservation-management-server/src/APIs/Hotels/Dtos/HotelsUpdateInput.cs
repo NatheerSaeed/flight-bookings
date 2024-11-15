@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class HotelsUpdateInput
+public class HotelUpdateInput
 {
     public int? CarMarkupType { get; set; }
 

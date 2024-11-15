@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class TitlesItemsControllerBase : ControllerBase
+public abstract class TitlesControllerBase : ControllerBase
 {
-    protected readonly ITitlesItemsService _service;
+    protected readonly ITitlesService _service;
 
-    public TitlesItemsControllerBase(ITitlesItemsService service)
+    public TitlesControllerBase(ITitlesService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class TitlesItemsControllerBase : ControllerBase
     /// Create one Titles
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Titles>> CreateTitles(TitlesCreateInput input)
+    public async Task<ActionResult<Titles>> CreateTitles(TitleCreateInput input)
     {
         var titles = await _service.CreateTitles(input);
 
@@ -51,7 +51,7 @@ public abstract class TitlesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Titles>>> TitlesItems(
-        [FromQuery()] TitlesFindManyArgs filter
+        [FromQuery()] TitleFindManyArgs filter
     )
     {
         return Ok(await _service.TitlesItems(filter));
@@ -62,7 +62,7 @@ public abstract class TitlesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> TitlesItemsMeta(
-        [FromQuery()] TitlesFindManyArgs filter
+        [FromQuery()] TitleFindManyArgs filter
     )
     {
         return Ok(await _service.TitlesItemsMeta(filter));
@@ -90,7 +90,7 @@ public abstract class TitlesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateTitles(
         [FromRoute()] TitlesWhereUniqueInput uniqueId,
-        [FromQuery()] TitlesUpdateInput titlesUpdateDto
+        [FromQuery()] TitleUpdateInput titlesUpdateDto
     )
     {
         try
@@ -153,7 +153,7 @@ public abstract class TitlesItemsControllerBase : ControllerBase
     [HttpGet("{Id}/profilesItems")]
     public async Task<ActionResult<List<Profiles>>> FindProfilesItems(
         [FromRoute()] TitlesWhereUniqueInput uniqueId,
-        [FromQuery()] ProfilesFindManyArgs filter
+        [FromQuery()] ProfileFindManyArgs filter
     )
     {
         try

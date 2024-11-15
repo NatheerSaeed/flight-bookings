@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs;
 
 [ApiController()]
-public class PasswordResetsItemsController : PasswordResetsItemsControllerBase
+public class PasswordResetsController : PasswordResetsControllerBase
 {
-    public PasswordResetsItemsController(IPasswordResetsItemsService service)
+    public PasswordResetsController(IPasswordResetsService service)
         : base(service) { }
 }

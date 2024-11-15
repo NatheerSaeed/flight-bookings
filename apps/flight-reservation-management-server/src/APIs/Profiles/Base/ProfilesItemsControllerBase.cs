@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class ProfilesItemsControllerBase : ControllerBase
+public abstract class ProfilesControllerBase : ControllerBase
 {
-    protected readonly IProfilesItemsService _service;
+    protected readonly IProfilesService _service;
 
-    public ProfilesItemsControllerBase(IProfilesItemsService service)
+    public ProfilesControllerBase(IProfilesService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class ProfilesItemsControllerBase : ControllerBase
     /// Create one Profiles
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Profiles>> CreateProfiles(ProfilesCreateInput input)
+    public async Task<ActionResult<Profiles>> CreateProfiles(ProfileCreateInput input)
     {
         var profiles = await _service.CreateProfiles(input);
 
@@ -51,7 +51,7 @@ public abstract class ProfilesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<Profiles>>> ProfilesItems(
-        [FromQuery()] ProfilesFindManyArgs filter
+        [FromQuery()] ProfileFindManyArgs filter
     )
     {
         return Ok(await _service.ProfilesItems(filter));
@@ -62,7 +62,7 @@ public abstract class ProfilesItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ProfilesItemsMeta(
-        [FromQuery()] ProfilesFindManyArgs filter
+        [FromQuery()] ProfileFindManyArgs filter
     )
     {
         return Ok(await _service.ProfilesItemsMeta(filter));
@@ -92,7 +92,7 @@ public abstract class ProfilesItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateProfiles(
         [FromRoute()] ProfilesWhereUniqueInput uniqueId,
-        [FromQuery()] ProfilesUpdateInput profilesUpdateDto
+        [FromQuery()] ProfileUpdateInput profilesUpdateDto
     )
     {
         try

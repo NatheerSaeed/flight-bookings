@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class GoodToKnowsItemsService : GoodToKnowsItemsServiceBase
+public class GoodToKnowsService : GoodToKnowsServiceBase
 {
-    public GoodToKnowsItemsService(FlightReservationManagementDbContext context)
+    public GoodToKnowsService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

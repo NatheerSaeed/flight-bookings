@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class GendersItemsService : GendersItemsServiceBase
+public class GendersService : GendersServiceBase
 {
-    public GendersItemsService(FlightReservationManagementDbContext context)
+    public GendersService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

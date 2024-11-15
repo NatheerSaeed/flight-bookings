@@ -23,7 +23,7 @@ public static class VatsItemsExtensions
         };
     }
 
-    public static VatsDbModel ToModel(this VatsUpdateInput updateDto, VatsWhereUniqueInput uniqueId)
+    public static VatsDbModel ToModel(this VatUpdateInput updateDto, VatsWhereUniqueInput uniqueId)
     {
         var vats = new VatsDbModel
         {

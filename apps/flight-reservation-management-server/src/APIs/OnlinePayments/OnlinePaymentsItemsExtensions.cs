@@ -24,7 +24,7 @@ public static class OnlinePaymentsItemsExtensions
     }
 
     public static OnlinePaymentsDbModel ToModel(
-        this OnlinePaymentsUpdateInput updateDto,
+        this OnlinePaymentUpdateInput updateDto,
         OnlinePaymentsWhereUniqueInput uniqueId
     )
     {

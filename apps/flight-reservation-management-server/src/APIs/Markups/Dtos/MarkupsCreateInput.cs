@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class MarkupsCreateInput
+public class MarkupCreateInput
 {
     public int? CarMarkupType { get; set; }
 

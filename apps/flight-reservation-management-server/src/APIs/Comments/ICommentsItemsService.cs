@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface ICommentsItemsService
+public interface ICommentsService
 {
     /// <summary>
     /// Create one Comments
     /// </summary>
-    public Task<Comments> CreateComments(CommentsCreateInput comments);
+    public Task<Comments> CreateComments(CommentCreateInput comments);
 
     /// <summary>
     /// Delete one Comments
@@ -18,12 +18,12 @@ public interface ICommentsItemsService
     /// <summary>
     /// Find many CommentsItems
     /// </summary>
-    public Task<List<Comments>> CommentsItems(CommentsFindManyArgs findManyArgs);
+    public Task<List<Comments>> CommentsItems(CommentFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Comments records
     /// </summary>
-    public Task<MetadataDto> CommentsItemsMeta(CommentsFindManyArgs findManyArgs);
+    public Task<MetadataDto> CommentsItemsMeta(CommentFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Comments
@@ -33,5 +33,5 @@ public interface ICommentsItemsService
     /// <summary>
     /// Update one Comments
     /// </summary>
-    public Task UpdateComments(CommentsWhereUniqueInput uniqueId, CommentsUpdateInput updateDto);
+    public Task UpdateComments(CommentsWhereUniqueInput uniqueId, CommentUpdateInput updateDto);
 }

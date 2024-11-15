@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs;
 
 [ApiController()]
-public class OnlinePaymentsItemsController : OnlinePaymentsItemsControllerBase
+public class OnlinePaymentsController : OnlinePaymentsControllerBase
 {
-    public OnlinePaymentsItemsController(IOnlinePaymentsItemsService service)
+    public OnlinePaymentsController(IOnlinePaymentsService service)
         : base(service) { }
 }

@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IMarkdownsItemsService
+public interface IMarkdownsService
 {
     /// <summary>
     /// Create one Markdowns
     /// </summary>
-    public Task<Markdowns> CreateMarkdowns(MarkdownsCreateInput markdowns);
+    public Task<Markdowns> CreateMarkdowns(MarkdownCreateInput markdowns);
 
     /// <summary>
     /// Delete one Markdowns
@@ -18,12 +18,12 @@ public interface IMarkdownsItemsService
     /// <summary>
     /// Find many MarkdownsItems
     /// </summary>
-    public Task<List<Markdowns>> MarkdownsItems(MarkdownsFindManyArgs findManyArgs);
+    public Task<List<Markdowns>> MarkdownsItems(MarkdownFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about Markdowns records
     /// </summary>
-    public Task<MetadataDto> MarkdownsItemsMeta(MarkdownsFindManyArgs findManyArgs);
+    public Task<MetadataDto> MarkdownsItemsMeta(MarkdownFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one Markdowns
@@ -33,5 +33,5 @@ public interface IMarkdownsItemsService
     /// <summary>
     /// Update one Markdowns
     /// </summary>
-    public Task UpdateMarkdowns(MarkdownsWhereUniqueInput uniqueId, MarkdownsUpdateInput updateDto);
+    public Task UpdateMarkdowns(MarkdownsWhereUniqueInput uniqueId, MarkdownUpdateInput updateDto);
 }

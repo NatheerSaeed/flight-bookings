@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class OnlinePaymentsWhereInput
+public class OnlinePaymentWhereInput
 {
     public double? Amount { get; set; }
 

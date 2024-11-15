@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class AirlinesUpdateInput
+public class AirlineUpdateInput
 {
     public double? Amount { get; set; }
 

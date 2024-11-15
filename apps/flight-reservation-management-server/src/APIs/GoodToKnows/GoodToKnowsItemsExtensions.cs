@@ -24,7 +24,7 @@ public static class GoodToKnowsItemsExtensions
     }
 
     public static GoodToKnowsDbModel ToModel(
-        this GoodToKnowsUpdateInput updateDto,
+        this GoodToKnowUpdateInput updateDto,
         GoodToKnowsWhereUniqueInput uniqueId
     )
     {

@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class HotelBookingsItemsControllerBase : ControllerBase
+public abstract class HotelBookingsControllerBase : ControllerBase
 {
-    protected readonly IHotelBookingsItemsService _service;
+    protected readonly IHotelBookingsService _service;
 
-    public HotelBookingsItemsControllerBase(IHotelBookingsItemsService service)
+    public HotelBookingsControllerBase(IHotelBookingsService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class HotelBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<HotelBookings>> CreateHotelBookings(
-        HotelBookingsCreateInput input
+        HotelBookingCreateInput input
     )
     {
         var hotelBookings = await _service.CreateHotelBookings(input);
@@ -55,7 +55,7 @@ public abstract class HotelBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<HotelBookings>>> HotelBookingsItems(
-        [FromQuery()] HotelBookingsFindManyArgs filter
+        [FromQuery()] HotelBookingFindManyArgs filter
     )
     {
         return Ok(await _service.HotelBookingsItems(filter));
@@ -66,7 +66,7 @@ public abstract class HotelBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> HotelBookingsItemsMeta(
-        [FromQuery()] HotelBookingsFindManyArgs filter
+        [FromQuery()] HotelBookingFindManyArgs filter
     )
     {
         return Ok(await _service.HotelBookingsItemsMeta(filter));
@@ -96,7 +96,7 @@ public abstract class HotelBookingsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateHotelBookings(
         [FromRoute()] HotelBookingsWhereUniqueInput uniqueId,
-        [FromQuery()] HotelBookingsUpdateInput hotelBookingsUpdateDto
+        [FromQuery()] HotelBookingUpdateInput hotelBookingsUpdateDto
     )
     {
         try

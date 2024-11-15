@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class PackageBookingsWhereInput
+public class PackageBookingWhereInput
 {
     public int? Adults { get; set; }
 

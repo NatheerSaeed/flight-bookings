@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class RolesCreateInput
+public class RoleCreateInput
 {
     public DateTime CreatedAt { get; set; }
 

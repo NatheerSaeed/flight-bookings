@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class BankDetailsItemsControllerBase : ControllerBase
+public abstract class BankDetailsControllerBase : ControllerBase
 {
-    protected readonly IBankDetailsItemsService _service;
+    protected readonly IBankDetailsService _service;
 
-    public BankDetailsItemsControllerBase(IBankDetailsItemsService service)
+    public BankDetailsControllerBase(IBankDetailsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class BankDetailsItemsControllerBase : ControllerBase
     /// Create one BankDetails
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<BankDetails>> CreateBankDetails(BankDetailsCreateInput input)
+    public async Task<ActionResult<BankDetails>> CreateBankDetails(BankDetailCreateInput input)
     {
         var bankDetails = await _service.CreateBankDetails(input);
 
@@ -53,7 +53,7 @@ public abstract class BankDetailsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<BankDetails>>> BankDetailsItems(
-        [FromQuery()] BankDetailsFindManyArgs filter
+        [FromQuery()] BankDetailFindManyArgs filter
     )
     {
         return Ok(await _service.BankDetailsItems(filter));
@@ -64,7 +64,7 @@ public abstract class BankDetailsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> BankDetailsItemsMeta(
-        [FromQuery()] BankDetailsFindManyArgs filter
+        [FromQuery()] BankDetailFindManyArgs filter
     )
     {
         return Ok(await _service.BankDetailsItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class BankDetailsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateBankDetails(
         [FromRoute()] BankDetailsWhereUniqueInput uniqueId,
-        [FromQuery()] BankDetailsUpdateInput bankDetailsUpdateDto
+        [FromQuery()] BankDetailUpdateInput bankDetailsUpdateDto
     )
     {
         try

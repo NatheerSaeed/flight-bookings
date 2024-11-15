@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class CabinTypesCreateInput
+public class CabinTypeCreateInput
 {
     public string? CabinCode { get; set; }
 

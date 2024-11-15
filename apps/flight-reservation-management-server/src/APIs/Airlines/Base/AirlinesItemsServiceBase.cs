@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class AirlinesItemsServiceBase : IAirlinesItemsService
+public abstract class AirlinesServiceBase : IAirlinesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public AirlinesItemsServiceBase(FlightReservationManagementDbContext context)
+    public AirlinesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class AirlinesItemsServiceBase : IAirlinesItemsService
     /// <summary>
     /// Create one Airlines
     /// </summary>
-    public async Task<Airlines> CreateAirlines(AirlinesCreateInput createDto)
+    public async Task<Airlines> CreateAirlines(AirlineCreateInput createDto)
     {
         var airlines = new AirlinesDbModel
         {
@@ -77,7 +77,7 @@ public abstract class AirlinesItemsServiceBase : IAirlinesItemsService
     /// <summary>
     /// Find many AirlinesItems
     /// </summary>
-    public async Task<List<Airlines>> AirlinesItems(AirlinesFindManyArgs findManyArgs)
+    public async Task<List<Airlines>> AirlinesItems(AirlineFindManyArgs findManyArgs)
     {
         var airlinesItems = await _context
             .AirlinesItems.Include(x => x.User)
@@ -92,7 +92,7 @@ public abstract class AirlinesItemsServiceBase : IAirlinesItemsService
     /// <summary>
     /// Meta data about Airlines records
     /// </summary>
-    public async Task<MetadataDto> AirlinesItemsMeta(AirlinesFindManyArgs findManyArgs)
+    public async Task<MetadataDto> AirlinesItemsMeta(AirlineFindManyArgs findManyArgs)
     {
         var count = await _context.AirlinesItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -105,7 +105,7 @@ public abstract class AirlinesItemsServiceBase : IAirlinesItemsService
     public async Task<Airlines> Airlines(AirlinesWhereUniqueInput uniqueId)
     {
         var airlinesItems = await this.AirlinesItems(
-            new AirlinesFindManyArgs { Where = new AirlinesWhereInput { Id = uniqueId.Id } }
+            new AirlineFindManyArgs { Where = new AirlineWhereInput { Id = uniqueId.Id } }
         );
         var airlines = airlinesItems.FirstOrDefault();
         if (airlines == null)
@@ -121,7 +121,7 @@ public abstract class AirlinesItemsServiceBase : IAirlinesItemsService
     /// </summary>
     public async Task UpdateAirlines(
         AirlinesWhereUniqueInput uniqueId,
-        AirlinesUpdateInput updateDto
+        AirlineUpdateInput updateDto
     )
     {
         var airlines = updateDto.ToModel(uniqueId);

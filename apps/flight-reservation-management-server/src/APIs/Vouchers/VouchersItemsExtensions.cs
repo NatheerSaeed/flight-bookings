@@ -21,7 +21,7 @@ public static class VouchersItemsExtensions
     }
 
     public static VouchersDbModel ToModel(
-        this VouchersUpdateInput updateDto,
+        this VoucherUpdateInput updateDto,
         VouchersWhereUniqueInput uniqueId
     )
     {

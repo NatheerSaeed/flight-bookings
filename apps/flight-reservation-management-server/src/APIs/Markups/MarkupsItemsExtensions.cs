@@ -25,7 +25,7 @@ public static class MarkupsItemsExtensions
     }
 
     public static MarkupsDbModel ToModel(
-        this MarkupsUpdateInput updateDto,
+        this MarkupUpdateInput updateDto,
         MarkupsWhereUniqueInput uniqueId
     )
     {

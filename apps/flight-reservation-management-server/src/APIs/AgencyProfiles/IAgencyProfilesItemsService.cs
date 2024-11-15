@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IAgencyProfilesItemsService
+public interface IAgencyProfilesService
 {
     /// <summary>
     /// Create one AgencyProfiles
     /// </summary>
-    public Task<AgencyProfiles> CreateAgencyProfiles(AgencyProfilesCreateInput agencyprofiles);
+    public Task<AgencyProfiles> CreateAgencyProfiles(AgencyProfileCreateInput agencyprofiles);
 
     /// <summary>
     /// Delete one AgencyProfiles
@@ -18,12 +18,12 @@ public interface IAgencyProfilesItemsService
     /// <summary>
     /// Find many AgencyProfilesItems
     /// </summary>
-    public Task<List<AgencyProfiles>> AgencyProfilesItems(AgencyProfilesFindManyArgs findManyArgs);
+    public Task<List<AgencyProfiles>> AgencyProfilesItems(AgencyProfileFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about AgencyProfiles records
     /// </summary>
-    public Task<MetadataDto> AgencyProfilesItemsMeta(AgencyProfilesFindManyArgs findManyArgs);
+    public Task<MetadataDto> AgencyProfilesItemsMeta(AgencyProfileFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one AgencyProfiles
@@ -35,7 +35,7 @@ public interface IAgencyProfilesItemsService
     /// </summary>
     public Task UpdateAgencyProfiles(
         AgencyProfilesWhereUniqueInput uniqueId,
-        AgencyProfilesUpdateInput updateDto
+        AgencyProfileUpdateInput updateDto
     );
 
     /// <summary>

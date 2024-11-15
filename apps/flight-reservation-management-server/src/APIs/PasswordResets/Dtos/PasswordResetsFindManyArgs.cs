@@ -5,5 +5,4 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlightReservationManagement.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
-public class PasswordResetsFindManyArgs
-    : FindManyInput<PasswordResets, PasswordResetsWhereInput> { }
+public class PasswordResetFindManyArgs : FindManyInput<PasswordResets, PasswordResetWhereInput> { }

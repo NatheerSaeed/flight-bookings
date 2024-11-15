@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class AgencyProfilesItemsServiceBase : IAgencyProfilesItemsService
+public abstract class AgencyProfilesServiceBase : IAgencyProfilesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public AgencyProfilesItemsServiceBase(FlightReservationManagementDbContext context)
+    public AgencyProfilesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class AgencyProfilesItemsServiceBase : IAgencyProfilesItemsServi
     /// <summary>
     /// Create one AgencyProfiles
     /// </summary>
-    public async Task<AgencyProfiles> CreateAgencyProfiles(AgencyProfilesCreateInput createDto)
+    public async Task<AgencyProfiles> CreateAgencyProfiles(AgencyProfileCreateInput createDto)
     {
         var agencyProfiles = new AgencyProfilesDbModel
         {
@@ -80,7 +80,7 @@ public abstract class AgencyProfilesItemsServiceBase : IAgencyProfilesItemsServi
     /// Find many AgencyProfilesItems
     /// </summary>
     public async Task<List<AgencyProfiles>> AgencyProfilesItems(
-        AgencyProfilesFindManyArgs findManyArgs
+        AgencyProfileFindManyArgs findManyArgs
     )
     {
         var agencyProfilesItems = await _context
@@ -96,7 +96,7 @@ public abstract class AgencyProfilesItemsServiceBase : IAgencyProfilesItemsServi
     /// <summary>
     /// Meta data about AgencyProfiles records
     /// </summary>
-    public async Task<MetadataDto> AgencyProfilesItemsMeta(AgencyProfilesFindManyArgs findManyArgs)
+    public async Task<MetadataDto> AgencyProfilesItemsMeta(AgencyProfileFindManyArgs findManyArgs)
     {
         var count = await _context.AgencyProfilesItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -109,9 +109,9 @@ public abstract class AgencyProfilesItemsServiceBase : IAgencyProfilesItemsServi
     public async Task<AgencyProfiles> AgencyProfiles(AgencyProfilesWhereUniqueInput uniqueId)
     {
         var agencyProfilesItems = await this.AgencyProfilesItems(
-            new AgencyProfilesFindManyArgs
+            new AgencyProfileFindManyArgs
             {
-                Where = new AgencyProfilesWhereInput { Id = uniqueId.Id }
+                Where = new AgencyProfileWhereInput { Id = uniqueId.Id }
             }
         );
         var agencyProfiles = agencyProfilesItems.FirstOrDefault();
@@ -128,7 +128,7 @@ public abstract class AgencyProfilesItemsServiceBase : IAgencyProfilesItemsServi
     /// </summary>
     public async Task UpdateAgencyProfiles(
         AgencyProfilesWhereUniqueInput uniqueId,
-        AgencyProfilesUpdateInput updateDto
+        AgencyProfileUpdateInput updateDto
     )
     {
         var agencyProfiles = updateDto.ToModel(uniqueId);

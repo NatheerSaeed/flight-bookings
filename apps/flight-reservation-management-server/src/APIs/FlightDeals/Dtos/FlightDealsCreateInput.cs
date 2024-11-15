@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class FlightDealsCreateInput
+public class FlightDealCreateInput
 {
     public string? Airline { get; set; }
 

@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class CommentsItemsService : CommentsItemsServiceBase
+public class CommentsService : CommentsServiceBase
 {
-    public CommentsItemsService(FlightReservationManagementDbContext context)
+    public CommentsService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class AttractionsItemsServiceBase : IAttractionsItemsService
+public abstract class AttractionsServiceBase : IAttractionsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public AttractionsItemsServiceBase(FlightReservationManagementDbContext context)
+    public AttractionsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class AttractionsItemsServiceBase : IAttractionsItemsService
     /// <summary>
     /// Create one Attractions
     /// </summary>
-    public async Task<Attractions> CreateAttractions(AttractionsCreateInput createDto)
+    public async Task<Attractions> CreateAttractions(AttractionCreateInput createDto)
     {
         var attractions = new AttractionsDbModel
         {
@@ -85,7 +85,7 @@ public abstract class AttractionsItemsServiceBase : IAttractionsItemsService
     /// <summary>
     /// Find many AttractionsItems
     /// </summary>
-    public async Task<List<Attractions>> AttractionsItems(AttractionsFindManyArgs findManyArgs)
+    public async Task<List<Attractions>> AttractionsItems(AttractionFindManyArgs findManyArgs)
     {
         var attractionsItems = await _context
             .AttractionsItems.Include(x => x.SightSeeingsItems)
@@ -101,7 +101,7 @@ public abstract class AttractionsItemsServiceBase : IAttractionsItemsService
     /// <summary>
     /// Meta data about Attractions records
     /// </summary>
-    public async Task<MetadataDto> AttractionsItemsMeta(AttractionsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> AttractionsItemsMeta(AttractionFindManyArgs findManyArgs)
     {
         var count = await _context.AttractionsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -114,7 +114,7 @@ public abstract class AttractionsItemsServiceBase : IAttractionsItemsService
     public async Task<Attractions> Attractions(AttractionsWhereUniqueInput uniqueId)
     {
         var attractionsItems = await this.AttractionsItems(
-            new AttractionsFindManyArgs { Where = new AttractionsWhereInput { Id = uniqueId.Id } }
+            new AttractionFindManyArgs { Where = new AttractionWhereInput { Id = uniqueId.Id } }
         );
         var attractions = attractionsItems.FirstOrDefault();
         if (attractions == null)
@@ -130,7 +130,7 @@ public abstract class AttractionsItemsServiceBase : IAttractionsItemsService
     /// </summary>
     public async Task UpdateAttractions(
         AttractionsWhereUniqueInput uniqueId,
-        AttractionsUpdateInput updateDto
+        AttractionUpdateInput updateDto
     )
     {
         var attractions = updateDto.ToModel(uniqueId);
@@ -252,15 +252,15 @@ public abstract class AttractionsItemsServiceBase : IAttractionsItemsService
     /// </summary>
     public async Task<List<SightSeeings>> FindSightSeeingsItems(
         AttractionsWhereUniqueInput uniqueId,
-        SightSeeingsFindManyArgs attractionsFindManyArgs
+        SightSeeingFindManyArgs attractionFindManyArgs
     )
     {
         var sightSeeingsItems = await _context
             .SightSeeingsItems.Where(m => m.AttractionId == uniqueId.Id)
-            .ApplyWhere(attractionsFindManyArgs.Where)
-            .ApplySkip(attractionsFindManyArgs.Skip)
-            .ApplyTake(attractionsFindManyArgs.Take)
-            .ApplyOrderBy(attractionsFindManyArgs.SortBy)
+            .ApplyWhere(attractionFindManyArgs.Where)
+            .ApplySkip(attractionFindManyArgs.Skip)
+            .ApplyTake(attractionFindManyArgs.Take)
+            .ApplyOrderBy(attractionFindManyArgs.SortBy)
             .ToListAsync();
 
         return sightSeeingsItems.Select(x => x.ToDto()).ToList();

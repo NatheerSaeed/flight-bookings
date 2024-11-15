@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IPackageHotelsItemsService
+public interface IPackageHotelsService
 {
     /// <summary>
     /// Create one PackageHotels
     /// </summary>
-    public Task<PackageHotels> CreatePackageHotels(PackageHotelsCreateInput packagehotels);
+    public Task<PackageHotels> CreatePackageHotels(PackageHotelCreateInput packagehotels);
 
     /// <summary>
     /// Delete one PackageHotels
@@ -18,12 +18,12 @@ public interface IPackageHotelsItemsService
     /// <summary>
     /// Find many PackageHotelsItems
     /// </summary>
-    public Task<List<PackageHotels>> PackageHotelsItems(PackageHotelsFindManyArgs findManyArgs);
+    public Task<List<PackageHotels>> PackageHotelsItems(PackageHotelFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about PackageHotels records
     /// </summary>
-    public Task<MetadataDto> PackageHotelsItemsMeta(PackageHotelsFindManyArgs findManyArgs);
+    public Task<MetadataDto> PackageHotelsItemsMeta(PackageHotelFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one PackageHotels
@@ -35,7 +35,7 @@ public interface IPackageHotelsItemsService
     /// </summary>
     public Task UpdatePackageHotels(
         PackageHotelsWhereUniqueInput uniqueId,
-        PackageHotelsUpdateInput updateDto
+        PackageHotelUpdateInput updateDto
     );
 
     /// <summary>

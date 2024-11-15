@@ -1,6 +1,6 @@
 namespace FlightReservationManagement.APIs.Dtos;
 
-public class CooperateCustomerProfilesCreateInput
+public class CooperateCustomerProfileCreateInput
 {
     public string? CompanyAddress { get; set; }
 

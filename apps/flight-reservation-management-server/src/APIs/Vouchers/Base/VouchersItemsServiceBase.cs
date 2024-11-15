@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class VouchersItemsServiceBase : IVouchersItemsService
+public abstract class VouchersServiceBase : IVouchersService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public VouchersItemsServiceBase(FlightReservationManagementDbContext context)
+    public VouchersServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
     /// <summary>
     /// Create one Vouchers
     /// </summary>
-    public async Task<Vouchers> CreateVouchers(VouchersCreateInput createDto)
+    public async Task<Vouchers> CreateVouchers(VoucherCreateInput createDto)
     {
         var vouchers = new VouchersDbModel
         {
@@ -85,7 +85,7 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
     /// <summary>
     /// Find many VouchersItems
     /// </summary>
-    public async Task<List<Vouchers>> VouchersItems(VouchersFindManyArgs findManyArgs)
+    public async Task<List<Vouchers>> VouchersItems(VoucherFindManyArgs findManyArgs)
     {
         var vouchersItems = await _context
             .VouchersItems.Include(x => x.HotelBookingsItems)
@@ -101,7 +101,7 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
     /// <summary>
     /// Meta data about Vouchers records
     /// </summary>
-    public async Task<MetadataDto> VouchersItemsMeta(VouchersFindManyArgs findManyArgs)
+    public async Task<MetadataDto> VouchersItemsMeta(VoucherFindManyArgs findManyArgs)
     {
         var count = await _context.VouchersItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -114,7 +114,7 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
     public async Task<Vouchers> Vouchers(VouchersWhereUniqueInput uniqueId)
     {
         var vouchersItems = await this.VouchersItems(
-            new VouchersFindManyArgs { Where = new VouchersWhereInput { Id = uniqueId.Id } }
+            new VoucherFindManyArgs { Where = new VoucherWhereInput { Id = uniqueId.Id } }
         );
         var vouchers = vouchersItems.FirstOrDefault();
         if (vouchers == null)
@@ -130,7 +130,7 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
     /// </summary>
     public async Task UpdateVouchers(
         VouchersWhereUniqueInput uniqueId,
-        VouchersUpdateInput updateDto
+        VoucherUpdateInput updateDto
     )
     {
         var vouchers = updateDto.ToModel(uniqueId);
@@ -238,15 +238,15 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
     /// </summary>
     public async Task<List<FlightBookings>> FindFlightBookingsItems(
         VouchersWhereUniqueInput uniqueId,
-        FlightBookingsFindManyArgs vouchersFindManyArgs
+        FlightBookingFindManyArgs voucherFindManyArgs
     )
     {
         var flightBookingsItems = await _context
             .FlightBookingsItems.Where(m => m.VoucherId == uniqueId.Id)
-            .ApplyWhere(vouchersFindManyArgs.Where)
-            .ApplySkip(vouchersFindManyArgs.Skip)
-            .ApplyTake(vouchersFindManyArgs.Take)
-            .ApplyOrderBy(vouchersFindManyArgs.SortBy)
+            .ApplyWhere(voucherFindManyArgs.Where)
+            .ApplySkip(voucherFindManyArgs.Skip)
+            .ApplyTake(voucherFindManyArgs.Take)
+            .ApplyOrderBy(voucherFindManyArgs.SortBy)
             .ToListAsync();
 
         return flightBookingsItems.Select(x => x.ToDto()).ToList();
@@ -347,15 +347,15 @@ public abstract class VouchersItemsServiceBase : IVouchersItemsService
     /// </summary>
     public async Task<List<HotelBookings>> FindHotelBookingsItems(
         VouchersWhereUniqueInput uniqueId,
-        HotelBookingsFindManyArgs vouchersFindManyArgs
+        HotelBookingFindManyArgs voucherFindManyArgs
     )
     {
         var hotelBookingsItems = await _context
             .HotelBookingsItems.Where(m => m.VoucherId == uniqueId.Id)
-            .ApplyWhere(vouchersFindManyArgs.Where)
-            .ApplySkip(vouchersFindManyArgs.Skip)
-            .ApplyTake(vouchersFindManyArgs.Take)
-            .ApplyOrderBy(vouchersFindManyArgs.SortBy)
+            .ApplyWhere(voucherFindManyArgs.Where)
+            .ApplySkip(voucherFindManyArgs.Skip)
+            .ApplyTake(voucherFindManyArgs.Take)
+            .ApplyOrderBy(voucherFindManyArgs.SortBy)
             .ToListAsync();
 
         return hotelBookingsItems.Select(x => x.ToDto()).ToList();

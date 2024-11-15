@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class PackageBookingsItemsControllerBase : ControllerBase
+public abstract class PackageBookingsControllerBase : ControllerBase
 {
-    protected readonly IPackageBookingsItemsService _service;
+    protected readonly IPackageBookingsService _service;
 
-    public PackageBookingsItemsControllerBase(IPackageBookingsItemsService service)
+    public PackageBookingsControllerBase(IPackageBookingsService service)
     {
         _service = service;
     }
@@ -22,7 +22,7 @@ public abstract class PackageBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost()]
     public async Task<ActionResult<PackageBookings>> CreatePackageBookings(
-        PackageBookingsCreateInput input
+        PackageBookingCreateInput input
     )
     {
         var packageBookings = await _service.CreatePackageBookings(input);
@@ -59,7 +59,7 @@ public abstract class PackageBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<PackageBookings>>> PackageBookingsItems(
-        [FromQuery()] PackageBookingsFindManyArgs filter
+        [FromQuery()] PackageBookingFindManyArgs filter
     )
     {
         return Ok(await _service.PackageBookingsItems(filter));
@@ -70,7 +70,7 @@ public abstract class PackageBookingsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> PackageBookingsItemsMeta(
-        [FromQuery()] PackageBookingsFindManyArgs filter
+        [FromQuery()] PackageBookingFindManyArgs filter
     )
     {
         return Ok(await _service.PackageBookingsItemsMeta(filter));
@@ -100,7 +100,7 @@ public abstract class PackageBookingsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdatePackageBookings(
         [FromRoute()] PackageBookingsWhereUniqueInput uniqueId,
-        [FromQuery()] PackageBookingsUpdateInput packageBookingsUpdateDto
+        [FromQuery()] PackageBookingUpdateInput packageBookingsUpdateDto
     )
     {
         try

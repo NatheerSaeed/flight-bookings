@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class WalletLogsItemsControllerBase : ControllerBase
+public abstract class WalletLogsControllerBase : ControllerBase
 {
-    protected readonly IWalletLogsItemsService _service;
+    protected readonly IWalletLogsService _service;
 
-    public WalletLogsItemsControllerBase(IWalletLogsItemsService service)
+    public WalletLogsControllerBase(IWalletLogsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class WalletLogsItemsControllerBase : ControllerBase
     /// Create one WalletLogs
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<WalletLogs>> CreateWalletLogs(WalletLogsCreateInput input)
+    public async Task<ActionResult<WalletLogs>> CreateWalletLogs(WalletLogCreateInput input)
     {
         var walletLogs = await _service.CreateWalletLogs(input);
 
@@ -53,7 +53,7 @@ public abstract class WalletLogsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<WalletLogs>>> WalletLogsItems(
-        [FromQuery()] WalletLogsFindManyArgs filter
+        [FromQuery()] WalletLogFindManyArgs filter
     )
     {
         return Ok(await _service.WalletLogsItems(filter));
@@ -64,7 +64,7 @@ public abstract class WalletLogsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> WalletLogsItemsMeta(
-        [FromQuery()] WalletLogsFindManyArgs filter
+        [FromQuery()] WalletLogFindManyArgs filter
     )
     {
         return Ok(await _service.WalletLogsItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class WalletLogsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateWalletLogs(
         [FromRoute()] WalletLogsWhereUniqueInput uniqueId,
-        [FromQuery()] WalletLogsUpdateInput walletLogsUpdateDto
+        [FromQuery()] WalletLogUpdateInput walletLogsUpdateDto
     )
     {
         try

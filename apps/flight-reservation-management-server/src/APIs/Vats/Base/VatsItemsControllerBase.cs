@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class VatsItemsControllerBase : ControllerBase
+public abstract class VatsControllerBase : ControllerBase
 {
-    protected readonly IVatsItemsService _service;
+    protected readonly IVatsService _service;
 
-    public VatsItemsControllerBase(IVatsItemsService service)
+    public VatsControllerBase(IVatsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class VatsItemsControllerBase : ControllerBase
     /// Create one Vats
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<Vats>> CreateVats(VatsCreateInput input)
+    public async Task<ActionResult<Vats>> CreateVats(VatCreateInput input)
     {
         var vats = await _service.CreateVats(input);
 
@@ -50,7 +50,7 @@ public abstract class VatsItemsControllerBase : ControllerBase
     /// Find many VatsItems
     /// </summary>
     [HttpGet()]
-    public async Task<ActionResult<List<Vats>>> VatsItems([FromQuery()] VatsFindManyArgs filter)
+    public async Task<ActionResult<List<Vats>>> VatsItems([FromQuery()] VatFindManyArgs filter)
     {
         return Ok(await _service.VatsItems(filter));
     }
@@ -59,9 +59,7 @@ public abstract class VatsItemsControllerBase : ControllerBase
     /// Meta data about Vats records
     /// </summary>
     [HttpPost("meta")]
-    public async Task<ActionResult<MetadataDto>> VatsItemsMeta(
-        [FromQuery()] VatsFindManyArgs filter
-    )
+    public async Task<ActionResult<MetadataDto>> VatsItemsMeta([FromQuery()] VatFindManyArgs filter)
     {
         return Ok(await _service.VatsItemsMeta(filter));
     }
@@ -88,7 +86,7 @@ public abstract class VatsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateVats(
         [FromRoute()] VatsWhereUniqueInput uniqueId,
-        [FromQuery()] VatsUpdateInput vatsUpdateDto
+        [FromQuery()] VatUpdateInput vatsUpdateDto
     )
     {
         try

@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class CommentsItemsServiceBase : ICommentsItemsService
+public abstract class CommentsServiceBase : ICommentsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public CommentsItemsServiceBase(FlightReservationManagementDbContext context)
+    public CommentsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class CommentsItemsServiceBase : ICommentsItemsService
     /// <summary>
     /// Create one Comments
     /// </summary>
-    public async Task<Comments> CreateComments(CommentsCreateInput createDto)
+    public async Task<Comments> CreateComments(CommentCreateInput createDto)
     {
         var comments = new CommentsDbModel
         {
@@ -69,7 +69,7 @@ public abstract class CommentsItemsServiceBase : ICommentsItemsService
     /// <summary>
     /// Find many CommentsItems
     /// </summary>
-    public async Task<List<Comments>> CommentsItems(CommentsFindManyArgs findManyArgs)
+    public async Task<List<Comments>> CommentsItems(CommentFindManyArgs findManyArgs)
     {
         var commentsItems = await _context
             .CommentsItems.ApplyWhere(findManyArgs.Where)
@@ -83,7 +83,7 @@ public abstract class CommentsItemsServiceBase : ICommentsItemsService
     /// <summary>
     /// Meta data about Comments records
     /// </summary>
-    public async Task<MetadataDto> CommentsItemsMeta(CommentsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> CommentsItemsMeta(CommentFindManyArgs findManyArgs)
     {
         var count = await _context.CommentsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -96,7 +96,7 @@ public abstract class CommentsItemsServiceBase : ICommentsItemsService
     public async Task<Comments> Comments(CommentsWhereUniqueInput uniqueId)
     {
         var commentsItems = await this.CommentsItems(
-            new CommentsFindManyArgs { Where = new CommentsWhereInput { Id = uniqueId.Id } }
+            new CommentFindManyArgs { Where = new CommentWhereInput { Id = uniqueId.Id } }
         );
         var comments = commentsItems.FirstOrDefault();
         if (comments == null)
@@ -112,7 +112,7 @@ public abstract class CommentsItemsServiceBase : ICommentsItemsService
     /// </summary>
     public async Task UpdateComments(
         CommentsWhereUniqueInput uniqueId,
-        CommentsUpdateInput updateDto
+        CommentUpdateInput updateDto
     )
     {
         var comments = updateDto.ToModel(uniqueId);

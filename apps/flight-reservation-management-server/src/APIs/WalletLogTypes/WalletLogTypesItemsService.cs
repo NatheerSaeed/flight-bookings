@@ -2,8 +2,8 @@ using FlightReservationManagement.Infrastructure;
 
 namespace FlightReservationManagement.APIs;
 
-public class WalletLogTypesItemsService : WalletLogTypesItemsServiceBase
+public class WalletLogTypesService : WalletLogTypesServiceBase
 {
-    public WalletLogTypesItemsService(FlightReservationManagementDbContext context)
+    public WalletLogTypesService(FlightReservationManagementDbContext context)
         : base(context) { }
 }

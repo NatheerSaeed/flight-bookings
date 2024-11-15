@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class GalleriesItemsServiceBase : IGalleriesItemsService
+public abstract class GalleriesServiceBase : IGalleriesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public GalleriesItemsServiceBase(FlightReservationManagementDbContext context)
+    public GalleriesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class GalleriesItemsServiceBase : IGalleriesItemsService
     /// <summary>
     /// Create one Galleries
     /// </summary>
-    public async Task<Galleries> CreateGalleries(GalleriesCreateInput createDto)
+    public async Task<Galleries> CreateGalleries(GallerieCreateInput createDto)
     {
         var galleries = new GalleriesDbModel
         {
@@ -74,7 +74,7 @@ public abstract class GalleriesItemsServiceBase : IGalleriesItemsService
     /// <summary>
     /// Find many GalleriesItems
     /// </summary>
-    public async Task<List<Galleries>> GalleriesItems(GalleriesFindManyArgs findManyArgs)
+    public async Task<List<Galleries>> GalleriesItems(GallerieFindManyArgs findManyArgs)
     {
         var galleriesItems = await _context
             .GalleriesItems.Include(x => x.PackageField)
@@ -89,7 +89,7 @@ public abstract class GalleriesItemsServiceBase : IGalleriesItemsService
     /// <summary>
     /// Meta data about Galleries records
     /// </summary>
-    public async Task<MetadataDto> GalleriesItemsMeta(GalleriesFindManyArgs findManyArgs)
+    public async Task<MetadataDto> GalleriesItemsMeta(GallerieFindManyArgs findManyArgs)
     {
         var count = await _context.GalleriesItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -102,7 +102,7 @@ public abstract class GalleriesItemsServiceBase : IGalleriesItemsService
     public async Task<Galleries> Galleries(GalleriesWhereUniqueInput uniqueId)
     {
         var galleriesItems = await this.GalleriesItems(
-            new GalleriesFindManyArgs { Where = new GalleriesWhereInput { Id = uniqueId.Id } }
+            new GallerieFindManyArgs { Where = new GallerieWhereInput { Id = uniqueId.Id } }
         );
         var galleries = galleriesItems.FirstOrDefault();
         if (galleries == null)
@@ -118,7 +118,7 @@ public abstract class GalleriesItemsServiceBase : IGalleriesItemsService
     /// </summary>
     public async Task UpdateGalleries(
         GalleriesWhereUniqueInput uniqueId,
-        GalleriesUpdateInput updateDto
+        GallerieUpdateInput updateDto
     )
     {
         var galleries = updateDto.ToModel(uniqueId);

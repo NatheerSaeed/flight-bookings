@@ -25,7 +25,7 @@ public static class AgencyProfilesItemsExtensions
     }
 
     public static AgencyProfilesDbModel ToModel(
-        this AgencyProfilesUpdateInput updateDto,
+        this AgencyProfileUpdateInput updateDto,
         AgencyProfilesWhereUniqueInput uniqueId
     )
     {

@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class PackageTypesItemsServiceBase : IPackageTypesItemsService
+public abstract class PackageTypesServiceBase : IPackageTypesService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public PackageTypesItemsServiceBase(FlightReservationManagementDbContext context)
+    public PackageTypesServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class PackageTypesItemsServiceBase : IPackageTypesItemsService
     /// <summary>
     /// Create one PackageTypes
     /// </summary>
-    public async Task<PackageTypes> CreatePackageTypes(PackageTypesCreateInput createDto)
+    public async Task<PackageTypes> CreatePackageTypes(PackageTypeCreateInput createDto)
     {
         var packageTypes = new PackageTypesDbModel
         {
@@ -67,7 +67,7 @@ public abstract class PackageTypesItemsServiceBase : IPackageTypesItemsService
     /// <summary>
     /// Find many PackageTypesItems
     /// </summary>
-    public async Task<List<PackageTypes>> PackageTypesItems(PackageTypesFindManyArgs findManyArgs)
+    public async Task<List<PackageTypes>> PackageTypesItems(PackageTypeFindManyArgs findManyArgs)
     {
         var packageTypesItems = await _context
             .PackageTypesItems.ApplyWhere(findManyArgs.Where)
@@ -81,7 +81,7 @@ public abstract class PackageTypesItemsServiceBase : IPackageTypesItemsService
     /// <summary>
     /// Meta data about PackageTypes records
     /// </summary>
-    public async Task<MetadataDto> PackageTypesItemsMeta(PackageTypesFindManyArgs findManyArgs)
+    public async Task<MetadataDto> PackageTypesItemsMeta(PackageTypeFindManyArgs findManyArgs)
     {
         var count = await _context.PackageTypesItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -94,7 +94,7 @@ public abstract class PackageTypesItemsServiceBase : IPackageTypesItemsService
     public async Task<PackageTypes> PackageTypes(PackageTypesWhereUniqueInput uniqueId)
     {
         var packageTypesItems = await this.PackageTypesItems(
-            new PackageTypesFindManyArgs { Where = new PackageTypesWhereInput { Id = uniqueId.Id } }
+            new PackageTypeFindManyArgs { Where = new PackageTypeWhereInput { Id = uniqueId.Id } }
         );
         var packageTypes = packageTypesItems.FirstOrDefault();
         if (packageTypes == null)
@@ -110,7 +110,7 @@ public abstract class PackageTypesItemsServiceBase : IPackageTypesItemsService
     /// </summary>
     public async Task UpdatePackageTypes(
         PackageTypesWhereUniqueInput uniqueId,
-        PackageTypesUpdateInput updateDto
+        PackageTypeUpdateInput updateDto
     )
     {
         var packageTypes = updateDto.ToModel(uniqueId);

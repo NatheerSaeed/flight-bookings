@@ -8,11 +8,11 @@ namespace FlightReservationManagement.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]
-public abstract class FlightDealsItemsControllerBase : ControllerBase
+public abstract class FlightDealsControllerBase : ControllerBase
 {
-    protected readonly IFlightDealsItemsService _service;
+    protected readonly IFlightDealsService _service;
 
-    public FlightDealsItemsControllerBase(IFlightDealsItemsService service)
+    public FlightDealsControllerBase(IFlightDealsService service)
     {
         _service = service;
     }
@@ -21,7 +21,7 @@ public abstract class FlightDealsItemsControllerBase : ControllerBase
     /// Create one FlightDeals
     /// </summary>
     [HttpPost()]
-    public async Task<ActionResult<FlightDeals>> CreateFlightDeals(FlightDealsCreateInput input)
+    public async Task<ActionResult<FlightDeals>> CreateFlightDeals(FlightDealCreateInput input)
     {
         var flightDeals = await _service.CreateFlightDeals(input);
 
@@ -53,7 +53,7 @@ public abstract class FlightDealsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpGet()]
     public async Task<ActionResult<List<FlightDeals>>> FlightDealsItems(
-        [FromQuery()] FlightDealsFindManyArgs filter
+        [FromQuery()] FlightDealFindManyArgs filter
     )
     {
         return Ok(await _service.FlightDealsItems(filter));
@@ -64,7 +64,7 @@ public abstract class FlightDealsItemsControllerBase : ControllerBase
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> FlightDealsItemsMeta(
-        [FromQuery()] FlightDealsFindManyArgs filter
+        [FromQuery()] FlightDealFindManyArgs filter
     )
     {
         return Ok(await _service.FlightDealsItemsMeta(filter));
@@ -94,7 +94,7 @@ public abstract class FlightDealsItemsControllerBase : ControllerBase
     [HttpPatch("{Id}")]
     public async Task<ActionResult> UpdateFlightDeals(
         [FromRoute()] FlightDealsWhereUniqueInput uniqueId,
-        [FromQuery()] FlightDealsUpdateInput flightDealsUpdateDto
+        [FromQuery()] FlightDealUpdateInput flightDealsUpdateDto
     )
     {
         try

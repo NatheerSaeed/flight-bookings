@@ -3,12 +3,12 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IGoodToKnowsItemsService
+public interface IGoodToKnowsService
 {
     /// <summary>
     /// Create one GoodToKnows
     /// </summary>
-    public Task<GoodToKnows> CreateGoodToKnows(GoodToKnowsCreateInput goodtoknows);
+    public Task<GoodToKnows> CreateGoodToKnows(GoodToKnowCreateInput goodtoknows);
 
     /// <summary>
     /// Delete one GoodToKnows
@@ -18,12 +18,12 @@ public interface IGoodToKnowsItemsService
     /// <summary>
     /// Find many GoodToKnowsItems
     /// </summary>
-    public Task<List<GoodToKnows>> GoodToKnowsItems(GoodToKnowsFindManyArgs findManyArgs);
+    public Task<List<GoodToKnows>> GoodToKnowsItems(GoodToKnowFindManyArgs findManyArgs);
 
     /// <summary>
     /// Meta data about GoodToKnows records
     /// </summary>
-    public Task<MetadataDto> GoodToKnowsItemsMeta(GoodToKnowsFindManyArgs findManyArgs);
+    public Task<MetadataDto> GoodToKnowsItemsMeta(GoodToKnowFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one GoodToKnows
@@ -35,7 +35,7 @@ public interface IGoodToKnowsItemsService
     /// </summary>
     public Task UpdateGoodToKnows(
         GoodToKnowsWhereUniqueInput uniqueId,
-        GoodToKnowsUpdateInput updateDto
+        GoodToKnowUpdateInput updateDto
     );
 
     /// <summary>

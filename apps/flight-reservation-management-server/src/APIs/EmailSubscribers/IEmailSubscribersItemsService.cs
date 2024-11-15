@@ -3,13 +3,13 @@ using FlightReservationManagement.APIs.Dtos;
 
 namespace FlightReservationManagement.APIs;
 
-public interface IEmailSubscribersItemsService
+public interface IEmailSubscribersService
 {
     /// <summary>
     /// Create one EmailSubscribers
     /// </summary>
     public Task<EmailSubscribers> CreateEmailSubscribers(
-        EmailSubscribersCreateInput emailsubscribers
+        EmailSubscriberCreateInput emailsubscribers
     );
 
     /// <summary>
@@ -21,13 +21,13 @@ public interface IEmailSubscribersItemsService
     /// Find many EmailSubscribersItems
     /// </summary>
     public Task<List<EmailSubscribers>> EmailSubscribersItems(
-        EmailSubscribersFindManyArgs findManyArgs
+        EmailSubscriberFindManyArgs findManyArgs
     );
 
     /// <summary>
     /// Meta data about EmailSubscribers records
     /// </summary>
-    public Task<MetadataDto> EmailSubscribersItemsMeta(EmailSubscribersFindManyArgs findManyArgs);
+    public Task<MetadataDto> EmailSubscribersItemsMeta(EmailSubscriberFindManyArgs findManyArgs);
 
     /// <summary>
     /// Get one EmailSubscribers
@@ -39,6 +39,6 @@ public interface IEmailSubscribersItemsService
     /// </summary>
     public Task UpdateEmailSubscribers(
         EmailSubscribersWhereUniqueInput uniqueId,
-        EmailSubscribersUpdateInput updateDto
+        EmailSubscriberUpdateInput updateDto
     );
 }

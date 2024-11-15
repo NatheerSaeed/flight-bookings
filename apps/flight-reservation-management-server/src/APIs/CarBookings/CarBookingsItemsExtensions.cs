@@ -24,7 +24,7 @@ public static class CarBookingsItemsExtensions
     }
 
     public static CarBookingsDbModel ToModel(
-        this CarBookingsUpdateInput updateDto,
+        this CarBookingUpdateInput updateDto,
         CarBookingsWhereUniqueInput uniqueId
     )
     {

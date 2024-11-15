@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlightReservationManagement.APIs;
 
-public abstract class BankPaymentsItemsServiceBase : IBankPaymentsItemsService
+public abstract class BankPaymentsServiceBase : IBankPaymentsService
 {
     protected readonly FlightReservationManagementDbContext _context;
 
-    public BankPaymentsItemsServiceBase(FlightReservationManagementDbContext context)
+    public BankPaymentsServiceBase(FlightReservationManagementDbContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public abstract class BankPaymentsItemsServiceBase : IBankPaymentsItemsService
     /// <summary>
     /// Create one BankPayments
     /// </summary>
-    public async Task<BankPayments> CreateBankPayments(BankPaymentsCreateInput createDto)
+    public async Task<BankPayments> CreateBankPayments(BankPaymentCreateInput createDto)
     {
         var bankPayments = new BankPaymentsDbModel
         {
@@ -77,7 +77,7 @@ public abstract class BankPaymentsItemsServiceBase : IBankPaymentsItemsService
     /// <summary>
     /// Find many BankPaymentsItems
     /// </summary>
-    public async Task<List<BankPayments>> BankPaymentsItems(BankPaymentsFindManyArgs findManyArgs)
+    public async Task<List<BankPayments>> BankPaymentsItems(BankPaymentFindManyArgs findManyArgs)
     {
         var bankPaymentsItems = await _context
             .BankPaymentsItems.Include(x => x.User)
@@ -92,7 +92,7 @@ public abstract class BankPaymentsItemsServiceBase : IBankPaymentsItemsService
     /// <summary>
     /// Meta data about BankPayments records
     /// </summary>
-    public async Task<MetadataDto> BankPaymentsItemsMeta(BankPaymentsFindManyArgs findManyArgs)
+    public async Task<MetadataDto> BankPaymentsItemsMeta(BankPaymentFindManyArgs findManyArgs)
     {
         var count = await _context.BankPaymentsItems.ApplyWhere(findManyArgs.Where).CountAsync();
 
@@ -105,7 +105,7 @@ public abstract class BankPaymentsItemsServiceBase : IBankPaymentsItemsService
     public async Task<BankPayments> BankPayments(BankPaymentsWhereUniqueInput uniqueId)
     {
         var bankPaymentsItems = await this.BankPaymentsItems(
-            new BankPaymentsFindManyArgs { Where = new BankPaymentsWhereInput { Id = uniqueId.Id } }
+            new BankPaymentFindManyArgs { Where = new BankPaymentWhereInput { Id = uniqueId.Id } }
         );
         var bankPayments = bankPaymentsItems.FirstOrDefault();
         if (bankPayments == null)
@@ -121,7 +121,7 @@ public abstract class BankPaymentsItemsServiceBase : IBankPaymentsItemsService
     /// </summary>
     public async Task UpdateBankPayments(
         BankPaymentsWhereUniqueInput uniqueId,
-        BankPaymentsUpdateInput updateDto
+        BankPaymentUpdateInput updateDto
     )
     {
         var bankPayments = updateDto.ToModel(uniqueId);
